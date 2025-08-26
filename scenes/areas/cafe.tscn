@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://dmpno601l02mg"]
+
+[ext_resource type="Script" path="res://scripts/area_cafe.gd" id="1_4uvb1"]
+[ext_resource type="Texture2D" uid="uid://bg3isw54x06du" path="res://sprites/cafe.png" id="2_vubpd"]
+[ext_resource type="AudioStream" uid="uid://m2dniioy1vpk" path="res://audio/music/jazz_piano_medley_81.mp3" id="3_ibkpw"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="6_rqpun"]
+[ext_resource type="FontFile" uid="uid://bjj8cgx5rm6qc" path="res://DigitalDisco-Thin.ttf" id="7_8lxa3"]
+[ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="8_cqsvi"]
+[ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/2d_light.png" id="8_fxpun"]
+[ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="9_3wgph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
+size = Vector2(2000, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2dfh"]
+size = Vector2(46, 68)
+
+[node name="Cafe" type="Node2D"]
+position = Vector2(0, -53)
+script = ExtResource("1_4uvb1")
+street_scene = "res://scenes/areas/street.tscn"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(-28, -152)
+texture = ExtResource("2_vubpd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+position = Vector2(0, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
+position = Vector2(0, 175.5)
+shape = SubResource("RectangleShape2D_3rjlc")
+
+[node name="Music" type="AudioStreamPlayer" parent="Background"]
+stream = ExtResource("3_ibkpw")
+volume_db = -12.0
+autoplay = true
+
+[node name="CafeDoor" type="Area2D" parent="Background"]
+position = Vector2(-249, 112)
+script = ExtResource("6_rqpun")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/CafeDoor"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_e2dfh")
+
+[node name="Label" type="Label" parent="Background/CafeDoor"]
+offset_left = -18.0
+offset_top = -45.0
+offset_right = 22.0
+offset_bottom = -22.0
+theme_override_fonts/font = ExtResource("7_8lxa3")
+theme_override_font_sizes/font_size = 16
+text = "v"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("8_cqsvi")]
+z_index = 1
+position = Vector2(-277, -19)
+speed = 100.0
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_3wgph")]
+position = Vector2(0, -64)
+player = NodePath("../Player")
+bounds = Vector4(-100, -1000, 0, 1000)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture_filter = 1
+position = Vector2(-260, -172)
+scale = Vector2(0.570063, 0.570063)
+energy = 2.76
+texture = ExtResource("8_fxpun")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+texture_filter = 1
+position = Vector2(-101, -222)
+energy = 2.76
+texture = ExtResource("8_fxpun")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+texture_filter = 1
+position = Vector2(54, -152)
+scale = Vector2(0.429534, 0.429534)
+energy = 2.76
+texture = ExtResource("8_fxpun")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+texture_filter = 1
+position = Vector2(162, -225)
+scale = Vector2(0.656954, 0.656954)
+energy = 2.76
+texture = ExtResource("8_fxpun")
+
+[node name="PointLight2D5" type="PointLight2D" parent="."]
+texture_filter = 1
+position = Vector2(237, -138)
+scale = Vector2(0.266665, 0.266665)
+energy = 2.76
+texture = ExtResource("8_fxpun")
+
+[node name="PointLight2D6" type="PointLight2D" parent="."]
+texture_filter = 1
+position = Vector2(-171, -153)
+scale = Vector2(0.266665, 0.266665)
+energy = 2.76
+texture = ExtResource("8_fxpun")
+
+[connection signal="activated" from="Background/CafeDoor" to="." method="_on_cafe_door_activated"]
+
+[editable path="Player"]

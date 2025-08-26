@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://b2boncafgqn3u"
+path="res://.godot/imported/cop_exhausted.dialogue-4d203e86f31b1e2045d6ad50b7fc7146.tres"
+
+[deps]
+
+source_file="res://dialogue/cop_exhausted.dialogue"
+dest_files=["res://.godot/imported/cop_exhausted.dialogue-4d203e86f31b1e2045d6ad50b7fc7146.tres"]
+
+[params]
+
+defaults=true

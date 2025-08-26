@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2g662874xmte"]
+
+[ext_resource type="Script" path="res://scripts/dino.gd" id="1_wbelc"]
+[ext_resource type="SpriteFrames" uid="uid://d0emq73qwk2cv" path="res://sprites/dino.tres" id="2_bryfh"]
+[ext_resource type="Script" path="res://scripts/dino_animator.gd" id="3_smkdq"]
+[ext_resource type="SpriteFrames" uid="uid://cml3fuiqxd603" path="res://sprites/dino_nude.tres" id="4_o3drv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03nbt"]
+size = Vector2(45, 41.5)
+
+[node name="Player" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_wbelc")
+speed = 200.0
+
+[node name="DinoAnimator" type="AnimatedSprite2D" parent="."]
+position = Vector2(-38, -18)
+sprite_frames = ExtResource("2_bryfh")
+autoplay = "default"
+centered = false
+script = ExtResource("3_smkdq")
+clothed_frames = ExtResource("2_bryfh")
+nude_frames = ExtResource("4_o3drv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.75)
+shape = SubResource("RectangleShape2D_03nbt")

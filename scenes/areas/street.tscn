@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://c5f8bt7pw13py"]
+
+[ext_resource type="Script" path="res://scripts/area_street.gd" id="1_vurvn"]
+[ext_resource type="Texture2D" uid="uid://cgpc2jecyinv3" path="res://sprites/dino_city.png" id="3_8nat6"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="4_u7v5f"]
+[ext_resource type="FontFile" uid="uid://bjj8cgx5rm6qc" path="res://DigitalDisco-Thin.ttf" id="5_h3gp2"]
+[ext_resource type="AudioStream" uid="uid://bd7w1f023uq6r" path="res://audio/music/A Cloudy Morning (2012).mp3" id="8_w5137"]
+[ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="21_l3qgu"]
+[ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="22_86tsd"]
+[ext_resource type="PackedScene" uid="uid://dfmp6npoay2la" path="res://scenes/cop.tscn" id="24_5lmdy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
+size = Vector2(2000, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2dfh"]
+size = Vector2(46, 68)
+
+[node name="Street" type="Node2D"]
+position = Vector2(0, -53)
+script = ExtResource("1_vurvn")
+museum_scene = "res://scenes/areas/museum.tscn"
+cafe_scene = "res://scenes/areas/cafe.tscn"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(-28, -152)
+texture = ExtResource("3_8nat6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+position = Vector2(0, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
+position = Vector2(0, 175.5)
+shape = SubResource("RectangleShape2D_3rjlc")
+
+[node name="Music" type="AudioStreamPlayer" parent="Background"]
+stream = ExtResource("8_w5137")
+volume_db = -12.0
+autoplay = true
+
+[node name="MuseumDoor" type="Area2D" parent="Background"]
+position = Vector2(28, 87)
+script = ExtResource("4_u7v5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/MuseumDoor"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_e2dfh")
+
+[node name="Label" type="Label" parent="Background/MuseumDoor"]
+offset_left = -20.0
+offset_top = -74.0
+offset_right = 20.0
+offset_bottom = -51.0
+theme_override_fonts/font = ExtResource("5_h3gp2")
+theme_override_font_sizes/font_size = 16
+text = "v"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CafeDoor" type="Area2D" parent="Background"]
+position = Vector2(439, 112)
+script = ExtResource("4_u7v5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/CafeDoor"]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_e2dfh")
+
+[node name="Label" type="Label" parent="Background/CafeDoor"]
+offset_left = -18.0
+offset_top = -45.0
+offset_right = 22.0
+offset_bottom = -22.0
+theme_override_fonts/font = ExtResource("5_h3gp2")
+theme_override_font_sizes/font_size = 16
+text = "v"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player" parent="." instance=ExtResource("21_l3qgu")]
+z_index = 1
+position = Vector2(0, -19)
+speed = 100.0
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("22_86tsd")]
+position = Vector2(0, -64)
+player = NodePath("../Player")
+bounds = Vector4(-700, -1000, 700, 1000)
+
+[node name="Cop" parent="." instance=ExtResource("24_5lmdy")]
+position = Vector2(-338, 0)
+
+[node name="NPCAnimator" parent="Cop" index="1"]
+animation = &"exhausted"
+autoplay = "exhausted"
+frame_progress = 0.195817
+
+[connection signal="activated" from="Background/MuseumDoor" to="." method="_on_museum_door_activated"]
+[connection signal="activated" from="Background/CafeDoor" to="." method="_on_cafe_door_activated"]
+
+[editable path="Player"]
+[editable path="Cop"]

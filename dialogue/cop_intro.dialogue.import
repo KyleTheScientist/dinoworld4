@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://q47opa2setdu"
+path="res://.godot/imported/cop_intro.dialogue-f40ddef6ae02f677249014a46bf2a9b5.tres"
+
+[deps]
+
+source_file="res://dialogue/cop_intro.dialogue"
+dest_files=["res://.godot/imported/cop_intro.dialogue-f40ddef6ae02f677249014a46bf2a9b5.tres"]
+
+[params]
+
+defaults=true
