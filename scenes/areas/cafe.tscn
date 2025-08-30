@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmpno601l02mg"]
+[gd_scene load_steps=18 format=3 uid="uid://dmpno601l02mg"]
 
 [ext_resource type="Script" path="res://scripts/area_cafe.gd" id="1_4uvb1"]
 [ext_resource type="Texture2D" uid="uid://bg3isw54x06du" path="res://sprites/cafe.png" id="2_vubpd"]
@@ -8,12 +8,50 @@
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="8_cqsvi"]
 [ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/2d_light.png" id="8_fxpun"]
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="9_3wgph"]
+[ext_resource type="PackedScene" uid="uid://h3n1dchn2cfc" path="res://scenes/shopkeep.tscn" id="9_gg0lw"]
+[ext_resource type="Texture2D" uid="uid://t2ggnyelt2j4" path="res://sprites/turtles.png" id="10_78q56"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
 size = Vector2(2000, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2dfh"]
 size = Vector2(46, 68)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkq26"]
+atlas = ExtResource("10_78q56")
+region = Rect2(0, 0, 54, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui23g"]
+atlas = ExtResource("10_78q56")
+region = Rect2(54, 0, 54, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8125"]
+atlas = ExtResource("10_78q56")
+region = Rect2(108, 0, 54, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h30bv"]
+atlas = ExtResource("10_78q56")
+region = Rect2(162, 0, 54, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4f8sw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkq26")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ui23g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8125")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_h30bv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [node name="Cafe" type="Node2D"]
 position = Vector2(0, -53)
@@ -56,6 +94,49 @@ text = "v"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Lights" type="Node" parent="Background"]
+
+[node name="PointLight2D" type="PointLight2D" parent="Background/Lights"]
+texture_filter = 1
+position = Vector2(-260, -225)
+scale = Vector2(0.570063, 0.570063)
+energy = 2.76
+texture = ExtResource("8_fxpun")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Background/Lights"]
+texture_filter = 1
+position = Vector2(-101, -275)
+energy = 2.76
+texture = ExtResource("8_fxpun")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Background/Lights"]
+texture_filter = 1
+position = Vector2(54, -205)
+scale = Vector2(0.429534, 0.429534)
+energy = 2.76
+texture = ExtResource("8_fxpun")
+
+[node name="PointLight2D4" type="PointLight2D" parent="Background/Lights"]
+texture_filter = 1
+position = Vector2(162, -278)
+scale = Vector2(0.656954, 0.656954)
+energy = 2.76
+texture = ExtResource("8_fxpun")
+
+[node name="PointLight2D5" type="PointLight2D" parent="Background/Lights"]
+texture_filter = 1
+position = Vector2(237, -191)
+scale = Vector2(0.266665, 0.266665)
+energy = 2.76
+texture = ExtResource("8_fxpun")
+
+[node name="PointLight2D6" type="PointLight2D" parent="Background/Lights"]
+texture_filter = 1
+position = Vector2(-171, -206)
+scale = Vector2(0.266665, 0.266665)
+energy = 2.76
+texture = ExtResource("8_fxpun")
+
 [node name="Player" parent="." instance=ExtResource("8_cqsvi")]
 z_index = 1
 position = Vector2(-277, -19)
@@ -64,49 +145,17 @@ speed = 100.0
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_3wgph")]
 position = Vector2(0, -64)
 player = NodePath("../Player")
-bounds = Vector4(-100, -1000, 0, 1000)
+bounds = Vector4(-100, -1000, 70, 1000)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-texture_filter = 1
-position = Vector2(-260, -172)
-scale = Vector2(0.570063, 0.570063)
-energy = 2.76
-texture = ExtResource("8_fxpun")
+[node name="Shopkeep" parent="." instance=ExtResource("9_gg0lw")]
+position = Vector2(205, 0)
 
-[node name="PointLight2D2" type="PointLight2D" parent="."]
-texture_filter = 1
-position = Vector2(-101, -222)
-energy = 2.76
-texture = ExtResource("8_fxpun")
-
-[node name="PointLight2D3" type="PointLight2D" parent="."]
-texture_filter = 1
-position = Vector2(54, -152)
-scale = Vector2(0.429534, 0.429534)
-energy = 2.76
-texture = ExtResource("8_fxpun")
-
-[node name="PointLight2D4" type="PointLight2D" parent="."]
-texture_filter = 1
-position = Vector2(162, -225)
-scale = Vector2(0.656954, 0.656954)
-energy = 2.76
-texture = ExtResource("8_fxpun")
-
-[node name="PointLight2D5" type="PointLight2D" parent="."]
-texture_filter = 1
-position = Vector2(237, -138)
-scale = Vector2(0.266665, 0.266665)
-energy = 2.76
-texture = ExtResource("8_fxpun")
-
-[node name="PointLight2D6" type="PointLight2D" parent="."]
-texture_filter = 1
-position = Vector2(-171, -153)
-scale = Vector2(0.266665, 0.266665)
-energy = 2.76
-texture = ExtResource("8_fxpun")
+[node name="Turtles" type="AnimatedSprite2D" parent="."]
+position = Vector2(259, -4)
+sprite_frames = SubResource("SpriteFrames_4f8sw")
+autoplay = "default"
 
 [connection signal="activated" from="Background/CafeDoor" to="." method="_on_cafe_door_activated"]
+[connection signal="dialogue_finished" from="Shopkeep" to="." method="_on_shopkeep_dialogue_finished"]
 
 [editable path="Player"]

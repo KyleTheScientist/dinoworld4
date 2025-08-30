@@ -1,33 +1,104 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5f8bt7pw13py"]
+[gd_scene load_steps=17 format=3 uid="uid://c5f8bt7pw13py"]
 
 [ext_resource type="Script" path="res://scripts/area_street.gd" id="1_vurvn"]
+[ext_resource type="Texture2D" uid="uid://bg6dvnd3rkqeu" path="res://sprites/dino_city_parallax2.png" id="3_2dj7t"]
 [ext_resource type="Texture2D" uid="uid://cgpc2jecyinv3" path="res://sprites/dino_city.png" id="3_8nat6"]
+[ext_resource type="Script" path="res://scenes/areas/parallax.gd" id="4_arlcw"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="4_u7v5f"]
+[ext_resource type="Texture2D" uid="uid://dr5735mru5vb3" path="res://sprites/dino_city_parallax3.png" id="5_fagyq"]
 [ext_resource type="FontFile" uid="uid://bjj8cgx5rm6qc" path="res://DigitalDisco-Thin.ttf" id="5_h3gp2"]
+[ext_resource type="Texture2D" uid="uid://dom4ceu55m4ql" path="res://sprites/dino_city_parallax.png" id="6_osexc"]
 [ext_resource type="AudioStream" uid="uid://bd7w1f023uq6r" path="res://audio/music/A Cloudy Morning (2012).mp3" id="8_w5137"]
+[ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/2d_light.png" id="10_e6iwx"]
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="21_l3qgu"]
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="22_86tsd"]
 [ext_resource type="PackedScene" uid="uid://dfmp6npoay2la" path="res://scenes/cop.tscn" id="24_5lmdy"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hv647"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
-size = Vector2(2000, 47)
+size = Vector2(3122, 47)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2dfh"]
-size = Vector2(46, 68)
+size = Vector2(46, 73)
 
 [node name="Street" type="Node2D"]
 position = Vector2(0, -53)
 script = ExtResource("1_vurvn")
 museum_scene = "res://scenes/areas/museum.tscn"
 cafe_scene = "res://scenes/areas/cafe.tscn"
+sewer_scene = "res://scenes/areas/sewer.tscn"
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -100
-position = Vector2(-28, -152)
+position = Vector2(-28, -51)
 texture = ExtResource("3_8nat6")
 
+[node name="Parallax" type="Node2D" parent="Background"]
+
+[node name="Panel" type="Panel" parent="Background/Parallax"]
+z_index = -1000
+offset_left = -1400.0
+offset_top = -560.0
+offset_right = 1600.0
+offset_bottom = 440.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hv647")
+
+[node name="ParallaxA2" type="Sprite2D" parent="Background/Parallax"]
+z_index = -99
+position = Vector2(300, 51)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_osexc")
+script = ExtResource("4_arlcw")
+parallax_rate = 100
+
+[node name="ParallaxA3" type="Sprite2D" parent="Background/Parallax"]
+z_index = -99
+position = Vector2(-1041, -29)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("6_osexc")
+flip_h = true
+script = ExtResource("4_arlcw")
+parallax_rate = 100
+
+[node name="ParallaxB2" type="Sprite2D" parent="Background/Parallax"]
+z_index = -100
+position = Vector2(151, -125)
+texture = ExtResource("3_2dj7t")
+script = ExtResource("4_arlcw")
+parallax_rate = 50
+
+[node name="ParallaxB3" type="Sprite2D" parent="Background/Parallax"]
+z_index = -100
+position = Vector2(1433, -125)
+texture = ExtResource("3_2dj7t")
+script = ExtResource("4_arlcw")
+parallax_rate = 50
+
+[node name="ParallaxB4" type="Sprite2D" parent="Background/Parallax"]
+z_index = -100
+position = Vector2(1433, -125)
+texture = ExtResource("3_2dj7t")
+script = ExtResource("4_arlcw")
+parallax_rate = 50
+
+[node name="ParallaxC1" type="Sprite2D" parent="Background/Parallax"]
+z_index = -101
+position = Vector2(630, -104)
+texture = ExtResource("5_fagyq")
+script = ExtResource("4_arlcw")
+parallax_rate = 20
+
+[node name="ParallaxC2" type="Sprite2D" parent="Background/Parallax"]
+z_index = -101
+position = Vector2(-394, -68)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_fagyq")
+script = ExtResource("4_arlcw")
+parallax_rate = 20
+
 [node name="StaticBody2D" type="StaticBody2D" parent="Background"]
-position = Vector2(0, 2)
+position = Vector2(0, -101)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
 position = Vector2(0, 175.5)
@@ -39,11 +110,11 @@ volume_db = -12.0
 autoplay = true
 
 [node name="MuseumDoor" type="Area2D" parent="Background"]
-position = Vector2(28, 87)
+position = Vector2(28, -4)
 script = ExtResource("4_u7v5f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/MuseumDoor"]
-position = Vector2(0, -7.5)
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_e2dfh")
 
 [node name="Label" type="Label" parent="Background/MuseumDoor"]
@@ -58,7 +129,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CafeDoor" type="Area2D" parent="Background"]
-position = Vector2(439, 112)
+position = Vector2(637, 20)
 script = ExtResource("4_u7v5f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/CafeDoor"]
@@ -76,6 +147,39 @@ text = "v"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="SewerDoor" type="Area2D" parent="Background"]
+position = Vector2(1165, 49)
+script = ExtResource("4_u7v5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/SewerDoor"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_e2dfh")
+
+[node name="Label" type="Label" parent="Background/SewerDoor"]
+offset_left = -18.0
+offset_top = 7.0
+offset_right = 22.0
+offset_bottom = 30.0
+theme_override_fonts/font = ExtResource("5_h3gp2")
+theme_override_font_sizes/font_size = 16
+text = "v"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="Background"]
+texture_filter = 1
+position = Vector2(1103, -86)
+scale = Vector2(0.570063, 0.570063)
+energy = 2.76
+texture = ExtResource("10_e6iwx")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Background"]
+texture_filter = 1
+position = Vector2(-414, -86)
+scale = Vector2(0.570063, 0.570063)
+energy = 2.76
+texture = ExtResource("10_e6iwx")
+
 [node name="Player" parent="." instance=ExtResource("21_l3qgu")]
 z_index = 1
 position = Vector2(0, -19)
@@ -84,10 +188,9 @@ speed = 100.0
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("22_86tsd")]
 position = Vector2(0, -64)
 player = NodePath("../Player")
-bounds = Vector4(-700, -1000, 700, 1000)
 
 [node name="Cop" parent="." instance=ExtResource("24_5lmdy")]
-position = Vector2(-338, 0)
+position = Vector2(-376, 0)
 
 [node name="NPCAnimator" parent="Cop" index="1"]
 animation = &"exhausted"
@@ -96,6 +199,7 @@ frame_progress = 0.195817
 
 [connection signal="activated" from="Background/MuseumDoor" to="." method="_on_museum_door_activated"]
 [connection signal="activated" from="Background/CafeDoor" to="." method="_on_cafe_door_activated"]
+[connection signal="activated" from="Background/SewerDoor" to="." method="_on_sewer_door_activated"]
 
 [editable path="Player"]
 [editable path="Cop"]

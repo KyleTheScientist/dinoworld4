@@ -1,9 +1,56 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2g662874xmte"]
+[gd_scene load_steps=15 format=3 uid="uid://d2g662874xmte"]
 
 [ext_resource type="Script" path="res://scripts/dino.gd" id="1_wbelc"]
 [ext_resource type="SpriteFrames" uid="uid://d0emq73qwk2cv" path="res://sprites/dino.tres" id="2_bryfh"]
 [ext_resource type="Script" path="res://scripts/dino_animator.gd" id="3_smkdq"]
 [ext_resource type="SpriteFrames" uid="uid://cml3fuiqxd603" path="res://sprites/dino_nude.tres" id="4_o3drv"]
+[ext_resource type="Texture2D" uid="uid://dc3yepnjtve17" path="res://sprites/turtles_back.png" id="5_xsh0j"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_auulh"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bpfq7"]
+closed = false
+polygon = PackedVector2Array(-23, -11, -15, -11, -7, -7, 7, -6, 34, 5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xnmg0"]
+closed = false
+polygon = PackedVector2Array(-20, 5, 0, -5, 19, -8, 28, -10, 36, -10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0sgc"]
+atlas = ExtResource("5_xsh0j")
+region = Rect2(0, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y80ey"]
+atlas = ExtResource("5_xsh0j")
+region = Rect2(18, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4as7x"]
+atlas = ExtResource("5_xsh0j")
+region = Rect2(36, 0, 18, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylleo"]
+atlas = ExtResource("5_xsh0j")
+region = Rect2(54, 0, 18, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1vgao"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0sgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y80ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4as7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylleo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03nbt"]
 size = Vector2(45, 41.5)
@@ -14,13 +61,30 @@ script = ExtResource("1_wbelc")
 speed = 200.0
 
 [node name="DinoAnimator" type="AnimatedSprite2D" parent="."]
-position = Vector2(-38, -18)
+material = SubResource("CanvasItemMaterial_auulh")
 sprite_frames = ExtResource("2_bryfh")
+animation = &"run"
 autoplay = "default"
+frame_progress = 0.084521
 centered = false
+offset = Vector2(-38, -18)
 script = ExtResource("3_smkdq")
 clothed_frames = ExtResource("2_bryfh")
 nude_frames = ExtResource("4_o3drv")
+
+[node name="LightOccluderL" type="LightOccluder2D" parent="DinoAnimator"]
+occluder = SubResource("OccluderPolygon2D_bpfq7")
+
+[node name="LightOccluderR" type="LightOccluder2D" parent="DinoAnimator"]
+position = Vector2(-13, 0)
+occluder = SubResource("OccluderPolygon2D_xnmg0")
+
+[node name="Turtles" type="AnimatedSprite2D" parent="DinoAnimator"]
+z_index = -1
+position = Vector2(0, -14)
+sprite_frames = SubResource("SpriteFrames_1vgao")
+autoplay = "default"
+frame_progress = 0.863511
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.75)

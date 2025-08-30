@@ -1,17 +1,34 @@
 ~ start
-if not GameState.spoken_to_cop
+if not cop_encountered
 	=> first_encounter
-
-Cop: [[I knew I should've gotten breakfast instead of stopping those crimes...|I really need to start working out...]]
+	
+if cop_exhausted
+	if has_donuts
+		=> receive_donuts
+	else
+		Cop: I knew I should've gotten breakfast instead of stopping those crimes...
+else
+	Cop: Just give me a few minutes to digest...
 => END
 
 ~ first_encounter
 Cop: *Breathing heavily*
 Cop: [wave]You there...[/wave]
-Cop: I need your help... It's an emergency...
+Cop: I need your help. It's an emergency.
 Cop: I need you to get me...[wait=1] [wave]a donut[/wave].
-Cop: I'm so hungry! I couldn't even make it to the station!
-Cop: There's a cafe on the other side of the museum.
+Cop: I'm so hungry I couldn't even make it to the station!
 Cop: Please... the fate of the city depends on it...
-set GameState.spoken_to_cop = true
+Cop: There's a cafe on the other side of the museum.
+set cop_encountered = true
+=> END
+
+~ receive_donuts
+Cop: Oh, thank god, donuts! Sweet, delicious donuts.
+Cop: *Horrible devouring sounds*
+Cop: Mmmf... fank you fo mupch...
+Cop: *swallows* 
+Cop: Here, take this. It's a strange coin I found in my cruiser after arresting some hooligan earlier.
+Cop: Might be worth something!
+set cop_exhausted = false
+set has_coin = true
 => END

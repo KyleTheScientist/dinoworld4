@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://h3n1dchn2cfc"]
+
+[ext_resource type="Script" path="res://scripts/npc_controller.gd" id="1_s7a6i"]
+[ext_resource type="Resource" uid="uid://cf65k5kq4olep" path="res://dialogue/shopkeep.dialogue" id="2_jfk4o"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="3_u51xm"]
+[ext_resource type="FontFile" uid="uid://bjj8cgx5rm6qc" path="res://DigitalDisco-Thin.ttf" id="4_e6ork"]
+[ext_resource type="Texture2D" uid="uid://42yxvn81omve" path="res://sprites/shopkeep.png" id="5_rarrs"]
+[ext_resource type="Script" path="res://scripts/npc_animator.gd" id="6_x6mdf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqrim"]
+size = Vector2(105, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhirt"]
+atlas = ExtResource("5_rarrs")
+region = Rect2(0, 0, 53, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay5pm"]
+atlas = ExtResource("5_rarrs")
+region = Rect2(53, 0, 53, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gajd7"]
+atlas = ExtResource("5_rarrs")
+region = Rect2(106, 0, 53, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1aol5"]
+atlas = ExtResource("5_rarrs")
+region = Rect2(159, 0, 53, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tsow7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhirt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay5pm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gajd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1aol5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Shopkeep" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_s7a6i")
+dialogue = ExtResource("2_jfk4o")
+
+[node name="Interactable" type="Area2D" parent="."]
+texture_filter = 1
+monitorable = false
+script = ExtResource("3_u51xm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(-6.5, -13)
+shape = SubResource("RectangleShape2D_tqrim")
+
+[node name="Label" type="Label" parent="Interactable"]
+offset_left = -20.0
+offset_top = -43.0
+offset_right = 20.0
+offset_bottom = -20.0
+theme_override_fonts/font = ExtResource("4_e6ork")
+theme_override_font_sizes/font_size = 16
+text = "v"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_tsow7")
+autoplay = "default"
+flip_h = true
+script = ExtResource("6_x6mdf")
+
+[connection signal="activated" from="Interactable" to="." method="_on_npc_activated"]

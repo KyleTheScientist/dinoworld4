@@ -1,0 +1,319 @@
+[gd_scene load_steps=35 format=3 uid="uid://dweuu2l0m76vd"]
+
+[ext_resource type="Script" path="res://scripts/area_sewer.gd" id="1_m5rm0"]
+[ext_resource type="Texture2D" uid="uid://c1lhjdtfn4gdn" path="res://sprites/sewer.png" id="2_7s8i4"]
+[ext_resource type="Texture2D" uid="uid://1ckpicyipu08" path="res://sprites/turtle_table.png" id="4_3ew7x"]
+[ext_resource type="Texture2D" uid="uid://dboyl007qr32c" path="res://sprites/sewer_bridge.png" id="4_b1lm2"]
+[ext_resource type="AudioStream" uid="uid://dlrgg6l0nhoqe" path="res://audio/music/Jazz.wav" id="4_eg6hb"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="4_go2c2"]
+[ext_resource type="FontFile" uid="uid://bjj8cgx5rm6qc" path="res://DigitalDisco-Thin.ttf" id="5_jyivf"]
+[ext_resource type="Texture2D" uid="uid://t2ggnyelt2j4" path="res://sprites/turtles.png" id="6_461kn"]
+[ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/2d_light.png" id="6_yxduf"]
+[ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="7_ikmtk"]
+[ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="8_uijvl"]
+[ext_resource type="Texture2D" uid="uid://dp12dqysae3ob" path="res://sprites/sewer_water.png" id="9_m2aty"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
+size = Vector2(2000, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypvyr"]
+atlas = ExtResource("9_m2aty")
+region = Rect2(0, 0, 634, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_034bn"]
+atlas = ExtResource("9_m2aty")
+region = Rect2(634, 0, 634, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofmcw"]
+atlas = ExtResource("9_m2aty")
+region = Rect2(1268, 0, 634, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8i70"]
+atlas = ExtResource("9_m2aty")
+region = Rect2(1902, 0, 634, 53)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qj4wh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypvyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_034bn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofmcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8i70")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocspd"]
+atlas = ExtResource("4_3ew7x")
+region = Rect2(0, 0, 54, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an4oc"]
+atlas = ExtResource("4_3ew7x")
+region = Rect2(54, 0, 54, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_forid"]
+atlas = ExtResource("4_3ew7x")
+region = Rect2(108, 0, 54, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iekkt"]
+atlas = ExtResource("4_3ew7x")
+region = Rect2(162, 0, 54, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bbhj6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocspd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_an4oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_forid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iekkt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="Animation" id="Animation_pbd5c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+
+[sub_resource type="Animation" id="Animation_mqjih"]
+resource_name = "flicker"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333, 0.7, 0.966667),
+"transitions": PackedFloat32Array(2.07053, 1.51572, 1, 1),
+"update": 0,
+"values": [3.0, 4.77, 1.0, 3.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cbmgi"]
+_data = {
+"RESET": SubResource("Animation_pbd5c"),
+"flicker": SubResource("Animation_mqjih")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkq26"]
+atlas = ExtResource("6_461kn")
+region = Rect2(0, 0, 54, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui23g"]
+atlas = ExtResource("6_461kn")
+region = Rect2(54, 0, 54, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8125"]
+atlas = ExtResource("6_461kn")
+region = Rect2(108, 0, 54, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h30bv"]
+atlas = ExtResource("6_461kn")
+region = Rect2(162, 0, 54, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jot4w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkq26")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ui23g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8125")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_h30bv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wt88i"]
+size = Vector2(81, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2dfh"]
+size = Vector2(46, 204)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_msp65"]
+polygon = PackedVector2Array(-187, 13, -86, 13, -86, 15, -77, 15, -77, 13, 17, 13, 17, 16, 26, 16, 26, 13, 121, 13, 127, 11, 131, 6, 134, 0, 132, -8, 127, -14, 119, -17, 26, -17, 25, -20, 18, -20, 17, -17, -77, -17, -78, -20, -85, -20, -86, -17, -187, -17)
+
+[node name="Sewer" type="Node2D"]
+script = ExtResource("1_m5rm0")
+street_scene = "res://scenes/areas/street.tscn"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("2_7s8i4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+position = Vector2(0, 29)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_3rjlc")
+
+[node name="Water" type="AnimatedSprite2D" parent="Background"]
+position = Vector2(13, 51)
+sprite_frames = SubResource("SpriteFrames_qj4wh")
+autoplay = "default"
+frame_progress = 0.02274
+
+[node name="TurtleTable" type="AnimatedSprite2D" parent="Background"]
+position = Vector2(-233, 17)
+sprite_frames = SubResource("SpriteFrames_bbhj6")
+autoplay = "default"
+frame_progress = 0.677689
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/TurtleTable"]
+libraries = {
+"": SubResource("AnimationLibrary_cbmgi")
+}
+autoplay = "flicker"
+speed_scale = 0.5
+
+[node name="PointLight2D" type="PointLight2D" parent="Background/TurtleTable"]
+texture_filter = 1
+position = Vector2(-5, -8)
+scale = Vector2(0.570063, 0.570063)
+energy = 3.0
+shadow_enabled = true
+texture = ExtResource("6_yxduf")
+
+[node name="Turtles" type="AnimatedSprite2D" parent="Background/TurtleTable"]
+sprite_frames = SubResource("SpriteFrames_jot4w")
+autoplay = "default"
+frame_progress = 0.818126
+
+[node name="Interactable" type="Area2D" parent="Background/TurtleTable"]
+position = Vector2(-1, 2)
+script = ExtResource("4_go2c2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/TurtleTable/Interactable"]
+position = Vector2(-1.5, -4.5)
+shape = SubResource("RectangleShape2D_wt88i")
+
+[node name="Label" type="Label" parent="Background/TurtleTable/Interactable"]
+offset_left = -18.0
+offset_top = -45.0
+offset_right = 22.0
+offset_bottom = -22.0
+theme_override_fonts/font = ExtResource("5_jyivf")
+theme_override_font_sizes/font_size = 16
+text = "v"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bridge" type="Sprite2D" parent="Background"]
+z_index = 19
+z_as_relative = false
+position = Vector2(75, 14)
+texture = ExtResource("4_b1lm2")
+
+[node name="Music" type="AudioStreamPlayer" parent="Background"]
+stream = ExtResource("4_eg6hb")
+volume_db = -12.0
+autoplay = true
+
+[node name="Ladder" type="Area2D" parent="Background"]
+position = Vector2(353, -13)
+script = ExtResource("4_go2c2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Ladder"]
+position = Vector2(0, -62)
+shape = SubResource("RectangleShape2D_e2dfh")
+
+[node name="Label" type="Label" parent="Background/Ladder"]
+offset_left = -18.0
+offset_top = -45.0
+offset_right = 22.0
+offset_bottom = -22.0
+theme_override_fonts/font = ExtResource("5_jyivf")
+theme_override_font_sizes/font_size = 16
+text = "v"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lights" type="Node" parent="Background"]
+
+[node name="PointLight2D" type="PointLight2D" parent="Background/Lights"]
+visible = false
+texture_filter = 1
+position = Vector2(251, -172)
+energy = 10.51
+shadow_enabled = true
+texture = ExtResource("6_yxduf")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Background/Lights"]
+visible = false
+texture_filter = 1
+position = Vector2(-73, -165)
+energy = 10.51
+shadow_enabled = true
+texture = ExtResource("6_yxduf")
+
+[node name="PointLight2D3" type="PointLight2D" parent="Background/Lights"]
+visible = false
+texture_filter = 1
+position = Vector2(-417, -95)
+energy = 10.51
+shadow_enabled = true
+texture = ExtResource("6_yxduf")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Background"]
+position = Vector2(-244, -117)
+occluder = SubResource("OccluderPolygon2D_msp65")
+
+[node name="Player" parent="." instance=ExtResource("7_ikmtk")]
+z_index = 1
+position = Vector2(356, 7)
+floor_stop_on_slope = false
+speed = 100.0
+
+[node name="DinoAnimator" parent="Player" index="0"]
+light_mask = 2
+
+[node name="LightOccluderL" parent="Player/DinoAnimator" index="0"]
+z_index = -1
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_uijvl")]
+position = Vector2(0, -18)
+player = NodePath("../Player")
+bounds = Vector4(-150, -1000, 150, 1000)
+
+[connection signal="activated" from="Background/TurtleTable/Interactable" to="." method="_on_turtle_activated"]
+[connection signal="activated" from="Background/Ladder" to="." method="_on_ladder_activated"]
+
+[editable path="Player"]

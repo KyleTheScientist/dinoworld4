@@ -1,5 +1,6 @@
 extends Node2D
 
+signal dialogue_finished
 @export var dialogue: DialogueResource
 
 func _ready() -> void:
@@ -11,4 +12,4 @@ func _on_npc_activated() -> void:
 func _on_dialogue_finished(_dialogue: DialogueResource):
 	if _dialogue == self.dialogue:
 		$Interactable.is_triggerable = true
-		$Interactable/Label.visible = true
+		dialogue_finished.emit()

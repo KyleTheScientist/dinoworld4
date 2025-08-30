@@ -32,7 +32,6 @@ func _on_doors_activated() -> void:
 	if not GameState.seen_cop_anim:
 		$Background/Doors/ClickAudio.play()
 		$Background/Doors.is_triggerable = true
-		$Background/Doors/Label.visible = true
 		return
 		
 	get_tree().change_scene_to_file(street_scene)

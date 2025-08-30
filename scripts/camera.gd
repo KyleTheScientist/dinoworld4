@@ -17,7 +17,8 @@ func _process(_delta: float) -> void:
 		offset = Vector2(randf() * shake_power, randf() * shake_power)
 	
 	if not player.in_animation:
-		global_position.x = player.global_position.x
+		if player.global_position.x != global_position.x:
+			global_position.x = player.global_position.x
 		#global_position.x = lerp(global_position.x, player.global_position.x, 20 * _delta)
 		if global_position.x < bounds.x:
 			global_position.x = bounds.x

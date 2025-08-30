@@ -1,0 +1,56 @@
+~ start
+if not shopkeep_encountered
+	=> first_encounter
+
+if shopkeep_angry and not player_clothed
+	=> naked2
+
+if not turtle_returned
+	if not shopkeep_quest_given
+		=> give_quest
+	if has_turtle
+		=> return_turtle
+	else 
+		Rosie: Oh Sheldon... [wave]why![/wave]
+	=> END
+else
+	Rosie: I can't thank you enough!
+=> END
+
+~ first_encounter
+set shopkeep_encountered = true
+Rosie: *Sniffling*
+Rosie: Oh, hello. I didn't hear you come in.
+if not player_clothed
+	=> naked
+=> give_quest
+
+~ give_quest
+if shopkeep_angry
+	Rosie: You again...
+Rosie: It'll be a few minutes before I can take your order. I'm just too upset to do anything now.
+Rosie: You see, I accidentally flushed my poor turtle down the toilet this morning.
+Rosie: I'd try to go and find him myself, but I have to mind the shop...
+set shopkeep_quest_given = true
+=> END
+
+~ return_turtle
+Rosie: My turtle! You found him! 
+Rosie: Oh my, and he's made a friend! This is fantastic news!
+Rosie: Here, take a dozen donuts as thanks, on the house!
+set turtle_returned = true
+set has_donuts = true
+set has_turtle = false
+set shopkeep_angry = false
+=> END
+
+~ naked
+Rosie: *Gasp* 
+Rosie: Well, I never! Get out of my restauraunt or I'll call the cops! 
+Rosie: And don't come back unless you're wearing clothes!
+set shopkeep_angry = true
+=> END
+
+~ naked2
+Rosie: [wave]Get out![/wave]
+=> END
