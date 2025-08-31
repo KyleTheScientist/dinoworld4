@@ -1,0 +1,260 @@
+[gd_scene load_steps=36 format=3 uid="uid://dc4w22copbcmu"]
+
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="1_76cc2"]
+[ext_resource type="Script" path="res://scripts/turtle_minigame.gd" id="1_jsbis"]
+[ext_resource type="Texture2D" uid="uid://pi78830owqnq" path="res://sprites/turtle_run.png" id="2_kuprd"]
+[ext_resource type="AudioStream" uid="uid://ckmav6dpbnwym" path="res://audio/Crash.wav" id="3_7dj6a"]
+[ext_resource type="AudioStream" uid="uid://blm7hmtuk2cp7" path="res://audio/music/Chase.mp3" id="5_u3lef"]
+[ext_resource type="Texture2D" uid="uid://qop8g77fv2iv" path="res://sprites/catch_that_turt.png" id="6_gfxfx"]
+[ext_resource type="Texture2D" uid="uid://bfilky7p8iikm" path="res://sprites/turtlette.png" id="6_q1ovt"]
+[ext_resource type="Texture2D" uid="uid://brab4kbfa4n1b" path="res://sprites/SPEED.png" id="7_orsyw"]
+[ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="9_1c4b1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sft2"]
+atlas = ExtResource("6_gfxfx")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yioig"]
+atlas = ExtResource("6_gfxfx")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gavua"]
+atlas = ExtResource("6_gfxfx")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s6j45"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sft2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yioig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gavua")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq4gu"]
+atlas = ExtResource("7_orsyw")
+region = Rect2(0, 0, 53, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ktu21"]
+atlas = ExtResource("7_orsyw")
+region = Rect2(53, 0, 53, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a03pk"]
+atlas = ExtResource("7_orsyw")
+region = Rect2(106, 0, 53, 38)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2x7yx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq4gu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ktu21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a03pk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lu0ia"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pam4r"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(0, 0, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asifi"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(27, 0, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qh3l"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(54, 0, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8iy3"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(81, 0, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n34lk"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(0, 22, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8cvu"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(27, 22, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqsdn"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(54, 22, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s3ed"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(81, 22, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61p25"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(108, 22, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82o0e"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(135, 22, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdn6j"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(162, 22, 27, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5al6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pam4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asifi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qh3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8iy3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n34lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8cvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqsdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s3ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61p25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82o0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdn6j")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15ejh"]
+atlas = ExtResource("6_q1ovt")
+region = Rect2(0, 0, 18, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e35gf"]
+atlas = ExtResource("6_q1ovt")
+region = Rect2(18, 0, 18, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0r83"]
+atlas = ExtResource("6_q1ovt")
+region = Rect2(36, 0, 18, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w38xe"]
+atlas = ExtResource("6_q1ovt")
+region = Rect2(54, 0, 18, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o7lcg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15ejh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e35gf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0r83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w38xe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TurtleMinigame" type="Node2D"]
+z_index = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_jsbis")
+
+[node name="CatchThatTurt" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -70)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_s6j45")
+frame = 3
+frame_progress = 1.0
+
+[node name="Crash" type="AudioStreamPlayer" parent="CatchThatTurt"]
+stream = ExtResource("3_7dj6a")
+volume_db = -12.0
+
+[node name="SPEED" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.686275)
+position = Vector2(0, 3.5)
+sprite_frames = SubResource("SpriteFrames_2x7yx")
+autoplay = "default"
+frame_progress = 0.737669
+offset = Vector2(8.92, -3.31)
+
+[node name="Turtle" type="Area2D" parent="."]
+script = ExtResource("1_76cc2")
+is_triggerable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Turtle"]
+shape = SubResource("CircleShape2D_lu0ia")
+
+[node name="TurtleAnimation" type="AnimatedSprite2D" parent="Turtle"]
+position = Vector2(0, 3.5)
+sprite_frames = SubResource("SpriteFrames_5al6f")
+animation = &"run"
+autoplay = "default"
+frame_progress = 0.203887
+flip_h = true
+
+[node name="TurtletteAnimation" type="AnimatedSprite2D" parent="Turtle"]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_o7lcg")
+autoplay = "default"
+frame_progress = 0.909381
+
+[node name="FlipTimer" type="Timer" parent="Turtle"]
+wait_time = 0.7
+one_shot = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_u3lef")
+
+[node name="SpeedUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_1c4b1")
+
+[connection signal="animation_finished" from="CatchThatTurt" to="." method="_on_catch_that_turt_animation_finished"]
+[connection signal="frame_changed" from="CatchThatTurt" to="." method="_on_catch_that_turt_frame_changed"]
+[connection signal="activated" from="Turtle" to="." method="_on_turtle_activated"]
+[connection signal="timeout" from="Turtle/FlipTimer" to="." method="_on_flip_timer_timeout"]

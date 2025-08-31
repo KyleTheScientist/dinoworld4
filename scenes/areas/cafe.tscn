@@ -1,15 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmpno601l02mg"]
+[gd_scene load_steps=17 format=3 uid="uid://dmpno601l02mg"]
 
 [ext_resource type="Script" path="res://scripts/area_cafe.gd" id="1_4uvb1"]
 [ext_resource type="Texture2D" uid="uid://bg3isw54x06du" path="res://sprites/cafe.png" id="2_vubpd"]
 [ext_resource type="AudioStream" uid="uid://m2dniioy1vpk" path="res://audio/music/jazz_piano_medley_81.mp3" id="3_ibkpw"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="6_rqpun"]
-[ext_resource type="FontFile" uid="uid://bjj8cgx5rm6qc" path="res://DigitalDisco-Thin.ttf" id="7_8lxa3"]
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="8_cqsvi"]
 [ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/2d_light.png" id="8_fxpun"]
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="9_3wgph"]
 [ext_resource type="PackedScene" uid="uid://h3n1dchn2cfc" path="res://scenes/shopkeep.tscn" id="9_gg0lw"]
-[ext_resource type="Texture2D" uid="uid://t2ggnyelt2j4" path="res://sprites/turtles.png" id="10_78q56"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
 size = Vector2(2000, 47)
@@ -17,20 +15,23 @@ size = Vector2(2000, 47)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2dfh"]
 size = Vector2(46, 68)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_b33qc"]
+load_path = "res://.godot/imported/turtles.png-0f8561c8fd72d5159b10a160e1199f20.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_bkq26"]
-atlas = ExtResource("10_78q56")
+atlas = SubResource("CompressedTexture2D_b33qc")
 region = Rect2(0, 0, 54, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ui23g"]
-atlas = ExtResource("10_78q56")
+atlas = SubResource("CompressedTexture2D_b33qc")
 region = Rect2(54, 0, 54, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8125"]
-atlas = ExtResource("10_78q56")
+atlas = SubResource("CompressedTexture2D_b33qc")
 region = Rect2(108, 0, 54, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h30bv"]
-atlas = ExtResource("10_78q56")
+atlas = SubResource("CompressedTexture2D_b33qc")
 region = Rect2(162, 0, 54, 20)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4f8sw"]
@@ -82,17 +83,6 @@ script = ExtResource("6_rqpun")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/CafeDoor"]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_e2dfh")
-
-[node name="Label" type="Label" parent="Background/CafeDoor"]
-offset_left = -18.0
-offset_top = -45.0
-offset_right = 22.0
-offset_bottom = -22.0
-theme_override_fonts/font = ExtResource("7_8lxa3")
-theme_override_font_sizes/font_size = 16
-text = "v"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Lights" type="Node" parent="Background"]
 

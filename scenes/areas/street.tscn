@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c5f8bt7pw13py"]
+[gd_scene load_steps=16 format=3 uid="uid://c5f8bt7pw13py"]
 
 [ext_resource type="Script" path="res://scripts/area_street.gd" id="1_vurvn"]
 [ext_resource type="Texture2D" uid="uid://bg6dvnd3rkqeu" path="res://sprites/dino_city_parallax2.png" id="3_2dj7t"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://scenes/areas/parallax.gd" id="4_arlcw"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="4_u7v5f"]
 [ext_resource type="Texture2D" uid="uid://dr5735mru5vb3" path="res://sprites/dino_city_parallax3.png" id="5_fagyq"]
-[ext_resource type="FontFile" uid="uid://bjj8cgx5rm6qc" path="res://DigitalDisco-Thin.ttf" id="5_h3gp2"]
 [ext_resource type="Texture2D" uid="uid://dom4ceu55m4ql" path="res://sprites/dino_city_parallax.png" id="6_osexc"]
 [ext_resource type="AudioStream" uid="uid://bd7w1f023uq6r" path="res://audio/music/A Cloudy Morning (2012).mp3" id="8_w5137"]
 [ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/2d_light.png" id="10_e6iwx"]
@@ -117,17 +116,6 @@ script = ExtResource("4_u7v5f")
 position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_e2dfh")
 
-[node name="Label" type="Label" parent="Background/MuseumDoor"]
-offset_left = -20.0
-offset_top = -74.0
-offset_right = 20.0
-offset_bottom = -51.0
-theme_override_fonts/font = ExtResource("5_h3gp2")
-theme_override_font_sizes/font_size = 16
-text = "v"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CafeDoor" type="Area2D" parent="Background"]
 position = Vector2(637, 20)
 script = ExtResource("4_u7v5f")
@@ -136,17 +124,6 @@ script = ExtResource("4_u7v5f")
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_e2dfh")
 
-[node name="Label" type="Label" parent="Background/CafeDoor"]
-offset_left = -18.0
-offset_top = -45.0
-offset_right = 22.0
-offset_bottom = -22.0
-theme_override_fonts/font = ExtResource("5_h3gp2")
-theme_override_font_sizes/font_size = 16
-text = "v"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="SewerDoor" type="Area2D" parent="Background"]
 position = Vector2(1165, 49)
 script = ExtResource("4_u7v5f")
@@ -154,17 +131,6 @@ script = ExtResource("4_u7v5f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/SewerDoor"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_e2dfh")
-
-[node name="Label" type="Label" parent="Background/SewerDoor"]
-offset_left = -18.0
-offset_top = 7.0
-offset_right = 22.0
-offset_bottom = 30.0
-theme_override_fonts/font = ExtResource("5_h3gp2")
-theme_override_font_sizes/font_size = 16
-text = "v"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="PointLight2D" type="PointLight2D" parent="Background"]
 texture_filter = 1

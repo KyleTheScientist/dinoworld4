@@ -2,6 +2,7 @@ extends Camera2D
 
 @export var player: Dino
 @export var bounds: Vector4 = Vector4(-1000, -1000, 1000, 1000)
+@export var movie: bool = false
 
 var shake_duration: float
 var shake_power: float
@@ -10,6 +11,14 @@ func _ready() -> void:
 	global_position.x = player.global_position.x
 
 func _process(_delta: float) -> void:
+
+	
+	
+	if movie:
+		$FakeCursor.visible = true
+		$FakeCursor.texture = GameState.cursor
+		$FakeCursor.global_position = get_global_mouse_position()
+	
 	if $ShakeTimer.is_stopped(): 
 		offset = Vector2.ZERO
 		shake_duration = 0

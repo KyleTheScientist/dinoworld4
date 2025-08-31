@@ -1,0 +1,169 @@
+[gd_scene load_steps=24 format=3 uid="uid://dc4w22copbcmu"]
+
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_2v1gx"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="1_76cc2"]
+[ext_resource type="Script" path="res://scripts/turtle_minigame.gd" id="1_jsbis"]
+[ext_resource type="Texture2D" uid="uid://pi78830owqnq" path="res://sprites/turtle_run.png" id="2_kuprd"]
+[ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="4_tntng"]
+[ext_resource type="Texture2D" uid="uid://qop8g77fv2iv" path="res://sprites/catch_that_turt.png" id="6_gfxfx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sft2"]
+atlas = ExtResource("6_gfxfx")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yioig"]
+atlas = ExtResource("6_gfxfx")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gavua"]
+atlas = ExtResource("6_gfxfx")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s6j45"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sft2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yioig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gavua")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lu0ia"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pam4r"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(0, 0, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asifi"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(27, 0, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qh3l"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(54, 0, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8iy3"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(81, 0, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n34lk"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(0, 22, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8cvu"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(27, 22, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqsdn"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(54, 22, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8s3ed"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(81, 22, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61p25"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(108, 22, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82o0e"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(135, 22, 27, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdn6j"]
+atlas = ExtResource("2_kuprd")
+region = Rect2(162, 22, 27, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5al6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pam4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asifi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qh3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8iy3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n34lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8cvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqsdn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8s3ed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61p25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82o0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdn6j")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="TurtleMinigame" type="Node2D"]
+script = ExtResource("1_jsbis")
+
+[node name="CatchThatTurt" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -36)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_s6j45")
+frame = 3
+frame_progress = 0.42581
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(0, -34)
+zoom = Vector2(2, 2)
+script = ExtResource("1_2v1gx")
+player = NodePath("../Player")
+
+[node name="Turtle" type="Area2D" parent="."]
+position = Vector2(92, -7)
+script = ExtResource("1_76cc2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Turtle"]
+shape = SubResource("CircleShape2D_lu0ia")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Turtle"]
+sprite_frames = SubResource("SpriteFrames_5al6f")
+autoplay = "default"
+frame_progress = 0.327198
+flip_h = true
+
+[node name="Player" parent="." instance=ExtResource("4_tntng")]
+visible = false
+
+[connection signal="animation_finished" from="CatchThatTurt" to="." method="_on_catch_that_turt_animation_finished"]
+[connection signal="frame_changed" from="CatchThatTurt" to="." method="_on_catch_that_turt_frame_changed"]

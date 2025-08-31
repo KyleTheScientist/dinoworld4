@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfkidwno537k0"
-path="res://.godot/imported/turtles.png-0f8561c8fd72d5159b10a160e1199f20.ctex"
+uid="uid://buxlln5qrkwuu"
+path="res://.godot/imported/cursor_hover_small.png-6901ca0a884dd51d0a076eb68efd5039.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/turtles.png"
-dest_files=["res://.godot/imported/turtles.png-0f8561c8fd72d5159b10a160e1199f20.ctex"]
+source_file="res://sprites/cursor_hover_small.png"
+dest_files=["res://.godot/imported/cursor_hover_small.png-6901ca0a884dd51d0a076eb68efd5039.ctex"]
 
 [params]
 

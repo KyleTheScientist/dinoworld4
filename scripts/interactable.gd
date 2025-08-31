@@ -6,7 +6,7 @@ signal activated
 var hovered: bool = false
 
 func _ready() -> void:
-	$Label.visible = false
+	pass
 	#body_entered.connect(_on_body_entered)
 	#body_exited.connect(_on_body_exited)
 	#mouse_entered.connect(_on_mouse_entered)
@@ -16,14 +16,15 @@ func _input(event: InputEvent) -> void:
 	if hovered and is_triggerable and event.is_action_pressed("interact"):
 		is_triggerable = false
 		activated.emit()
+		GameState.set_cursor(0)
 		
 func _process(_delta: float) -> void:
 	var pct = _player_can_trigger()
 	if hovered and not pct:
-		Input.set_custom_mouse_cursor(GameState.cursor_idle)
+		GameState.set_cursor(0)
 		hovered = false
 	elif not hovered and pct:
-		Input.set_custom_mouse_cursor(GameState.cursor_hover)
+		GameState.set_cursor(1)
 		hovered = true
 
 func _mouse_overlaps() -> bool:

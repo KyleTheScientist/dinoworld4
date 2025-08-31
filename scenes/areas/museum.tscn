@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cvs2xi6yobcus"]
+[gd_scene load_steps=48 format=3 uid="uid://cvs2xi6yobcus"]
 
 [ext_resource type="Script" path="res://scripts/area_museum.gd" id="1_o1ntn"]
 [ext_resource type="Texture2D" uid="uid://djd218i50ysjt" path="res://sprites/portal.png" id="2_2dhan"]
@@ -16,7 +16,6 @@
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="12_6um4e"]
 [ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="12_x0157"]
 [ext_resource type="Texture2D" uid="uid://cwxahbcqgijet" path="res://sprites/mannequin.png" id="13_8gj0n"]
-[ext_resource type="FontFile" uid="uid://bjj8cgx5rm6qc" path="res://DigitalDisco-Thin.ttf" id="14_yuc81"]
 [ext_resource type="AudioStream" uid="uid://b55oxj3fnce3d" path="res://audio/click.wav" id="17_5cslm"]
 [ext_resource type="PackedScene" uid="uid://dfmp6npoay2la" path="res://scenes/cop.tscn" id="17_bn4xt"]
 [ext_resource type="Texture2D" uid="uid://vxljsbfgd3hf" path="res://sprites/shrine.png" id="17_y58pi"]
@@ -870,17 +869,6 @@ script = ExtResource("12_6um4e")
 position = Vector2(-1, 8.5)
 shape = SubResource("RectangleShape2D_iqybt")
 
-[node name="Label" type="Label" parent="Background/Mannequin/Interactable"]
-offset_left = -20.0
-offset_top = -26.0
-offset_right = 20.0
-offset_bottom = -3.0
-theme_override_fonts/font = ExtResource("14_yuc81")
-theme_override_font_sizes/font_size = 16
-text = "v"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Mannequin"]
 position = Vector2(-9, 2)
 sprite_frames = SubResource("SpriteFrames_id3b8")
@@ -908,17 +896,6 @@ shape = SubResource("RectangleShape2D_655ja")
 position = Vector2(0, 30)
 texture = ExtResource("18_7mr07")
 
-[node name="Label" type="Label" parent="Background/Shrine"]
-offset_left = -20.0
-offset_top = -43.0
-offset_right = 20.0
-offset_bottom = -20.0
-theme_override_fonts/font = ExtResource("14_yuc81")
-theme_override_font_sizes/font_size = 16
-text = "v"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Doors" type="Area2D" parent="Background"]
 position = Vector2(705, 103)
 script = ExtResource("12_6um4e")
@@ -930,17 +907,6 @@ texture = ExtResource("25_amfeu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Doors"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_psv2q")
-
-[node name="Label" type="Label" parent="Background/Doors"]
-offset_left = -19.0
-offset_top = -68.0
-offset_right = 21.0
-offset_bottom = -45.0
-theme_override_fonts/font = ExtResource("14_yuc81")
-theme_override_font_sizes/font_size = 16
-text = "v"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="ClickAudio" type="AudioStreamPlayer" parent="Background/Doors"]
 stream = ExtResource("17_5cslm")
