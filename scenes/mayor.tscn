@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://6jr2ryma7s8e"]
+
+[ext_resource type="Resource" uid="uid://detr06483gg2y" path="res://dialogue/mayor.dialogue" id="2_knowj"]
+[ext_resource type="Texture2D" uid="uid://duelsqraqpgba" path="res://sprites/chars/mayor.png" id="3_1ysok"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="3_fm7c8"]
+[ext_resource type="Script" path="res://scripts/npc_controller.gd" id="7_kdi7k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7flu"]
+atlas = ExtResource("3_1ysok")
+region = Rect2(0, 0, 79, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8f4p"]
+atlas = ExtResource("3_1ysok")
+region = Rect2(79, 0, 79, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj03o"]
+atlas = ExtResource("3_1ysok")
+region = Rect2(158, 0, 79, 73)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ye0l4"]
+atlas = ExtResource("3_1ysok")
+region = Rect2(237, 0, 79, 73)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3kodk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7flu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8f4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj03o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ye0l4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4byo"]
+size = Vector2(75, 74)
+
+[node name="Mayor" type="Node2D"]
+script = ExtResource("7_kdi7k")
+dialogue = ExtResource("2_knowj")
+
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3kodk")
+autoplay = "default"
+offset = Vector2(0, -35.115)
+flip_h = true
+
+[node name="Interactable" type="Area2D" parent="."]
+position = Vector2(-9, -33)
+script = ExtResource("3_fm7c8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(7, -4)
+shape = SubResource("RectangleShape2D_v4byo")
+
+[connection signal="activated" from="Interactable" to="." method="_on_npc_activated"]

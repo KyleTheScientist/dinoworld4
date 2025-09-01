@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://d2g662874xmte"]
+[gd_scene load_steps=16 format=3 uid="uid://d2g662874xmte"]
 
 [ext_resource type="Script" path="res://scripts/dino.gd" id="1_wbelc"]
-[ext_resource type="SpriteFrames" uid="uid://d0emq73qwk2cv" path="res://sprites/dino.tres" id="2_bryfh"]
+[ext_resource type="SpriteFrames" uid="uid://d0emq73qwk2cv" path="res://sprites/chars/dino.tres" id="2_bryfh"]
 [ext_resource type="Script" path="res://scripts/dino_animator.gd" id="3_smkdq"]
-[ext_resource type="SpriteFrames" uid="uid://cml3fuiqxd603" path="res://sprites/dino_nude.tres" id="4_o3drv"]
-[ext_resource type="Texture2D" uid="uid://dc3yepnjtve17" path="res://sprites/turtles_back.png" id="5_xsh0j"]
+[ext_resource type="SpriteFrames" uid="uid://cml3fuiqxd603" path="res://sprites/chars/dino_nude.tres" id="4_o3drv"]
+[ext_resource type="Texture2D" uid="uid://dc3yepnjtve17" path="res://sprites/chars/turtles_back.png" id="5_xsh0j"]
+[ext_resource type="Texture2D" uid="uid://xgfu8aeyumt6" path="res://sprites/env/trash.png" id="6_ijp3m"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_auulh"]
 
@@ -85,6 +86,13 @@ position = Vector2(0, -14)
 sprite_frames = SubResource("SpriteFrames_1vgao")
 autoplay = "default"
 frame_progress = 0.863511
+
+[node name="Trash" type="Sprite2D" parent="DinoAnimator"]
+z_index = -1
+position = Vector2(-1, -16)
+texture = ExtResource("6_ijp3m")
+region_enabled = true
+region_rect = Rect2(66, 0, 23, 28)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.75)

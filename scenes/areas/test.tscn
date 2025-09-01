@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="1_wk344"]
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="2_kp0ib"]
-[ext_resource type="PackedScene" uid="uid://dfmp6npoay2la" path="res://scenes/cop.tscn" id="3_kiarh"]
+[ext_resource type="PackedScene" uid="uid://dfmp6npoay2la" path="res://scenes/mayor.tscn" id="3_kiarh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h5wu3"]
 size = Vector2(761, 204)

@@ -26,6 +26,13 @@ var cop_encountered: bool = false
 var has_donuts: bool = false
 var has_coin: bool = false
 
+var mayor_encountered: bool = false
+var trash_disposed_of: bool = false
+var has_trash: bool = false
+var trash_removed: int = 0
+var has_crowbar: bool = false
+var received_mayor_gift: bool = false
+
 # Cafe
 var shopkeep_encountered: bool = false
 var shopkeep_angry: bool = false

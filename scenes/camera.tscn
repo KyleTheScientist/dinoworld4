@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c48sd0o8wp63u"]
 
 [ext_resource type="Script" path="res://scripts/camera.gd" id="1_igppo"]
-[ext_resource type="Shader" path="res://sprites/vignette.gdshader" id="2_3scah"]
+[ext_resource type="Shader" path="res://vignette.gdshader" id="2_3scah"]
 [ext_resource type="Texture2D" uid="uid://bmfbi1n8sfspb" path="res://sprites/cursor_idle.png" id="3_e5rop"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_utjcr"]

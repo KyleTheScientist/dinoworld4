@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/npc_controller.gd" id="1_s7a6i"]
 [ext_resource type="Resource" uid="uid://cf65k5kq4olep" path="res://dialogue/shopkeep.dialogue" id="2_jfk4o"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="3_u51xm"]
-[ext_resource type="Texture2D" uid="uid://42yxvn81omve" path="res://sprites/shopkeep.png" id="5_rarrs"]
+[ext_resource type="Texture2D" uid="uid://42yxvn81omve" path="res://sprites/chars/shopkeep.png" id="5_rarrs"]
 [ext_resource type="Script" path="res://scripts/npc_animator.gd" id="6_x6mdf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqrim"]

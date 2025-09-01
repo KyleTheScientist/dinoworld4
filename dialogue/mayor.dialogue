@@ -1,0 +1,37 @@
+~ start
+if not mayor_encountered
+	=> first_encounter
+
+if not trash_disposed_of
+	Mayor: If you'll excuse me I have to practice my speech.
+	Mayor: "We must say di[wave]NO[/wave] to tyranny..."
+	=> END
+	
+if not received_mayor_gift
+	Mayor: Well butter my tail and call me a biscuit, you've done it!
+	Mayor: Take this as a sign of gratitude.
+	set received_mayor_gift = true
+	=> END
+
+Mayor: I hope to see you at the polls! Remember, a vote for me is a vote for whatever political issue you individually care about the most!
+
+=> END
+
+
+
+~ first_encounter
+if not player_clothed
+	Mayor: Why hello there my... nude friend.
+else
+	Mayor: Why hello there my good fellow!
+	
+Mayor: I don't believe I've had the pleasure of your acquaintance.
+Mayor: I am Mayor Thaddeus Brontoborough III, pleased to meet.
+Mayor: I must say, I am in a bit of conundrum at this particular junction in time.
+Mayor: In an act of service to the community I've taken it upon myself to clean up the garbage proliferatin' throughout this fine street.
+Mayor: However, I'm not a youngin' anymore, and my neck is [wave]killin'[/wave] me.
+Mayor: Do you think you could gather up these here garbage sacks and take em' over to the dumpster for me?
+Mayor: With the election coming up so soon I need to stay in good shape if I want to beat that no-good, philanderin' [wave]Hatz Beakman[/wave].
+set mayor_encountered = true
+=> END
+

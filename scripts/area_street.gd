@@ -16,6 +16,34 @@ func _ready() -> void:
 
 	if GameState.cop_exhausted:
 		$Cop/NPCAnimator.animation = "exhausted"
+	$Background/Dumpster.is_triggerable = false
+	
+
+func _on_mayor_dialogue_finished() -> void:
+	$Background/Trash.is_triggerable = true
+
+func _on_trash_activated() -> void:
+	if GameState.has_trash:
+		return
+	GameState.has_trash = true
+	GameState.trash_removed += 1
+	$Background/Dumpster.is_triggerable = true
+	$Player/DinoAnimator/Trash.visible = true
+	if GameState.trash_removed == 3:
+		$Background/Trash.visible = false
+		$Background/Trash.is_triggerable = false
+		return
+	$Background/Trash.is_triggerable = true	
+	$Background/Trash/Sprite.frame += 1
+
+func _on_dumpster_activated() -> void:
+	if not GameState.has_trash:
+		return
+	$Player/DinoAnimator/Trash.visible = false
+	GameState.has_trash = false
+	$Background/Dumpster/AnimationPlayer.play("insert_trash")
+	if GameState.trash_removed == 3:
+		GameState.trash_disposed_of = true
 
 func _on_museum_door_activated() -> void:
 	get_tree().change_scene_to_file(museum_scene)

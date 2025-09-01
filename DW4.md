@@ -52,7 +52,18 @@
 - Tobe conintue
 
 
+## Revised-Revised Outline 
 
+- 
+
+Minigame ideas:
+
+- Something to do with mayoral election flyers
+  - Mayor asks you to take out the trash, turns out the trash is the opponent's flyers?
+    - After completing the quest you can rip open the bags to find the crowbar and flyers
+- Sift through trash can to find crowbar
+- Solve a maze to help someone navigate the city
+- 
 
 
 Crowbar -> Rescue turtle -> Get a donut -> Feed cop -> Get shades arrested -> Hat -> Speakeasy access -> Padlock code

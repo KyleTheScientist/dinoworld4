@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="1_76cc2"]
 [ext_resource type="Script" path="res://scripts/turtle_minigame.gd" id="1_jsbis"]
-[ext_resource type="Texture2D" uid="uid://pi78830owqnq" path="res://sprites/turtle_run.png" id="2_kuprd"]
+[ext_resource type="Texture2D" uid="uid://pi78830owqnq" path="res://sprites/chars/turtle_run.png" id="2_kuprd"]
 [ext_resource type="AudioStream" uid="uid://ckmav6dpbnwym" path="res://audio/Crash.wav" id="3_7dj6a"]
 [ext_resource type="AudioStream" uid="uid://blm7hmtuk2cp7" path="res://audio/music/Chase.mp3" id="5_u3lef"]
-[ext_resource type="Texture2D" uid="uid://qop8g77fv2iv" path="res://sprites/catch_that_turt.png" id="6_gfxfx"]
-[ext_resource type="Texture2D" uid="uid://bfilky7p8iikm" path="res://sprites/turtlette.png" id="6_q1ovt"]
-[ext_resource type="Texture2D" uid="uid://brab4kbfa4n1b" path="res://sprites/SPEED.png" id="7_orsyw"]
+[ext_resource type="Texture2D" uid="uid://qop8g77fv2iv" path="res://sprites/effects/catch_that_turt.png" id="6_gfxfx"]
+[ext_resource type="Texture2D" uid="uid://bfilky7p8iikm" path="res://sprites/chars/turtlette.png" id="6_q1ovt"]
+[ext_resource type="Texture2D" uid="uid://brab4kbfa4n1b" path="res://sprites/effects/SPEED.png" id="7_orsyw"]
 [ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="9_1c4b1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2sft2"]
