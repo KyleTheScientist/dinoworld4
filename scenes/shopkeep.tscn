@@ -63,7 +63,6 @@ shape = SubResource("RectangleShape2D_tqrim")
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_tsow7")
 autoplay = "default"
-flip_h = true
 script = ExtResource("6_x6mdf")
 
 [connection signal="activated" from="Interactable" to="." method="_on_npc_activated"]

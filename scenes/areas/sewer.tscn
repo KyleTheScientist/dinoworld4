@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dweuu2l0m76vd"]
+[gd_scene load_steps=43 format=3 uid="uid://dweuu2l0m76vd"]
 
 [ext_resource type="Script" path="res://scripts/area_sewer.gd" id="1_m5rm0"]
 [ext_resource type="Texture2D" uid="uid://c1lhjdtfn4gdn" path="res://sprites/env/sewer.png" id="2_7s8i4"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="8_uijvl"]
 [ext_resource type="Texture2D" uid="uid://dp12dqysae3ob" path="res://sprites/effects/sewer_water.png" id="9_m2aty"]
 [ext_resource type="PackedScene" uid="uid://dc4w22copbcmu" path="res://scenes/turtle_minigame.tscn" id="13_tam7o"]
+[ext_resource type="Texture2D" uid="uid://d4aiid6o1qukb" path="res://sprites/env/cave_door.png" id="14_4t2b5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
 size = Vector2(2000, 47)
@@ -170,6 +171,36 @@ size = Vector2(46, 204)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_msp65"]
 polygon = PackedVector2Array(-187, 13, -86, 13, -86, 15, -77, 15, -77, 13, 17, 13, 17, 16, 26, 16, 26, 13, 121, 13, 127, 11, 131, 6, 134, 0, 132, -8, 127, -14, 119, -17, 26, -17, 25, -20, 18, -20, 17, -17, -77, -17, -78, -20, -85, -20, -86, -17, -187, -17)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x30ra"]
+atlas = ExtResource("14_4t2b5")
+region = Rect2(0, 0, 48, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw2my"]
+atlas = ExtResource("14_4t2b5")
+region = Rect2(48, 0, 48, 85)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6bvor"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x30ra")
+}],
+"loop": false,
+"name": &"locked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw2my")
+}],
+"loop": false,
+"name": &"unlocked",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4pr8"]
+size = Vector2(46, 78.5)
+
 [node name="Sewer" type="Node2D" node_paths=PackedStringArray("turtle_minigame")]
 script = ExtResource("1_m5rm0")
 street_scene = "res://scenes/areas/street.tscn"
@@ -297,8 +328,23 @@ position = Vector2(0, -18)
 player = NodePath("../Player")
 bounds = Vector4(-150, -1000, 150, 1000)
 
+[node name="CaveDoor" type="Area2D" parent="."]
+position = Vector2(-349, -22)
+script = ExtResource("4_go2c2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CaveDoor"]
+position = Vector2(0, 6)
+sprite_frames = SubResource("SpriteFrames_6bvor")
+animation = &"unlocked"
+autoplay = "locked"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaveDoor"]
+position = Vector2(0, 8.75)
+shape = SubResource("RectangleShape2D_c4pr8")
+
 [connection signal="activated" from="Background/TurtleTable/Interactable" to="." method="_on_turtle_activated"]
 [connection signal="activated" from="Background/Ladder" to="." method="_on_ladder_activated"]
 [connection signal="finished" from="Background/TurtleMinigame" to="." method="_on_turtle_minigame_finished"]
+[connection signal="activated" from="CaveDoor" to="." method="_on_cave_door_activated"]
 
 [editable path="Player"]

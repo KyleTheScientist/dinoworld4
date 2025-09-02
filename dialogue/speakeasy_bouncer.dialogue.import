@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://bc3a8slo0qiem"
+path="res://.godot/imported/speakeasy_bouncer.dialogue-7325fac15b51165df770bacfe298db9d.tres"
+
+[deps]
+
+source_file="res://dialogue/speakeasy_bouncer.dialogue"
+dest_files=["res://.godot/imported/speakeasy_bouncer.dialogue-7325fac15b51165df770bacfe298db9d.tres"]
+
+[params]
+
+defaults=true

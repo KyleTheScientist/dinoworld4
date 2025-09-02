@@ -17,8 +17,8 @@ Cop: [wave]You there...[/wave]
 Cop: I need your help. It's an emergency.
 Cop: I need you to get me...[wait=1] [wave]a donut[/wave].
 Cop: I'm so hungry I couldn't even make it to the station!
+Cop: My favorite cafe is right there on the other side of the museum...
 Cop: Please... the fate of the city depends on it...
-Cop: There's a cafe on the other side of the museum.
 set cop_encountered = true
 => END
 
@@ -27,7 +27,7 @@ Cop: Oh, thank god, donuts! Sweet, delicious donuts.
 Cop: *Horrible devouring sounds*
 Cop: Mmmf... fank you fo mupch...
 Cop: *swallows* 
-Cop: Here, take this. It's a strange coin I found in my cruiser after arresting some hooligan earlier.
+Cop: Here, take this. It's a strange coin I found in the paddy wagon after arresting some hooligan earlier.
 Cop: Might be worth something!
 set cop_exhausted = false
 set has_coin = true

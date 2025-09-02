@@ -5,9 +5,9 @@ extends Node2D
 
 func _ready() -> void:
 	GameState.last_area = "sewer"
-	$Background/TurtleTable/Turtle.visible = not GameState.has_turtle
-	$Background/TurtleTable/Turtlette.visible = not GameState.has_turtle
-	$Background/TurtleTable/Interactable.is_triggerable = not GameState.has_turtle
+	$Background/TurtleTable/Turtle.visible = not (GameState.has_turtle or GameState.turtle_returned)
+	$Background/TurtleTable/Turtlette.visible = not (GameState.has_turtle or GameState.turtle_returned)
+	$Background/TurtleTable/Interactable.is_triggerable = not (GameState.has_turtle or GameState.turtle_returned)
 
 func _on_ladder_activated() -> void:
 	get_tree().change_scene_to_file(street_scene)
@@ -25,3 +25,7 @@ func _on_turtle_minigame_finished() -> void:
 	turtle_minigame.visible = false
 	$Player/DinoAnimator/Turtles.visible = true
 	$Background/Music.play()
+
+
+func _on_cave_door_activated() -> void:
+	pass # Replace with function body.

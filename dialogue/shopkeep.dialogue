@@ -14,7 +14,7 @@ if not turtle_returned
 		Rosie: Oh Sheldon... [wave]why![/wave]
 	=> END
 else
-	Rosie: I can't thank you enough!
+	Rosie: I can't thank you enough! Sheldon's never been so happy!
 => END
 
 ~ first_encounter
@@ -28,7 +28,7 @@ if not player_clothed
 ~ give_quest
 if shopkeep_angry
 	Rosie: You again...
-Rosie: It'll be a few minutes before I can take your order. I'm just too upset to do anything now.
+Rosie: It might be a while until I can take your order. I'm afraid I'm just too upset to do anything right now.
 Rosie: You see, I accidentally flushed my poor turtle down the toilet this morning.
 Rosie: I'd try to go and find him myself, but I have to mind the shop...
 set shopkeep_quest_given = true

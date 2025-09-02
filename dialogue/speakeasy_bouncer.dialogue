@@ -1,0 +1,7 @@
+~ start
+???: ...
+if GameState.has_coin
+	???: Come on in.
+else
+	???: Members only, kid.
+=> END

@@ -48,8 +48,10 @@ func _on_flip_timer_timeout() -> void:
 func flip():
 	flipping = true
 	flip_height = lerp(60, 10, attempts / 30.0)
+	$Flip.pitch_scale = lerp(1.0, 0.5, attempts / 30.0)
 	flip_direction = 1 if randf() < .5 else -1
 	$Turtle/FlipTimer.start()
+	$Flip.play()
 	attempts += 1
 
 func _on_turtle_activated() -> void:

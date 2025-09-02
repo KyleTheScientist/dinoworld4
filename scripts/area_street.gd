@@ -16,7 +16,7 @@ func _ready() -> void:
 
 	if GameState.cop_exhausted:
 		$Cop/NPCAnimator.animation = "exhausted"
-	$Background/Dumpster.is_triggerable = false
+	$Background/Dumpster.is_triggerable = GameState.has_trash
 	
 
 func _on_mayor_dialogue_finished() -> void:
@@ -45,6 +45,15 @@ func _on_dumpster_activated() -> void:
 	if GameState.trash_removed == 3:
 		GameState.trash_disposed_of = true
 
+func _on_speakeasy_door_activated() -> void:
+	$Background/SpeakeasyDoor/AnimatedSprite2D.play("open")
+	$Background/SpeakeasyDoor/Click.play()
+	
+	
+func _on_speakeasy_door_dialogue_finished() -> void:
+	$Background/SpeakeasyDoor/AnimatedSprite2D.play("close")
+	$Background/SpeakeasyDoor/Click.play()
+	
 func _on_museum_door_activated() -> void:
 	get_tree().change_scene_to_file(museum_scene)
 	
