@@ -12,7 +12,11 @@ var player: Dino:
 	set(value):
 		player = value
 		player_registered.emit(value)
-
+		
+var debugger: Debugger: 
+	set(value):
+		debugger = value
+		
 # Museum intro scene
 var seen_museum_intro: bool = false
 var seen_cop_anim: bool = false

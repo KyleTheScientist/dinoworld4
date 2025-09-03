@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://dc0lh8e6udh4g"]
+
+[ext_resource type="Script" path="res://scripts/npc_controller.gd" id="1_5yxuy"]
+[ext_resource type="Resource" uid="uid://cf65k5kq4olep" path="res://dialogue/shopkeep.dialogue" id="2_drx57"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="3_eaxj2"]
+[ext_resource type="Texture2D" uid="uid://bt8c5t1s17q23" path="res://sprites/chars/hatz.png" id="4_mxdna"]
+[ext_resource type="Script" path="res://scripts/npc_animator.gd" id="5_qps68"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6ijy"]
+size = Vector2(78, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2qdj"]
+atlas = ExtResource("4_mxdna")
+region = Rect2(0, 0, 77, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rybwk"]
+atlas = ExtResource("4_mxdna")
+region = Rect2(77, 0, 77, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlpif"]
+atlas = ExtResource("4_mxdna")
+region = Rect2(154, 0, 77, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auo4h"]
+atlas = ExtResource("4_mxdna")
+region = Rect2(231, 0, 77, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_75ysh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2qdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rybwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlpif")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auo4h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Hatz" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_5yxuy")
+dialogue = ExtResource("2_drx57")
+
+[node name="Interactable" type="Area2D" parent="."]
+texture_filter = 1
+monitorable = false
+script = ExtResource("3_eaxj2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, -47)
+shape = SubResource("RectangleShape2D_y6ijy")
+
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -46)
+sprite_frames = SubResource("SpriteFrames_75ysh")
+autoplay = "default"
+frame_progress = 0.292693
+script = ExtResource("5_qps68")
+
+[connection signal="activated" from="Interactable" to="." method="_on_npc_activated"]

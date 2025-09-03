@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://c5f8bt7pw13py"]
+[gd_scene load_steps=51 format=3 uid="uid://c5f8bt7pw13py"]
 
 [ext_resource type="Script" path="res://scripts/area_street.gd" id="1_vurvn"]
 [ext_resource type="Texture2D" uid="uid://bg6dvnd3rkqeu" path="res://sprites/env/dino_city_parallax2.png" id="3_2dj7t"]
 [ext_resource type="Texture2D" uid="uid://cgpc2jecyinv3" path="res://sprites/env/dino_city.png" id="3_8nat6"]
+[ext_resource type="Texture2D" uid="uid://be2nh5osjoe1k" path="res://sprites/env/dino_city_street.png" id="3_x17xl"]
 [ext_resource type="Script" path="res://scripts/npc_controller.gd" id="4_o0pxp"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="4_u7v5f"]
 [ext_resource type="Texture2D" uid="uid://c4hpw5ctq4x21" path="res://sprites/env/speakeasy_door.png" id="4_xf6g1"]
@@ -12,12 +13,19 @@
 [ext_resource type="AudioStream" uid="uid://b55oxj3fnce3d" path="res://audio/click.wav" id="7_rb0nv"]
 [ext_resource type="AudioStream" uid="uid://bd7w1f023uq6r" path="res://audio/music/A Cloudy Morning (2012).mp3" id="8_w5137"]
 [ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/effects/2d_light.png" id="10_e6iwx"]
+[ext_resource type="SpriteFrames" uid="uid://06vy4kjjrcy3" path="res://sprites/env/trash.tres" id="10_fn7om"]
+[ext_resource type="Texture2D" uid="uid://d3i7lwmobfjdd" path="res://sprites/chars/ptero_flight.png" id="11_1ukqa"]
+[ext_resource type="Script" path="res://scenes/areas/trash.gd" id="11_3j68j"]
 [ext_resource type="PackedScene" uid="uid://bliitmim74tfx" path="res://scenes/cop.tscn" id="11_6b5gy"]
 [ext_resource type="PackedScene" uid="uid://6jr2ryma7s8e" path="res://scenes/mayor.tscn" id="12_c8rfy"]
+[ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="13_3lvck"]
 [ext_resource type="Texture2D" uid="uid://c41isei751yda" path="res://sprites/env/dumpster.png" id="14_6qvmn"]
-[ext_resource type="Texture2D" uid="uid://xgfu8aeyumt6" path="res://sprites/env/trash.png" id="14_gdbas"]
+[ext_resource type="AudioStream" uid="uid://0visoin3bpy4" path="res://audio/bloop.wav" id="14_id2nd"]
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="21_l3qgu"]
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="22_86tsd"]
+[ext_resource type="PackedScene" uid="uid://q55bopc5e3wy" path="res://scenes/debugger.tscn" id="22_a816s"]
+[ext_resource type="Shader" path="res://vignette.gdshader" id="22_cx5f7"]
+[ext_resource type="Texture2D" uid="uid://croxotw2h74x0" path="res://sprites/env/hatz-poster.png" id="23_pwo2i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2dfh"]
 size = Vector2(46, 73)
@@ -91,27 +99,122 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_in8w8"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6fg6"]
+atlas = ExtResource("11_1ukqa")
+region = Rect2(0, 0, 68, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2467g"]
+atlas = ExtResource("11_1ukqa")
+region = Rect2(68, 0, 68, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfiye"]
+atlas = ExtResource("11_1ukqa")
+region = Rect2(136, 0, 68, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lpa8e"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_l6fg6")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_2467g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfiye")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_a6cia"]
 radius = 18.0
+
+[sub_resource type="Animation" id="Animation_tdl0p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PterosaurEscape:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, 25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TrashOrigin/Trash:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TrashOrigin/Trash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Fly:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bwoop:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_1m42a"]
 resource_name = "insert_trash"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Trash:position")
+tracks/0/path = NodePath("TrashOrigin/Trash:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 0.266667, 0.633333),
+"times": PackedFloat32Array(0, 0.233334, 0.6),
 "transitions": PackedFloat32Array(0.659754, 1.36604, 1),
 "update": 0,
-"values": [Vector2(-15, -28), Vector2(-15, -31), Vector2(-15, 15)]
+"values": [Vector2(0, -48), Vector2(0, -51), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Trash:visible")
+tracks/1/path = NodePath("TrashOrigin/Trash:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -121,72 +224,106 @@ tracks/1/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_tdl0p"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_nhcvu"]
+resource_name = "pterosaur_escape"
+length = 3.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Trash:position")
-tracks/0/interp = 1
+tracks/0/path = NodePath("PterosaurEscape:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1.26667, 3.2),
+"transitions": PackedFloat32Array(1.31951, 1),
 "update": 0,
-"values": [Vector2(-15, -28)]
+"values": [Vector2(11, 25), Vector2(-300, -400)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Trash:visible")
+tracks/1/path = NodePath("PterosaurEscape")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(1.26667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"default", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TrashOrigin/Trash:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TrashOrigin/Trash")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"throw"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Fly:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.46667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bwoop:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b0e17"]
 _data = {
 "RESET": SubResource("Animation_tdl0p"),
-"insert_trash": SubResource("Animation_1m42a")
+"insert_trash": SubResource("Animation_1m42a"),
+"pterosaur_escape": SubResource("Animation_nhcvu")
 }
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tm1qe"]
-atlas = ExtResource("14_gdbas")
-region = Rect2(0, 0, 33, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7myjk"]
-atlas = ExtResource("14_gdbas")
-region = Rect2(33, 0, 33, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i77u6"]
-atlas = ExtResource("14_gdbas")
-region = Rect2(66, 0, 33, 28)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xu7t4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tm1qe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7myjk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i77u6")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
 size = Vector2(3122, 47)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hv647"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nix7k"]
+shader = ExtResource("22_cx5f7")
+shader_parameter/alpha = 0.565
+shader_parameter/inner_radius = 0.245
+shader_parameter/outer_radius = 0.74
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsrxo"]
+size = Vector2(131, 197)
 
 [node name="Street" type="Node2D"]
 position = Vector2(0, -53)
@@ -195,13 +332,19 @@ museum_scene = "res://scenes/areas/museum.tscn"
 cafe_scene = "res://scenes/areas/cafe.tscn"
 sewer_scene = "res://scenes/areas/sewer.tscn"
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Node2D" parent="."]
 z_index = -100
+
+[node name="Buildings" type="Sprite2D" parent="Background"]
 position = Vector2(-28, -51)
 texture = ExtResource("3_8nat6")
 
+[node name="Street" type="Sprite2D" parent="Background/Buildings"]
+z_index = 1
+texture = ExtResource("3_x17xl")
+
 [node name="MuseumDoor" type="Area2D" parent="Background"]
-position = Vector2(28, -4)
+position = Vector2(0, -55)
 script = ExtResource("4_u7v5f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/MuseumDoor"]
@@ -209,7 +352,7 @@ position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_e2dfh")
 
 [node name="CafeDoor" type="Area2D" parent="Background"]
-position = Vector2(637, 16)
+position = Vector2(609, -35)
 script = ExtResource("4_u7v5f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/CafeDoor"]
@@ -217,6 +360,7 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_e2dfh")
 
 [node name="SpeakeasyDoor" type="Node2D" parent="Background"]
+position = Vector2(-28, -51)
 script = ExtResource("4_o0pxp")
 dialogue = ExtResource("5_xjb3x")
 
@@ -237,7 +381,7 @@ animation = &"open"
 stream = ExtResource("7_rb0nv")
 
 [node name="SewerDoor" type="Area2D" parent="Background"]
-position = Vector2(1165, 49)
+position = Vector2(1137, -2)
 script = ExtResource("4_u7v5f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/SewerDoor"]
@@ -245,7 +389,7 @@ position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_e2dfh")
 
 [node name="Dumpster" type="Area2D" parent="Background"]
-position = Vector2(-1017, 20)
+position = Vector2(-1045, -31)
 script = ExtResource("4_u7v5f")
 
 [node name="Back" type="Sprite2D" parent="Background/Dumpster"]
@@ -253,12 +397,31 @@ texture = ExtResource("14_6qvmn")
 region_enabled = true
 region_rect = Rect2(0, 0, 61, 64)
 
-[node name="Trash" type="Sprite2D" parent="Background/Dumpster"]
+[node name="TrashOrigin" type="Node2D" parent="Background/Dumpster"]
+position = Vector2(-15, 18)
+
+[node name="Trash" type="AnimatedSprite2D" parent="Background/Dumpster/TrashOrigin"]
 visible = false
-position = Vector2(-15, -28)
-texture = ExtResource("14_gdbas")
-region_enabled = true
-region_rect = Rect2(66, 0, 23, 28)
+sprite_frames = ExtResource("10_fn7om")
+animation = &"toss"
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+script = ExtResource("11_3j68j")
+impulse = Vector2(-2, -8)
+
+[node name="Interactable" type="Area2D" parent="Background/Dumpster/TrashOrigin/Trash"]
+position = Vector2(-5, 5)
+script = ExtResource("4_u7v5f")
+is_triggerable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Dumpster/TrashOrigin/Trash/Interactable"]
+shape = SubResource("CircleShape2D_in8w8")
+
+[node name="PterosaurEscape" type="AnimatedSprite2D" parent="Background/Dumpster"]
+position = Vector2(11, 25)
+sprite_frames = SubResource("SpriteFrames_lpa8e")
+frame_progress = 0.464956
 
 [node name="Front" type="Sprite2D" parent="Background/Dumpster"]
 texture = ExtResource("14_6qvmn")
@@ -274,21 +437,30 @@ libraries = {
 "": SubResource("AnimationLibrary_b0e17")
 }
 
-[node name="Trash" type="Area2D" parent="Background"]
-position = Vector2(537, 35)
+[node name="Fly" type="AudioStreamPlayer2D" parent="Background/Dumpster"]
+stream = ExtResource("13_3lvck")
+
+[node name="Bwoop" type="AudioStreamPlayer2D" parent="Background/Dumpster"]
+stream = ExtResource("14_id2nd")
+volume_db = 1.688
+pitch_scale = 0.72
+
+[node name="TrashPile" type="Area2D" parent="Background"]
+position = Vector2(509, -16)
 script = ExtResource("4_u7v5f")
 is_triggerable = false
 
-[node name="Sprite" type="AnimatedSprite2D" parent="Background/Trash"]
+[node name="Sprite" type="AnimatedSprite2D" parent="Background/TrashPile"]
 position = Vector2(-1, 3)
-sprite_frames = SubResource("SpriteFrames_xu7t4")
+sprite_frames = ExtResource("10_fn7om")
+animation = &"pile"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Trash"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/TrashPile"]
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_a6cia")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Background"]
-position = Vector2(0, -101)
+position = Vector2(-28, -152)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
 position = Vector2(0, 175.5)
@@ -296,10 +468,10 @@ shape = SubResource("RectangleShape2D_3rjlc")
 
 [node name="Panel" type="Panel" parent="Background"]
 z_index = -1000
-offset_left = -1400.0
-offset_top = -560.0
-offset_right = 1600.0
-offset_bottom = 440.0
+offset_left = -1428.0
+offset_top = -611.0
+offset_right = 1572.0
+offset_bottom = 389.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hv647")
 
 [node name="Music" type="AudioStreamPlayer" parent="Background"]
@@ -309,19 +481,21 @@ autoplay = true
 
 [node name="PointLight2D" type="PointLight2D" parent="Background"]
 texture_filter = 1
-position = Vector2(1103, -86)
+position = Vector2(1075, -137)
 scale = Vector2(0.570063, 0.570063)
 energy = 2.76
 texture = ExtResource("10_e6iwx")
 
 [node name="PointLight2D2" type="PointLight2D" parent="Background"]
 texture_filter = 1
-position = Vector2(-414, -86)
+position = Vector2(-442, -137)
 scale = Vector2(0.570063, 0.570063)
 energy = 2.76
 texture = ExtResource("10_e6iwx")
 
 [node name="Parallaxes" type="Node2D" parent="Background"]
+z_index = -1
+position = Vector2(-28, -51)
 
 [node name="Parallax2D1" type="Parallax2D" parent="Background/Parallaxes"]
 z_index = -1
@@ -360,11 +534,55 @@ texture = ExtResource("5_fagyq")
 [node name="Player" parent="." instance=ExtResource("21_l3qgu")]
 z_index = 1
 position = Vector2(0, -19)
-speed = 100.0
+speed = 200.0
+
+[node name="Trash" parent="Player/DinoAnimator" index="3"]
+autoplay = "default"
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("22_86tsd")]
 position = Vector2(0, -64)
 player = NodePath("../Player")
+
+[node name="PosterPanel" type="Panel" parent="Camera2D"]
+visible = false
+z_index = 100
+material = SubResource("ShaderMaterial_nix7k")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -480.0
+offset_top = -270.0
+offset_right = 480.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="HatsPoster1" type="Sprite2D" parent="Camera2D/PosterPanel"]
+z_index = 100
+position = Vector2(456, 268)
+rotation = -0.107233
+texture = ExtResource("23_pwo2i")
+
+[node name="HatsPoster3" type="Sprite2D" parent="Camera2D/PosterPanel"]
+z_index = 100
+position = Vector2(490, 260)
+rotation = 0.0917655
+texture = ExtResource("23_pwo2i")
+
+[node name="HatsPoster" type="Sprite2D" parent="Camera2D/PosterPanel"]
+z_index = 100
+position = Vector2(476, 276)
+rotation = 0.0123171
+texture = ExtResource("23_pwo2i")
+
+[node name="Interactable" type="Area2D" parent="Camera2D/PosterPanel/HatsPoster"]
+scale = Vector2(1, 1)
+script = ExtResource("4_u7v5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/PosterPanel/HatsPoster/Interactable"]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_gsrxo")
 
 [node name="Cop" parent="." instance=ExtResource("11_6b5gy")]
 z_index = -1
@@ -375,6 +593,9 @@ z_index = -1
 position = Vector2(436, 1)
 face_player = true
 
+[node name="Debugger" parent="." instance=ExtResource("22_a816s")]
+visible = false
+
 [connection signal="activated" from="Background/MuseumDoor" to="." method="_on_museum_door_activated"]
 [connection signal="activated" from="Background/CafeDoor" to="." method="_on_cafe_door_activated"]
 [connection signal="dialogue_finished" from="Background/SpeakeasyDoor" to="." method="_on_speakeasy_door_dialogue_finished"]
@@ -382,7 +603,10 @@ face_player = true
 [connection signal="activated" from="Background/SpeakeasyDoor/Interactable" to="Background/SpeakeasyDoor" method="_on_npc_activated"]
 [connection signal="activated" from="Background/SewerDoor" to="." method="_on_sewer_door_activated"]
 [connection signal="activated" from="Background/Dumpster" to="." method="_on_dumpster_activated"]
-[connection signal="activated" from="Background/Trash" to="." method="_on_trash_activated"]
+[connection signal="activated" from="Background/Dumpster/TrashOrigin/Trash/Interactable" to="." method="_on_busted_trash_inspected"]
+[connection signal="activated" from="Background/TrashPile" to="." method="_on_trash_activated"]
+[connection signal="gui_input" from="Camera2D/PosterPanel" to="." method="_on_poster_panel_gui_input"]
+[connection signal="activated" from="Camera2D/PosterPanel/HatsPoster/Interactable" to="." method="_on_poster_activated"]
 [connection signal="dialogue_finished" from="Mayor" to="." method="_on_mayor_dialogue_finished"]
 
 [editable path="Player"]

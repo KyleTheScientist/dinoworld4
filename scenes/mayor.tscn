@@ -42,7 +42,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v4byo"]
-size = Vector2(75, 74)
+size = Vector2(79.5, 74)
 
 [node name="Mayor" type="Node2D"]
 script = ExtResource("7_kdi7k")
@@ -52,14 +52,13 @@ dialogue = ExtResource("2_knowj")
 sprite_frames = SubResource("SpriteFrames_3kodk")
 autoplay = "default"
 offset = Vector2(0, -35.115)
-flip_h = true
 
 [node name="Interactable" type="Area2D" parent="."]
 position = Vector2(-9, -33)
 script = ExtResource("3_fm7c8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(7, -4)
+position = Vector2(9.25, -4)
 shape = SubResource("RectangleShape2D_v4byo")
 
 [connection signal="activated" from="Interactable" to="." method="_on_npc_activated"]

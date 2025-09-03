@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/dino_animator.gd" id="3_smkdq"]
 [ext_resource type="SpriteFrames" uid="uid://cml3fuiqxd603" path="res://sprites/chars/dino_nude.tres" id="4_o3drv"]
 [ext_resource type="Texture2D" uid="uid://dc3yepnjtve17" path="res://sprites/chars/turtles_back.png" id="5_xsh0j"]
-[ext_resource type="Texture2D" uid="uid://xgfu8aeyumt6" path="res://sprites/env/trash.png" id="6_ijp3m"]
+[ext_resource type="SpriteFrames" uid="uid://06vy4kjjrcy3" path="res://sprites/env/trash.tres" id="6_nnmo8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_auulh"]
 
@@ -59,7 +59,6 @@ size = Vector2(45, 41.5)
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_wbelc")
-speed = 200.0
 
 [node name="DinoAnimator" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_auulh")
@@ -87,12 +86,10 @@ sprite_frames = SubResource("SpriteFrames_1vgao")
 autoplay = "default"
 frame_progress = 0.863511
 
-[node name="Trash" type="Sprite2D" parent="DinoAnimator"]
+[node name="Trash" type="AnimatedSprite2D" parent="DinoAnimator"]
 z_index = -1
-position = Vector2(-1, -16)
-texture = ExtResource("6_ijp3m")
-region_enabled = true
-region_rect = Rect2(66, 0, 23, 28)
+position = Vector2(-2, -16)
+sprite_frames = ExtResource("6_nnmo8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.75)

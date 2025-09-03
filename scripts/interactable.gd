@@ -13,7 +13,7 @@ func _ready() -> void:
 	#mouse_exited.connect(_on_mouse_exited)
 
 func _input(event: InputEvent) -> void:
-	if hovered and is_triggerable and event.is_action_pressed("interact"):
+	if hovered and is_triggerable and visible and event.is_action_pressed("interact"):
 		is_triggerable = false
 		activated.emit()
 		GameState.set_cursor(0)
@@ -37,7 +37,7 @@ func _player_in_range() -> bool:
 	return global_position.distance_to(GameState.player.global_position) < 100
 	
 func _player_can_trigger():
-	return is_triggerable and _player_in_range() and _mouse_overlaps() 
+	return is_triggerable and _player_in_range() and _mouse_overlaps() and visible
 	
 #func _on_body_entered(body: Node2D) -> void:
 	#if not is_triggerable: 
