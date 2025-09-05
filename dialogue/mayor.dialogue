@@ -9,8 +9,10 @@ if not trash_disposed_of
 	
 if not received_mayor_gift
 	Mayor: Well butter my tail and call me a biscuit, you've done it!
-	Mayor: Take this as a sign of gratitude.
+	Mayor: Take this signed photograph of me as a sign of gratitude.
+	Mayor: I was lookin' rather dashing that day if I do say so myself.
 	set received_mayor_gift = true
+	do reveal_item("ThadPhoto")
 	=> END
 
 Mayor: I hope to see you at the polls! Remember, a vote for me is a vote for whatever political issue you individually care about the most!

@@ -13,10 +13,9 @@ var player: Dino:
 		player = value
 		player_registered.emit(value)
 		
-var debugger: Debugger: 
-	set(value):
-		debugger = value
-		
+var debugger: Debugger
+var inspect_overlay: InspectOverlay
+
 # Museum intro scene
 var seen_museum_intro: bool = false
 var seen_cop_anim: bool = false
@@ -34,7 +33,6 @@ var mayor_encountered: bool = false
 var trash_disposed_of: bool = false
 var has_trash: bool = false
 var trash_removed: int = 0
-var has_crowbar: bool = false
 var received_mayor_gift: bool = false
 
 # Cafe
@@ -52,3 +50,6 @@ func set_cursor(state: int):
 	elif state == 1:
 		Input.set_custom_mouse_cursor(cursor_hover)
 		cursor = cursor_hover_small
+
+func reveal_item(name: String):
+	inspect_overlay.reveal(name)

@@ -956,7 +956,6 @@ pitch_scale = 1.5
 [node name="Player" parent="." instance=ExtResource("8_2h0cu")]
 z_index = 1
 position = Vector2(-211, -20)
-speed = 100.0
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_rl1fs")]
 position = Vector2(0, -67)

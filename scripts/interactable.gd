@@ -1,4 +1,4 @@
-class_name Interactable extends Area2D
+class_name Interactable extends Node2D
 
 signal activated
 

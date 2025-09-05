@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c5f8bt7pw13py"]
+[gd_scene load_steps=57 format=3 uid="uid://c5f8bt7pw13py"]
 
 [ext_resource type="Script" path="res://scripts/area_street.gd" id="1_vurvn"]
 [ext_resource type="Texture2D" uid="uid://bg6dvnd3rkqeu" path="res://sprites/env/dino_city_parallax2.png" id="3_2dj7t"]
@@ -33,7 +33,6 @@
 [ext_resource type="Shader" path="res://vignette.gdshader" id="22_cx5f7"]
 [ext_resource type="Texture2D" uid="uid://croxotw2h74x0" path="res://sprites/env/hatz-poster.png" id="23_pwo2i"]
 [ext_resource type="Script" path="res://scenes/areas/inspect_overlay.gd" id="31_j3as0"]
-[ext_resource type="Texture2D" uid="uid://cmlnc6cffe610" path="res://sprites/env/signed_photo.png" id="33_do1s1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hv647"]
 
@@ -639,7 +638,6 @@ face_player = true
 visible = false
 
 [node name="InspectOverlay" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("31_j3as0")
 
 [node name="Vignette" type="Panel" parent="InspectOverlay"]
@@ -654,44 +652,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
 
-[node name="RevealContainer" type="Control" parent="InspectOverlay"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ThadPhoto" type="TextureRect" parent="InspectOverlay/RevealContainer"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = -99.0
-offset_right = 65.0
-offset_bottom = 99.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("33_do1s1")
-stretch_mode = 3
-
-[node name="HatsPoster" type="Control" parent="InspectOverlay/RevealContainer"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HatsPoster3" type="TextureRect" parent="InspectOverlay/RevealContainer/HatsPoster"]
-layout_mode = 1
+[node name="HatsPoster3" type="TextureRect" parent="InspectOverlay"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -707,8 +668,7 @@ rotation = 0.20098
 texture = ExtResource("23_pwo2i")
 stretch_mode = 5
 
-[node name="HatsPoster2" type="TextureRect" parent="InspectOverlay/RevealContainer/HatsPoster"]
-layout_mode = 1
+[node name="HatsPoster2" type="TextureRect" parent="InspectOverlay"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -724,8 +684,7 @@ rotation = -0.214736
 texture = ExtResource("23_pwo2i")
 stretch_mode = 5
 
-[node name="HatsPoster" type="TextureRect" parent="InspectOverlay/RevealContainer/HatsPoster"]
-layout_mode = 1
+[node name="HatsPoster" type="TextureRect" parent="InspectOverlay"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -750,7 +709,6 @@ stretch_mode = 5
 [connection signal="activated" from="Background/Dumpster/TrashOrigin/Trash/Interactable" to="." method="_on_busted_trash_inspected"]
 [connection signal="activated" from="Background/TrashPile" to="." method="_on_trash_activated"]
 [connection signal="dialogue_finished" from="Mayor" to="." method="_on_mayor_dialogue_finished"]
-[connection signal="gui_input" from="InspectOverlay/RevealContainer/ThadPhoto" to="InspectOverlay" method="close"]
-[connection signal="gui_input" from="InspectOverlay/RevealContainer/HatsPoster/HatsPoster" to="InspectOverlay" method="close"]
+[connection signal="gui_input" from="InspectOverlay/HatsPoster" to="." method="_on_poster_activated"]
 
 [editable path="Player"]

@@ -31,7 +31,6 @@ general/states=["GameState"]
 window/size/viewport_width=480
 window/size/viewport_height=270
 window/size/mode=3
-window/size/initial_screen=1
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 mouse_cursor/custom_image="res://sprites/cursor_idle.png"

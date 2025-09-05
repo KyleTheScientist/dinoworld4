@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 	
 	if position.y >= 0:
 		$Interactable.is_triggerable = true
+		get_viewport().get_camera_2d().shake(.1, 1)
 		velocity = Vector2.ZERO
 		frame = 4
 		position.y = 0
