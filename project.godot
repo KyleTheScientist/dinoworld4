@@ -91,7 +91,7 @@ interact={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://dialogue/cop_intro.dialogue", "res://dialogue/cop_exhausted.dialogue", "res://dialogue/shopkeep.dialogue", "res://dialogue/mayor.dialogue", "res://dialogue/speakeasy_bouncer.dialogue")
+locale/translations_pot_files=PackedStringArray("res://dialogue/cop_intro.dialogue", "res://dialogue/cop_exhausted.dialogue", "res://dialogue/shopkeep.dialogue", "res://dialogue/mayor.dialogue", "res://dialogue/speakeasy_bouncer.dialogue", "res://dialogue/shady_guy.dialogue")
 
 [rendering]
 

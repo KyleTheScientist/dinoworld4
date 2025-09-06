@@ -1,6 +1,7 @@
 class_name Interactable extends Node2D
 
 signal activated
+signal interactable_activated(Interactable)
 
 @export var is_triggerable: bool = true
 var hovered: bool = false
@@ -16,6 +17,7 @@ func _input(event: InputEvent) -> void:
 	if hovered and is_triggerable and visible and event.is_action_pressed("interact"):
 		is_triggerable = false
 		activated.emit()
+		interactable_activated.emit(self)
 		GameState.set_cursor(0)
 		
 func _process(_delta: float) -> void:

@@ -36,3 +36,6 @@ texture_filter = 1
 texture_repeat = 1
 texture = ExtResource("3_e5rop")
 offset = Vector2(7, 7)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true

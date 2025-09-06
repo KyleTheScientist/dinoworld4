@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://c5f8bt7pw13py"]
+[gd_scene load_steps=78 format=3 uid="uid://c5f8bt7pw13py"]
 
 [ext_resource type="Script" path="res://scripts/area_street.gd" id="1_vurvn"]
 [ext_resource type="Texture2D" uid="uid://bg6dvnd3rkqeu" path="res://sprites/env/dino_city_parallax2.png" id="3_2dj7t"]
@@ -27,13 +27,20 @@
 [ext_resource type="Texture2D" uid="uid://jxm5b27ito68" path="res://sprites/env/decor_hydrant.png" id="16_keys1"]
 [ext_resource type="Texture2D" uid="uid://b2gi2pmxty1qo" path="res://sprites/env/decor_mailbox.png" id="17_nthnf"]
 [ext_resource type="Texture2D" uid="uid://d3wqr2plxluqi" path="res://sprites/env/decor_sewer_entrance.png" id="18_2242a"]
+[ext_resource type="Texture2D" uid="uid://d1mvxvi8xxfdp" path="res://sprites/env/cabbage_cart.png" id="19_44pjl"]
+[ext_resource type="Script" path="res://scenes/areas/cabbage_cart.gd" id="20_4qpjh"]
+[ext_resource type="Texture2D" uid="uid://pqe4ghm8xugq" path="res://sprites/env/wedge.png" id="20_iechd"]
+[ext_resource type="AudioStream" uid="uid://ckmav6dpbnwym" path="res://audio/Crash.wav" id="21_cbi1c"]
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="21_l3qgu"]
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="22_86tsd"]
 [ext_resource type="PackedScene" uid="uid://q55bopc5e3wy" path="res://scenes/debugger.tscn" id="22_a816s"]
 [ext_resource type="Shader" path="res://vignette.gdshader" id="22_cx5f7"]
+[ext_resource type="Texture2D" uid="uid://b6miqkunocoif" path="res://sprites/env/cabbage_cart_wheel.png" id="23_lj23j"]
 [ext_resource type="Texture2D" uid="uid://croxotw2h74x0" path="res://sprites/env/hatz-poster.png" id="23_pwo2i"]
 [ext_resource type="Script" path="res://scenes/areas/inspect_overlay.gd" id="31_j3as0"]
 [ext_resource type="Texture2D" uid="uid://cmlnc6cffe610" path="res://sprites/env/signed_photo.png" id="33_do1s1"]
+[ext_resource type="Resource" uid="uid://ov1j1bvesvn0" path="res://dialogue/shady_guy.dialogue" id="40_kjtwv"]
+[ext_resource type="Texture2D" uid="uid://iu1tfqwh2sam" path="res://sprites/chars/shady_guy.png" id="40_y8ubs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hv647"]
 
@@ -111,6 +118,109 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
 size = Vector2(3122, 50)
+
+[sub_resource type="Animation" id="Animation_yxaql"]
+resource_name = "roll_away"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector2(4, -30), Vector2(500, -30)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../Camera2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1.0, 2.0],
+"method": &"shake"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/Crash:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:is_triggerable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6o04r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, -30)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Crash:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:is_triggerable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vlyjm"]
+_data = {
+"RESET": SubResource("Animation_6o04r"),
+"roll_away": SubResource("Animation_yxaql")
+}
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_f8cyx"]
+closed = false
+polygon = PackedVector2Array(-35, -12, 21, -12)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_in8w8"]
 radius = 16.0
@@ -330,6 +440,94 @@ shader_parameter/alpha = 0.565
 shader_parameter/inner_radius = 0.245
 shader_parameter/outer_radius = 0.74
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7umq"]
+atlas = ExtResource("40_y8ubs")
+region = Rect2(0, 0, 47, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irsiq"]
+atlas = ExtResource("40_y8ubs")
+region = Rect2(47, 0, 47, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t7hj"]
+atlas = ExtResource("40_y8ubs")
+region = Rect2(94, 0, 47, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_827im"]
+atlas = ExtResource("40_y8ubs")
+region = Rect2(141, 0, 47, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yblii"]
+atlas = ExtResource("40_y8ubs")
+region = Rect2(188, 0, 47, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5lqe"]
+atlas = ExtResource("40_y8ubs")
+region = Rect2(235, 0, 47, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73lqy"]
+atlas = ExtResource("40_y8ubs")
+region = Rect2(282, 0, 47, 43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c74s3"]
+atlas = ExtResource("40_y8ubs")
+region = Rect2(329, 0, 47, 43)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gdrct"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7umq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irsiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t7hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_827im")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7umq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irsiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t7hj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_827im")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yblii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5lqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73lqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c74s3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yblii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5lqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73lqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c74s3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Street" type="Node2D" node_paths=PackedStringArray("museum_door", "cafe_door", "sewer_door", "speakeasy_door", "dumpster", "trash_pile")]
 script = ExtResource("1_vurvn")
 museum_scene = "res://scenes/areas/museum.tscn"
@@ -465,6 +663,7 @@ centered = false
 texture_filter = 1
 position = Vector2(7.03882, 10.5473)
 energy = 2.76
+shadow_enabled = true
 texture = ExtResource("10_e6iwx")
 
 [node name="StreetLamp2" type="Sprite2D" parent="Background/Street"]
@@ -476,6 +675,7 @@ centered = false
 texture_filter = 1
 position = Vector2(7.03882, 10.5473)
 energy = 2.76
+shadow_enabled = true
 texture = ExtResource("10_e6iwx")
 
 [node name="StreetLamp3" type="Sprite2D" parent="Background/Street"]
@@ -487,6 +687,7 @@ centered = false
 texture_filter = 1
 position = Vector2(7.03882, 10.5473)
 energy = 2.76
+shadow_enabled = true
 texture = ExtResource("10_e6iwx")
 
 [node name="StreetLamp4" type="Sprite2D" parent="Background/Street"]
@@ -498,6 +699,7 @@ centered = false
 texture_filter = 1
 position = Vector2(7.03882, 10.5473)
 energy = 2.76
+shadow_enabled = true
 texture = ExtResource("10_e6iwx")
 
 [node name="Hydrant" type="Sprite2D" parent="Background/Street"]
@@ -516,7 +718,7 @@ texture = ExtResource("16_keys1")
 centered = false
 
 [node name="Hydrant4" type="Sprite2D" parent="Background/Street"]
-position = Vector2(2726, 328)
+position = Vector2(2608, 328)
 texture = ExtResource("16_keys1")
 centered = false
 
@@ -526,17 +728,67 @@ texture = ExtResource("17_nthnf")
 centered = false
 
 [node name="SewerDoor" type="Area2D" parent="Background"]
-position = Vector2(1137, -2)
+position = Vector2(1163, -2)
 script = ExtResource("4_u7v5f")
+is_triggerable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/SewerDoor"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_e2dfh")
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/SewerDoor"]
+[node name="SewerSprite" type="Sprite2D" parent="Background/SewerDoor"]
 position = Vector2(-21, -3)
 texture = ExtResource("18_2242a")
 centered = false
+
+[node name="CabbageCart" type="Sprite2D" parent="Background/SewerDoor"]
+modulate = Color(0.72, 0.72, 0.72, 1)
+z_index = 2
+position = Vector2(4, -30)
+texture = ExtResource("19_44pjl")
+script = ExtResource("20_4qpjh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/SewerDoor/CabbageCart"]
+libraries = {
+"": SubResource("AnimationLibrary_vlyjm")
+}
+
+[node name="Crash" type="AudioStreamPlayer2D" parent="Background/SewerDoor/CabbageCart/AnimationPlayer"]
+position = Vector2(1663, -32)
+stream = ExtResource("21_cbi1c")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Background/SewerDoor/CabbageCart"]
+position = Vector2(0, 1)
+occluder = SubResource("OccluderPolygon2D_f8cyx")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Background/SewerDoor/CabbageCart"]
+position = Vector2(0, 38)
+occluder = SubResource("OccluderPolygon2D_f8cyx")
+
+[node name="WedgeL" type="Node2D" parent="Background/SewerDoor/CabbageCart"]
+position = Vector2(-21, 30)
+script = ExtResource("4_u7v5f")
+
+[node name="Sprite" type="Sprite2D" parent="Background/SewerDoor/CabbageCart/WedgeL"]
+texture = ExtResource("20_iechd")
+
+[node name="WedgeR" type="Node2D" parent="Background/SewerDoor/CabbageCart"]
+position = Vector2(18, 30)
+script = ExtResource("4_u7v5f")
+
+[node name="Sprite" type="Sprite2D" parent="Background/SewerDoor/CabbageCart/WedgeR"]
+texture = ExtResource("20_iechd")
+
+[node name="WheelL" type="Sprite2D" parent="Background/SewerDoor/CabbageCart"]
+position = Vector2(12, 25)
+texture = ExtResource("23_lj23j")
+
+[node name="WheelR" type="Sprite2D" parent="Background/SewerDoor/CabbageCart"]
+position = Vector2(-27, 25)
+texture = ExtResource("23_lj23j")
+
+[node name="Click" type="AudioStreamPlayer" parent="Background/SewerDoor/CabbageCart"]
+stream = ExtResource("7_rb0nv")
 
 [node name="Dumpster" type="Area2D" parent="Background"]
 position = Vector2(-1045, -31)
@@ -611,7 +863,7 @@ shape = SubResource("CircleShape2D_a6cia")
 
 [node name="Music" type="AudioStreamPlayer" parent="Background"]
 stream = ExtResource("8_w5137")
-volume_db = -12.0
+volume_db = -20.0
 autoplay = true
 
 [node name="Player" parent="." instance=ExtResource("21_l3qgu")]
@@ -740,17 +992,33 @@ grow_vertical = 2
 texture = ExtResource("23_pwo2i")
 stretch_mode = 5
 
+[node name="NPCController" type="Node2D" parent="."]
+position = Vector2(-1115, -22)
+script = ExtResource("4_o0pxp")
+dialogue = ExtResource("40_kjtwv")
+face_player = true
+
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="NPCController"]
+sprite_frames = SubResource("SpriteFrames_gdrct")
+frame_progress = 0.738829
+
+[node name="Interactable" type="Node2D" parent="NPCController"]
+script = ExtResource("4_u7v5f")
+
 [connection signal="activated" from="Background/Buildings/Museum/MuseumDoor" to="." method="_on_museum_door_activated"]
 [connection signal="activated" from="Background/Buildings/Cafe/CafeDoor" to="." method="_on_cafe_door_activated"]
 [connection signal="dialogue_finished" from="Background/Buildings/Cafe/SpeakeasyDoor" to="." method="_on_speakeasy_door_dialogue_finished"]
 [connection signal="activated" from="Background/Buildings/Cafe/SpeakeasyDoor/Interactable" to="." method="_on_speakeasy_door_activated"]
 [connection signal="activated" from="Background/Buildings/Cafe/SpeakeasyDoor/Interactable" to="Background/Buildings/Cafe/SpeakeasyDoor" method="_on_npc_activated"]
 [connection signal="activated" from="Background/SewerDoor" to="." method="_on_sewer_door_activated"]
+[connection signal="interactable_activated" from="Background/SewerDoor/CabbageCart/WedgeL" to="Background/SewerDoor/CabbageCart" method="_on_wedge_activated"]
+[connection signal="interactable_activated" from="Background/SewerDoor/CabbageCart/WedgeR" to="Background/SewerDoor/CabbageCart" method="_on_wedge_activated"]
 [connection signal="activated" from="Background/Dumpster" to="." method="_on_dumpster_activated"]
 [connection signal="activated" from="Background/Dumpster/TrashOrigin/Trash/Interactable" to="." method="_on_busted_trash_inspected"]
 [connection signal="activated" from="Background/TrashPile" to="." method="_on_trash_activated"]
 [connection signal="dialogue_finished" from="Mayor" to="." method="_on_mayor_dialogue_finished"]
 [connection signal="gui_input" from="InspectOverlay/RevealContainer/ThadPhoto" to="InspectOverlay" method="close"]
 [connection signal="gui_input" from="InspectOverlay/RevealContainer/HatsPoster/HatsPoster" to="InspectOverlay" method="close"]
+[connection signal="activated" from="NPCController/Interactable" to="NPCController" method="_on_npc_activated"]
 
 [editable path="Player"]

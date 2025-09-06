@@ -29,6 +29,10 @@ var cop_encountered: bool = false
 var has_donuts: bool = false
 var has_coin: bool = false
 
+var cart_moved: bool = false
+var wedge_l_removed: bool = false
+var wedge_r_removed: bool = false
+
 var mayor_encountered: bool = false
 var trash_disposed_of: bool = false
 var has_trash: bool = false

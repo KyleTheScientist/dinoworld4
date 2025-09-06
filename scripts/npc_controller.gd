@@ -1,3 +1,4 @@
+class_name NPCController
 extends Node2D
 
 signal dialogue_finished

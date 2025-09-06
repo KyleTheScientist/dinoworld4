@@ -1,0 +1,36 @@
+~ start
+if not encountered_shady_guy
+	=> first_encounter
+
+if received_mayor_gift
+	=> receive_autograph
+
+# Add some logic for repeating the requirements
+
+=> END
+
+~ first_encounter
+???: Psst. You there.
+???: Saw ya snoopin' around the entrance to the "clubhouse".
+???: If you wanna get in there, ya gonna need a few things. Things I might be able to help you with.
+???: I used to be a member see, 'till I got kicked out for "cheatin' at poker every time I play."
+???: I kept tellin' em, "You can't cheat at poker! You're [wave]supposed[/wave] to bring extra cards!"
+???: Anywho, I digress. First off, the bouncer don't let nobody in 'less they bribe him. 
+???: I happen to know that he enjoys collectin' antiques; do with that what you will.
+???: Second, ya gonna need the password. Changes every day, but my buddy knows what it is.
+???: Unfortunately, he got locked up this mornin'. Maybe you could pay him a visit.
+???: Lastly, all club members wear matching rings. I've still got mine, and I'd be willin' to lend it to ya in exchange for somethin' of value.
+???: Somethin' I could pawn quick and easy. Signed baseball card, gold necklace, a kidney, you name it, I'm flexible.
+???: Bring me somethin' like that and this ring is yours.
+=> END
+
+~ receive_autograph
+???: Well, well, well, what do we have here?
+???: A signed headshot of Mayor Bronto? Now that might be worth somethin'.
+???: A deal's a deal kid, ring's yours. Here, catch.
+=> END
+
+~ ring_dropped
+???: Ahh, dino nuggets. Well, it belongs to the sewers now. See ya kid!
+set shady_quest_complete = true
+=> END

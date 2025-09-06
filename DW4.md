@@ -18,14 +18,14 @@
         - [ ] RING - Shady Guy & Fishing
           - [ ] Go to sewers, fish, find ring
             - [ ] Give autograph to shady concavenator, receive fishing rod
-              - [ ] Thaddeus gives you an autographed picture as a reward
+              - [x] Thaddeus gives you an autographed picture as a reward
                 - [x] Trash minigame
 
         - [ ] BRIBE - Police officer
           - [ ] Give donuts to the cop, receive bribe
             - [x] Obtain the donuts by returning the turtle to Rosie
               - [x] Obtain the turtle by completing the turtle catch minigame in sewers
-                - [ ] Enter sewers after moving person/object from sewer grate?
+                - [x] Enter sewers after moving person/object from sewer grate?
 
 Minigame ideas:
 

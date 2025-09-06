@@ -32,6 +32,7 @@ func _ready() -> void:
 	
 	dumpster.is_triggerable = GameState.has_trash
 	trash_pile.get_node("Sprite").frame = GameState.trash_removed
+	sewer_door.is_triggerable = GameState.cart_moved
 
 func _on_mayor_dialogue_finished() -> void:
 	trash_pile.is_triggerable = not GameState.trash_disposed_of
