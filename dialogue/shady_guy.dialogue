@@ -1,5 +1,5 @@
 ~ start
-if not encountered_shady_guy
+if not shady_encountered
 	=> first_encounter
 
 if received_mayor_gift
@@ -19,8 +19,9 @@ if received_mayor_gift
 ???: I happen to know that he enjoys collectin' antiques; do with that what you will.
 ???: Second, ya gonna need the password. Changes every day, but my buddy knows what it is.
 ???: Unfortunately, he got locked up this mornin'. Maybe you could pay him a visit.
-???: Lastly, all club members wear matching rings. I've still got mine, and I'd be willin' to lend it to ya in exchange for somethin' of value.
-???: Somethin' I could pawn quick and easy. Signed baseball card, gold necklace, a kidney, you name it, I'm flexible.
+???: Lastly, all the club members wear matching rings. 
+???: I've still got mine, and I'd be willin' to lend it to ya in exchange for somethin' of value.
+???: Somethin' I could pawn quick and easy. Signed baseball card, gold necklace, a kidney. You name it, I'm flexible.
 ???: Bring me somethin' like that and this ring is yours.
 => END
 

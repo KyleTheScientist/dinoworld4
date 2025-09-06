@@ -17,7 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/effects/2d_light.png" id="10_e6iwx"]
 [ext_resource type="SpriteFrames" uid="uid://06vy4kjjrcy3" path="res://sprites/env/trash.tres" id="10_fn7om"]
 [ext_resource type="Texture2D" uid="uid://d3i7lwmobfjdd" path="res://sprites/chars/ptero_flight.png" id="11_1ukqa"]
-[ext_resource type="Script" path="res://scenes/areas/trash.gd" id="11_3j68j"]
+[ext_resource type="Script" path="res://scripts/trash.gd" id="11_3j68j"]
 [ext_resource type="PackedScene" uid="uid://bliitmim74tfx" path="res://scenes/cop.tscn" id="11_6b5gy"]
 [ext_resource type="PackedScene" uid="uid://6jr2ryma7s8e" path="res://scenes/mayor.tscn" id="12_c8rfy"]
 [ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="13_3lvck"]
@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://b2gi2pmxty1qo" path="res://sprites/env/decor_mailbox.png" id="17_nthnf"]
 [ext_resource type="Texture2D" uid="uid://d3wqr2plxluqi" path="res://sprites/env/decor_sewer_entrance.png" id="18_2242a"]
 [ext_resource type="Texture2D" uid="uid://d1mvxvi8xxfdp" path="res://sprites/env/cabbage_cart.png" id="19_44pjl"]
-[ext_resource type="Script" path="res://scenes/areas/cabbage_cart.gd" id="20_4qpjh"]
+[ext_resource type="Script" path="res://scripts/cabbage_cart.gd" id="20_4qpjh"]
 [ext_resource type="Texture2D" uid="uid://pqe4ghm8xugq" path="res://sprites/env/wedge.png" id="20_iechd"]
 [ext_resource type="AudioStream" uid="uid://ckmav6dpbnwym" path="res://audio/Crash.wav" id="21_cbi1c"]
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="21_l3qgu"]
@@ -37,7 +37,7 @@
 [ext_resource type="Shader" path="res://vignette.gdshader" id="22_cx5f7"]
 [ext_resource type="Texture2D" uid="uid://b6miqkunocoif" path="res://sprites/env/cabbage_cart_wheel.png" id="23_lj23j"]
 [ext_resource type="Texture2D" uid="uid://croxotw2h74x0" path="res://sprites/env/hatz-poster.png" id="23_pwo2i"]
-[ext_resource type="Script" path="res://scenes/areas/inspect_overlay.gd" id="31_j3as0"]
+[ext_resource type="Script" path="res://scripts/inspect_overlay.gd" id="31_j3as0"]
 [ext_resource type="Texture2D" uid="uid://cmlnc6cffe610" path="res://sprites/env/signed_photo.png" id="33_do1s1"]
 [ext_resource type="Resource" uid="uid://ov1j1bvesvn0" path="res://dialogue/shady_guy.dialogue" id="40_kjtwv"]
 [ext_resource type="Texture2D" uid="uid://iu1tfqwh2sam" path="res://sprites/chars/shady_guy.png" id="40_y8ubs"]
@@ -119,60 +119,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
 size = Vector2(3122, 50)
 
-[sub_resource type="Animation" id="Animation_yxaql"]
-resource_name = "roll_away"
-length = 10.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(5, 1),
-"update": 0,
-"values": [Vector2(4, -30), Vector2(500, -30)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../../Camera2D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(10),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [1.0, 2.0],
-"method": &"shake"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AnimationPlayer/Crash:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(10),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("..:is_triggerable")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(10),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_6o04r"]
 length = 0.001
 tracks/0/type = "value"
@@ -210,6 +156,60 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yxaql"]
+resource_name = "roll_away"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(2.58817, 1),
+"update": 0,
+"values": [Vector2(4, -30), Vector2(500, -30)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../Camera2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1.0, 2.0],
+"method": &"shake"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/Crash:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(6.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:is_triggerable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(6.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vlyjm"]
@@ -544,6 +544,7 @@ trash_pile = NodePath("Background/TrashPile")
 z_index = -100
 
 [node name="Sky" type="Panel" parent="Background"]
+modulate = Color(0.493545, 0.493546, 0.493546, 1)
 z_index = -1000
 offset_left = -1428.0
 offset_top = -611.0
@@ -552,6 +553,7 @@ offset_bottom = 389.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_hv647")
 
 [node name="Parallaxes" type="Node2D" parent="Background"]
+modulate = Color(0.493545, 0.493546, 0.493546, 1)
 z_index = -1
 position = Vector2(-28, -51)
 
@@ -590,6 +592,7 @@ position = Vector2(25, 0)
 texture = ExtResource("5_fagyq")
 
 [node name="Buildings" type="Node2D" parent="Background"]
+modulate = Color(0.493545, 0.493546, 0.493546, 1)
 
 [node name="Precinct" type="Sprite2D" parent="Background/Buildings"]
 position = Vector2(-743, -170)
@@ -1000,7 +1003,8 @@ face_player = true
 
 [node name="NPCAnimator" type="AnimatedSprite2D" parent="NPCController"]
 sprite_frames = SubResource("SpriteFrames_gdrct")
-frame_progress = 0.738829
+autoplay = "default"
+frame_progress = 0.989422
 
 [node name="Interactable" type="Node2D" parent="NPCController"]
 script = ExtResource("4_u7v5f")

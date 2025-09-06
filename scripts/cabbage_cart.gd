@@ -11,8 +11,6 @@ func _process(delta: float) -> void:
 	if not rolling: 
 		return
 		
-	if position.x > 60:
-		$"..".is_triggerable = true
 	$WheelR.rotation_degrees = int(position.x * 1.5)
 	$WheelL.rotation_degrees = int(position.x * 1.5)
 	

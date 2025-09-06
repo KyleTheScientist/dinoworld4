@@ -39,6 +39,10 @@ var has_trash: bool = false
 var trash_removed: int = 0
 var received_mayor_gift: bool = false
 
+var speakeasy_encountered: bool = false
+var shady_encountered: bool = false
+var shady_quest_complete: bool = false
+
 # Cafe
 var shopkeep_encountered: bool = false
 var shopkeep_angry: bool = false
