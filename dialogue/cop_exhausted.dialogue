@@ -2,7 +2,7 @@
 if not cop_encountered
 	=> first_encounter
 	
-if cop_exhausted
+if not cop_fed
 	if has_donuts
 		=> receive_donuts
 	else
@@ -29,6 +29,6 @@ Cop: Mmmf... fank you fo mupch...
 Cop: *swallows* 
 Cop: Here, take this. It's a strange coin I found in the paddy wagon after arresting some hooligan earlier.
 Cop: Might be worth something!
-set cop_exhausted = false
-set has_coin = true
+set cop_fed = true
+set has_bribe = true
 => END

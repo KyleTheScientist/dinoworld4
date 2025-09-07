@@ -74,64 +74,64 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lu0ia"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pam4r"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cq0f"]
 atlas = ExtResource("2_kuprd")
-region = Rect2(0, 0, 27, 22)
+region = Rect2(0, 0, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_asifi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsdve"]
 atlas = ExtResource("2_kuprd")
-region = Rect2(27, 0, 27, 22)
+region = Rect2(17, 0, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1qh3l"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_veafx"]
 atlas = ExtResource("2_kuprd")
-region = Rect2(54, 0, 27, 22)
+region = Rect2(34, 0, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q8iy3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy6h1"]
 atlas = ExtResource("2_kuprd")
-region = Rect2(81, 0, 27, 22)
+region = Rect2(51, 0, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_n34lk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxjjk"]
 atlas = ExtResource("2_kuprd")
-region = Rect2(0, 22, 27, 22)
+region = Rect2(0, 13, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c8cvu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8atn1"]
 atlas = ExtResource("2_kuprd")
-region = Rect2(27, 22, 27, 22)
+region = Rect2(17, 13, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lqsdn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl573"]
 atlas = ExtResource("2_kuprd")
-region = Rect2(54, 22, 27, 22)
+region = Rect2(34, 13, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8s3ed"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_cywa0"]
 atlas = ExtResource("2_kuprd")
-region = Rect2(81, 22, 27, 22)
+region = Rect2(51, 13, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_61p25"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0ybt"]
 atlas = ExtResource("2_kuprd")
-region = Rect2(108, 22, 27, 22)
+region = Rect2(68, 13, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_82o0e"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jy6s"]
 atlas = ExtResource("2_kuprd")
-region = Rect2(135, 22, 27, 22)
+region = Rect2(85, 13, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rdn6j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_um7kt"]
 atlas = ExtResource("2_kuprd")
-region = Rect2(162, 22, 27, 22)
+region = Rect2(102, 13, 17, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5al6f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pam4r")
+"texture": SubResource("AtlasTexture_5cq0f")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_asifi")
+"texture": SubResource("AtlasTexture_qsdve")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1qh3l")
+"texture": SubResource("AtlasTexture_veafx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q8iy3")
+"texture": SubResource("AtlasTexture_sy6h1")
 }],
 "loop": true,
 "name": &"default",
@@ -139,25 +139,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n34lk")
+"texture": SubResource("AtlasTexture_hxjjk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c8cvu")
+"texture": SubResource("AtlasTexture_8atn1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lqsdn")
+"texture": SubResource("AtlasTexture_gl573")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8s3ed")
+"texture": SubResource("AtlasTexture_cywa0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_61p25")
+"texture": SubResource("AtlasTexture_t0ybt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_82o0e")
+"texture": SubResource("AtlasTexture_1jy6s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rdn6j")
+"texture": SubResource("AtlasTexture_um7kt")
 }],
 "loop": true,
 "name": &"run",
@@ -234,9 +234,9 @@ shape = SubResource("CircleShape2D_lu0ia")
 [node name="TurtleAnimation" type="AnimatedSprite2D" parent="Turtle"]
 position = Vector2(0, 3.5)
 sprite_frames = SubResource("SpriteFrames_5al6f")
-animation = &"run"
 autoplay = "default"
-frame_progress = 0.203887
+frame = 2
+frame_progress = 0.312821
 flip_h = true
 
 [node name="TurtletteAnimation" type="AnimatedSprite2D" parent="Turtle"]

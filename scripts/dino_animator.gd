@@ -17,8 +17,8 @@ func handle_animation(dino: Dino) -> void:
 		$Turtles.flip_h = flip_h
 		$Trash.flip_h = flip_h
 		offset.x = -25 if flip_h else -38
-		$LightOccluderL.visible = flip_h
-		$LightOccluderR.visible = not flip_h
+		#$LightOccluderL.visible = flip_h
+		#$LightOccluderR.visible = not flip_h
 	else:
 		animation = "default"
 	

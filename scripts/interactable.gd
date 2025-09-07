@@ -6,13 +6,6 @@ signal interactable_activated(Interactable)
 @export var is_triggerable: bool = true
 var hovered: bool = false
 
-func _ready() -> void:
-	pass
-	#body_entered.connect(_on_body_entered)
-	#body_exited.connect(_on_body_exited)
-	#mouse_entered.connect(_on_mouse_entered)
-	#mouse_exited.connect(_on_mouse_exited)
-
 func _input(event: InputEvent) -> void:
 	if hovered and is_triggerable and visible and event.is_action_pressed("interact"):
 		is_triggerable = false
@@ -39,20 +32,9 @@ func _player_in_range() -> bool:
 	return global_position.distance_to(GameState.player.global_position) < 100
 	
 func _player_can_trigger():
-	return is_triggerable and _player_in_range() and _mouse_overlaps() and visible
-	
-#func _on_body_entered(body: Node2D) -> void:
-	#if not is_triggerable: 
-		#return
-	#if body.name == "Player":
-		#in_range = true
-		#$Label.visible = true
-#
-#func _on_body_exited(body: Node2D) -> void:
-	#if not is_triggerable: 
-		#return
-	#if body.name == "Player":
-		#in_range = false
-		#$Label.visible = false
-
-	
+	return \
+		not GameState.player.in_animation and \
+		is_triggerable and \
+		_player_in_range() and \
+		_mouse_overlaps() and \
+		visible

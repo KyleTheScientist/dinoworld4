@@ -90,36 +90,36 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q4j53"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk85u"]
 atlas = ExtResource("6_qd88e")
-region = Rect2(0, 0, 27, 22)
+region = Rect2(0, 0, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xogwy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxefr"]
 atlas = ExtResource("6_qd88e")
-region = Rect2(27, 0, 27, 22)
+region = Rect2(17, 0, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ev14h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_foca3"]
 atlas = ExtResource("6_qd88e")
-region = Rect2(54, 0, 27, 22)
+region = Rect2(34, 0, 17, 13)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c5usk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_66puf"]
 atlas = ExtResource("6_qd88e")
-region = Rect2(81, 0, 27, 22)
+region = Rect2(51, 0, 17, 13)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jot4w"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q4j53")
+"texture": SubResource("AtlasTexture_vk85u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xogwy")
+"texture": SubResource("AtlasTexture_pxefr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ev14h")
+"texture": SubResource("AtlasTexture_foca3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_c5usk")
+"texture": SubResource("AtlasTexture_66puf")
 }],
 "loop": true,
 "name": &"default",
@@ -238,7 +238,7 @@ shadow_enabled = true
 texture = ExtResource("6_yxduf")
 
 [node name="Turtle" type="AnimatedSprite2D" parent="Background/TurtleTable"]
-position = Vector2(-19, -2)
+position = Vector2(-20, -2)
 sprite_frames = SubResource("SpriteFrames_jot4w")
 autoplay = "default"
 frame_progress = 0.0671792
@@ -308,14 +308,13 @@ occluder = SubResource("OccluderPolygon2D_msp65")
 
 [node name="TurtleMinigame" parent="Background" instance=ExtResource("13_tam7o")]
 visible = false
-position = Vector2(165, 18)
+position = Vector2(165, 17)
 scale = Vector2(1, 1)
 
 [node name="Player" parent="." instance=ExtResource("7_ikmtk")]
 z_index = 1
 position = Vector2(356, 7)
 floor_stop_on_slope = false
-speed = 100.0
 
 [node name="DinoAnimator" parent="Player" index="0"]
 light_mask = 2

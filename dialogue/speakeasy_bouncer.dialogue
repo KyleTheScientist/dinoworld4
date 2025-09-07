@@ -1,7 +1,8 @@
 ~ start
 ???: ...
-if GameState.has_coin
+if GameState.gave_bribe and GameState.has_ring and GameState.gave_password:
 	???: Come on in.
 else
 	???: Members only, kid.
+set bouncer_encountered = true
 => END

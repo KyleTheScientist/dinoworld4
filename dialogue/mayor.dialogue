@@ -15,7 +15,8 @@ if not received_mayor_gift
 	do reveal_item("ThadPhoto")
 	=> END
 
-Mayor: I hope to see you at the polls! Remember, a vote for me is a vote for whatever political issue you individually care about the most!
+Mayor: I hope to see you at the polls! 
+Mayor: Remember, a vote for me is a vote for whatever political issue you individually care about the most!
 
 => END
 

@@ -24,10 +24,11 @@ var shrine_repaired: bool = false
 
 # Street
 var last_area = "museum"
-var cop_exhausted: bool = true # This should be true by default
+
+var cop_fed: bool = false
 var cop_encountered: bool = false
 var has_donuts: bool = false
-var has_coin: bool = false
+var has_bribe: bool = false
 
 var cart_moved: bool = false
 var wedge_l_removed: bool = false
@@ -39,9 +40,15 @@ var has_trash: bool = false
 var trash_removed: int = 0
 var received_mayor_gift: bool = false
 
-var speakeasy_encountered: bool = false
 var shady_encountered: bool = false
 var shady_quest_complete: bool = false
+var ring_thrown: bool = false
+var has_ring: bool = false
+
+var bouncer_encountered: bool = false
+var knows_password: bool = false
+var gave_password: bool = false
+var gave_bribe: bool = false
 
 # Cafe
 var shopkeep_encountered: bool = false

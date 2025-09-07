@@ -27,12 +27,13 @@ func _ready() -> void:
 	
 	GameState.last_area = "street"
 
-	if GameState.cop_exhausted:
+	if not GameState.cop_fed:
 		$Cop/NPCAnimator.animation = "exhausted"
 	
 	dumpster.is_triggerable = GameState.has_trash
 	trash_pile.get_node("Sprite").frame = GameState.trash_removed
 	sewer_door.is_triggerable = GameState.cart_moved
+	$Shady.visible = GameState.bouncer_encountered and not GameState.shady_quest_complete
 
 func _on_mayor_dialogue_finished() -> void:
 	trash_pile.is_triggerable = not GameState.trash_disposed_of
@@ -59,13 +60,27 @@ func _on_dumpster_activated() -> void:
 	GameState.has_trash = false
 	if GameState.trash_removed == 3:
 		GameState.trash_disposed_of = true
-		get_tree().create_timer(1).timeout.connect(
-			func x():
-				dumpster.get_node("AnimationPlayer").play("pterosaur_escape")
-		)
+		await get_tree().create_timer(1).timeout
+		dumpster.get_node("AnimationPlayer").play("pterosaur_escape")
 
 func _on_busted_trash_inspected() -> void:
 	$InspectOverlay.reveal("HatsPoster")
+
+func _on_shady_dialogue_finished() -> void:
+	if GameState.ring_thrown:
+		$Shady/NPCAnimator.play("give")
+		$Player.in_animation = true
+		$Shady/Ring.throw()
+		GameState.ring_thrown = false
+	if GameState.shady_quest_complete:
+		$Shady/Interactable.is_triggerable = false
+		$SmokeBomb.visible = true
+		$SmokeBomb.play("default")
+		$SmokeBomb/Change.play()
+
+func _on_ring_animation_finished() -> void:
+	$Shady/NPCAnimator.play("default")
+	$Shady.show_dialogue("ring_dropped")
 
 func _on_speakeasy_door_activated() -> void:
 	speakeasy_door.get_node("AnimatedSprite2D").play("open")
@@ -83,3 +98,8 @@ func _on_cafe_door_activated() -> void:
 
 func _on_sewer_door_activated() -> void:
 	get_tree().change_scene_to_file(sewer_scene)
+
+func _on_smoke_bomb_frame_changed() -> void:
+	if $SmokeBomb.frame == 3:
+		$Shady.visible = false
+		

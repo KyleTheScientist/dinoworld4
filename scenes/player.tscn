@@ -73,9 +73,11 @@ clothed_frames = ExtResource("2_bryfh")
 nude_frames = ExtResource("4_o3drv")
 
 [node name="LightOccluderL" type="LightOccluder2D" parent="DinoAnimator"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_bpfq7")
 
 [node name="LightOccluderR" type="LightOccluder2D" parent="DinoAnimator"]
+visible = false
 position = Vector2(-13, 0)
 occluder = SubResource("OccluderPolygon2D_xnmg0")
 
@@ -87,6 +89,7 @@ autoplay = "default"
 frame_progress = 0.863511
 
 [node name="Trash" type="AnimatedSprite2D" parent="DinoAnimator"]
+visible = false
 z_index = -1
 position = Vector2(-2, -16)
 sprite_frames = ExtResource("6_nnmo8")

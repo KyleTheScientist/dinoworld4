@@ -23,13 +23,29 @@
 
         - [ ] BRIBE - Police officer
           - [ ] Give donuts to the cop, receive bribe
-            - [x] Obtain the donuts by returning the turtle to Rosie
+            - [ ] Obtain the donuts by returning the turtle to Rosie (need acquire donuts anim)
               - [x] Obtain the turtle by completing the turtle catch minigame in sewers
                 - [x] Enter sewers after moving person/object from sewer grate?
 
-Minigame ideas:
-
-- Solve a maze to help someone navigate the city
 
 
-Crowbar -> Rescue turtle -> Get a donut -> Feed cop -> Get shades arrested -> Hat -> Speakeasy access -> Padlock code
+# Non-critical items
+
+## Complex
+- [ ] Dialogue voice bleeps
+- [ ] Add bricks / more decor to museum
+- [ ] Add some more to the prison?
+- [ ] Add a failure condition for turtle run
+- [ ] Add some pointless interactables to the cafe
+
+## Medium 
+
+- [ ] Add cabbage cart guy yelling
+- [ ] Make player unable to interact during dialogue
+
+## Easy
+
+- [ ] Force player to stand still during dialogue (both animation-wise and physically)
+- [ ] Borders to levels
+- [ ] Add sweating animation to turtles / healthbar
+- [ ] Fix hole in player sprite

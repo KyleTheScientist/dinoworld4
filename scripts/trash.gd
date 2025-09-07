@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 		position.y = 0
 		thrown = false
 		busted = true
-	
+
 func animate(y_vel: float):
 	if y_vel < -5:
 		frame = 0

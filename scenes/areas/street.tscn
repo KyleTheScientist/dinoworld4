@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://c5f8bt7pw13py"]
+[gd_scene load_steps=95 format=3 uid="uid://c5f8bt7pw13py"]
 
 [ext_resource type="Script" path="res://scripts/area_street.gd" id="1_vurvn"]
 [ext_resource type="Texture2D" uid="uid://bg6dvnd3rkqeu" path="res://sprites/env/dino_city_parallax2.png" id="3_2dj7t"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://jxm5b27ito68" path="res://sprites/env/decor_hydrant.png" id="16_keys1"]
 [ext_resource type="Texture2D" uid="uid://b2gi2pmxty1qo" path="res://sprites/env/decor_mailbox.png" id="17_nthnf"]
 [ext_resource type="Texture2D" uid="uid://d3wqr2plxluqi" path="res://sprites/env/decor_sewer_entrance.png" id="18_2242a"]
+[ext_resource type="Texture2D" uid="uid://mklr7quac5dy" path="res://sprites/env/decor_sewer_drain.png" id="18_jlvmv"]
 [ext_resource type="Texture2D" uid="uid://d1mvxvi8xxfdp" path="res://sprites/env/cabbage_cart.png" id="19_44pjl"]
 [ext_resource type="Script" path="res://scripts/cabbage_cart.gd" id="20_4qpjh"]
 [ext_resource type="Texture2D" uid="uid://pqe4ghm8xugq" path="res://sprites/env/wedge.png" id="20_iechd"]
@@ -41,6 +42,12 @@
 [ext_resource type="Texture2D" uid="uid://cmlnc6cffe610" path="res://sprites/env/signed_photo.png" id="33_do1s1"]
 [ext_resource type="Resource" uid="uid://ov1j1bvesvn0" path="res://dialogue/shady_guy.dialogue" id="40_kjtwv"]
 [ext_resource type="Texture2D" uid="uid://iu1tfqwh2sam" path="res://sprites/chars/shady_guy.png" id="40_y8ubs"]
+[ext_resource type="Texture2D" uid="uid://c78etotrbtmkq" path="res://sprites/env/ring.png" id="42_i4qxu"]
+[ext_resource type="Script" path="res://scenes/areas/ring.gd" id="43_yw7fe"]
+[ext_resource type="AudioStream" uid="uid://b0jcfld5jmg2h" path="res://audio/plop.wav" id="45_m0kaj"]
+[ext_resource type="Texture2D" uid="uid://0k7yhvahlb3f" path="res://sprites/env/decor_street_patch.png" id="45_qf378"]
+[ext_resource type="AudioStream" uid="uid://beptsedlaurpg" path="res://audio/coin.wav" id="46_nss0c"]
+[ext_resource type="Texture2D" uid="uid://ce2kyn88k3pxa" path="res://sprites/effects/smoke_bomb.png" id="48_00ls4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hv647"]
 
@@ -472,6 +479,10 @@ region = Rect2(282, 0, 47, 43)
 atlas = ExtResource("40_y8ubs")
 region = Rect2(329, 0, 47, 43)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2gyr"]
+atlas = ExtResource("40_y8ubs")
+region = Rect2(0, 43, 47, 43)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_gdrct"]
 animations = [{
 "frames": [{
@@ -526,6 +537,84 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2gyr")
+}],
+"loop": true,
+"name": &"give",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl8qb"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(0, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og3ih"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(57, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh1cg"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(114, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awk06"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(171, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51g4t"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(228, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y071x"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(285, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00hwk"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(342, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4loc5"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(399, 0, 57, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iyq17"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl8qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og3ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh1cg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awk06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51g4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y071x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00hwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4loc5")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
 }]
 
 [node name="Street" type="Node2D" node_paths=PackedStringArray("museum_door", "cafe_door", "sewer_door", "speakeasy_door", "dumpster", "trash_pile")]
@@ -730,6 +819,30 @@ position = Vector2(1112, 314)
 texture = ExtResource("17_nthnf")
 centered = false
 
+[node name="Drain" type="Sprite2D" parent="Background/Street"]
+position = Vector2(440, 358)
+texture = ExtResource("18_jlvmv")
+
+[node name="Drain2" type="Sprite2D" parent="Background/Street"]
+position = Vector2(902, 358)
+texture = ExtResource("18_jlvmv")
+
+[node name="Drain3" type="Sprite2D" parent="Background/Street"]
+position = Vector2(1364, 358)
+texture = ExtResource("18_jlvmv")
+
+[node name="Drain4" type="Sprite2D" parent="Background/Street"]
+position = Vector2(1826, 358)
+texture = ExtResource("18_jlvmv")
+
+[node name="Drain5" type="Sprite2D" parent="Background/Street"]
+position = Vector2(2288, 358)
+texture = ExtResource("18_jlvmv")
+
+[node name="Drain6" type="Sprite2D" parent="Background/Street"]
+position = Vector2(2750, 358)
+texture = ExtResource("18_jlvmv")
+
 [node name="SewerDoor" type="Area2D" parent="Background"]
 position = Vector2(1163, -2)
 script = ExtResource("4_u7v5f")
@@ -872,7 +985,6 @@ autoplay = true
 [node name="Player" parent="." instance=ExtResource("21_l3qgu")]
 z_index = 1
 position = Vector2(0, -19)
-speed = 200.0
 
 [node name="Trash" parent="Player/DinoAnimator" index="3"]
 autoplay = "default"
@@ -995,19 +1107,45 @@ grow_vertical = 2
 texture = ExtResource("23_pwo2i")
 stretch_mode = 5
 
-[node name="NPCController" type="Node2D" parent="."]
-position = Vector2(-1115, -22)
+[node name="Shady" type="Node2D" parent="."]
+position = Vector2(-1181, -20)
 script = ExtResource("4_o0pxp")
 dialogue = ExtResource("40_kjtwv")
-face_player = true
 
-[node name="NPCAnimator" type="AnimatedSprite2D" parent="NPCController"]
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="Shady"]
 sprite_frames = SubResource("SpriteFrames_gdrct")
+animation = &"give"
 autoplay = "default"
-frame_progress = 0.989422
 
-[node name="Interactable" type="Node2D" parent="NPCController"]
+[node name="Interactable" type="Node2D" parent="Shady"]
 script = ExtResource("4_u7v5f")
+
+[node name="Ring" type="Sprite2D" parent="Shady"]
+visible = false
+position = Vector2(19, 4)
+texture = ExtResource("42_i4qxu")
+script = ExtResource("43_yw7fe")
+impulse = Vector2(2, -2)
+
+[node name="Plop" type="AudioStreamPlayer" parent="Shady/Ring"]
+stream = ExtResource("45_m0kaj")
+
+[node name="Coin" type="AudioStreamPlayer" parent="Shady/Ring"]
+stream = ExtResource("46_nss0c")
+
+[node name="StreetPatch" type="Sprite2D" parent="Shady"]
+position = Vector2(91, 34)
+texture = ExtResource("45_qf378")
+
+[node name="SmokeBomb" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-1177, -45)
+sprite_frames = SubResource("SpriteFrames_iyq17")
+frame = 9
+frame_progress = 1.0
+
+[node name="Change" type="AudioStreamPlayer" parent="SmokeBomb"]
+stream = ExtResource("13_3lvck")
 
 [connection signal="activated" from="Background/Buildings/Museum/MuseumDoor" to="." method="_on_museum_door_activated"]
 [connection signal="activated" from="Background/Buildings/Cafe/CafeDoor" to="." method="_on_cafe_door_activated"]
@@ -1023,6 +1161,9 @@ script = ExtResource("4_u7v5f")
 [connection signal="dialogue_finished" from="Mayor" to="." method="_on_mayor_dialogue_finished"]
 [connection signal="gui_input" from="InspectOverlay/RevealContainer/ThadPhoto" to="InspectOverlay" method="close"]
 [connection signal="gui_input" from="InspectOverlay/RevealContainer/HatsPoster/HatsPoster" to="InspectOverlay" method="close"]
-[connection signal="activated" from="NPCController/Interactable" to="NPCController" method="_on_npc_activated"]
+[connection signal="dialogue_finished" from="Shady" to="." method="_on_shady_dialogue_finished"]
+[connection signal="activated" from="Shady/Interactable" to="Shady" method="_on_npc_activated"]
+[connection signal="animation_finished" from="Shady/Ring" to="." method="_on_ring_animation_finished"]
+[connection signal="frame_changed" from="SmokeBomb" to="." method="_on_smoke_bomb_frame_changed"]
 
 [editable path="Player"]
