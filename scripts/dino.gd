@@ -1,7 +1,6 @@
 class_name Dino
 extends CharacterBody2D
 
-@onready var animation_handler: DinoAnimator = $DinoAnimator
 
 @export var speed = 100.0
 @export var in_animation: bool:
@@ -13,6 +12,8 @@ extends CharacterBody2D
 
 var horizontal_input: float
 var was_on_floor: bool = false
+
+@onready var animation_handler: DinoAnimator = $DinoAnimator
 
 func _ready() -> void:
 	GameState.player = self
@@ -35,4 +36,4 @@ func _process(_delta: float) -> void:
 		animation_handler.handle_animation(self)
 
 func _can_move() -> bool:
-	return not in_animation
+	return not in_animation and not GameState.inspect_overlay.visible

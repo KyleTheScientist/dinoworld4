@@ -1,4 +1,5 @@
 ~ start
+set voice_pitch = 1
 if not shopkeep_encountered
 	=> first_encounter
 
@@ -42,6 +43,7 @@ set turtle_returned = true
 set has_donuts = true
 set has_turtle = false
 set shopkeep_angry = false
+do reveal_item("Donuts")
 => END
 
 ~ naked

@@ -1,8 +1,11 @@
 extends Node2D
 
+@export var debug: bool
+
 @export_category("Connected scenes")
 @export_file("*.tscn") var museum_scene
 @export_file("*.tscn") var cafe_scene
+@export_file("*.tscn") var precinct_scene
 @export_file("*.tscn") var sewer_scene
 
 @export_category("Doors")
@@ -18,22 +21,41 @@ extends Node2D
 
 
 func _ready() -> void:
-	if GameState.last_area == "museum":
-		$Player.global_position.x = museum_door.global_position.x
-	elif GameState.last_area == "cafe":
-		$Player.global_position.x = cafe_door.global_position.x
-	elif GameState.last_area == "sewer":
-		$Player.global_position.x = sewer_door.global_position.x
-	
+	if debug:
+		_set_debug_vars()
+		
+	_load_state()
 	GameState.last_area = "street"
 
+func _set_debug_vars():
+	GameState.seen_museum_intro = true
+	GameState.seen_cop_anim = true
+	GameState.player_clothed = true
+	GameState.shady_encountered = true
+	GameState.mayor_encountered = true
+	GameState.has_autograph = true
+	GameState.trash_removed = 2
+	$Player/DinoAnimator._ready()
+	
+func _load_state():
+	match(GameState.last_area):
+		"museum":
+			$Player.global_position.x = museum_door.global_position.x
+		"cafe":
+			$Player.global_position.x = cafe_door.global_position.x
+		"sewer":
+			$Player.global_position.x = sewer_door.global_position.x
+		"precinct":
+			$Player.global_position.x = precinct_door.global_position.x
+	
 	if not GameState.cop_fed:
 		$Cop/NPCAnimator.animation = "exhausted"
 	
+	$Shady/NPCAnimator.visible = GameState.bouncer_encountered and not GameState.shady_quest_complete
+	$Shady/Interactable.is_triggerable = $Shady/NPCAnimator.visible
 	dumpster.is_triggerable = GameState.has_trash
 	trash_pile.get_node("Sprite").frame = GameState.trash_removed
 	sewer_door.is_triggerable = GameState.cart_moved
-	$Shady.visible = GameState.bouncer_encountered and not GameState.shady_quest_complete
 
 func _on_mayor_dialogue_finished() -> void:
 	trash_pile.is_triggerable = not GameState.trash_disposed_of
@@ -64,7 +86,7 @@ func _on_dumpster_activated() -> void:
 		dumpster.get_node("AnimationPlayer").play("pterosaur_escape")
 
 func _on_busted_trash_inspected() -> void:
-	$InspectOverlay.reveal("HatsPoster")
+	GameState.reveal_item("HatsPoster")
 
 func _on_shady_dialogue_finished() -> void:
 	if GameState.ring_thrown:
@@ -74,9 +96,9 @@ func _on_shady_dialogue_finished() -> void:
 		GameState.ring_thrown = false
 	if GameState.shady_quest_complete:
 		$Shady/Interactable.is_triggerable = false
-		$SmokeBomb.visible = true
-		$SmokeBomb.play("default")
-		$SmokeBomb/Change.play()
+		$Shady/SmokeBomb.visible = true
+		$Shady/SmokeBomb.play("default")
+		$Shady/SmokeBomb/Change.play()
 
 func _on_ring_animation_finished() -> void:
 	$Shady/NPCAnimator.play("default")
@@ -98,8 +120,11 @@ func _on_cafe_door_activated() -> void:
 
 func _on_sewer_door_activated() -> void:
 	get_tree().change_scene_to_file(sewer_scene)
+	
+func _on_precinct_door_activated() -> void:
+	get_tree().change_scene_to_file(precinct_scene)
 
 func _on_smoke_bomb_frame_changed() -> void:
-	if $SmokeBomb.frame == 3:
-		$Shady.visible = false
+	if $Shady/SmokeBomb.frame == 3:
+		$Shady/NPCAnimator.visible = false
 		

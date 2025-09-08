@@ -11,3 +11,4 @@ func _on_cafe_door_activated() -> void:
 func _on_shopkeep_dialogue_finished() -> void:
 	$Player/DinoAnimator/Turtles.visible = GameState.has_turtle
 	$Turtles.visible = GameState.turtle_returned
+	

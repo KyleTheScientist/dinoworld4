@@ -3,18 +3,21 @@ extends CanvasLayer
 
 func _ready():
 	GameState.inspect_overlay = self
+	visible = false
+	for child in $RevealContainer.get_children():
+		child.visible = false
 
 func _process(delta: float) -> void:
 	$RevealContainer.scale = lerp($RevealContainer.scale, Vector2.ONE, delta * 6)
 	if $RevealContainer.scale.x > .99:
 		$RevealContainer.scale = Vector2.ONE
 
-func reveal(name: String):
+func reveal(_name: String):
 	$RevealContainer.scale = Vector2.ZERO
 	visible = true
 	GameState.player.in_animation = true
 	for node in $RevealContainer.get_children():
-		node.visible = node.name == name
+		node.visible = node.name == _name
 	
 func close(event: InputEvent):
 	if event.is_action_pressed("interact"):

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://krkaeg3vayw4"]
+
+[ext_resource type="Script" path="res://scripts/game_state.gd" id="1_icojt"]
+[ext_resource type="AudioStream" uid="uid://xhepoyewqyn8" path="res://audio/speak.wav" id="2_d0w7c"]
+[ext_resource type="PackedScene" uid="uid://cu10e03sg7kd3" path="res://scenes/inspect_overlay.tscn" id="3_guw8h"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gvnm8"]
+random_pitch = 1.14
+streams_count = 1
+stream_0/stream = ExtResource("2_d0w7c")
+
+[node name="GameState" type="Node2D"]
+script = ExtResource("1_icojt")
+
+[node name="Speak" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_gvnm8")
+
+[node name="InspectOverlay" parent="." instance=ExtResource("3_guw8h")]

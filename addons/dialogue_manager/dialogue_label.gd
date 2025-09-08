@@ -67,6 +67,8 @@ var _last_mutation_index: int = -1
 var _waiting_seconds: float = 0
 var _is_awaiting_mutation: bool = false
 
+func _ready() -> void:
+	spoke.connect(GameState.on_npc_spoke)
 
 func _process(delta: float) -> void:
 	if self.is_typing:

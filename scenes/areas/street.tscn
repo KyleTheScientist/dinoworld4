@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://c5f8bt7pw13py"]
+[gd_scene load_steps=94 format=3 uid="uid://c5f8bt7pw13py"]
 
 [ext_resource type="Script" path="res://scripts/area_street.gd" id="1_vurvn"]
 [ext_resource type="Texture2D" uid="uid://bg6dvnd3rkqeu" path="res://sprites/env/dino_city_parallax2.png" id="3_2dj7t"]
@@ -18,8 +18,8 @@
 [ext_resource type="SpriteFrames" uid="uid://06vy4kjjrcy3" path="res://sprites/env/trash.tres" id="10_fn7om"]
 [ext_resource type="Texture2D" uid="uid://d3i7lwmobfjdd" path="res://sprites/chars/ptero_flight.png" id="11_1ukqa"]
 [ext_resource type="Script" path="res://scripts/trash.gd" id="11_3j68j"]
-[ext_resource type="PackedScene" uid="uid://bliitmim74tfx" path="res://scenes/cop.tscn" id="11_6b5gy"]
-[ext_resource type="PackedScene" uid="uid://6jr2ryma7s8e" path="res://scenes/mayor.tscn" id="12_c8rfy"]
+[ext_resource type="PackedScene" uid="uid://bliitmim74tfx" path="res://scenes/npcs/cop.tscn" id="11_6b5gy"]
+[ext_resource type="PackedScene" uid="uid://6jr2ryma7s8e" path="res://scenes/npcs/mayor.tscn" id="12_c8rfy"]
 [ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="13_3lvck"]
 [ext_resource type="Texture2D" uid="uid://c41isei751yda" path="res://sprites/env/dumpster.png" id="14_6qvmn"]
 [ext_resource type="AudioStream" uid="uid://0visoin3bpy4" path="res://audio/bloop.wav" id="14_id2nd"]
@@ -35,15 +35,11 @@
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="21_l3qgu"]
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="22_86tsd"]
 [ext_resource type="PackedScene" uid="uid://q55bopc5e3wy" path="res://scenes/debugger.tscn" id="22_a816s"]
-[ext_resource type="Shader" path="res://vignette.gdshader" id="22_cx5f7"]
 [ext_resource type="Texture2D" uid="uid://b6miqkunocoif" path="res://sprites/env/cabbage_cart_wheel.png" id="23_lj23j"]
-[ext_resource type="Texture2D" uid="uid://croxotw2h74x0" path="res://sprites/env/hatz-poster.png" id="23_pwo2i"]
-[ext_resource type="Script" path="res://scripts/inspect_overlay.gd" id="31_j3as0"]
-[ext_resource type="Texture2D" uid="uid://cmlnc6cffe610" path="res://sprites/env/signed_photo.png" id="33_do1s1"]
 [ext_resource type="Resource" uid="uid://ov1j1bvesvn0" path="res://dialogue/shady_guy.dialogue" id="40_kjtwv"]
 [ext_resource type="Texture2D" uid="uid://iu1tfqwh2sam" path="res://sprites/chars/shady_guy.png" id="40_y8ubs"]
 [ext_resource type="Texture2D" uid="uid://c78etotrbtmkq" path="res://sprites/env/ring.png" id="42_i4qxu"]
-[ext_resource type="Script" path="res://scenes/areas/ring.gd" id="43_yw7fe"]
+[ext_resource type="Script" path="res://scripts/ring.gd" id="43_yw7fe"]
 [ext_resource type="AudioStream" uid="uid://b0jcfld5jmg2h" path="res://audio/plop.wav" id="45_m0kaj"]
 [ext_resource type="Texture2D" uid="uid://0k7yhvahlb3f" path="res://sprites/env/decor_street_patch.png" id="45_qf378"]
 [ext_resource type="AudioStream" uid="uid://beptsedlaurpg" path="res://audio/coin.wav" id="46_nss0c"]
@@ -51,8 +47,14 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hv647"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2dfh"]
-size = Vector2(46, 73)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kkqs"]
+size = Vector2(46, 64.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i1d4v"]
+size = Vector2(40, 69)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jf5m8"]
+size = Vector2(45, 66.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qdibj"]
 atlas = ExtResource("4_xf6g1")
@@ -123,8 +125,14 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_diars"]
+size = Vector2(46, 65)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
 size = Vector2(3122, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jawwi"]
+size = Vector2(45, 5)
 
 [sub_resource type="Animation" id="Animation_6o04r"]
 length = 0.001
@@ -441,11 +449,75 @@ _data = {
 "pterosaur_escape": SubResource("Animation_nhcvu")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nix7k"]
-shader = ExtResource("22_cx5f7")
-shader_parameter/alpha = 0.565
-shader_parameter/inner_radius = 0.245
-shader_parameter/outer_radius = 0.74
+[sub_resource type="AtlasTexture" id="AtlasTexture_fl8qb"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(0, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og3ih"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(57, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qh1cg"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(114, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awk06"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(171, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51g4t"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(228, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y071x"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(285, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00hwk"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(342, 0, 57, 93)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4loc5"]
+atlas = ExtResource("48_00ls4")
+region = Rect2(399, 0, 57, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iyq17"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fl8qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og3ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qh1cg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awk06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51g4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y071x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00hwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4loc5")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b7umq"]
 atlas = ExtResource("40_y8ubs")
@@ -547,84 +619,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fl8qb"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(0, 0, 57, 93)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_og3ih"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(57, 0, 57, 93)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qh1cg"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(114, 0, 57, 93)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_awk06"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(171, 0, 57, 93)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_51g4t"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(228, 0, 57, 93)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y071x"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(285, 0, 57, 93)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_00hwk"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(342, 0, 57, 93)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4loc5"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(399, 0, 57, 93)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_iyq17"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": null
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fl8qb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_og3ih")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qh1cg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_awk06")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_51g4t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y071x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_00hwk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4loc5")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": false,
-"name": &"default",
-"speed": 10.0
-}]
-
-[node name="Street" type="Node2D" node_paths=PackedStringArray("museum_door", "cafe_door", "sewer_door", "speakeasy_door", "dumpster", "trash_pile")]
+[node name="Street" type="Node2D" node_paths=PackedStringArray("museum_door", "cafe_door", "sewer_door", "precinct_door", "speakeasy_door", "dumpster", "trash_pile")]
 script = ExtResource("1_vurvn")
+debug = true
 museum_scene = "res://scenes/areas/museum.tscn"
 cafe_scene = "res://scenes/areas/cafe.tscn"
+precinct_scene = "res://scenes/areas/precinct.tscn"
 sewer_scene = "res://scenes/areas/sewer.tscn"
 museum_door = NodePath("Background/Buildings/Museum/MuseumDoor")
 cafe_door = NodePath("Background/Buildings/Cafe/CafeDoor")
 sewer_door = NodePath("Background/SewerDoor")
+precinct_door = NodePath("Background/Buildings/Precinct/PrecinctDoor")
 speakeasy_door = NodePath("Background/Buildings/Cafe/SpeakeasyDoor")
 dumpster = NodePath("Background/Dumpster")
 trash_pile = NodePath("Background/TrashPile")
@@ -684,8 +689,16 @@ texture = ExtResource("5_fagyq")
 modulate = Color(0.493545, 0.493546, 0.493546, 1)
 
 [node name="Precinct" type="Sprite2D" parent="Background/Buildings"]
-position = Vector2(-743, -170)
+position = Vector2(-870, -170)
 texture = ExtResource("5_0gjw0")
+
+[node name="PrecinctDoor" type="Area2D" parent="Background/Buildings/Precinct"]
+position = Vector2(1, 115)
+script = ExtResource("4_u7v5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Buildings/Precinct/PrecinctDoor"]
+position = Vector2(0, -9.25)
+shape = SubResource("RectangleShape2D_1kkqs")
 
 [node name="Museum" type="Sprite2D" parent="Background/Buildings"]
 position = Vector2(0, -154)
@@ -696,38 +709,37 @@ position = Vector2(0, 99)
 script = ExtResource("4_u7v5f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Buildings/Museum/MuseumDoor"]
-position = Vector2(0, 4.5)
-shape = SubResource("RectangleShape2D_e2dfh")
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_i1d4v")
 
 [node name="Cafe" type="Sprite2D" parent="Background/Buildings"]
 position = Vector2(809, -175)
 texture = ExtResource("8_85drs")
 
 [node name="CafeDoor" type="Area2D" parent="Background/Buildings/Cafe"]
-position = Vector2(-200, 140)
+position = Vector2(203, 139)
 script = ExtResource("4_u7v5f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Buildings/Cafe/CafeDoor"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_e2dfh")
+position = Vector2(-0.5, 2.75)
+shape = SubResource("RectangleShape2D_jf5m8")
 
 [node name="SpeakeasyDoor" type="Node2D" parent="Background/Buildings/Cafe"]
-position = Vector2(-837, 124)
 script = ExtResource("4_o0pxp")
 dialogue = ExtResource("5_xjb3x")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Buildings/Cafe/SpeakeasyDoor"]
+position = Vector2(-155, 144)
+sprite_frames = SubResource("SpriteFrames_lccod")
+animation = &"open"
+
 [node name="Interactable" type="Area2D" parent="Background/Buildings/Cafe/SpeakeasyDoor"]
-position = Vector2(995, 14)
+position = Vector2(-155, 143)
 script = ExtResource("4_u7v5f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Buildings/Cafe/SpeakeasyDoor/Interactable"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_e2dfh")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Buildings/Cafe/SpeakeasyDoor"]
-position = Vector2(995, 20)
-sprite_frames = SubResource("SpriteFrames_lccod")
-animation = &"open"
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_diars")
 
 [node name="Click" type="AudioStreamPlayer" parent="Background/Buildings/Cafe/SpeakeasyDoor"]
 stream = ExtResource("7_rb0nv")
@@ -783,7 +795,7 @@ shadow_enabled = true
 texture = ExtResource("10_e6iwx")
 
 [node name="StreetLamp4" type="Sprite2D" parent="Background/Street"]
-position = Vector2(524, 205)
+position = Vector2(386, 205)
 texture = ExtResource("14_ye2lx")
 centered = false
 
@@ -795,12 +807,12 @@ shadow_enabled = true
 texture = ExtResource("10_e6iwx")
 
 [node name="Hydrant" type="Sprite2D" parent="Background/Street"]
-position = Vector2(550, 328)
+position = Vector2(412, 328)
 texture = ExtResource("16_keys1")
 centered = false
 
 [node name="Hydrant2" type="Sprite2D" parent="Background/Street"]
-position = Vector2(1030, 328)
+position = Vector2(875, 328)
 texture = ExtResource("16_keys1")
 centered = false
 
@@ -820,27 +832,27 @@ texture = ExtResource("17_nthnf")
 centered = false
 
 [node name="Drain" type="Sprite2D" parent="Background/Street"]
-position = Vector2(440, 358)
+position = Vector2(566, 358)
 texture = ExtResource("18_jlvmv")
 
 [node name="Drain2" type="Sprite2D" parent="Background/Street"]
-position = Vector2(902, 358)
+position = Vector2(1028, 358)
 texture = ExtResource("18_jlvmv")
 
 [node name="Drain3" type="Sprite2D" parent="Background/Street"]
-position = Vector2(1364, 358)
+position = Vector2(1490, 358)
 texture = ExtResource("18_jlvmv")
 
 [node name="Drain4" type="Sprite2D" parent="Background/Street"]
-position = Vector2(1826, 358)
+position = Vector2(1952, 358)
 texture = ExtResource("18_jlvmv")
 
 [node name="Drain5" type="Sprite2D" parent="Background/Street"]
-position = Vector2(2288, 358)
+position = Vector2(2414, 358)
 texture = ExtResource("18_jlvmv")
 
 [node name="Drain6" type="Sprite2D" parent="Background/Street"]
-position = Vector2(2750, 358)
+position = Vector2(2876, 358)
 texture = ExtResource("18_jlvmv")
 
 [node name="SewerDoor" type="Area2D" parent="Background"]
@@ -849,8 +861,8 @@ script = ExtResource("4_u7v5f")
 is_triggerable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/SewerDoor"]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_e2dfh")
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_jawwi")
 
 [node name="SewerSprite" type="Sprite2D" parent="Background/SewerDoor"]
 position = Vector2(-21, -3)
@@ -907,7 +919,7 @@ texture = ExtResource("23_lj23j")
 stream = ExtResource("7_rb0nv")
 
 [node name="Dumpster" type="Area2D" parent="Background"]
-position = Vector2(-1045, -31)
+position = Vector2(-1222, -31)
 script = ExtResource("4_u7v5f")
 
 [node name="Back" type="Sprite2D" parent="Background/Dumpster"]
@@ -964,7 +976,7 @@ volume_db = 1.688
 pitch_scale = 0.72
 
 [node name="TrashPile" type="Area2D" parent="Background"]
-position = Vector2(509, -16)
+position = Vector2(-512, -16)
 script = ExtResource("4_u7v5f")
 is_triggerable = false
 
@@ -992,125 +1004,37 @@ autoplay = "default"
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("22_86tsd")]
 position = Vector2(0, -64)
 player = NodePath("../Player")
+bounds = Vector4(-1200, -1000, 1000, 1000)
 
 [node name="Cop" parent="." instance=ExtResource("11_6b5gy")]
 z_index = -1
-position = Vector2(-322, 0)
+position = Vector2(-211, -2)
+
+[node name="NPCAnimator" parent="Cop" index="1"]
+animation = &"exhausted"
 
 [node name="Mayor" parent="." instance=ExtResource("12_c8rfy")]
 z_index = -1
-position = Vector2(427, 1)
+position = Vector2(-594, 0)
 face_player = true
 
 [node name="Debugger" parent="." instance=ExtResource("22_a816s")]
 visible = false
 
-[node name="InspectOverlay" type="CanvasLayer" parent="."]
-visible = false
-script = ExtResource("31_j3as0")
-
-[node name="Vignette" type="Panel" parent="InspectOverlay"]
-z_index = 100
-material = SubResource("ShaderMaterial_nix7k")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 1
-
-[node name="RevealContainer" type="Control" parent="InspectOverlay"]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ThadPhoto" type="TextureRect" parent="InspectOverlay/RevealContainer"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = -99.0
-offset_right = 65.0
-offset_bottom = 99.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("33_do1s1")
-stretch_mode = 3
-
-[node name="HatsPoster" type="Control" parent="InspectOverlay/RevealContainer"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HatsPoster3" type="TextureRect" parent="InspectOverlay/RevealContainer/HatsPoster"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -27.0
-offset_top = -115.0
-offset_right = 103.0
-offset_bottom = 83.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.20098
-texture = ExtResource("23_pwo2i")
-stretch_mode = 5
-
-[node name="HatsPoster2" type="TextureRect" parent="InspectOverlay/RevealContainer/HatsPoster"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -90.0
-offset_top = -93.0
-offset_right = 40.0
-offset_bottom = 105.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.214736
-texture = ExtResource("23_pwo2i")
-stretch_mode = 5
-
-[node name="HatsPoster" type="TextureRect" parent="InspectOverlay/RevealContainer/HatsPoster"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = -99.0
-offset_right = 65.0
-offset_bottom = 99.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("23_pwo2i")
-stretch_mode = 5
-
 [node name="Shady" type="Node2D" parent="."]
-position = Vector2(-1181, -20)
+position = Vector2(794, -20)
 script = ExtResource("4_o0pxp")
 dialogue = ExtResource("40_kjtwv")
+
+[node name="SmokeBomb" type="AnimatedSprite2D" parent="Shady"]
+z_index = 1
+position = Vector2(4, -25)
+sprite_frames = SubResource("SpriteFrames_iyq17")
+frame = 9
+frame_progress = 1.0
+
+[node name="Change" type="AudioStreamPlayer" parent="Shady/SmokeBomb"]
+stream = ExtResource("13_3lvck")
 
 [node name="NPCAnimator" type="AnimatedSprite2D" parent="Shady"]
 sprite_frames = SubResource("SpriteFrames_gdrct")
@@ -1137,16 +1061,7 @@ stream = ExtResource("46_nss0c")
 position = Vector2(91, 34)
 texture = ExtResource("45_qf378")
 
-[node name="SmokeBomb" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(-1177, -45)
-sprite_frames = SubResource("SpriteFrames_iyq17")
-frame = 9
-frame_progress = 1.0
-
-[node name="Change" type="AudioStreamPlayer" parent="SmokeBomb"]
-stream = ExtResource("13_3lvck")
-
+[connection signal="activated" from="Background/Buildings/Precinct/PrecinctDoor" to="." method="_on_precinct_door_activated"]
 [connection signal="activated" from="Background/Buildings/Museum/MuseumDoor" to="." method="_on_museum_door_activated"]
 [connection signal="activated" from="Background/Buildings/Cafe/CafeDoor" to="." method="_on_cafe_door_activated"]
 [connection signal="dialogue_finished" from="Background/Buildings/Cafe/SpeakeasyDoor" to="." method="_on_speakeasy_door_dialogue_finished"]
@@ -1159,11 +1074,10 @@ stream = ExtResource("13_3lvck")
 [connection signal="activated" from="Background/Dumpster/TrashOrigin/Trash/Interactable" to="." method="_on_busted_trash_inspected"]
 [connection signal="activated" from="Background/TrashPile" to="." method="_on_trash_activated"]
 [connection signal="dialogue_finished" from="Mayor" to="." method="_on_mayor_dialogue_finished"]
-[connection signal="gui_input" from="InspectOverlay/RevealContainer/ThadPhoto" to="InspectOverlay" method="close"]
-[connection signal="gui_input" from="InspectOverlay/RevealContainer/HatsPoster/HatsPoster" to="InspectOverlay" method="close"]
 [connection signal="dialogue_finished" from="Shady" to="." method="_on_shady_dialogue_finished"]
+[connection signal="frame_changed" from="Shady/SmokeBomb" to="." method="_on_smoke_bomb_frame_changed"]
 [connection signal="activated" from="Shady/Interactable" to="Shady" method="_on_npc_activated"]
 [connection signal="animation_finished" from="Shady/Ring" to="." method="_on_ring_animation_finished"]
-[connection signal="frame_changed" from="SmokeBomb" to="." method="_on_smoke_bomb_frame_changed"]
 
 [editable path="Player"]
+[editable path="Cop"]

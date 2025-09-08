@@ -11,9 +11,6 @@ func _ready() -> void:
 	global_position.x = player.global_position.x
 
 func _process(_delta: float) -> void:
-
-	
-	
 	if movie:
 		$FakeCursor.visible = true
 		$FakeCursor.texture = GameState.cursor

@@ -1,4 +1,5 @@
 ~ start
+set voice_pitch = 0.25
 if not mayor_encountered
 	=> first_encounter
 
@@ -7,11 +8,11 @@ if not trash_disposed_of
 	Mayor: "We must say di[wave]NO[/wave] to tyranny..."
 	=> END
 	
-if not received_mayor_gift
+if not has_autograph
 	Mayor: Well butter my tail and call me a biscuit, you've done it!
 	Mayor: Take this signed photograph of me as a sign of gratitude.
 	Mayor: I was lookin' rather dashing that day if I do say so myself.
-	set received_mayor_gift = true
+	set has_autograph = true
 	do reveal_item("ThadPhoto")
 	=> END
 

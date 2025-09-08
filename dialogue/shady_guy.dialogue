@@ -1,11 +1,12 @@
 ~ start
+set voice_pitch = 0.2
 if not shady_encountered
 	=> first_encounter
 
-if received_mayor_gift
+if has_autograph
 	=> receive_autograph
-
-# Add some logic for repeating the requirements
+else
+	=> second_encounter
 
 => END
 
@@ -24,6 +25,11 @@ if received_mayor_gift
 ???: Somethin' I could pawn quick and easy. Signed baseball card, gold necklace, a kidney. You name it, I'm flexible.
 ???: Bring me somethin' like that and this ring is yours.
 set shady_encountered = true
+=> END
+
+~ second_encounter
+???: Like I said, you need a bribe, a password, and a ring to get in.
+???: Get me something valuable, and I might be able to part with this old jewlery o' mine.
 => END
 
 ~ receive_autograph

@@ -17,7 +17,7 @@
 
         - [ ] RING - Shady Guy & Fishing
           - [ ] Go to sewers, fish, find ring
-            - [ ] Give autograph to shady concavenator, receive fishing rod
+            - [x] Give autograph to shady concavenator, drops ring into sewer
               - [x] Thaddeus gives you an autographed picture as a reward
                 - [x] Trash minigame
 
@@ -32,20 +32,22 @@
 # Non-critical items
 
 ## Complex
-- [ ] Dialogue voice bleeps
+- [x] Dialogue voice bleeps
+- [ ] Scene transition animation
 - [ ] Add bricks / more decor to museum
 - [ ] Add some more to the prison?
 - [ ] Add a failure condition for turtle run
 - [ ] Add some pointless interactables to the cafe
+- [ ] Add sweating animation to turtles / healthbar
 
 ## Medium 
 
 - [ ] Add cabbage cart guy yelling
-- [ ] Make player unable to interact during dialogue
+- [ ] Hovering inspect overlay changes cursor
 
 ## Easy
 
-- [ ] Force player to stand still during dialogue (both animation-wise and physically)
+- [x] Make player unable to interact during dialogue
+- [x] Force player to stand still during dialogue (both animation-wise and physically)
 - [ ] Borders to levels
-- [ ] Add sweating animation to turtles / healthbar
 - [ ] Fix hole in player sprite

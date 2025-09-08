@@ -1,0 +1,110 @@
+[gd_scene load_steps=18 format=3 uid="uid://cm7w2nu8osy6p"]
+
+[ext_resource type="Texture2D" uid="uid://cfqbo18uq5smd" path="res://sprites/env/interior_precinct.png" id="1_hp5xx"]
+[ext_resource type="Script" path="res://scripts/area_precinct.gd" id="1_i4eo7"]
+[ext_resource type="Texture2D" uid="uid://dq4ireh4oim61" path="res://sprites/env/interior_precinct_foreground.png" id="2_ye4fd"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="3_cpvdm"]
+[ext_resource type="Script" path="res://scripts/npc_controller.gd" id="3_fjh8y"]
+[ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="4_2p61r"]
+[ext_resource type="Texture2D" uid="uid://dy33g2kowcutj" path="res://sprites/env/precinct_door.png" id="4_23f2o"]
+[ext_resource type="Texture2D" uid="uid://bklqc2o0xmni3" path="res://sprites/chars/prisoner_1.png" id="4_i1fd3"]
+[ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="5_05d5m"]
+[ext_resource type="AudioStream" uid="uid://gs8qkauwrwjf" path="res://audio/music/hotel_2.mp3" id="10_fs2dv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8ex6"]
+atlas = ExtResource("4_i1fd3")
+region = Rect2(0, 0, 54, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fivrw"]
+atlas = ExtResource("4_i1fd3")
+region = Rect2(54, 0, 54, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3h6n"]
+atlas = ExtResource("4_i1fd3")
+region = Rect2(108, 0, 54, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hy3fk"]
+atlas = ExtResource("4_i1fd3")
+region = Rect2(162, 0, 54, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bgdht"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8ex6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fivrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3h6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hy3fk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttbrg"]
+size = Vector2(2000, 47)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k32r2"]
+size = Vector2(46, 68)
+
+[node name="Precinct" type="Node2D"]
+script = ExtResource("1_i4eo7")
+street_scene = "res://scenes/areas/street.tscn"
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("1_hp5xx")
+
+[node name="Prisoner1" type="Node2D" parent="Background"]
+position = Vector2(105, 32)
+script = ExtResource("3_fjh8y")
+face_player = true
+
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="Background/Prisoner1"]
+sprite_frames = SubResource("SpriteFrames_bgdht")
+autoplay = "default"
+
+[node name="Interactable" type="Node2D" parent="Background/Prisoner1"]
+script = ExtResource("3_cpvdm")
+
+[node name="Foreground" type="Sprite2D" parent="Background"]
+texture = ExtResource("2_ye4fd")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+position = Vector2(0, -100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
+position = Vector2(0, 175.5)
+shape = SubResource("RectangleShape2D_ttbrg")
+
+[node name="PrecinctDoor" type="Area2D" parent="Background"]
+position = Vector2(-380, 19)
+script = ExtResource("3_cpvdm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/PrecinctDoor"]
+shape = SubResource("RectangleShape2D_k32r2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/PrecinctDoor"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+texture = ExtResource("4_23f2o")
+
+[node name="Player" parent="." instance=ExtResource("5_05d5m")]
+position = Vector2(-375, 30)
+
+[node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_2p61r")]
+position = Vector2(0, 5)
+player = NodePath("../Player")
+bounds = Vector4(-200, -1000, 400, 1000)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_fs2dv")
+volume_db = -20.0
+autoplay = true
+
+[connection signal="activated" from="Background/PrecinctDoor" to="." method="_on_precinct_door_activated"]

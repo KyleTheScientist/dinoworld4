@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vcn7c5b7usdr"
-path="res://.godot/imported/jail.png-3a2dd1c70727280a89328f64b94be4af.ctex"
+uid="uid://75boypgen8f2"
+path="res://.godot/imported/donut_box.png-abc530b818a559683c8e3fb8f5b8e689.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/env/jail.png"
-dest_files=["res://.godot/imported/jail.png-3a2dd1c70727280a89328f64b94be4af.ctex"]
+source_file="res://sprites/env/donut_box.png"
+dest_files=["res://.godot/imported/donut_box.png-abc530b818a559683c8e3fb8f5b8e689.ctex"]
 
 [params]
 

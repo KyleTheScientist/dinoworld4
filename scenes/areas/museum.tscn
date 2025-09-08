@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://d0i7dn8leov6p" path="res://sprites/env/fence.png" id="18_7mr07"]
 [ext_resource type="AudioStream" uid="uid://s6b50413m500" path="res://audio/surprise.wav" id="18_psd7e"]
 [ext_resource type="AudioStream" uid="uid://bwlsreglin65p" path="res://audio/music/Trouble Makers (Loopable).wav" id="20_yikfb"]
-[ext_resource type="PackedScene" uid="uid://bliitmim74tfx" path="res://scenes/cop.tscn" id="22_x482s"]
+[ext_resource type="PackedScene" uid="uid://bliitmim74tfx" path="res://scenes/npcs/cop.tscn" id="22_x482s"]
 [ext_resource type="Texture2D" uid="uid://dgf4uutpj684n" path="res://sprites/env/museum_doors.png" id="25_amfeu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]

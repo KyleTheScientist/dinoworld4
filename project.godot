@@ -19,7 +19,7 @@ config/dynamic_fonts/use_oversampling=true
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-GameState="*res://scripts/game_state.gd"
+GameState="*res://scenes/game_state.tscn"
 
 [dialogue_manager]
 

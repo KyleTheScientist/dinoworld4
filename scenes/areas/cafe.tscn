@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/effects/2d_light.png" id="8_fxpun"]
 [ext_resource type="Texture2D" uid="uid://dfkidwno537k0" path="res://sprites/chars/turtles.png" id="9_0tsrj"]
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="9_3wgph"]
-[ext_resource type="PackedScene" uid="uid://h3n1dchn2cfc" path="res://scenes/shopkeep.tscn" id="9_gg0lw"]
+[ext_resource type="PackedScene" uid="uid://h3n1dchn2cfc" path="res://scenes/npcs/shopkeep.tscn" id="9_gg0lw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
 size = Vector2(2000, 47)
@@ -128,7 +128,6 @@ texture = ExtResource("8_fxpun")
 [node name="Player" parent="." instance=ExtResource("8_cqsvi")]
 z_index = 1
 position = Vector2(-277, -19)
-speed = 100.0
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_3wgph")]
 position = Vector2(0, -64)

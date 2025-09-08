@@ -7,12 +7,12 @@ func _ready() -> void:
 	$WedgeL.visible = not GameState.wedge_l_removed
 	$WedgeR.visible = not GameState.wedge_r_removed
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not rolling: 
 		return
-		
-	$WheelR.rotation_degrees = int(position.x * 1.5)
-	$WheelL.rotation_degrees = int(position.x * 1.5)
+	
+	$WheelR.rotation_degrees = int(position.x * 3)
+	$WheelL.rotation_degrees = int(position.x * 3)
 	
 func _on_wedge_activated(node: Interactable) -> void:
 	node.visible = false
