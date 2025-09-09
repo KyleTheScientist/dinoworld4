@@ -1,19 +1,20 @@
-[gd_scene load_steps=48 format=3 uid="uid://cvs2xi6yobcus"]
+[gd_scene load_steps=56 format=3 uid="uid://cvs2xi6yobcus"]
 
 [ext_resource type="Script" path="res://scripts/area_museum.gd" id="1_o1ntn"]
 [ext_resource type="Texture2D" uid="uid://djd218i50ysjt" path="res://sprites/effects/portal.png" id="2_2dhan"]
 [ext_resource type="Resource" uid="uid://q47opa2setdu" path="res://dialogue/cop_intro.dialogue" id="2_ndiwl"]
 [ext_resource type="SpriteFrames" uid="uid://cml3fuiqxd603" path="res://sprites/chars/dino_nude.tres" id="3_06uux"]
+[ext_resource type="Texture2D" uid="uid://shq6wjdantve" path="res://sprites/env/interior_museum.png" id="3_x2av8"]
 [ext_resource type="AudioStream" uid="uid://fyt3ymmaoj81" path="res://audio/portal.mp3" id="4_t3ipe"]
 [ext_resource type="AudioStream" uid="uid://0visoin3bpy4" path="res://audio/bloop.wav" id="5_dc0kn"]
 [ext_resource type="AudioStream" uid="uid://4eyv3jm08kqr" path="res://audio/power_up.wav" id="6_3khmg"]
 [ext_resource type="AudioStream" uid="uid://c1d7gbuqruweu" path="res://audio/power_down.wav" id="7_oi336"]
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="8_2h0cu"]
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="9_rl1fs"]
-[ext_resource type="Texture2D" uid="uid://cchgto4pfhob4" path="res://sprites/env/museum.png" id="10_phhav"]
 [ext_resource type="SpriteFrames" uid="uid://d0emq73qwk2cv" path="res://sprites/chars/dino.tres" id="10_v8mqf"]
 [ext_resource type="Script" path="res://scripts/mannequin.gd" id="11_iy6ha"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="12_6um4e"]
+[ext_resource type="Texture2D" uid="uid://buerdgu5wjgn5" path="res://sprites/env/decor_museum_poster.png" id="12_a0hvr"]
 [ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="12_x0157"]
 [ext_resource type="Texture2D" uid="uid://cwxahbcqgijet" path="res://sprites/env/mannequin.png" id="13_8gj0n"]
 [ext_resource type="AudioStream" uid="uid://b55oxj3fnce3d" path="res://audio/click.wav" id="17_5cslm"]
@@ -97,7 +98,65 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_655ja"]
-size = Vector2(40, 68)
+size = Vector2(40, 55)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ktph"]
+atlas = ExtResource("12_a0hvr")
+region = Rect2(0, 0, 51, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glnjg"]
+atlas = ExtResource("12_a0hvr")
+region = Rect2(51, 0, 51, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4lpq"]
+atlas = ExtResource("12_a0hvr")
+region = Rect2(102, 0, 51, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4tbh"]
+atlas = ExtResource("12_a0hvr")
+region = Rect2(153, 0, 51, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17jyt"]
+atlas = ExtResource("12_a0hvr")
+region = Rect2(204, 0, 51, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5ous"]
+atlas = ExtResource("12_a0hvr")
+region = Rect2(0, 0, 51, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_34l3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ktph")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glnjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4lpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4tbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17jyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glnjg")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_p5ous")
+}],
+"loop": true,
+"name": &"rustle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_psv2q"]
 size = Vector2(93, 98)
@@ -827,15 +886,16 @@ _data = {
 "museum_cop_leave": SubResource("Animation_lvrr8")
 }
 
-[node name="Museum" type="Node2D"]
+[node name="Museum" type="Node2D" node_paths=PackedStringArray("poster")]
 script = ExtResource("1_o1ntn")
 cop_dialogue = ExtResource("2_ndiwl")
 street_scene = "res://scenes/areas/street.tscn"
+poster = NodePath("Background/Poster")
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -100
 position = Vector2(-170, -152)
-texture = ExtResource("10_phhav")
+texture = ExtResource("3_x2av8")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Background"]
 visible = false
@@ -877,18 +937,40 @@ animation = &"empty"
 autoplay = "empty"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Shrine"]
-position = Vector2(30, 7)
+position = Vector2(-3, 7)
 shape = SubResource("RectangleShape2D_655ja")
 
 [node name="Fence" type="Sprite2D" parent="Background/Shrine"]
 position = Vector2(0, 30)
 texture = ExtResource("18_7mr07")
 
+[node name="Poster" type="Area2D" parent="Background"]
+position = Vector2(295, 111)
+script = ExtResource("12_6um4e")
+is_triggerable = false
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Background/Poster"]
+sprite_frames = SubResource("SpriteFrames_34l3m")
+animation = &"rustle"
+autoplay = "default"
+frame_progress = 0.643038
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Poster"]
+visible = false
+position = Vector2(5, 4.5)
+shape = SubResource("RectangleShape2D_655ja")
+
+[node name="Change" type="AudioStreamPlayer" parent="Background/Poster"]
+stream = ExtResource("12_x0157")
+volume_db = -6.545
+pitch_scale = 1.5
+
 [node name="Doors" type="Area2D" parent="Background"]
 position = Vector2(705, 103)
 script = ExtResource("12_6um4e")
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Doors"]
+modulate = Color(0.509286, 0.509286, 0.509286, 1)
 position = Vector2(0, -73)
 texture = ExtResource("25_amfeu")
 
@@ -971,6 +1053,7 @@ volume_db = -12.0
 
 [connection signal="activated" from="Background/Mannequin/Interactable" to="Background/Mannequin" method="_on_interactable_activated"]
 [connection signal="activated" from="Background/Shrine" to="." method="_on_shrine_activated"]
+[connection signal="activated" from="Background/Poster" to="." method="_on_poster_activated"]
 [connection signal="activated" from="Background/Doors" to="." method="_on_doors_activated"]
 [connection signal="animation_finished" from="IntroAnim" to="." method="_on_intro_anim_animation_finished"]
 [connection signal="animation_finished" from="CopAnim" to="." method="_on_cop_animation_finished"]

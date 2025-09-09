@@ -1,8 +1,8 @@
 ~ start
 set voice_pitch = 0.5
-Cop: Someone has stolen a piece of this ancient relic!
-Cop: The mayor is gonna kill me! 
-Cop: A heist of this magnitude, right in the middle of his re-election campaign?
-Cop: I've got to get back to the station and notify the chief, immediately.
+Tricericop: Someone has stolen a piece of this ancient relic!
+Tricericop: The mayor is gonna kill me! 
+Tricericop: A heist of this magnitude, right in the middle of his re-election campaign?
+Tricericop: I've got to get back to the station and notify the chief, immediately.
 do cop_leave()
 => END

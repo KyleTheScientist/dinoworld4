@@ -1,0 +1,105 @@
+~ start
+
+if not prisoners_encountered
+	=> first_encounter
+	
+if not has_wallet and has_candy:
+	=> got_candy
+	
+if has_wallet and not has_candy:
+	=> got_wallet
+	
+if has_wallet and has_candy:
+	=> got_both
+	
+set voice_pitch = 0.75
+Peck: You gotta admit, those tiny dinos look delicious.
+set voice_pitch = 0.1
+Terry: I hope they never let you out of here.
+set voice_pitch = 0.75
+Peck: Yowch! Hurtful.
+=> END
+
+~ got_candy
+set voice_pitch = 0.75
+Peck: I can't believe it! You got the snacks! See Terry! I told you dinos can be alright!
+set voice_pitch = 0.1
+Terry: *Grumbles*
+set voice_pitch = 0.75
+Peck: Now, don't forget, you gotta get Terry's wallet too. Where'd you say you left it?
+set voice_pitch = 0.1
+Terry: In the museum.
+set voice_pitch = 0.75
+Peck: In the museum! You got this kid. Just one more thing and that password is yours!
+=> END
+
+~ got_wallet
+set voice_pitch = 0.1
+Terry: My wallet! Hot dog! I wasn't sure I'd ever get this back.
+set voice_pitch = 0.75
+Peck: I can't believe you got his thing first! Do you know how hungry I-
+set voice_pitch = 0.1
+Terry: Peck.
+set voice_pitch = 0.75
+Peck: Ahem. Sorry, I get a little crabby when I'm hungry. 
+set voice_pitch = 0.1
+Terry: Good work kid. Just go get this psycho's candy and I'll give you the password.
+=> END
+
+~ got_both
+# TODO
+=> END
+
+~ first_encounter
+set voice_pitch = 0.75
+Peck: Hey Terry, check it out! We got a visitor.
+set voice_pitch = 0.1
+Terry: Forget it, he's a dino. He ain't gonna be any help.
+set voice_pitch = 0.75
+Peck: Don't be like that, we haven't even talked to the guy!
+Peck: Nice to meet ya, I'm Peck, and this large pterosaur fellow you see before you is Terry.
+set voice_pitch = 0.1
+Terry: *Grumbles*
+set voice_pitch = 0.75
+Peck: As you can see, we're in a bit of a bind right now.
+Peck: Ever since Mayor Bronto took office, pterosaurs have been gettin' rounded up for made-up crimes. 
+Peck: Terry just got busted for walkin' down the street! How ridiculous is that?
+set voice_pitch = 0.1
+Terry: Now tell him why you're in here.
+set voice_pitch = 0.75
+Peck: I don't see how that's relevant...
+set voice_pitch = 0.1
+Terry: He tried to eat a microraptor.
+set voice_pitch = 0.75
+Peck: [wave]Allegedly[/wave] tried to eat a microraptor.
+set voice_pitch = 0.1
+Terry: You've told me on multiple occasions that you think they'd be the tastiest dinosaur.
+set voice_pitch = 0.75
+Peck: [wave]MOVING ON![/wave]
+Peck: As you can imagine, creature comforts are a scarce commodity here in the slammer.
+Peck: We could really use someone like yourself to help us get a few items. 
+set voice_pitch = 0.1
+Terry: We're not asking for much. I just need you to get my wallet from the museum.
+Terry: I work there as a janitor and I dropped it early this morning when I got spooked by a loud noise in the foyer.
+Terry: Sounded like something was crawling in the walls!
+Terry: I winged it out of there and got busted on my way back home. 
+Terry: I don't even care about the money. The wallet has a picture of my daughter inside...
+Terry: I just want to be able to see her while I'm in here.
+set voice_pitch = 0.75
+Peck: And I just want a snack!
+set voice_pitch = 0.1
+Terry: Oh brother...
+set voice_pitch = 0.75
+Peck: There's a kid who sells these dino snacks on main street. Haven't had the things in months! 
+Peck: I'd really appreciate it if you could pick up a handful of those and bring em' here. 
+Peck: And if ya help us out, my friend Terry here knows today's password to the [wave]clubhouse[/wave]!
+set voice_pitch = 0.1
+Terry: Hey man, I could get in trouble for sharing that with a stranger!
+set voice_pitch = 0.75
+Peck: Bring us the loot and we'll give you the key to the hottest spot in town.
+set voice_pitch = 0.1
+Terry: *Sighs* Yeah. I'll tell you if you help me out.
+set voice_pitch = 0.75
+Peck: Whaddya say, kid?
+set prisoners_encountered = true
+=> END

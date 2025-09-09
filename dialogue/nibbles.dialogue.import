@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://baei5t2lclhu1"
+path="res://.godot/imported/nibbles.dialogue-9d92e7a00b240cbf44d2005d15703c49.tres"
+
+[deps]
+
+source_file="res://dialogue/nibbles.dialogue"
+dest_files=["res://.godot/imported/nibbles.dialogue-9d92e7a00b240cbf44d2005d15703c49.tres"]
+
+[params]
+
+defaults=true

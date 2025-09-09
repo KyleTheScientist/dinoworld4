@@ -7,30 +7,30 @@ if not cop_fed
 	if has_donuts
 		=> receive_donuts
 	else
-		Cop: I knew I should've gotten breakfast instead of stopping those crimes...
+		Tricericop: I knew I should've gotten breakfast instead of stopping those crimes...
 else
-	Cop: Just give me a few minutes to digest...
+	Tricericop: Just give me a few minutes to digest...
 => END
 
 ~ first_encounter
-Cop: *Breathing heavily*
-Cop: [wave]You there...[/wave]
-Cop: I need your help. It's an emergency.
-Cop: I need you to get me...
-Cop: [wave]A donut.[/wave]
-Cop: I'm so hungry I couldn't even make it to the station!
-Cop: My favorite cafe is right there on the other side of the museum...
-Cop: Please... the fate of the city depends on it...
+Tricericop: *Breathing heavily*
+Tricericop: [wave]You there...[/wave]
+Tricericop: I need your help. It's an emergency.
+Tricericop: I need you to get me...
+Tricericop: [wave]A donut.[/wave]
+Tricericop: I'm so hungry I couldn't even make it to the station!
+Tricericop: My favorite cafe is right there on the other side of the museum...
+Tricericop: Please... the fate of the city depends on it...
 set cop_encountered = true
 => END
 
 ~ receive_donuts
-Cop: Oh, thank god, donuts! Sweet, delicious donuts.
-Cop: *Horrible devouring sounds*
-Cop: Mmmf... fank you fo mupch...
-Cop: *swallows* 
-Cop: Here, take this. It's a old pocketwatch I found in the paddy wagon after arresting some hooligan earlier.
-Cop: Might be worth something!
+Tricericop: Oh, thank god, donuts! Sweet, delicious donuts.
+Tricericop: *Horrible devouring sounds*
+Tricericop: Mmmf... fank you fo mupch...
+Tricericop: *swallows* 
+Tricericop: Here, take this. It's a old pocketwatch I found in the paddy wagon after arresting some hooligan earlier.
+Tricericop: Might be worth something!
 set cop_fed = true
 set has_bribe = true
 do reveal_item("Watch")

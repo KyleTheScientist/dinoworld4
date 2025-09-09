@@ -1,0 +1,18 @@
+~ start
+set voice_pitch = 1.0
+if not nibbles_encountered
+	=> first_encounter
+=> END
+
+~ first_encounter
+Nicky Nibbles: Hiya mista! 
+Nicky Nibbles: 'Round these parts they call me [wave]Nicky Nibbles![/wave] 
+Nicky Nibbles: Due to lax labor laws I'm workin' 12 hours a day sellin' these here dino snacks despite only being 10 years old!
+Nicky Nibbles: Crazy times we live in, am I right?
+Nicky Nibbles: Anyway, would you like to buy some of my world famous dino snacks? Family recipe!
+Nicky Nibbles: It'll only cost ya two pennies!
+Nicky Nibbles: It used to cost one penny, but inflation is [wave]really[/wave] drivin' up prices.
+=> END
+
+
+

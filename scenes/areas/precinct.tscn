@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cm7w2nu8osy6p"]
+[gd_scene load_steps=26 format=3 uid="uid://cm7w2nu8osy6p"]
 
 [ext_resource type="Texture2D" uid="uid://cfqbo18uq5smd" path="res://sprites/env/interior_precinct.png" id="1_hp5xx"]
 [ext_resource type="Script" path="res://scripts/area_precinct.gd" id="1_i4eo7"]
@@ -8,7 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="4_2p61r"]
 [ext_resource type="Texture2D" uid="uid://dy33g2kowcutj" path="res://sprites/env/precinct_door.png" id="4_23f2o"]
 [ext_resource type="Texture2D" uid="uid://bklqc2o0xmni3" path="res://sprites/chars/prisoner_1.png" id="4_i1fd3"]
+[ext_resource type="Resource" uid="uid://c1vu42fp0jalr" path="res://dialogue/prisoners.dialogue" id="4_k3ewa"]
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="5_05d5m"]
+[ext_resource type="Texture2D" uid="uid://cm17vayrhao0s" path="res://sprites/chars/prisoner_2.png" id="6_bbl3w"]
+[ext_resource type="Texture2D" uid="uid://crr8npucyux84" path="res://sprites/env/decor_precinct_door.png" id="7_rlb4k"]
 [ext_resource type="AudioStream" uid="uid://gs8qkauwrwjf" path="res://audio/music/hotel_2.mp3" id="10_fs2dv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8ex6"]
@@ -47,6 +50,42 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8t7mo"]
+atlas = ExtResource("6_bbl3w")
+region = Rect2(0, 0, 75, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qy5dq"]
+atlas = ExtResource("6_bbl3w")
+region = Rect2(75, 0, 75, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtvvr"]
+atlas = ExtResource("6_bbl3w")
+region = Rect2(150, 0, 75, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42ix6"]
+atlas = ExtResource("6_bbl3w")
+region = Rect2(225, 0, 75, 90)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnk3a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8t7mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qy5dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtvvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42ix6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttbrg"]
 size = Vector2(2000, 47)
 
@@ -62,8 +101,9 @@ z_index = -100
 texture = ExtResource("1_hp5xx")
 
 [node name="Prisoner1" type="Node2D" parent="Background"]
-position = Vector2(105, 32)
+position = Vector2(94, 31)
 script = ExtResource("3_fjh8y")
+dialogue = ExtResource("4_k3ewa")
 face_player = true
 
 [node name="NPCAnimator" type="AnimatedSprite2D" parent="Background/Prisoner1"]
@@ -73,8 +113,31 @@ autoplay = "default"
 [node name="Interactable" type="Node2D" parent="Background/Prisoner1"]
 script = ExtResource("3_cpvdm")
 
+[node name="Prisoner2" type="Node2D" parent="Background"]
+position = Vector2(176, 34)
+script = ExtResource("3_fjh8y")
+dialogue = ExtResource("4_k3ewa")
+face_player = true
+
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="Background/Prisoner2"]
+position = Vector2(-4, -27)
+sprite_frames = SubResource("SpriteFrames_rnk3a")
+autoplay = "default"
+frame_progress = 0.424547
+flip_h = true
+
+[node name="Interactable" type="Node2D" parent="Background/Prisoner2"]
+script = ExtResource("3_cpvdm")
+
 [node name="Foreground" type="Sprite2D" parent="Background"]
+position = Vector2(0, 1)
 texture = ExtResource("2_ye4fd")
+
+[node name="Foreground2" type="Sprite2D" parent="Background"]
+z_index = 1
+z_as_relative = false
+position = Vector2(-61, 5)
+texture = ExtResource("7_rlb4k")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Background"]
 position = Vector2(0, -100)
@@ -98,13 +161,15 @@ texture = ExtResource("4_23f2o")
 position = Vector2(-375, 30)
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_2p61r")]
-position = Vector2(0, 5)
+position = Vector2(0, 4)
 player = NodePath("../Player")
-bounds = Vector4(-200, -1000, 400, 1000)
+bounds = Vector4(-200, -1000, 200, 1000)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_fs2dv")
 volume_db = -20.0
 autoplay = true
 
+[connection signal="activated" from="Background/Prisoner1/Interactable" to="Background/Prisoner1" method="_on_npc_activated"]
+[connection signal="activated" from="Background/Prisoner2/Interactable" to="Background/Prisoner2" method="_on_npc_activated"]
 [connection signal="activated" from="Background/PrecinctDoor" to="." method="_on_precinct_door_activated"]

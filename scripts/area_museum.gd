@@ -3,6 +3,8 @@ extends Node2D
 @export var cop_dialogue: DialogueResource
 @export_file("*.tscn") var street_scene
 
+@export var poster: Interactable
+
 func _ready() -> void:
 	GameState.last_area = "museum"
 	if not GameState.seen_museum_intro:
@@ -10,6 +12,11 @@ func _ready() -> void:
 	else:
 		$Music.play()
 		$Player.global_position.x = $Background/Doors.global_position.x
+		
+	if GameState.prisoners_encountered:
+		poster.get_node("Sprite").play("rustle")
+	poster.is_triggerable = GameState.prisoners_encountered
+	poster.visible = not GameState.poster_torn
 		
 func _on_intro_anim_animation_finished(_anim_name: StringName) -> void:
 	GameState.seen_museum_intro = true
@@ -35,3 +42,13 @@ func _on_doors_activated() -> void:
 		return
 		
 	get_tree().change_scene_to_file(street_scene)
+
+func _on_poster_activated() -> void:
+	if GameState.poster_torn:
+		GameState.reveal_item("Wallet")
+		GameState.has_wallet = true
+	else:
+		poster.get_node("Sprite").visible = false
+		poster.get_node("Change").play()
+		poster.is_triggerable = true
+		GameState.poster_torn = true

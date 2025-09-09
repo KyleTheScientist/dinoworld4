@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cthpwrda2xhow"]
+[gd_scene load_steps=31 format=3 uid="uid://c7jba35nboo05"]
 
 [ext_resource type="Script" path="res://scripts/npc_controller.gd" id="1_175ak"]
 [ext_resource type="Resource" uid="uid://ov1j1bvesvn0" path="res://dialogue/shady_guy.dialogue" id="2_0piil"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://c5f8bt7pw13py"]
+[gd_scene load_steps=75 format=3 uid="uid://c5f8bt7pw13py"]
 
 [ext_resource type="Script" path="res://scripts/area_street.gd" id="1_vurvn"]
 [ext_resource type="Texture2D" uid="uid://bg6dvnd3rkqeu" path="res://sprites/env/dino_city_parallax2.png" id="3_2dj7t"]
@@ -36,14 +36,9 @@
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="22_86tsd"]
 [ext_resource type="PackedScene" uid="uid://q55bopc5e3wy" path="res://scenes/debugger.tscn" id="22_a816s"]
 [ext_resource type="Texture2D" uid="uid://b6miqkunocoif" path="res://sprites/env/cabbage_cart_wheel.png" id="23_lj23j"]
-[ext_resource type="Resource" uid="uid://ov1j1bvesvn0" path="res://dialogue/shady_guy.dialogue" id="40_kjtwv"]
-[ext_resource type="Texture2D" uid="uid://iu1tfqwh2sam" path="res://sprites/chars/shady_guy.png" id="40_y8ubs"]
-[ext_resource type="Texture2D" uid="uid://c78etotrbtmkq" path="res://sprites/env/ring.png" id="42_i4qxu"]
-[ext_resource type="Script" path="res://scripts/ring.gd" id="43_yw7fe"]
-[ext_resource type="AudioStream" uid="uid://b0jcfld5jmg2h" path="res://audio/plop.wav" id="45_m0kaj"]
-[ext_resource type="Texture2D" uid="uid://0k7yhvahlb3f" path="res://sprites/env/decor_street_patch.png" id="45_qf378"]
-[ext_resource type="AudioStream" uid="uid://beptsedlaurpg" path="res://audio/coin.wav" id="46_nss0c"]
-[ext_resource type="Texture2D" uid="uid://ce2kyn88k3pxa" path="res://sprites/effects/smoke_bomb.png" id="48_00ls4"]
+[ext_resource type="PackedScene" uid="uid://c7jba35nboo05" path="res://scenes/npcs/shady.tscn" id="37_w6bat"]
+[ext_resource type="Resource" uid="uid://baei5t2lclhu1" path="res://dialogue/nibbles.dialogue" id="38_g8mtt"]
+[ext_resource type="Texture2D" uid="uid://dj4m15jlpvi3s" path="res://sprites/chars/baker_boy.png" id="38_nf4hd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hv647"]
 
@@ -361,6 +356,34 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../Camera2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.1, 1.0],
+"method": &"shake"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Crash")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_nhcvu"]
 resource_name = "pterosaur_escape"
@@ -449,179 +472,44 @@ _data = {
 "pterosaur_escape": SubResource("Animation_nhcvu")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fl8qb"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(0, 0, 57, 93)
+[sub_resource type="AtlasTexture" id="AtlasTexture_goeau"]
+atlas = ExtResource("38_nf4hd")
+region = Rect2(0, 0, 26, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_og3ih"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(57, 0, 57, 93)
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3np1"]
+atlas = ExtResource("38_nf4hd")
+region = Rect2(26, 0, 26, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qh1cg"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(114, 0, 57, 93)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddp7b"]
+atlas = ExtResource("38_nf4hd")
+region = Rect2(52, 0, 26, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_awk06"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(171, 0, 57, 93)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrl2t"]
+atlas = ExtResource("38_nf4hd")
+region = Rect2(78, 0, 26, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_51g4t"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(228, 0, 57, 93)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y071x"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(285, 0, 57, 93)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_00hwk"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(342, 0, 57, 93)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4loc5"]
-atlas = ExtResource("48_00ls4")
-region = Rect2(399, 0, 57, 93)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_iyq17"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_cbho0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": SubResource("AtlasTexture_goeau")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fl8qb")
+"texture": SubResource("AtlasTexture_r3np1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_og3ih")
+"texture": SubResource("AtlasTexture_ddp7b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qh1cg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_awk06")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_51g4t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y071x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_00hwk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4loc5")
-}, {
-"duration": 1.0,
-"texture": null
-}],
-"loop": false,
-"name": &"default",
-"speed": 10.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b7umq"]
-atlas = ExtResource("40_y8ubs")
-region = Rect2(0, 0, 47, 43)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_irsiq"]
-atlas = ExtResource("40_y8ubs")
-region = Rect2(47, 0, 47, 43)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6t7hj"]
-atlas = ExtResource("40_y8ubs")
-region = Rect2(94, 0, 47, 43)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_827im"]
-atlas = ExtResource("40_y8ubs")
-region = Rect2(141, 0, 47, 43)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yblii"]
-atlas = ExtResource("40_y8ubs")
-region = Rect2(188, 0, 47, 43)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k5lqe"]
-atlas = ExtResource("40_y8ubs")
-region = Rect2(235, 0, 47, 43)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_73lqy"]
-atlas = ExtResource("40_y8ubs")
-region = Rect2(282, 0, 47, 43)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c74s3"]
-atlas = ExtResource("40_y8ubs")
-region = Rect2(329, 0, 47, 43)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n2gyr"]
-atlas = ExtResource("40_y8ubs")
-region = Rect2(0, 43, 47, 43)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_gdrct"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b7umq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_irsiq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6t7hj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_827im")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b7umq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_irsiq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6t7hj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_827im")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yblii")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k5lqe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_73lqy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c74s3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yblii")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k5lqe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_73lqy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c74s3")
+"texture": SubResource("AtlasTexture_mrl2t")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n2gyr")
-}],
-"loop": true,
-"name": &"give",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [node name="Street" type="Node2D" node_paths=PackedStringArray("museum_door", "cafe_door", "sewer_door", "precinct_door", "speakeasy_door", "dumpster", "trash_pile")]
 script = ExtResource("1_vurvn")
-debug = true
 museum_scene = "res://scenes/areas/museum.tscn"
 cafe_scene = "res://scenes/areas/cafe.tscn"
 precinct_scene = "res://scenes/areas/precinct.tscn"
@@ -967,13 +855,18 @@ libraries = {
 "": SubResource("AnimationLibrary_b0e17")
 }
 
-[node name="Fly" type="AudioStreamPlayer2D" parent="Background/Dumpster"]
+[node name="Fly" type="AudioStreamPlayer" parent="Background/Dumpster"]
 stream = ExtResource("13_3lvck")
 
-[node name="Bwoop" type="AudioStreamPlayer2D" parent="Background/Dumpster"]
+[node name="Bwoop" type="AudioStreamPlayer" parent="Background/Dumpster"]
 stream = ExtResource("14_id2nd")
 volume_db = 1.688
 pitch_scale = 0.72
+
+[node name="Crash" type="AudioStreamPlayer" parent="Background/Dumpster"]
+stream = ExtResource("21_cbi1c")
+volume_db = -7.906
+pitch_scale = 1.36
 
 [node name="TrashPile" type="Area2D" parent="Background"]
 position = Vector2(-512, -16)
@@ -1021,45 +914,22 @@ face_player = true
 [node name="Debugger" parent="." instance=ExtResource("22_a816s")]
 visible = false
 
-[node name="Shady" type="Node2D" parent="."]
-position = Vector2(794, -20)
+[node name="Shady" parent="." instance=ExtResource("37_w6bat")]
+
+[node name="Nibbles" type="Node2D" parent="."]
+position = Vector2(454, -11)
 script = ExtResource("4_o0pxp")
-dialogue = ExtResource("40_kjtwv")
+dialogue = ExtResource("38_g8mtt")
+face_player = true
 
-[node name="SmokeBomb" type="AnimatedSprite2D" parent="Shady"]
-z_index = 1
-position = Vector2(4, -25)
-sprite_frames = SubResource("SpriteFrames_iyq17")
-frame = 9
-frame_progress = 1.0
-
-[node name="Change" type="AudioStreamPlayer" parent="Shady/SmokeBomb"]
-stream = ExtResource("13_3lvck")
-
-[node name="NPCAnimator" type="AnimatedSprite2D" parent="Shady"]
-sprite_frames = SubResource("SpriteFrames_gdrct")
-animation = &"give"
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="Nibbles"]
+sprite_frames = SubResource("SpriteFrames_cbho0")
 autoplay = "default"
+frame_progress = 0.93005
+flip_h = true
 
-[node name="Interactable" type="Node2D" parent="Shady"]
+[node name="Interactable" type="Node2D" parent="Nibbles"]
 script = ExtResource("4_u7v5f")
-
-[node name="Ring" type="Sprite2D" parent="Shady"]
-visible = false
-position = Vector2(19, 4)
-texture = ExtResource("42_i4qxu")
-script = ExtResource("43_yw7fe")
-impulse = Vector2(2, -2)
-
-[node name="Plop" type="AudioStreamPlayer" parent="Shady/Ring"]
-stream = ExtResource("45_m0kaj")
-
-[node name="Coin" type="AudioStreamPlayer" parent="Shady/Ring"]
-stream = ExtResource("46_nss0c")
-
-[node name="StreetPatch" type="Sprite2D" parent="Shady"]
-position = Vector2(91, 34)
-texture = ExtResource("45_qf378")
 
 [connection signal="activated" from="Background/Buildings/Precinct/PrecinctDoor" to="." method="_on_precinct_door_activated"]
 [connection signal="activated" from="Background/Buildings/Museum/MuseumDoor" to="." method="_on_museum_door_activated"]
@@ -1074,10 +944,7 @@ texture = ExtResource("45_qf378")
 [connection signal="activated" from="Background/Dumpster/TrashOrigin/Trash/Interactable" to="." method="_on_busted_trash_inspected"]
 [connection signal="activated" from="Background/TrashPile" to="." method="_on_trash_activated"]
 [connection signal="dialogue_finished" from="Mayor" to="." method="_on_mayor_dialogue_finished"]
-[connection signal="dialogue_finished" from="Shady" to="." method="_on_shady_dialogue_finished"]
-[connection signal="frame_changed" from="Shady/SmokeBomb" to="." method="_on_smoke_bomb_frame_changed"]
-[connection signal="activated" from="Shady/Interactable" to="Shady" method="_on_npc_activated"]
-[connection signal="animation_finished" from="Shady/Ring" to="." method="_on_ring_animation_finished"]
+[connection signal="activated" from="Nibbles/Interactable" to="Nibbles" method="_on_npc_activated"]
 
 [editable path="Player"]
 [editable path="Cop"]

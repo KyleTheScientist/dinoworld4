@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu10e03sg7kd3"]
+[gd_scene load_steps=9 format=3 uid="uid://cu10e03sg7kd3"]
 
 [ext_resource type="Script" path="res://scripts/inspect_overlay.gd" id="1_cx7ku"]
 [ext_resource type="Shader" path="res://vignette.gdshader" id="2_epq3q"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cmlnc6cffe610" path="res://sprites/env/signed_photo.png" id="3_pe8e3"]
 [ext_resource type="Texture2D" uid="uid://coqt12e8wxuuk" path="res://sprites/env/pocket_watch.png" id="3_u0ufs"]
 [ext_resource type="Texture2D" uid="uid://croxotw2h74x0" path="res://sprites/env/hatz-poster.png" id="4_erork"]
+[ext_resource type="Texture2D" uid="uid://0m8pxcev0t1h" path="res://sprites/env/pickup_wallet.png" id="4_ol87k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nix7k"]
 shader = ExtResource("2_epq3q")
@@ -39,6 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Watch" type="TextureRect" parent="RevealContainer"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -52,6 +54,24 @@ offset_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_u0ufs")
+stretch_mode = 3
+
+[node name="Wallet" type="TextureRect" parent="RevealContainer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -99.0
+offset_right = 65.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.237365
+pivot_offset = Vector2(65, 99)
+texture = ExtResource("4_ol87k")
 stretch_mode = 3
 
 [node name="Donuts" type="TextureRect" parent="RevealContainer"]
@@ -85,6 +105,8 @@ offset_right = 65.0
 offset_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 0.118682
+pivot_offset = Vector2(65, 99)
 texture = ExtResource("3_pe8e3")
 stretch_mode = 3
 
@@ -148,6 +170,7 @@ texture = ExtResource("4_erork")
 stretch_mode = 5
 
 [connection signal="gui_input" from="RevealContainer/Watch" to="." method="close"]
+[connection signal="gui_input" from="RevealContainer/Wallet" to="." method="close"]
 [connection signal="gui_input" from="RevealContainer/Donuts" to="." method="close"]
 [connection signal="gui_input" from="RevealContainer/ThadPhoto" to="." method="close"]
 [connection signal="gui_input" from="RevealContainer/HatsPoster/HatsPoster" to="." method="close"]

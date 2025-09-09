@@ -21,9 +21,9 @@
               - [x] Thaddeus gives you an autographed picture as a reward
                 - [x] Trash minigame
 
-        - [ ] BRIBE - Police officer
-          - [ ] Give donuts to the cop, receive bribe
-            - [ ] Obtain the donuts by returning the turtle to Rosie (need acquire donuts anim)
+        - [x] BRIBE - Police officer
+          - [x] Give donuts to the cop, receive bribe
+            - [x] Obtain the donuts by returning the turtle to Rosie (need acquire donuts anim)
               - [x] Obtain the turtle by completing the turtle catch minigame in sewers
                 - [x] Enter sewers after moving person/object from sewer grate?
 
@@ -39,6 +39,7 @@
 - [ ] Add a failure condition for turtle run
 - [ ] Add some pointless interactables to the cafe
 - [ ] Add sweating animation to turtles / healthbar
+- [ ] Add "roar" as dialogue response option
 
 ## Medium 
 

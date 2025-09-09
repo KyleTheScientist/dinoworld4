@@ -82,7 +82,7 @@ func _on_dumpster_activated() -> void:
 	GameState.has_trash = false
 	if GameState.trash_removed == 3:
 		GameState.trash_disposed_of = true
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(.5).timeout
 		dumpster.get_node("AnimationPlayer").play("pterosaur_escape")
 
 func _on_busted_trash_inspected() -> void:
