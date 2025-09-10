@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dweuu2l0m76vd"]
+[gd_scene load_steps=61 format=3 uid="uid://dweuu2l0m76vd"]
 
 [ext_resource type="Script" path="res://scripts/area_sewer.gd" id="1_m5rm0"]
 [ext_resource type="Texture2D" uid="uid://c1lhjdtfn4gdn" path="res://sprites/env/sewer.png" id="2_7s8i4"]
@@ -12,8 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://bfilky7p8iikm" path="res://sprites/chars/turtlette.png" id="7_orabc"]
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="8_uijvl"]
 [ext_resource type="Texture2D" uid="uid://dp12dqysae3ob" path="res://sprites/effects/sewer_water.png" id="9_m2aty"]
+[ext_resource type="Texture2D" uid="uid://b8tfa57t306si" path="res://sprites/env/decor_fishing_rod.png" id="13_ntcxu"]
 [ext_resource type="PackedScene" uid="uid://dc4w22copbcmu" path="res://scenes/turtle_minigame.tscn" id="13_tam7o"]
 [ext_resource type="Texture2D" uid="uid://d4aiid6o1qukb" path="res://sprites/env/cave_door.png" id="14_4t2b5"]
+[ext_resource type="Texture2D" uid="uid://8t0upbhtv6eq" path="res://sprites/env/decor_fishing_rod_water.png" id="14_4x6sp"]
+[ext_resource type="Script" path="res://scripts/fishing_rod.gd" id="14_53hpl"]
+[ext_resource type="Texture2D" uid="uid://dnu1pmyxkseau" path="res://sprites/env/decor_fishing_rod_handle.png" id="15_plbrj"]
+[ext_resource type="Texture2D" uid="uid://ddjnog14uja0t" path="res://sprites/env/decor_fishing_rod_magnet.png" id="17_kcc5k"]
+[ext_resource type="Texture2D" uid="uid://0k7yhvahlb3f" path="res://sprites/env/decor_street_patch.png" id="18_e211w"]
+[ext_resource type="Texture2D" uid="uid://c78etotrbtmkq" path="res://sprites/env/ring.png" id="18_g7430"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
 size = Vector2(2000, 47)
@@ -51,7 +58,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 2.0
+"speed": 4.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ocspd"]
@@ -201,6 +208,220 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4pr8"]
 size = Vector2(46, 78.5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdik4"]
+atlas = ExtResource("13_ntcxu")
+region = Rect2(0, 0, 50, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gw008"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdik4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_pq133"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(0, 0, 0, 119)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Handle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ripples:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hook:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-7, 88)]
+}
+
+[sub_resource type="Animation" id="Animation_4oj3m"]
+resource_name = "cast"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(-0.5, 0, -0.5, 24), PackedVector2Array(-0.5, 0, -0.5, 119)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Handle:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.6),
+"update": 0,
+"values": [6.26573, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ripples:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hook:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-7, -7), Vector2(-7, 90)]
+}
+
+[sub_resource type="Animation" id="Animation_k8e68"]
+resource_name = "reel"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Line2D:points")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.6, 1),
+"update": 0,
+"values": [PackedVector2Array(-0.5, 0, -0.5, 119), PackedVector2Array(-0.5, 0, -0.5, 24)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Handle:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.6, 1),
+"update": 0,
+"values": [0.0, 6.26573]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ripples:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hook:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.6, 1),
+"update": 0,
+"values": [Vector2(-7, 90), Vector2(-7, -7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mo8fe"]
+_data = {
+"RESET": SubResource("Animation_pq133"),
+"cast": SubResource("Animation_4oj3m"),
+"reel": SubResource("Animation_k8e68")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n833u"]
+atlas = ExtResource("14_4x6sp")
+region = Rect2(0, 0, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gbib"]
+atlas = ExtResource("14_4x6sp")
+region = Rect2(16, 0, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqtcf"]
+atlas = ExtResource("14_4x6sp")
+region = Rect2(32, 0, 16, 4)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gibgl"]
+atlas = ExtResource("14_4x6sp")
+region = Rect2(48, 0, 16, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pdauc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n833u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gbib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqtcf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gibgl")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
 [node name="Sewer" type="Node2D" node_paths=PackedStringArray("turtle_minigame")]
 script = ExtResource("1_m5rm0")
 street_scene = "res://scenes/areas/street.tscn"
@@ -221,7 +442,7 @@ shape = SubResource("RectangleShape2D_3rjlc")
 position = Vector2(13, 51)
 sprite_frames = SubResource("SpriteFrames_qj4wh")
 autoplay = "default"
-frame_progress = 0.02274
+frame_progress = 0.690229
 
 [node name="TurtleTable" type="AnimatedSprite2D" parent="Background"]
 position = Vector2(206, 17)
@@ -311,6 +532,81 @@ visible = false
 position = Vector2(165, 17)
 scale = Vector2(1, 1)
 
+[node name="CaveDoor" type="Area2D" parent="Background"]
+position = Vector2(-349, -22)
+script = ExtResource("4_go2c2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/CaveDoor"]
+position = Vector2(0, 6)
+sprite_frames = SubResource("SpriteFrames_6bvor")
+animation = &"unlocked"
+autoplay = "locked"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/CaveDoor"]
+position = Vector2(0, 8.75)
+shape = SubResource("RectangleShape2D_c4pr8")
+
+[node name="FishingRod" type="AnimatedSprite2D" parent="Background"]
+z_index = 1
+position = Vector2(-193, -6)
+sprite_frames = SubResource("SpriteFrames_gw008")
+script = ExtResource("14_53hpl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/FishingRod"]
+libraries = {
+"": SubResource("AnimationLibrary_mo8fe")
+}
+
+[node name="Line2D" type="Line2D" parent="Background/FishingRod"]
+z_index = -1
+position = Vector2(-7.5, -31)
+points = PackedVector2Array(0, 0, 0, 119)
+width = 1.0
+default_color = Color(0.111197, 0.111197, 0.111197, 1)
+
+[node name="Handle" type="Sprite2D" parent="Background/FishingRod"]
+position = Vector2(6, 25)
+rotation = 6.28319
+texture = ExtResource("15_plbrj")
+centered = false
+offset = Vector2(0, -1)
+
+[node name="Ripples" type="AnimatedSprite2D" parent="Background/FishingRod"]
+position = Vector2(-7, 88)
+sprite_frames = SubResource("SpriteFrames_pdauc")
+autoplay = "default"
+frame_progress = 0.705122
+
+[node name="Interactable" type="Node2D" parent="Background/FishingRod"]
+position = Vector2(7, 25)
+script = ExtResource("4_go2c2")
+range = 10
+
+[node name="Hook" type="Node2D" parent="Background/FishingRod"]
+position = Vector2(-7, 88)
+script = ExtResource("4_go2c2")
+
+[node name="Magnet" type="Sprite2D" parent="Background/FishingRod/Hook"]
+z_index = -1
+position = Vector2(-1, 0)
+texture = ExtResource("17_kcc5k")
+
+[node name="Loot1" type="Sprite2D" parent="Background/FishingRod/Hook/Magnet"]
+visible = false
+position = Vector2(3, 3)
+texture = ExtResource("18_g7430")
+
+[node name="Loot2" type="Sprite2D" parent="Background/FishingRod/Hook/Magnet"]
+visible = false
+position = Vector2(2, 4)
+texture = ExtResource("18_g7430")
+
+[node name="WaterPatch" type="Sprite2D" parent="Background/FishingRod"]
+modulate = Color(0.621524, 0.621524, 0.621524, 1)
+z_index = -1
+position = Vector2(-7, 93)
+texture = ExtResource("18_e211w")
+
 [node name="Player" parent="." instance=ExtResource("7_ikmtk")]
 z_index = 1
 position = Vector2(356, 7)
@@ -323,27 +619,16 @@ light_mask = 2
 z_index = -1
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_uijvl")]
-position = Vector2(0, -18)
+position = Vector2(-1, -18)
 player = NodePath("../Player")
 bounds = Vector4(-150, -1000, 150, 1000)
-
-[node name="CaveDoor" type="Area2D" parent="."]
-position = Vector2(-349, -22)
-script = ExtResource("4_go2c2")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CaveDoor"]
-position = Vector2(0, 6)
-sprite_frames = SubResource("SpriteFrames_6bvor")
-animation = &"unlocked"
-autoplay = "locked"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CaveDoor"]
-position = Vector2(0, 8.75)
-shape = SubResource("RectangleShape2D_c4pr8")
 
 [connection signal="activated" from="Background/TurtleTable/Interactable" to="." method="_on_turtle_activated"]
 [connection signal="activated" from="Background/Ladder" to="." method="_on_ladder_activated"]
 [connection signal="finished" from="Background/TurtleMinigame" to="." method="_on_turtle_minigame_finished"]
-[connection signal="activated" from="CaveDoor" to="." method="_on_cave_door_activated"]
+[connection signal="activated" from="Background/CaveDoor" to="." method="_on_cave_door_activated"]
+[connection signal="animation_finished" from="Background/FishingRod/AnimationPlayer" to="Background/FishingRod" method="_on_reel_animation_finished"]
+[connection signal="activated" from="Background/FishingRod/Interactable" to="Background/FishingRod" method="_on_interactable_activated"]
+[connection signal="activated" from="Background/FishingRod/Hook" to="Background/FishingRod" method="_on_hook_activated"]
 
 [editable path="Player"]

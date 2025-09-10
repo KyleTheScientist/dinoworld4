@@ -1,9 +1,13 @@
 extends Node2D
-@export_file("*.tscn") var street_scene
+@export var debug: bool
 
+@export_file("*.tscn") var street_scene
 @export var turtle_minigame: TurtleMinigame
 
 func _ready() -> void:
+	if debug:
+		GameState.has_magnet = true
+		GameState.ring_in_water = true
 	GameState.last_area = "sewer"
 	$Background/TurtleTable/Turtle.visible = not (GameState.has_turtle or GameState.turtle_returned)
 	$Background/TurtleTable/Turtlette.visible = not (GameState.has_turtle or GameState.turtle_returned)

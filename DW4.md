@@ -9,11 +9,11 @@
       - [ ] Enter speakeasy by obtaining the membership requirements: Membership password (roar), Membership ring, bribe
         
         - [ ] PASSWORD - get from prisoners
-          - [ ] Give prisoner X a picture of his girlfriend
-            - [ ] Find picture in mail
+          - [x] Give prisoner X his wallet with a picture of his daughter
+            - [x] Find picture in museum hole
           - [ ] Give prisoner Y some candy
-            - [ ] Buy candy from boy using coin
-              - [ ] Get coin from tip jar? (requires Rosie to be pleased)
+            - [x] Buy candy from boy using coin
+              - [x] Get coin from sewer fishing
 
         - [ ] RING - Shady Guy & Fishing
           - [ ] Go to sewers, fish, find ring

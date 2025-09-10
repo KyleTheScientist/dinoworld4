@@ -2,6 +2,32 @@
 set voice_pitch = 1.0
 if not nibbles_encountered
 	=> first_encounter
+	
+if has_coin:
+	Nicky Nibbles: Wowee mista! That sure is a soggy coin ya got there!
+	Nicky Nibbles: I'm not even sure it's a coin what with how it's covered so much filth and grime!
+	Nicky Nibbles: Where'd ya find this coin, in the sewer? 
+	Nicky Nibbles: I mean [wave]goooo-lllyyy![/wave] 
+	Nicky Nibbles: This has got to be the most digustin' piece of currency I've ever laid my 10 year old eyes on!
+	Nicky Nibbles: Gee whillikers, it smells like the bottom of a boot after a rainy day parade!
+	Nicky Nibbles: I betcha this thing’s seen more rats than a butcher’s alley!
+	Nicky Nibbles: Honest to gosh, you'd think a dead liopleurodon hawked this thing up!
+	Nicky Nibbles: Look, it’s still drippin’! I think it winked at me!
+	Nicky Nibbles: My ma always told me, "Don’t touch strange coins what smell like cabbage," and here I am breakin’ the rules!
+	Nicky Nibbles: If I press my ear to it, I swear I can hear the sewer gators singin’!
+	Nicky Nibbles: Holy moly, this coin’s so slimy I could fry it up like an egg!
+	Nicky Nibbles: I seen garbage trucks cleaner than this, and they don’t even wash on Sundays!
+	Nicky Nibbles: Whew, mister, you sure you ain’t tryin’ to pay me with some kinda cursed swamp token?
+	Nicky Nibbles: I mean geez Louise, I’m gonna have to wash my claws in vinegar for a week after touchin’ this thing!
+	Nicky Nibbles: ...
+	Nicky Nibbles: Anywho here's ya snacks.
+	do reveal_item("DinoSnacks")
+	set has_coin = false
+	set has_candy = true
+
+Nicky Nibbles: Dino [wave]snaaaacks[/wave]! Get ya dino snacks [wave]heeeeere[/wave]!
+	
+
 => END
 
 ~ first_encounter
@@ -10,8 +36,9 @@ Nicky Nibbles: 'Round these parts they call me [wave]Nicky Nibbles![/wave]
 Nicky Nibbles: Due to lax labor laws I'm workin' 12 hours a day sellin' these here dino snacks despite only being 10 years old!
 Nicky Nibbles: Crazy times we live in, am I right?
 Nicky Nibbles: Anyway, would you like to buy some of my world famous dino snacks? Family recipe!
-Nicky Nibbles: It'll only cost ya two pennies!
-Nicky Nibbles: It used to cost one penny, but inflation is [wave]really[/wave] drivin' up prices.
+Nicky Nibbles: It'll only cost ya one penny!
+Nicky Nibbles: It used to cost half a penny, but inflation is [wave]really[/wave] drivin' up prices.
+set nibbles_encountered = true
 => END
 
 

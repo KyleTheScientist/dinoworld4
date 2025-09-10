@@ -18,5 +18,6 @@ func show_dialogue(title: String):
 	
 func _on_dialogue_finished(_dialogue: DialogueResource):
 	if _dialogue == self.dialogue:
-		$Interactable.is_triggerable = true
 		dialogue_finished.emit()
+		await get_tree().create_timer(.1).timeout
+		$Interactable.is_triggerable = true

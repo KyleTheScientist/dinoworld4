@@ -944,7 +944,11 @@ script = ExtResource("4_u7v5f")
 [connection signal="activated" from="Background/Dumpster/TrashOrigin/Trash/Interactable" to="." method="_on_busted_trash_inspected"]
 [connection signal="activated" from="Background/TrashPile" to="." method="_on_trash_activated"]
 [connection signal="dialogue_finished" from="Mayor" to="." method="_on_mayor_dialogue_finished"]
+[connection signal="dialogue_finished" from="Shady" to="." method="_on_shady_dialogue_finished"]
+[connection signal="frame_changed" from="Shady/SmokeBomb" to="." method="_on_smoke_bomb_frame_changed"]
+[connection signal="animation_finished" from="Shady/Ring" to="." method="_on_ring_animation_finished"]
 [connection signal="activated" from="Nibbles/Interactable" to="Nibbles" method="_on_npc_activated"]
 
 [editable path="Player"]
 [editable path="Cop"]
+[editable path="Shady"]

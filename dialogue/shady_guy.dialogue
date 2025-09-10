@@ -41,5 +41,6 @@ set ring_thrown = true
 
 ~ ring_dropped
 ???: Ahh, dino nuggets. Well, it belongs to the sewers now. See ya kid!
+set ring_in_water = true
 set shady_quest_complete = true
 => END

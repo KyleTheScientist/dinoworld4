@@ -31,9 +31,7 @@ func _set_debug_vars():
 	GameState.seen_museum_intro = true
 	GameState.seen_cop_anim = true
 	GameState.player_clothed = true
-	GameState.shady_encountered = true
 	GameState.mayor_encountered = true
-	GameState.has_autograph = true
 	GameState.trash_removed = 2
 	$Player/DinoAnimator._ready()
 	
@@ -95,7 +93,6 @@ func _on_shady_dialogue_finished() -> void:
 		$Shady/Ring.throw()
 		GameState.ring_thrown = false
 	if GameState.shady_quest_complete:
-		$Shady/Interactable.is_triggerable = false
 		$Shady/SmokeBomb.visible = true
 		$Shady/SmokeBomb.play("default")
 		$Shady/SmokeBomb/Change.play()
@@ -103,6 +100,11 @@ func _on_shady_dialogue_finished() -> void:
 func _on_ring_animation_finished() -> void:
 	$Shady/NPCAnimator.play("default")
 	$Shady.show_dialogue("ring_dropped")
+
+func _on_smoke_bomb_frame_changed() -> void:
+	if $Shady/SmokeBomb.frame == 3:
+		$Shady/Interactable.is_triggerable = false
+		$Shady/NPCAnimator.visible = false
 
 func _on_speakeasy_door_activated() -> void:
 	speakeasy_door.get_node("AnimatedSprite2D").play("open")
@@ -123,8 +125,3 @@ func _on_sewer_door_activated() -> void:
 	
 func _on_precinct_door_activated() -> void:
 	get_tree().change_scene_to_file(precinct_scene)
-
-func _on_smoke_bomb_frame_changed() -> void:
-	if $Shady/SmokeBomb.frame == 3:
-		$Shady/NPCAnimator.visible = false
-		

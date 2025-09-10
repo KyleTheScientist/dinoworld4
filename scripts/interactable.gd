@@ -4,6 +4,7 @@ signal activated
 signal interactable_activated(Interactable)
 
 @export var is_triggerable: bool = true
+@export var range: int = 25
 var hovered: bool = false
 
 func _input(event: InputEvent) -> void:
@@ -23,7 +24,7 @@ func _process(_delta: float) -> void:
 		hovered = true
 
 func _mouse_overlaps() -> bool:
-	return Geometry2D.is_point_in_circle(get_local_mouse_position(), Vector2.ZERO, 25)
+	return Geometry2D.is_point_in_circle(get_local_mouse_position(), Vector2.ZERO, range)
 		
 func _player_in_range() -> bool:
 	if GameState.player == null:

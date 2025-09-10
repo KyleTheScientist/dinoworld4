@@ -63,13 +63,21 @@ var wedge_r_removed: bool = false
 
 @export_subgroup("Nibbles")
 var nibbles_encountered: bool = false
+var has_coin: bool = false
 
 @export_category("Cafe")
 var shopkeep_encountered: bool = false
 var shopkeep_angry: bool = false
 var shopkeep_quest_given: bool = false
+
+@export_category("Sewer")
 var has_turtle: bool = false
 var turtle_returned: bool = false
+var fishing_rod_reeled: bool = false
+var has_magnet: bool = false
+var coin_in_water: bool = false
+var ring_in_water: bool = false
+var used_magnet: bool = false
 
 @export_category("Precinct")
 var prisoners_encountered: bool = false
