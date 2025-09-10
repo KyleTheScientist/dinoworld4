@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	if hovered and not pct:
 		GameState.set_cursor(0)
 		hovered = false
-	elif not hovered and pct:
+	elif (not hovered) and pct:
 		GameState.set_cursor(1)
 		hovered = true
 
@@ -28,13 +28,13 @@ func _mouse_overlaps() -> bool:
 		
 func _player_in_range() -> bool:
 	if GameState.player == null:
-		print("null")
+		print("null player")
 		return false
 	return global_position.distance_to(GameState.player.global_position) < 100
 	
 func _player_can_trigger():
 	return \
-		not GameState.player.in_animation and \
+		not GameState.player.is_busy() and \
 		is_triggerable and \
 		_player_in_range() and \
 		_mouse_overlaps() and \

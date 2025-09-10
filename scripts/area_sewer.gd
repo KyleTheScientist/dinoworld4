@@ -7,6 +7,7 @@ extends Node2D
 func _ready() -> void:
 	if debug:
 		GameState.has_magnet = true
+		GameState.coin_in_water = true
 		GameState.ring_in_water = true
 	GameState.last_area = "sewer"
 	$Background/TurtleTable/Turtle.visible = not (GameState.has_turtle or GameState.turtle_returned)

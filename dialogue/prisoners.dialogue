@@ -31,6 +31,7 @@ set voice_pitch = 0.1
 Terry: In the museum.
 set voice_pitch = 0.75
 Peck: In the museum! You got this kid. Just one more thing and that password is yours!
+do remove_item("DinoSnacks")
 => END
 
 ~ got_wallet
@@ -44,10 +45,31 @@ set voice_pitch = 0.75
 Peck: Ahem. Sorry, I get a little crabby when I'm hungry. 
 set voice_pitch = 0.1
 Terry: Good work kid. Just go get this psycho's candy and I'll give you the password.
+do remove_item("Wallet")
 => END
 
 ~ got_both
-# TODO
+set voice_pitch = 0.75
+Peck: Hot dog! He's done it!
+set voice_pitch = 0.1
+Terry: He really did do it...
+Terry: I can't tell you how much this picture means to me. 
+Terry: I had absolutely no faith in you kid, but you proved me wrong.
+Terry: A deal's a deal.
+Terry: The password to the clubhouse is...
+Terry: [wave]"Roar"[wave]
+set voice_pitch = 0.75
+Peck: Wait really? That's it?
+set voice_pitch = 0.1
+Terry: The guy who comes up with the passwords isn't very creative. Last week it was "Grrr".
+set voice_pitch = 0.75
+Peck: Well in any case, I can't thank ya enough kid. Hope that password does you some good!
+set voice_pitch = 0.1
+Terry: Ditto. Good luck out there.
+set has_candy = false
+set has_wallet = false
+do remove_item("DinoSnacks")
+do remove_item("Wallet")
 => END
 
 ~ first_encounter

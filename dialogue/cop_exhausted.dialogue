@@ -34,4 +34,5 @@ Tricericop: Might be worth something!
 set cop_fed = true
 set has_bribe = true
 do reveal_item("Watch")
+do remove_item("Donuts")
 => END

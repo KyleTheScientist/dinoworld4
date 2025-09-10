@@ -21,7 +21,7 @@ func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(func(_d): in_animation = false)
 
 func _physics_process(delta: float) -> void:
-	if _can_move():
+	if not is_busy():
 		velocity.x = horizontal_input * delta * speed * 100
 		velocity.y += 1000 * delta
 	else:
@@ -35,5 +35,5 @@ func _process(_delta: float) -> void:
 	if not in_animation:
 		animation_handler.handle_animation(self)
 
-func _can_move() -> bool:
-	return not in_animation and not GameState.inspect_overlay.visible
+func is_busy() -> bool:
+	return in_animation or GameState.inspect_overlay.visible

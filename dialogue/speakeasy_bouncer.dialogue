@@ -1,9 +1,46 @@
 ~ start
 set voice_pitch = 0
-???: ...
-if GameState.gave_bribe and GameState.has_ring and GameState.gave_password:
-	???: Come on in.
-else
-	???: Members only, kid.
 set bouncer_encountered = true
+if has_bribe and not gave_bribe:
+	=> give_bribe
+
+if not (has_bribe and has_ring and has_password)
+	=> failure
+
+if not gave_password
+	=> success
+	
+???: Come on in.
+
+~ success
+???: So you got yourself a ring. All right. Last test.
+???: What's the password?
+Toby: [wave]Roar[/wave]
+???: ...
+???: Come on in.
+set gave_password = true
+=> END
+
+~ failure
+if not has_bribe and not gave_bribe
+	???: ...
+	???: I don't know you.
+elif not has_ring
+	???: I appreciate the gift, but it's members only, kid. You need a ring. 
+elif not has_password
+	???: So you got yourself a ring. All right. Last test.
+	???: What's the password?
+	???: ...
+	???: Come back when you have it.
+=> END
+
+~ give_bribe
+???: ...
+???: I don't know y-
+???: ...
+???: Wait a minute, is that an antique pocket watch you're toting around there?
+???: Hand it over, and then we can talk about you gettin' in.
+do remove_item("Watch")
+set gave_bribe = true
+set has_bribe = false
 => END

@@ -1,13 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://krkaeg3vayw4"]
+[gd_scene load_steps=15 format=3 uid="uid://krkaeg3vayw4"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_icojt"]
 [ext_resource type="AudioStream" uid="uid://xhepoyewqyn8" path="res://audio/speak.wav" id="2_d0w7c"]
 [ext_resource type="PackedScene" uid="uid://cu10e03sg7kd3" path="res://scenes/inspect_overlay.tscn" id="3_guw8h"]
+[ext_resource type="Texture2D" uid="uid://bufbup6f5ndhi" path="res://sprites/env/pickup_rusty_coin.png" id="4_0dm3p"]
+[ext_resource type="Script" path="res://scripts/inventory_overlay.gd" id="4_rqjtr"]
+[ext_resource type="Texture2D" uid="uid://qwnwlb18gnq5" path="res://sprites/env/pickup_dino_snacks.png" id="5_t1btn"]
+[ext_resource type="Texture2D" uid="uid://75boypgen8f2" path="res://sprites/env/donut_box.png" id="6_wu2wi"]
+[ext_resource type="Texture2D" uid="uid://w3gg2c4iw3xy" path="res://sprites/env/pickup_magnet.png" id="7_acqlt"]
+[ext_resource type="Texture2D" uid="uid://cmlkqo4c25mqe" path="res://sprites/env/pickup_ring.png" id="8_cpst7"]
+[ext_resource type="Texture2D" uid="uid://cmlnc6cffe610" path="res://sprites/env/signed_photo.png" id="9_ybmr3"]
+[ext_resource type="Texture2D" uid="uid://0m8pxcev0t1h" path="res://sprites/env/pickup_wallet.png" id="10_d3bt5"]
+[ext_resource type="Texture2D" uid="uid://coqt12e8wxuuk" path="res://sprites/env/pocket_watch.png" id="11_03ea4"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gvnm8"]
 random_pitch = 1.14
 streams_count = 1
 stream_0/stream = ExtResource("2_d0w7c")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wu4s"]
+bg_color = Color(0, 0, 0, 0.196078)
+border_color = Color(0, 0, 0, 1)
 
 [node name="GameState" type="Node2D"]
 script = ExtResource("1_icojt")
@@ -16,3 +29,138 @@ script = ExtResource("1_icojt")
 stream = SubResource("AudioStreamRandomizer_gvnm8")
 
 [node name="InspectOverlay" parent="." instance=ExtResource("3_guw8h")]
+
+[node name="InventoryOverlay" type="CanvasLayer" parent="."]
+script = ExtResource("4_rqjtr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryOverlay"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Spacer" type="Control" parent="InventoryOverlay/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+mouse_filter = 2
+
+[node name="HoverZone" type="Control" parent="InventoryOverlay/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+
+[node name="InventoryPanel" type="Panel" parent="InventoryOverlay/VBoxContainer/HoverZone"]
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6wu4s")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryOverlay/VBoxContainer/HoverZone/InventoryPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -161.5
+offset_top = -20.0
+offset_right = 161.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Coin" type="TextureRect" parent="InventoryOverlay/VBoxContainer/HoverZone/InventoryPanel/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.517647)
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+texture = ExtResource("4_0dm3p")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="DinoSnacks" type="TextureRect" parent="InventoryOverlay/VBoxContainer/HoverZone/InventoryPanel/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.517647)
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+texture = ExtResource("5_t1btn")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Donuts" type="TextureRect" parent="InventoryOverlay/VBoxContainer/HoverZone/InventoryPanel/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.517647)
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+texture = ExtResource("6_wu2wi")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Magnet" type="TextureRect" parent="InventoryOverlay/VBoxContainer/HoverZone/InventoryPanel/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.517647)
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+texture = ExtResource("7_acqlt")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Ring" type="TextureRect" parent="InventoryOverlay/VBoxContainer/HoverZone/InventoryPanel/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.517647)
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+texture = ExtResource("8_cpst7")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="ThadPhoto" type="TextureRect" parent="InventoryOverlay/VBoxContainer/HoverZone/InventoryPanel/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.517647)
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+texture = ExtResource("9_ybmr3")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Wallet" type="TextureRect" parent="InventoryOverlay/VBoxContainer/HoverZone/InventoryPanel/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.517647)
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+texture = ExtResource("10_d3bt5")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Watch" type="TextureRect" parent="InventoryOverlay/VBoxContainer/HoverZone/InventoryPanel/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.517647)
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+texture = ExtResource("11_03ea4")
+expand_mode = 3
+stretch_mode = 4
+
+[connection signal="mouse_entered" from="InventoryOverlay/VBoxContainer/HoverZone" to="InventoryOverlay" method="_on_hover_entered"]
+[connection signal="mouse_exited" from="InventoryOverlay/VBoxContainer/HoverZone" to="InventoryOverlay" method="_on_hover_exited"]

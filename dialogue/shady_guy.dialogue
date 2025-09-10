@@ -37,6 +37,7 @@ set shady_encountered = true
 ???: A signed headshot of Mayor Bronto? Now that might be worth somethin'.
 ???: A deal's a deal kid, ring's yours. Here, catch.
 set ring_thrown = true
+do remove_item("ThadPhoto")
 => END
 
 ~ ring_dropped

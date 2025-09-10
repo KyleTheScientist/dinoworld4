@@ -585,6 +585,7 @@ range = 10
 [node name="Hook" type="Node2D" parent="Background/FishingRod"]
 position = Vector2(-7, 88)
 script = ExtResource("4_go2c2")
+range = 10
 
 [node name="Magnet" type="Sprite2D" parent="Background/FishingRod/Hook"]
 z_index = -1

@@ -15,6 +15,7 @@ var player: Dino:
 		
 var debugger: Debugger
 var inspect_overlay: InspectOverlay
+var inventory_overlay: InventoryOverlay
 
 var voice_pitch: float:
 	set(value):
@@ -52,9 +53,8 @@ var has_ring: bool = false
 
 @export_subgroup("Bouncer")
 var bouncer_encountered: bool = false
-var gave_password: bool = false
 var gave_bribe: bool = false
-var gave_ring: bool = false
+var gave_password: bool = false
 
 @export_subgroup("Cart")
 var cart_moved: bool = false
@@ -95,6 +95,10 @@ func set_cursor(state: int):
 
 func reveal_item(item: String):
 	inspect_overlay.reveal(item)
+	inventory_overlay.add(item)
+	
+func remove_item(item: String):
+	inventory_overlay.remove(item)
 
 func on_npc_spoke(_letter: String, _letter_index, _speed: float):
 	if _letter in [" ", ".", "*"]:
