@@ -17,7 +17,6 @@ func _ready() -> void:
 func _on_ladder_activated() -> void:
 	get_tree().change_scene_to_file(street_scene)
 
-
 func _on_turtle_activated() -> void:
 	$Background/TurtleTable/Turtle.visible = false
 	$Background/TurtleTable/Turtlette.visible = false

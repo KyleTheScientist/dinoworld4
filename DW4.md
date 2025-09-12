@@ -8,15 +8,15 @@
     - [ ] Overhear the passcode in the speakeasy. (Need to hide the mayor NPC on street after completing his quest)
       - [ ] Enter speakeasy by obtaining the membership requirements: Membership password (roar), Membership ring, bribe
 
-        - [ ] PASSWORD - get from prisoners
+        - [x] PASSWORD - get from prisoners
           - [x] Give prisoner X his wallet with a picture of his daughter
             - [x] Find picture in museum hole
           - [x] Give prisoner Y some candy
             - [x] Buy candy from boy using coin
-              - [ ] Get coin from sewer fishing
+              - [x] Get coin from sewer fishing
 
-        - [ ] RING - Shady Guy & Fishing
-          - [ ] Go to sewers, fish, find ring
+        - [x] RING - Shady Guy & Fishing
+          - [x] Go to sewers, fish, find ring
             - [x] Give autograph to shady concavenator, drops ring into sewer
               - [x] Thaddeus gives you an autographed picture as a reward
                 - [x] Trash minigame
@@ -32,24 +32,26 @@
 # Non-critical items
 
 ## Complex
-- [ ] Inventory system
+- [x] Inventory system
 - [x] Dialogue voice bleeps
+- [x] Add some more to the prison?
 - [ ] Scene transition animation
 - [ ] Add bricks / more decor to museum
-- [x] Add some more to the prison?
 - [ ] Add a failure condition for turtle run
-- [ ] Add some pointless interactables to the cafe
 - [ ] Add sweating animation to turtles / healthbar
 - [ ] Add "roar" as dialogue response option
 
 ## Medium 
 
+- [ ] Add some pointless interactables to the cafe
 - [ ] Add cabbage cart guy yelling
-- [ ] Hovering inspect overlay changes cursor
+- [x] Hovering inspect overlay changes cursor
 
 ## Easy
 
-- [x] Make player unable to interact during dialogue
+- [ ] More lighting
+- [ ] Nude dialogue for everyone
+- [ ] Make player unable to interact during dialogue
 - [x] Force player to stand still during dialogue (both animation-wise and physically)
-- [ ] Borders to levels
+- [ ] Add borders to levels
 - [x] Fix hole in player sprite

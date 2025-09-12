@@ -54,6 +54,7 @@ func _on_hook_activated() -> void:
 func _on_reel_animation_finished(anim_name: StringName) -> void:
 	if not has_magnet:
 		$Hook.is_triggerable = GameState.has_magnet
+		$Hook/Shine.visible = GameState.has_magnet
 	else:
 		$Hook.is_triggerable = stuffs_hooked > 0
 	if has_magnet and anim_name == "cast":

@@ -248,12 +248,4 @@ grow_vertical = 2
 texture = ExtResource("4_erork")
 stretch_mode = 5
 
-[connection signal="gui_input" from="RevealContainer/Coin" to="." method="close"]
-[connection signal="gui_input" from="RevealContainer/DinoSnacks" to="." method="close"]
-[connection signal="gui_input" from="RevealContainer/Donuts" to="." method="close"]
-[connection signal="gui_input" from="RevealContainer/Magnet" to="." method="close"]
-[connection signal="gui_input" from="RevealContainer/Ring" to="." method="close"]
-[connection signal="gui_input" from="RevealContainer/ThadPhoto" to="." method="close"]
-[connection signal="gui_input" from="RevealContainer/Wallet" to="." method="close"]
-[connection signal="gui_input" from="RevealContainer/Watch" to="." method="close"]
 [connection signal="gui_input" from="RevealContainer/HatsPoster/HatsPoster" to="." method="close"]

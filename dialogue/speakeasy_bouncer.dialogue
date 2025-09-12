@@ -1,21 +1,30 @@
 ~ start
 set voice_pitch = 0
 set bouncer_encountered = true
+
+if gave_password
+	=> END
+
 if has_bribe and not gave_bribe:
 	=> give_bribe
 
-if not (has_bribe and has_ring and has_password)
+if not (gave_bribe and has_ring and knows_password)
 	=> failure
 
 if not gave_password
 	=> success
 	
-???: Come on in.
+	
+???: Come on in
+=> END
 
 ~ success
 ???: So you got yourself a ring. All right. Last test.
 ???: What's the password?
-Toby: [wave]Roar[/wave]
+set voice_pitch = 0.5
+Toby: ...
+Toby: *[wave]Roar[/wave]*
+set voice_pitch = 0
 ???: ...
 ???: Come on in.
 set gave_password = true
@@ -26,8 +35,10 @@ if not has_bribe and not gave_bribe
 	???: ...
 	???: I don't know you.
 elif not has_ring
-	???: I appreciate the gift, but it's members only, kid. You need a ring. 
-elif not has_password
+	???: ...
+	???: It's a nice pocket watch, but it's members only, kid. You need a ring. 
+	???: My claws are tied. 
+elif not knows_password
 	???: So you got yourself a ring. All right. Last test.
 	???: What's the password?
 	???: ...
@@ -39,8 +50,8 @@ elif not has_password
 ???: I don't know y-
 ???: ...
 ???: Wait a minute, is that an antique pocket watch you're toting around there?
-???: Hand it over, and then we can talk about you gettin' in.
+???: Let me take a look.
 do remove_item("Watch")
 set gave_bribe = true
 set has_bribe = false
-=> END
+=> start

@@ -20,70 +20,73 @@ var inventory_overlay: InventoryOverlay
 var voice_pitch: float:
 	set(value):
 		var sig = 1 / (1 + 20 ** (-value + 1))
-		voice_pitch = remap(sig, 0, 1, .4, 1.2)
+		voice_pitch = remap(sig, 0, 1, .4, 1.5)
 
 @export_category("Museum Interior")
-var seen_museum_intro: bool = false
-var seen_cop_anim: bool = false
-var player_clothed: bool = false
-var poster_torn: bool = false
-var shrine_repaired: bool = false
+@export var seen_museum_intro: bool = false
+@export var seen_cop_anim: bool = false
+@export var player_clothed: bool = false
+@export var poster_torn: bool = false
+@export var shrine_repaired: bool = false
 
 @export_category("Street")
-var last_area = "museum"
+@export var last_area = "museum"
 
 @export_subgroup("Cop")
-var cop_fed: bool = false
-var cop_encountered: bool = false
-var has_donuts: bool = false
-var has_bribe: bool = false
+@export var cop_fed: bool = false
+@export var cop_encountered: bool = false
+@export var has_donuts: bool = false
+@export var has_bribe: bool = false
 
 @export_subgroup("Mayor")
-var mayor_encountered: bool = false
-var trash_disposed_of: bool = false
-var has_trash: bool = false
-var trash_removed: int = 0
-var has_autograph: bool = false
+@export var mayor_encountered: bool = false
+@export var trash_disposed_of: bool = false
+@export var has_trash: bool = false
+@export var trash_removed: int = 0
+@export var has_autograph: bool = false
 
 @export_subgroup("Shady")
-var shady_encountered: bool = false
-var shady_quest_complete: bool = false
-var ring_thrown: bool = false
-var has_ring: bool = false
+@export var shady_encountered: bool = false
+@export var shady_quest_complete: bool = false
+@export var ring_thrown: bool = false
 
 @export_subgroup("Bouncer")
-var bouncer_encountered: bool = false
-var gave_bribe: bool = false
-var gave_password: bool = false
+@export var bouncer_encountered: bool = false
+@export var has_ring: bool = false
+@export var gave_bribe: bool = false
+@export var gave_password: bool = false
 
 @export_subgroup("Cart")
-var cart_moved: bool = false
-var wedge_l_removed: bool = false
-var wedge_r_removed: bool = false
+@export var cart_moved: bool = false
+@export var wedge_l_removed: bool = false
+@export var wedge_r_removed: bool = false
 
 @export_subgroup("Nibbles")
-var nibbles_encountered: bool = false
-var has_coin: bool = false
+@export var nibbles_encountered: bool = false
+@export var has_coin: bool = false
 
 @export_category("Cafe")
-var shopkeep_encountered: bool = false
-var shopkeep_angry: bool = false
-var shopkeep_quest_given: bool = false
+@export var shopkeep_encountered: bool = false
+@export var shopkeep_angry: bool = false
+@export var shopkeep_quest_given: bool = false
 
 @export_category("Sewer")
-var has_turtle: bool = false
-var turtle_returned: bool = false
-var fishing_rod_reeled: bool = false
-var has_magnet: bool = false
-var coin_in_water: bool = false
-var ring_in_water: bool = false
-var used_magnet: bool = false
+@export var has_turtle: bool = false
+@export var turtle_returned: bool = false
+@export var fishing_rod_reeled: bool = false
+@export var has_magnet: bool = false
+@export var coin_in_water: bool = false
+@export var ring_in_water: bool = false
+@export var used_magnet: bool = false
 
 @export_category("Precinct")
-var prisoners_encountered: bool = false
-var has_wallet: bool = false
-var has_candy: bool = false
-var knows_password: bool = false
+@export var prisoners_encountered: bool = false
+@export var has_wallet: bool = false
+@export var has_candy: bool = false
+@export var knows_password: bool = false
+
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
 func set_cursor(state: int):
 	if state == 0:

@@ -68,6 +68,7 @@ set voice_pitch = 0.1
 Terry: Ditto. Good luck out there.
 set has_candy = false
 set has_wallet = false
+set knows_password = true
 do remove_item("DinoSnacks")
 do remove_item("Wallet")
 => END

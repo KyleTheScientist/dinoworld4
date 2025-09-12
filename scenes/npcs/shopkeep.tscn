@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://scripts/npc_animator.gd" id="6_x6mdf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqrim"]
-size = Vector2(105, 37)
+size = Vector2(53, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hhirt"]
 atlas = ExtResource("5_rarrs")
@@ -56,7 +56,7 @@ monitorable = false
 script = ExtResource("3_u51xm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(-6.5, -13)
+position = Vector2(2.5, -13)
 shape = SubResource("RectangleShape2D_tqrim")
 
 [node name="NPCAnimator" type="AnimatedSprite2D" parent="."]

@@ -24,6 +24,10 @@ border_color = Color(0, 0, 0, 1)
 
 [node name="GameState" type="Node2D"]
 script = ExtResource("1_icojt")
+player_clothed = true
+has_ring = true
+gave_bribe = true
+knows_password = true
 
 [node name="Speak" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_gvnm8")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://h4w70sxe5agh"
+path="res://.godot/imported/speakeasy_shopkeep.dialogue-f2a5a9a1fb7df7e35897cd62c338fcd0.tres"
+
+[deps]
+
+source_file="res://dialogue/speakeasy_shopkeep.dialogue"
+dest_files=["res://.godot/imported/speakeasy_shopkeep.dialogue-f2a5a9a1fb7df7e35897cd62c338fcd0.tres"]
+
+[params]
+
+defaults=true

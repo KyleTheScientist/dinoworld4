@@ -7,6 +7,7 @@ extends Node2D
 @export_file("*.tscn") var cafe_scene
 @export_file("*.tscn") var precinct_scene
 @export_file("*.tscn") var sewer_scene
+@export_file("*.tscn") var speakeasy_scene
 
 @export_category("Doors")
 @export var museum_door: Node2D
@@ -45,6 +46,8 @@ func _load_state():
 			$Player.global_position.x = sewer_door.global_position.x
 		"precinct":
 			$Player.global_position.x = precinct_door.global_position.x
+		"speakeasy":
+			$Player.global_position.x = speakeasy_door.global_position.x
 	
 	if not GameState.cop_fed:
 		$Cop/NPCAnimator.animation = "exhausted"
@@ -59,8 +62,10 @@ func _on_mayor_dialogue_finished() -> void:
 	trash_pile.is_triggerable = not GameState.trash_disposed_of
 
 func _on_trash_activated() -> void:
+	trash_pile.is_triggerable = true	
 	if GameState.has_trash:
 		return
+	trash_pile.get_node("Bloop").play()
 	GameState.has_trash = true
 	GameState.trash_removed += 1
 	dumpster.is_triggerable = true
@@ -69,7 +74,6 @@ func _on_trash_activated() -> void:
 		trash_pile.visible = false
 		trash_pile.is_triggerable = false
 		return
-	trash_pile.is_triggerable = true	
 	trash_pile.get_node("Sprite").frame = GameState.trash_removed
 
 func _on_dumpster_activated() -> void:
@@ -107,8 +111,12 @@ func _on_smoke_bomb_frame_changed() -> void:
 		$Shady/NPCAnimator.visible = false
 
 func _on_speakeasy_door_activated() -> void:
+	if GameState.gave_password:
+		get_tree().change_scene_to_file(speakeasy_scene)
+		return
 	speakeasy_door.get_node("AnimatedSprite2D").play("open")
 	speakeasy_door.get_node("Click").play()
+	speakeasy_door.show_dialogue("start")
 		
 func _on_speakeasy_door_dialogue_finished() -> void:
 	speakeasy_door.get_node("AnimatedSprite2D").play("close")
