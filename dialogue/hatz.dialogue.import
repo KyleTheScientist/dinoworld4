@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://fmfj38w281ab"
+path="res://.godot/imported/hatz.dialogue-eaefdd111648559202b7510001c3a53b.tres"
+
+[deps]
+
+source_file="res://dialogue/hatz.dialogue"
+dest_files=["res://.godot/imported/hatz.dialogue-eaefdd111648559202b7510001c3a53b.tres"]
+
+[params]
+
+defaults=true

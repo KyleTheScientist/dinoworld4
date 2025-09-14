@@ -104,6 +104,6 @@ func remove_item(item: String):
 	inventory_overlay.remove(item)
 
 func on_npc_spoke(_letter: String, _letter_index, _speed: float):
-	if _letter in [" ", ".", "*"]:
+	if _letter in [" ", ".", "*", '"']:
 		$Speak.pitch_scale = voice_pitch
 		$Speak.play()	

@@ -6,7 +6,7 @@
   - [ ] Obtain three chicken legs to activate the portal (maybe all of these should be hidden collectibles?)
   - [ ] Obtain the passcode for the padlock of the cave entrance in the sewer 
     - [ ] Overhear the passcode in the speakeasy. (Need to hide the mayor NPC on street after completing his quest)
-      - [ ] Enter speakeasy by obtaining the membership requirements: Membership password (roar), Membership ring, bribe
+      - [x] Enter speakeasy by obtaining the membership requirements: Membership password (roar), Membership ring, bribe
 
         - [x] PASSWORD - get from prisoners
           - [x] Give prisoner X his wallet with a picture of his daughter
@@ -49,6 +49,7 @@
 
 ## Easy
 
+- [ ] Move tricericop to the precinct after you give him the donuts
 - [ ] More lighting
 - [ ] Nude dialogue for everyone
 - [ ] Make player unable to interact during dialogue

@@ -57,6 +57,7 @@ Terry: I can't tell you how much this picture means to me.
 Terry: I had absolutely no faith in you kid, but you proved me wrong.
 Terry: A deal's a deal.
 Terry: The password to the clubhouse is...
+set voice_pitch = 0
 Terry: [wave]"Roar"[wave]
 set voice_pitch = 0.75
 Peck: Wait really? That's it?

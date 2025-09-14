@@ -665,16 +665,15 @@ position = Vector2(-0.5, 2.75)
 shape = SubResource("RectangleShape2D_jf5m8")
 
 [node name="SpeakeasyDoor" type="Node2D" parent="Background/Buildings/Cafe"]
+position = Vector2(-155, 144)
 script = ExtResource("4_o0pxp")
 dialogue = ExtResource("5_xjb3x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Buildings/Cafe/SpeakeasyDoor"]
-position = Vector2(-155, 144)
 sprite_frames = SubResource("SpriteFrames_lccod")
 animation = &"open"
 
 [node name="Interactable" type="Area2D" parent="Background/Buildings/Cafe/SpeakeasyDoor"]
-position = Vector2(-155, 143)
 script = ExtResource("4_u7v5f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Buildings/Cafe/SpeakeasyDoor/Interactable"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dkubvrm7o87ro"
+path="res://.godot/imported/ruby.dialogue-d0c028a0b30ffc5fe41183e4831a3d22.tres"
+
+[deps]
+
+source_file="res://dialogue/ruby.dialogue"
+dest_files=["res://.godot/imported/ruby.dialogue-d0c028a0b30ffc5fe41183e4831a3d22.tres"]
+
+[params]
+
+defaults=true

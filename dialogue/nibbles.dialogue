@@ -5,7 +5,7 @@ if not nibbles_encountered
 	
 if has_coin:
 	Nicky Nibbles: Wowee mista! That sure is a soggy coin ya got there!
-	Nicky Nibbles: I'm not even sure it's a coin what with how it's covered so much filth and grime!
+	Nicky Nibbles: I'm not even sure it's a coin what with how it's covered in so much filth and grime!
 	Nicky Nibbles: Where'd ya find this coin, in the sewer? 
 	Nicky Nibbles: I mean [wave]goooo-lllyyy![/wave] 
 	Nicky Nibbles: This has got to be the most digustin' piece of currency I've ever laid my 10 year old eyes on!
@@ -16,7 +16,7 @@ if has_coin:
 	Nicky Nibbles: My ma always told me, "Don’t touch strange coins what smell like cabbage," and here I am breakin’ the rules!
 	Nicky Nibbles: If I press my ear to it, I swear I can hear the sewer gators singin’!
 	Nicky Nibbles: Holy moly, this coin’s so slimy I could fry it up like an egg!
-	Nicky Nibbles: I seen garbage trucks cleaner than this, and they don’t even wash on Sundays!
+	Nicky Nibbles: I seen garbage trucks cleaner than this here coin!
 	Nicky Nibbles: Whew, mister, you sure you ain’t tryin’ to pay me with some kinda cursed swamp token?
 	Nicky Nibbles: I mean geez Louise, I’m gonna have to wash my claws in vinegar for a week after touchin’ this thing!
 	Nicky Nibbles: ...
@@ -25,6 +25,7 @@ if has_coin:
 	do remove_item("Coin")
 	set has_coin = false
 	set has_candy = true
+	=> END!
 
 Nicky Nibbles: Dino [wave]snaaaacks[/wave]! Get ya dino snacks [wave]heeeeere[/wave]!
 	
