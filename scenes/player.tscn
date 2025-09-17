@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d2g662874xmte"]
+[gd_scene load_steps=14 format=3 uid="uid://d2g662874xmte"]
 
 [ext_resource type="Script" path="res://scripts/dino.gd" id="1_wbelc"]
 [ext_resource type="SpriteFrames" uid="uid://d0emq73qwk2cv" path="res://sprites/chars/dino.tres" id="2_bryfh"]
@@ -8,14 +8,6 @@
 [ext_resource type="SpriteFrames" uid="uid://06vy4kjjrcy3" path="res://sprites/env/trash.tres" id="6_nnmo8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_auulh"]
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bpfq7"]
-closed = false
-polygon = PackedVector2Array(-23, -11, -15, -11, -7, -7, 7, -6, 34, 5)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xnmg0"]
-closed = false
-polygon = PackedVector2Array(-20, 5, 0, -5, 19, -8, 28, -10, 36, -10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e0sgc"]
 atlas = ExtResource("5_xsh0j")
@@ -62,36 +54,25 @@ script = ExtResource("1_wbelc")
 
 [node name="DinoAnimator" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_auulh")
+position = Vector2(0, -11)
 sprite_frames = ExtResource("2_bryfh")
-animation = &"run"
 autoplay = "default"
-frame_progress = 0.084521
 centered = false
 offset = Vector2(-38, -18)
 script = ExtResource("3_smkdq")
 clothed_frames = ExtResource("2_bryfh")
 nude_frames = ExtResource("4_o3drv")
 
-[node name="LightOccluderL" type="LightOccluder2D" parent="DinoAnimator"]
-visible = false
-occluder = SubResource("OccluderPolygon2D_bpfq7")
-
-[node name="LightOccluderR" type="LightOccluder2D" parent="DinoAnimator"]
-visible = false
-position = Vector2(-13, 0)
-occluder = SubResource("OccluderPolygon2D_xnmg0")
-
 [node name="Turtles" type="AnimatedSprite2D" parent="DinoAnimator"]
 z_index = -1
-position = Vector2(0, -14)
+position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_1vgao")
 autoplay = "default"
-frame_progress = 0.863511
+frame_progress = 0.804473
 
 [node name="Trash" type="AnimatedSprite2D" parent="DinoAnimator"]
-visible = false
 z_index = -1
-position = Vector2(-2, -16)
+position = Vector2(-1, -8)
 sprite_frames = ExtResource("6_nnmo8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

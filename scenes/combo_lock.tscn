@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=3 uid="uid://caxxgryejyyi4"]
+
+[ext_resource type="Shader" path="res://vignette.gdshader" id="1_oybv1"]
+[ext_resource type="Texture2D" uid="uid://cyaeowrbl78km" path="res://sprites/env/combination_lock_bar.png" id="2_4i50b"]
+[ext_resource type="Script" path="res://scripts/combination_lock.gd" id="3_c17jw"]
+[ext_resource type="Texture2D" uid="uid://d1vldg2m4bagr" path="res://sprites/env/combination_lock_dial.png" id="4_dl22n"]
+[ext_resource type="AudioStream" uid="uid://b55oxj3fnce3d" path="res://audio/click.wav" id="5_7fa22"]
+[ext_resource type="AudioStream" uid="uid://ckmav6dpbnwym" path="res://audio/Crash.wav" id="6_kf2g8"]
+[ext_resource type="Texture2D" uid="uid://paedqiq0yhv6" path="res://sprites/env/combination_lock.png" id="7_gqw8f"]
+[ext_resource type="FontFile" uid="uid://bjj8cgx5rm6qc" path="res://DigitalDisco-Thin.ttf" id="8_e2jpi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lygsp"]
+shader = ExtResource("1_oybv1")
+shader_parameter/alpha = 0.5
+shader_parameter/inner_radius = 0.245
+shader_parameter/outer_radius = 0.74
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vufl3"]
+
+[node name="ComboLock" type="CanvasLayer"]
+
+[node name="Vignette" type="Panel" parent="."]
+z_index = 100
+material = SubResource("ShaderMaterial_lygsp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Bar" type="TextureRect" parent="Vignette"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -75.0
+offset_right = 55.0
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_4i50b")
+
+[node name="DialParent" type="Control" parent="Vignette" node_paths=PackedStringArray("bar", "root", "combination_label")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 38.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_c17jw")
+bar = NodePath("../Bar")
+root = NodePath("../..")
+combination_label = NodePath("../Combination/RichTextLabel")
+
+[node name="Dial" type="TextureRect" parent="Vignette/DialParent"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -30.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(25, 27)
+mouse_filter = 0
+texture = ExtResource("4_dl22n")
+
+[node name="Click" type="AudioStreamPlayer" parent="Vignette/DialParent"]
+stream = ExtResource("5_7fa22")
+pitch_scale = 1.91
+
+[node name="Clock" type="AudioStreamPlayer" parent="Vignette/DialParent"]
+stream = ExtResource("6_kf2g8")
+pitch_scale = 6.96
+
+[node name="Lock" type="TextureRect" parent="Vignette"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -27.0
+offset_right = 65.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_gqw8f")
+stretch_mode = 4
+
+[node name="Combination" type="PanelContainer" parent="Vignette"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.5
+offset_top = 24.0
+offset_right = 31.5
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vufl3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Vignette/Combination"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("8_e2jpi")
+bbcode_enabled = true
+text = "[wave]10, 20, 30[/wave]"
+fit_content = true
+autowrap_mode = 0

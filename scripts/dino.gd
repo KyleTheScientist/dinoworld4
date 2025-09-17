@@ -6,7 +6,8 @@ extends CharacterBody2D
 @export var in_animation: bool:
 	set(value):
 		if value:
-			$DinoAnimator.animation = "default"
+			if $DinoAnimator.animation == "run":
+				$DinoAnimator.animation = "default"
 		$CollisionShape2D.disabled = value
 		in_animation = value
 

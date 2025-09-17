@@ -44,6 +44,7 @@ var voice_pitch: float:
 @export var has_trash: bool = false
 @export var trash_removed: int = 0
 @export var has_autograph: bool = false
+@export var mayor_quest_complete: bool = false
 
 @export_subgroup("Shady")
 @export var shady_encountered: bool = false
@@ -78,6 +79,10 @@ var voice_pitch: float:
 @export var coin_in_water: bool = false
 @export var ring_in_water: bool = false
 @export var used_magnet: bool = false
+@export var knows_combination: bool = false
+@export var cave_unlocked: bool = false
+var combination_lock_code: Array = []
+var combination_string: String
 
 @export_category("Precinct")
 @export var prisoners_encountered: bool = false
@@ -87,6 +92,12 @@ var voice_pitch: float:
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	if len(combination_lock_code) == 0:
+		combination_lock_code = [0, 5, 10, 15, 20, 25, 30, 35]
+		combination_lock_code.shuffle()
+		while len(combination_lock_code) > 3:
+			combination_lock_code.remove_at(randi() % len(combination_lock_code))
+		combination_string = str(combination_lock_code).replace("[", "").replace("]", "")
 
 func set_cursor(state: int):
 	if state == 0:

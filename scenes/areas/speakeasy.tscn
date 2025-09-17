@@ -1,7 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://b52dxo57ch6ha"]
+[gd_scene load_steps=53 format=3 uid="uid://b52dxo57ch6ha"]
 
 [ext_resource type="Script" path="res://scenes/areas/area_speakeasy.gd" id="1_344m1"]
+[ext_resource type="Texture2D" uid="uid://cnwuv6evwpukw" path="res://sprites/env/interior_speakeasy_booths.png" id="2_5l0uw"]
+[ext_resource type="Resource" uid="uid://y1sbsq00n7ke" path="res://dialogue/eavesdrop.dialogue" id="2_m4866"]
 [ext_resource type="Texture2D" uid="uid://dhu8iynmh7pjh" path="res://sprites/env/interior_speakeasy.png" id="2_xkvdf"]
+[ext_resource type="Texture2D" uid="uid://cgpndisnfywws" path="res://sprites/env/decor_speakeasy_table.png" id="3_b4nd0"]
 [ext_resource type="AudioStream" uid="uid://d14khk5l6m04n" path="res://audio/music/A Conversation with Saul (Rough Demo.mp3" id="3_gbde3"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="4_6bl8t"]
 [ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/effects/2d_light.png" id="5_aq0mc"]
@@ -17,6 +20,255 @@
 [ext_resource type="Texture2D" uid="uid://c1ukiilixb24t" path="res://sprites/chars/ruby.png" id="13_5kdby"]
 [ext_resource type="Resource" uid="uid://fmfj38w281ab" path="res://dialogue/hatz.dialogue" id="16_85t1l"]
 [ext_resource type="Texture2D" uid="uid://bt8c5t1s17q23" path="res://sprites/chars/hatz.png" id="17_qdexs"]
+
+[sub_resource type="Animation" id="Animation_kqpy1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(627, 134)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ClosedBoothLight:energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.86]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Table:z_index")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../Player:in_animation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Player/DinoAnimator:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../Player/DinoAnimator:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-38, -18)]
+}
+
+[sub_resource type="Animation" id="Animation_n63oi"]
+resource_name = "eavesdrop"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-388, 133)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Player/DinoAnimator")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"sit", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Background:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ClosedBoothLight:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 10.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Table:z_index")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../Player:in_animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_eavesdropping"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../Player/DinoAnimator:flip_h")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../Player/DinoAnimator:offset")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(-0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-38, -18)]
+}
+
+[sub_resource type="Animation" id="Animation_wi5pl"]
+resource_name = "uneavesdrop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClosedBoothLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [10.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Table:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5m65j"]
+_data = {
+"RESET": SubResource("Animation_kqpy1"),
+"eavesdrop": SubResource("Animation_n63oi"),
+"uneavesdrop": SubResource("Animation_wi5pl")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8m0ey"]
 size = Vector2(2000, 47)
@@ -169,7 +421,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rj2h2"]
@@ -211,45 +463,89 @@ animations = [{
 [node name="Speakeasy" type="Node2D"]
 script = ExtResource("1_344m1")
 street_scene = "res://scenes/areas/street.tscn"
+eavesdrop_dialogue = ExtResource("2_m4866")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Booths" type="Sprite2D" parent="Environment"]
+light_mask = 2
+z_index = -1
+position = Vector2(0, 100)
+texture = ExtResource("2_5l0uw")
+
+[node name="Interactable" type="Node2D" parent="Environment/Booths"]
+position = Vector2(-362, 8)
+script = ExtResource("4_6bl8t")
+hover_range = 35
+
+[node name="PlayerBoothLight" type="PointLight2D" parent="Environment/Booths"]
+top_level = true
+texture_filter = 1
+position = Vector2(-363, 97)
+scale = Vector2(0.570063, 0.570063)
+energy = 3.86
+range_item_cull_mask = 2
+texture = ExtResource("5_aq0mc")
+
+[node name="ClosedBoothLight" type="PointLight2D" parent="Environment/Booths"]
+top_level = true
+texture_filter = 1
+position = Vector2(-543, 97)
+scale = Vector2(0.570063, 0.570063)
+energy = 3.86
+range_item_cull_mask = 2
+texture = ExtResource("5_aq0mc")
+
+[node name="Table" type="Sprite2D" parent="Environment/Booths"]
+light_mask = 2
+z_index = 1
+z_as_relative = false
+position = Vector2(-362, 38)
+texture = ExtResource("3_b4nd0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Environment/Booths"]
+libraries = {
+"": SubResource("AnimationLibrary_5m65j")
+}
+
+[node name="Background" type="Sprite2D" parent="Environment"]
 light_mask = 3
-z_index = -100
 texture = ExtResource("2_xkvdf")
+offset = Vector2(0, 100)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment/Background"]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Background/StaticBody2D"]
 position = Vector2(0, 175.5)
 shape = SubResource("RectangleShape2D_8m0ey")
 
-[node name="Music" type="AudioStreamPlayer" parent="Background"]
+[node name="Music" type="AudioStreamPlayer" parent="Environment/Background"]
 stream = ExtResource("3_gbde3")
 volume_db = -12.0
 autoplay = true
 
-[node name="SpeakeasyDoor" type="Area2D" parent="Background"]
+[node name="SpeakeasyDoor" type="Area2D" parent="Environment/Background"]
 position = Vector2(626, 112)
 script = ExtResource("4_6bl8t")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/SpeakeasyDoor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/Background/SpeakeasyDoor"]
 position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_pfmqe")
 
-[node name="Lights" type="Node2D" parent="Background"]
+[node name="Lights" type="Node2D" parent="Environment/Background"]
 position = Vector2(28, 149)
 
-[node name="Doorway" type="PointLight2D" parent="Background/Lights"]
+[node name="Doorway" type="PointLight2D" parent="Environment/Background/Lights"]
 texture_filter = 1
 position = Vector2(598, -50)
 scale = Vector2(0.570063, 0.570063)
 energy = 3.55
 texture = ExtResource("5_aq0mc")
 
-[node name="Bar" type="Node2D" parent="Background/Lights"]
+[node name="Bar" type="Node2D" parent="Environment/Background/Lights"]
 
-[node name="PointLight2D" type="PointLight2D" parent="Background/Lights/Bar"]
+[node name="PointLight2D" type="PointLight2D" parent="Environment/Background/Lights/Bar"]
 texture_filter = 1
 position = Vector2(406, -103)
 scale = Vector2(0.570063, 0.570063)
@@ -257,7 +553,7 @@ energy = 9.0
 range_item_cull_mask = 2
 texture = ExtResource("5_aq0mc")
 
-[node name="PointLight2D2" type="PointLight2D" parent="Background/Lights/Bar"]
+[node name="PointLight2D2" type="PointLight2D" parent="Environment/Background/Lights/Bar"]
 light_mask = 2
 texture_filter = 1
 position = Vector2(315, -103)
@@ -266,7 +562,7 @@ energy = 9.0
 range_item_cull_mask = 2
 texture = ExtResource("5_aq0mc")
 
-[node name="PointLight2D3" type="PointLight2D" parent="Background/Lights/Bar"]
+[node name="PointLight2D3" type="PointLight2D" parent="Environment/Background/Lights/Bar"]
 light_mask = 2
 texture_filter = 1
 position = Vector2(224, -103)
@@ -275,133 +571,135 @@ energy = 9.0
 range_item_cull_mask = 2
 texture = ExtResource("5_aq0mc")
 
-[node name="Stage" type="Node2D" parent="Background/Lights"]
+[node name="Stage" type="Node2D" parent="Environment/Background/Lights"]
 position = Vector2(-3.99999, -147)
 scale = Vector2(0.570063, 0.570063)
 
-[node name="Left" type="PointLight2D" parent="Background/Lights/Stage"]
+[node name="Left" type="PointLight2D" parent="Environment/Background/Lights/Stage"]
 texture_filter = 1
 position = Vector2(-478.894, 77.1844)
 energy = 9.0
 range_item_cull_mask = 2
 texture = ExtResource("5_aq0mc")
 
-[node name="Right" type="PointLight2D" parent="Background/Lights/Stage"]
+[node name="Right" type="PointLight2D" parent="Environment/Background/Lights/Stage"]
 texture_filter = 1
 position = Vector2(161.386, 77.1844)
 energy = 9.0
 range_item_cull_mask = 2
 texture = ExtResource("5_aq0mc")
 
-[node name="Top1" type="PointLight2D" parent="Background/Lights/Stage"]
+[node name="Top1" type="PointLight2D" parent="Environment/Background/Lights/Stage"]
 texture_filter = 1
 position = Vector2(-57.8884, 142.09)
 energy = 3.0
 shadow_enabled = true
 texture = ExtResource("5_aq0mc")
 
-[node name="Top2" type="PointLight2D" parent="Background/Lights/Stage"]
+[node name="Top2" type="PointLight2D" parent="Environment/Background/Lights/Stage"]
 texture_filter = 1
 position = Vector2(-157.877, 154.369)
 energy = 3.0
 shadow_enabled = true
 texture = ExtResource("5_aq0mc")
 
-[node name="Top3" type="PointLight2D" parent="Background/Lights/Stage"]
+[node name="Top3" type="PointLight2D" parent="Environment/Background/Lights/Stage"]
 texture_filter = 1
 position = Vector2(-277.162, 147.352)
 energy = 3.0
 shadow_enabled = true
 texture = ExtResource("5_aq0mc")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Background/Lights/Stage"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Environment/Background/Lights/Stage"]
 occluder = SubResource("OccluderPolygon2D_t51lo")
 
-[node name="Booths" type="Node2D" parent="Background/Lights"]
+[node name="Booths" type="Node2D" parent="Environment/Background/Lights"]
 position = Vector2(-391, -52)
 scale = Vector2(0.570063, 0.570063)
 
-[node name="PointLight2D6" type="PointLight2D" parent="Background/Lights/Booths"]
-texture_filter = 1
-energy = 3.86
-range_item_cull_mask = 2
-texture = ExtResource("5_aq0mc")
-
-[node name="PointLight2D7" type="PointLight2D" parent="Background/Lights/Booths"]
+[node name="PointLight2D7" type="PointLight2D" parent="Environment/Background/Lights/Booths"]
 texture_filter = 1
 position = Vector2(-629.755, 0)
 energy = 3.86
 range_item_cull_mask = 2
 texture = ExtResource("5_aq0mc")
 
-[node name="Bass" type="AnimatedSprite2D" parent="Background"]
+[node name="Band" type="Node2D" parent="Environment/Background"]
+
+[node name="Bass" type="AnimatedSprite2D" parent="Environment/Background"]
 modulate = Color(0.537011, 0.537011, 0.537011, 1)
 position = Vector2(-130, 82)
 sprite_frames = SubResource("SpriteFrames_axvap")
 autoplay = "default"
 frame_progress = 0.148085
 
-[node name="Drums" type="AnimatedSprite2D" parent="Background"]
+[node name="Drums" type="AnimatedSprite2D" parent="Environment/Background"]
 modulate = Color(0.537011, 0.537011, 0.537011, 1)
 position = Vector2(-64, 93)
 sprite_frames = SubResource("SpriteFrames_2u6ll")
 autoplay = "default"
 frame_progress = 0.729905
 
-[node name="Sax" type="AnimatedSprite2D" parent="Background"]
+[node name="Sax" type="AnimatedSprite2D" parent="Environment/Background"]
 modulate = Color(0.537011, 0.537011, 0.537011, 1)
 position = Vector2(9, 89)
 sprite_frames = SubResource("SpriteFrames_syhwv")
 autoplay = "default"
 frame_progress = 0.316696
 
+[node name="Ruby" type="Node2D" parent="Environment/Background"]
+position = Vector2(-197, 135)
+script = ExtResource("11_bumbl")
+dialogue = ExtResource("12_8oxih")
+face_player = true
+
+[node name="Interactable" type="Node2D" parent="Environment/Background/Ruby"]
+script = ExtResource("4_6bl8t")
+
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="Environment/Background/Ruby"]
+sprite_frames = SubResource("SpriteFrames_djrnj")
+autoplay = "default"
+frame_progress = 0.514879
+
+[node name="Hatz" type="Node2D" parent="Environment/Background"]
+position = Vector2(51, 106)
+script = ExtResource("11_bumbl")
+dialogue = ExtResource("16_85t1l")
+face_player = true
+
+[node name="Interactable" type="Node2D" parent="Environment/Background/Hatz"]
+position = Vector2(39, 5)
+script = ExtResource("4_6bl8t")
+
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="Environment/Background/Hatz"]
+position = Vector2(31, 0)
+sprite_frames = SubResource("SpriteFrames_drbo2")
+autoplay = "default"
+flip_h = true
+
+[node name="Shopkeep" parent="Environment/Background" instance=ExtResource("8_gcga7")]
+position = Vector2(342, 152)
+dialogue = ExtResource("9_sb07m")
+face_player = true
+
 [node name="Player" parent="." instance=ExtResource("6_04x24")]
 z_index = 1
-position = Vector2(633, 132)
+position = Vector2(627, 134)
+
+[node name="Turtles" parent="Player/DinoAnimator" index="0"]
+visible = false
+
+[node name="Trash" parent="Player/DinoAnimator" index="1"]
+visible = false
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_rn2u3")]
 position = Vector2(-41, 83)
 player = NodePath("../Player")
 bounds = Vector4(-500, -1000, 500, 1000)
 
-[node name="Shopkeep" parent="." instance=ExtResource("8_gcga7")]
-position = Vector2(342, 152)
-dialogue = ExtResource("9_sb07m")
-face_player = true
-
-[node name="Ruby" type="Node2D" parent="."]
-position = Vector2(-197, 135)
-script = ExtResource("11_bumbl")
-dialogue = ExtResource("12_8oxih")
-face_player = true
-
-[node name="Interactable" type="Node2D" parent="Ruby"]
-script = ExtResource("4_6bl8t")
-
-[node name="NPCAnimator" type="AnimatedSprite2D" parent="Ruby"]
-sprite_frames = SubResource("SpriteFrames_djrnj")
-autoplay = "default"
-frame = 1
-frame_progress = 0.878504
-
-[node name="Hatz" type="Node2D" parent="."]
-position = Vector2(51, 106)
-script = ExtResource("11_bumbl")
-dialogue = ExtResource("16_85t1l")
-face_player = true
-
-[node name="Interactable" type="Node2D" parent="Hatz"]
-position = Vector2(39, 5)
-script = ExtResource("4_6bl8t")
-
-[node name="NPCAnimator" type="AnimatedSprite2D" parent="Hatz"]
-position = Vector2(31, 0)
-sprite_frames = SubResource("SpriteFrames_drbo2")
-autoplay = "default"
-flip_h = true
-
-[connection signal="activated" from="Background/SpeakeasyDoor" to="." method="_on_speakeasy_door_activated"]
-[connection signal="activated" from="Ruby/Interactable" to="Ruby" method="_on_npc_activated"]
-[connection signal="activated" from="Hatz/Interactable" to="Hatz" method="_on_npc_activated"]
+[connection signal="activated" from="Environment/Booths/Interactable" to="." method="_on_booth_activated"]
+[connection signal="activated" from="Environment/Background/SpeakeasyDoor" to="." method="_on_speakeasy_door_activated"]
+[connection signal="activated" from="Environment/Background/Ruby/Interactable" to="Environment/Background/Ruby" method="_on_npc_activated"]
+[connection signal="activated" from="Environment/Background/Hatz/Interactable" to="Environment/Background/Hatz" method="_on_npc_activated"]
 
 [editable path="Player"]

@@ -13,6 +13,7 @@ func _ready() -> void:
 	$Background/TurtleTable/Turtle.visible = not (GameState.has_turtle or GameState.turtle_returned)
 	$Background/TurtleTable/Turtlette.visible = not (GameState.has_turtle or GameState.turtle_returned)
 	$Background/TurtleTable/Interactable.is_triggerable = not (GameState.has_turtle or GameState.turtle_returned)
+	$Background/CaveDoor/AnimatedSprite2D.play("unlocked" if GameState.cave_unlocked else "locked")
 
 func _on_ladder_activated() -> void:
 	get_tree().change_scene_to_file(street_scene)
@@ -30,6 +31,13 @@ func _on_turtle_minigame_finished() -> void:
 	$Player/DinoAnimator/Turtles.visible = true
 	$Background/Music.play()
 
-
 func _on_cave_door_activated() -> void:
-	pass # Replace with function body.
+	$Background/CaveDoor.is_triggerable = true
+	if GameState.cave_unlocked:
+		return
+	$LockOverlay.visible = true
+
+func _on_combination_lock_unlocked() -> void:
+	GameState.cave_unlocked = true
+	$Background/CaveDoor/AnimatedSprite2D.play("unlocked")
+	

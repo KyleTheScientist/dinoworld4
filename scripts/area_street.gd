@@ -54,6 +54,8 @@ func _load_state():
 	
 	$Shady/NPCAnimator.visible = GameState.bouncer_encountered and not GameState.shady_quest_complete
 	$Shady/Interactable.is_triggerable = $Shady/NPCAnimator.visible
+	$Mayor.visible = not GameState.mayor_quest_complete
+	
 	dumpster.is_triggerable = GameState.has_trash
 	trash_pile.get_node("Sprite").frame = GameState.trash_removed
 	sewer_door.is_triggerable = GameState.cart_moved

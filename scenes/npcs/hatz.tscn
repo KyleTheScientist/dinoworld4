@@ -52,18 +52,21 @@ dialogue = ExtResource("2_drx57")
 
 [node name="Interactable" type="Area2D" parent="."]
 texture_filter = 1
+position = Vector2(-3, -42)
 monitorable = false
 script = ExtResource("3_eaxj2")
+hover_range = 35
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-position = Vector2(0, -47)
+position = Vector2(5, -5)
 shape = SubResource("RectangleShape2D_y6ijy")
 
 [node name="NPCAnimator" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -46)
+position = Vector2(1, -46)
 sprite_frames = SubResource("SpriteFrames_75ysh")
 autoplay = "default"
 frame_progress = 0.292693
+flip_h = true
 script = ExtResource("5_qps68")
 
 [connection signal="activated" from="Interactable" to="." method="_on_npc_activated"]

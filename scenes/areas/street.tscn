@@ -949,7 +949,7 @@ autoplay = true
 z_index = 1
 position = Vector2(0, -19)
 
-[node name="Trash" parent="Player/DinoAnimator" index="3"]
+[node name="Trash" parent="Player/DinoAnimator" index="1"]
 autoplay = "default"
 
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("22_86tsd")]

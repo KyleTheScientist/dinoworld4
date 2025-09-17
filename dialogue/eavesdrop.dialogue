@@ -1,0 +1,53 @@
+~ start
+set voice_pitch = 0.25
+?: You made it in, good. 
+set voice_pitch = 0.7
+???: Snuck in through the kitchen. 
+set voice_pitch = 0.25
+?: Lets go over the plan. 
+set voice_pitch = 0.7
+???: I think I got it, no need to-
+set voice_pitch = 0.25
+?: You ain't leavin' this here establishment 'less I'm [wave]certain[/wave] we're on the same page.
+set voice_pitch = 0.7
+???: Ahhh, you're such a stick in the mud. Fine.
+???: We're gonna meet up at the rendezvouz point after the heat dies down.
+???: Then we move the "payload" out to the docks. 
+???: I got a guy that'll be waitin' there with the cash and a fishin' boat to move the goods.
+set voice_pitch = 0.25
+?: You sure that fella's straight? Folks who deal in stolen goods tend to be slippery.
+set voice_pitch = 0.7
+???: Slippery's good — slippery makes 'em easier to slide a coin to. Trust me, I ain't new to this racket.
+set voice_pitch = 0.25
+?: I hope so, for both of our sakes.
+?: How do I get in if I get there before you?
+set voice_pitch = 0.7
+???: Nice try buddy. You think I'm gonna give you the code so you can sneak off without payin' me?
+set voice_pitch = 0.25
+?: I think if someone spots me idlin' around down there it could arouse suspicion that might get us arrested.
+?: Besides, I can't move that thing alone. 
+set voice_pitch = 0.7
+???: ... Dino nuggets. Fine. The code is...
+???: [wave]whispers[/wave]
+set voice_pitch = 0.25
+?: Excuse me?
+set voice_pitch = 0.7
+???: [wave]whispers[/wave]
+set voice_pitch = 0.25
+?: Why do you keep saying "whispers"? Tell me the code!
+set voice_pitch = 0.7
+???: Hah! Just messin with ya. The code is [wave]{{combination_string}}[/wave]
+set voice_pitch = 0.25
+?: *Sighs*
+?: [wave]{{combination_string}}[/wave] you said?
+set voice_pitch = 0.7
+???: You got it!
+???: What are you gonna do if people start askin' questions?
+set voice_pitch = 0.25
+?: Don't you worry about that. I've got a pterosaur lined up to take the fall. A janitor for the museum. 
+set voice_pitch = 0.7
+???: You sure do hate those pteros, dontcha?
+set voice_pitch = 0.25
+?: Dino city is supposed to be just that. A [wave]Dino[/wave] City.
+set knows_combination = true
+=> END

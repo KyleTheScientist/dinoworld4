@@ -15,6 +15,8 @@ border_blend = true
 script = ExtResource("1_kk22x")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+z_index = 1000
+z_as_relative = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
