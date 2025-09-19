@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://krkaeg3vayw4"]
+[gd_scene load_steps=22 format=3 uid="uid://krkaeg3vayw4"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_icojt"]
 [ext_resource type="AudioStream" uid="uid://xhepoyewqyn8" path="res://audio/speak.wav" id="2_d0w7c"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cmlnc6cffe610" path="res://sprites/env/signed_photo.png" id="9_ybmr3"]
 [ext_resource type="Texture2D" uid="uid://0m8pxcev0t1h" path="res://sprites/env/pickup_wallet.png" id="10_d3bt5"]
 [ext_resource type="Texture2D" uid="uid://coqt12e8wxuuk" path="res://sprites/env/pocket_watch.png" id="11_03ea4"]
+[ext_resource type="Shader" path="res://sprites/effects/scene_transition.gdshader" id="13_8ncg5"]
+[ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="14_yegis"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gvnm8"]
 random_pitch = 1.14
@@ -22,8 +24,186 @@ stream_0/stream = ExtResource("2_d0w7c")
 bg_color = Color(0, 0, 0, 0.196078)
 border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_soa07"]
+shader = ExtResource("13_8ncg5")
+shader_parameter/time = 1.0
+shader_parameter/flip = false
+
+[sub_resource type="Animation" id="Animation_0qtnt"]
+resource_name = "dissolve"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DissolveRect:material:shader_parameter/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DissolveRect:material:shader_parameter/flip")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_boudv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DissolveRect:material:shader_parameter/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DissolveRect:material:shader_parameter/flip")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.37]
+}
+
+[sub_resource type="Animation" id="Animation_ecmv6"]
+resource_name = "resolve"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DissolveRect:material:shader_parameter/time")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DissolveRect:material:shader_parameter/flip")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.37]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_btj5c"]
+_data = {
+"RESET": SubResource("Animation_boudv"),
+"dissolve": SubResource("Animation_0qtnt"),
+"resolve": SubResource("Animation_ecmv6")
+}
+
 [node name="GameState" type="Node2D"]
 script = ExtResource("1_icojt")
+seen_museum_intro = true
+seen_cop_anim = true
+player_clothed = true
+poster_torn = true
+cop_fed = true
+cop_encountered = true
+bouncer_encountered = true
+has_ring = true
+gave_bribe = true
+gave_password = true
+knows_password = true
 
 [node name="Speak" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_gvnm8")
@@ -161,6 +341,31 @@ mouse_filter = 2
 texture = ExtResource("11_03ea4")
 expand_mode = 3
 stretch_mode = 4
+
+[node name="SceneTransition" type="CanvasLayer" parent="."]
+
+[node name="DissolveRect" type="ColorRect" parent="SceneTransition"]
+material = SubResource("ShaderMaterial_soa07")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SceneTransition"]
+libraries = {
+"": SubResource("AnimationLibrary_btj5c")
+}
+autoplay = "dissolve"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SceneTransition"]
+stream = ExtResource("14_yegis")
+volume_db = -7.799
+pitch_scale = 1.37
 
 [connection signal="mouse_entered" from="InventoryOverlay/VBoxContainer/HoverZone" to="InventoryOverlay" method="_on_hover_entered"]
 [connection signal="mouse_exited" from="InventoryOverlay/VBoxContainer/HoverZone" to="InventoryOverlay" method="_on_hover_exited"]

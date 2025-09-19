@@ -14,9 +14,10 @@ func _ready() -> void:
 	$Background/TurtleTable/Turtlette.visible = not (GameState.has_turtle or GameState.turtle_returned)
 	$Background/TurtleTable/Interactable.is_triggerable = not (GameState.has_turtle or GameState.turtle_returned)
 	$Background/CaveDoor/AnimatedSprite2D.play("unlocked" if GameState.cave_unlocked else "locked")
+	GameState.show_scene()
 
 func _on_ladder_activated() -> void:
-	get_tree().change_scene_to_file(street_scene)
+	GameState.change_scene(street_scene)
 
 func _on_turtle_activated() -> void:
 	$Background/TurtleTable/Turtle.visible = false

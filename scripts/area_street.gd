@@ -27,6 +27,7 @@ func _ready() -> void:
 		
 	_load_state()
 	GameState.last_area = "street"
+	GameState.show_scene()
 
 func _set_debug_vars():
 	GameState.seen_museum_intro = true
@@ -116,7 +117,7 @@ func _on_smoke_bomb_frame_changed() -> void:
 
 func _on_speakeasy_door_activated() -> void:
 	if GameState.gave_password:
-		get_tree().change_scene_to_file(speakeasy_scene)
+		GameState.change_scene(speakeasy_scene)
 		return
 	speakeasy_door.get_node("AnimatedSprite2D").play("open")
 	speakeasy_door.get_node("Click").play()
@@ -127,13 +128,13 @@ func _on_speakeasy_door_dialogue_finished() -> void:
 	speakeasy_door.get_node("Click").play()
 
 func _on_museum_door_activated() -> void:
-	get_tree().change_scene_to_file(museum_scene)
+	GameState.change_scene(museum_scene)
 	
 func _on_cafe_door_activated() -> void:
-	get_tree().change_scene_to_file(cafe_scene)
+	GameState.change_scene(cafe_scene)
 
 func _on_sewer_door_activated() -> void:
-	get_tree().change_scene_to_file(sewer_scene)
+	GameState.change_scene(sewer_scene)
 	
 func _on_precinct_door_activated() -> void:
-	get_tree().change_scene_to_file(precinct_scene)
+	GameState.change_scene(precinct_scene)

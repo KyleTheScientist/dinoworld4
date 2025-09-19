@@ -23,7 +23,7 @@ func _ready() -> void:
 	combination_label.visible = GameState.knows_combination
 	combination_label.text = "[wave]%s[/wave]" % GameState.combination_string
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _unlocked:
 		return
 		
@@ -87,8 +87,8 @@ func get_mouse_angle():
 		angle += PI * 2
 	return angle
 	
-func next(number, direction):
-	var result = number + direction
+func next(number, _direction):
+	var result = number + _direction
 	if result < 0:
 		return 35
 	if result > 35:

@@ -48,6 +48,7 @@ set voice_pitch = 0.25
 set voice_pitch = 0.7
 ???: You sure do hate those pteros, dontcha?
 set voice_pitch = 0.25
-?: Dino city is supposed to be just that. A [wave]Dino[/wave] City.
+?: Dino city is supposed to be just that. 
+?: A [wave]Dino[/wave] City.
 set knows_combination = true
 => END

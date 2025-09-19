@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-var has_magnet: bool = false
+var line_has_magnet: bool = false
 var cast: bool = true
 var coin_hooked: bool = false
 var ring_hooked: bool = false
@@ -9,7 +9,7 @@ var stuffs_hooked: int = 0
 func _ready() -> void:
 	$AnimationPlayer.play("reel" if GameState.fishing_rod_reeled else "cast")
 	cast = not GameState.fishing_rod_reeled
-	has_magnet = GameState.used_magnet
+	line_has_magnet = GameState.used_magnet
 	$Hook/Magnet.visible = GameState.used_magnet
 	$Hook.is_triggerable = not GameState.used_magnet
 	
@@ -44,20 +44,21 @@ func _on_hook_activated() -> void:
 	$Hook.is_triggerable = stuffs_hooked > 0
 	
 	if GameState.has_magnet:
-		has_magnet = true
+		line_has_magnet = true
 		GameState.remove_item("Magnet")
 		GameState.has_magnet = false
 		GameState.used_magnet = true
 		$Hook/Magnet.visible = true
-	
+		$Hook/Shine.visible = false
+		GameState.coin_in_water = true
 
 func _on_reel_animation_finished(anim_name: StringName) -> void:
-	if not has_magnet:
+	if not line_has_magnet:
 		$Hook.is_triggerable = GameState.has_magnet
 		$Hook/Shine.visible = GameState.has_magnet
 	else:
 		$Hook.is_triggerable = stuffs_hooked > 0
-	if has_magnet and anim_name == "cast":
+	if line_has_magnet and anim_name == "cast":
 		stuffs_hooked = 0
 		if GameState.coin_in_water:
 			stuffs_hooked += 1

@@ -469,6 +469,7 @@ animations = [{
 
 [node name="Sewer" type="Node2D" node_paths=PackedStringArray("turtle_minigame")]
 script = ExtResource("1_m5rm0")
+debug = null
 street_scene = "res://scenes/areas/street.tscn"
 turtle_minigame = NodePath("Background/TurtleMinigame")
 

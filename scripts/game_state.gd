@@ -118,3 +118,11 @@ func on_npc_spoke(_letter: String, _letter_index, _speed: float):
 	if _letter in [" ", ".", "*", '"']:
 		$Speak.pitch_scale = voice_pitch
 		$Speak.play()	
+
+func change_scene(scene: String):
+	$SceneTransition/AnimationPlayer.play("resolve")
+	await $SceneTransition/AnimationPlayer.animation_finished
+	get_tree().change_scene_to_file(scene)
+	
+func show_scene():
+	$SceneTransition/AnimationPlayer.play("dissolve")

@@ -5,7 +5,7 @@
 - Goal: Retrieve shrine fragment and reactivate portal
   - [ ] Obtain three chicken legs to activate the portal (maybe all of these should be hidden collectibles?)
   - [ ] Obtain the passcode for the padlock of the cave entrance in the sewer 
-	- [ ] Overhear the passcode in the speakeasy. (Need to hide the mayor NPC on street after completing his quest)
+	- [x] Overhear the passcode in the speakeasy. (Need to hide the mayor NPC on street after completing his quest)
 	  - [x] Enter speakeasy by obtaining the membership requirements: Membership password (roar), Membership ring, bribe
 
 		- [x] PASSWORD - get from prisoners
@@ -31,7 +31,10 @@
 
 # Non-critical items
 
+
 ## Complex
+- [ ] Start menu
+- [ ] Options menu
 - [x] Inventory system
 - [x] Dialogue voice bleeps
 - [x] Add some more to the prison?
@@ -39,6 +42,7 @@
 - [ ] Add bricks / more decor to museum
 - [ ] Rework turtle game
 - [ ] Add "roar" as dialogue response option
+- [ ] Add leopluridon to sewers with ring
 
 ## Medium 
 

@@ -17,6 +17,8 @@ func _ready() -> void:
 		poster.get_node("Sprite").play("rustle")
 	poster.is_triggerable = GameState.prisoners_encountered
 	poster.visible = not GameState.poster_torn
+	GameState.show_scene()
+
 		
 func _on_intro_anim_animation_finished(_anim_name: StringName) -> void:
 	GameState.seen_museum_intro = true
@@ -41,7 +43,7 @@ func _on_doors_activated() -> void:
 		$Background/Doors.is_triggerable = true
 		return
 		
-	get_tree().change_scene_to_file(street_scene)
+	GameState.change_scene(street_scene)
 
 func _on_poster_activated() -> void:
 	if GameState.poster_torn:
