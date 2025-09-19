@@ -35,6 +35,7 @@ func _on_cave_door_activated() -> void:
 	$Background/CaveDoor.is_triggerable = true
 	if GameState.cave_unlocked:
 		return
+	$Player.in_animation = true
 	$LockOverlay.visible = true
 
 func _on_combination_lock_unlocked() -> void:

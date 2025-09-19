@@ -37,22 +37,22 @@
 - [x] Add some more to the prison?
 - [ ] Scene transition animation
 - [ ] Add bricks / more decor to museum
-- [ ] Add a failure condition for turtle run
-- [ ] Add sweating animation to turtles / healthbar
+- [ ] Rework turtle game
 - [ ] Add "roar" as dialogue response option
 
 ## Medium 
 
 - [ ] Add some pointless interactables to the cafe
-- [ ] Add cabbage cart guy yelling
+- [x] Add cabbage cart guy yelling
 - [x] Hovering inspect overlay changes cursor
+- [x] Fix combo lock not escapable
 
 ## Easy
 
-- [ ] Move tricericop to the precinct after you give him the donuts
+- [x] Move tricericop to the precinct after you give him the donuts
 - [ ] More lighting
-- [ ] Nude dialogue for everyone
-- [ ] Make player unable to interact during dialogue
+- [x] Nude dialogue for everyone
+- [x] Make player unable to interact during dialogue
 - [x] Force player to stand still during dialogue (both animation-wise and physically)
-- [ ] Add borders to levels
+- [x] Add borders to levels
 - [x] Fix hole in player sprite

@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dweuu2l0m76vd"]
+[gd_scene load_steps=69 format=3 uid="uid://dweuu2l0m76vd"]
 
 [ext_resource type="Script" path="res://scripts/area_sewer.gd" id="1_m5rm0"]
 [ext_resource type="Texture2D" uid="uid://c1lhjdtfn4gdn" path="res://sprites/env/sewer.png" id="2_7s8i4"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://0k7yhvahlb3f" path="res://sprites/env/decor_street_patch.png" id="18_e211w"]
 [ext_resource type="Texture2D" uid="uid://c78etotrbtmkq" path="res://sprites/env/ring.png" id="18_g7430"]
 [ext_resource type="Texture2D" uid="uid://cvohkjb2swv6t" path="res://sprites/env/shine.png" id="19_sb40v"]
+[ext_resource type="PackedScene" uid="uid://fcvd8fc5u1d1" path="res://scenes/guard_rail.tscn" id="21_qrxtp"]
 [ext_resource type="PackedScene" uid="uid://caxxgryejyyi4" path="res://scenes/combo_lock.tscn" id="23_tavbj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3rjlc"]
@@ -659,6 +660,12 @@ z_index = -1
 position = Vector2(-7, 93)
 texture = ExtResource("18_e211w")
 
+[node name="GuardRail" parent="Background" instance=ExtResource("21_qrxtp")]
+position = Vector2(409, 0)
+
+[node name="GuardRail2" parent="Background" instance=ExtResource("21_qrxtp")]
+position = Vector2(-387, 0)
+
 [node name="Player" parent="." instance=ExtResource("7_ikmtk")]
 z_index = 1
 position = Vector2(356, 7)
@@ -682,6 +689,7 @@ visible = false
 [connection signal="animation_finished" from="Background/FishingRod/AnimationPlayer" to="Background/FishingRod" method="_on_reel_animation_finished"]
 [connection signal="activated" from="Background/FishingRod/Interactable" to="Background/FishingRod" method="_on_interactable_activated"]
 [connection signal="activated" from="Background/FishingRod/Hook" to="Background/FishingRod" method="_on_hook_activated"]
+[connection signal="visibility_changed" from="LockOverlay" to="LockOverlay/Vignette/DialParent" method="_on_lock_overlay_visibility_changed"]
 [connection signal="unlocked" from="LockOverlay/Vignette/DialParent" to="." method="_on_combination_lock_unlocked"]
 
 [editable path="Player"]

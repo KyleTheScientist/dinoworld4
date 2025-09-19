@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cvs2xi6yobcus"]
+[gd_scene load_steps=57 format=3 uid="uid://cvs2xi6yobcus"]
 
 [ext_resource type="Script" path="res://scripts/area_museum.gd" id="1_o1ntn"]
 [ext_resource type="Texture2D" uid="uid://djd218i50ysjt" path="res://sprites/effects/portal.png" id="2_2dhan"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://buerdgu5wjgn5" path="res://sprites/env/decor_museum_poster.png" id="12_a0hvr"]
 [ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="12_x0157"]
 [ext_resource type="Texture2D" uid="uid://cwxahbcqgijet" path="res://sprites/env/mannequin.png" id="13_8gj0n"]
+[ext_resource type="PackedScene" uid="uid://fcvd8fc5u1d1" path="res://scenes/guard_rail.tscn" id="15_pfiiw"]
 [ext_resource type="AudioStream" uid="uid://b55oxj3fnce3d" path="res://audio/click.wav" id="17_5cslm"]
 [ext_resource type="Texture2D" uid="uid://vxljsbfgd3hf" path="res://sprites/env/shrine.png" id="17_y58pi"]
 [ext_resource type="Texture2D" uid="uid://d0i7dn8leov6p" path="res://sprites/env/fence.png" id="18_7mr07"]
@@ -1006,6 +1007,12 @@ shape = SubResource("RectangleShape2D_psv2q")
 stream = ExtResource("17_5cslm")
 volume_db = -6.545
 pitch_scale = 1.5
+
+[node name="GuardRail" parent="Background" instance=ExtResource("15_pfiiw")]
+position = Vector2(805, 132)
+
+[node name="GuardRail2" parent="Background" instance=ExtResource("15_pfiiw")]
+position = Vector2(-153, 132)
 
 [node name="IntroAnim" type="AnimationPlayer" parent="."]
 libraries = {

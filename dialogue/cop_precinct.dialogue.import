@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://cyqrrk81osvbb"
+path="res://.godot/imported/cop_precinct.dialogue-2cdd516777900ba4858dadf2bd673fcf.tres"
+
+[deps]
+
+source_file="res://dialogue/cop_precinct.dialogue"
+dest_files=["res://.godot/imported/cop_precinct.dialogue-2cdd516777900ba4858dadf2bd673fcf.tres"]
+
+[params]
+
+defaults=true

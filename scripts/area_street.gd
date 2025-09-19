@@ -49,12 +49,14 @@ func _load_state():
 		"speakeasy":
 			$Player.global_position.x = speakeasy_door.global_position.x
 	
-	if not GameState.cop_fed:
-		$Cop/NPCAnimator.animation = "exhausted"
-	
-	$Shady/NPCAnimator.visible = GameState.bouncer_encountered and not GameState.shady_quest_complete
-	$Shady/Interactable.is_triggerable = $Shady/NPCAnimator.visible
-	$Mayor.visible = not GameState.mayor_quest_complete
+	if not GameState.bouncer_encountered or GameState.shady_quest_complete:
+		$Shady.hide_and_disable()
+	if GameState.mayor_quest_complete:
+		$Mayor.hide_and_disable()
+	if GameState.cop_fed:
+		$Cop.hide_and_disable()
+	else:
+		$Cop/NPCAnimator.play("exhausted")
 	
 	dumpster.is_triggerable = GameState.has_trash
 	trash_pile.get_node("Sprite").frame = GameState.trash_removed

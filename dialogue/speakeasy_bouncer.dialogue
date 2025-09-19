@@ -2,6 +2,11 @@
 set voice_pitch = 0
 set bouncer_encountered = true
 
+if not player_clothed
+	???: ...
+	???: No shirt, no underpants, no service.
+	=> END
+
 if gave_password
 	=> END
 

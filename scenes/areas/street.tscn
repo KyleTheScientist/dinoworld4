@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://c5f8bt7pw13py"]
+[gd_scene load_steps=85 format=3 uid="uid://c5f8bt7pw13py"]
 
 [ext_resource type="Script" path="res://scripts/area_street.gd" id="1_vurvn"]
 [ext_resource type="Texture2D" uid="uid://bg6dvnd3rkqeu" path="res://sprites/env/dino_city_parallax2.png" id="3_2dj7t"]
@@ -32,11 +32,13 @@
 [ext_resource type="Script" path="res://scripts/cabbage_cart.gd" id="20_4qpjh"]
 [ext_resource type="AudioStream" uid="uid://ckmav6dpbnwym" path="res://audio/Crash.wav" id="21_cbi1c"]
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="21_l3qgu"]
+[ext_resource type="Resource" uid="uid://csa2cu50exp5u" path="res://dialogue/cabbages.dialogue" id="22_3vxl6"]
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="22_86tsd"]
 [ext_resource type="PackedScene" uid="uid://q55bopc5e3wy" path="res://scenes/debugger.tscn" id="22_a816s"]
 [ext_resource type="Texture2D" uid="uid://bhmhcsdcckrma" path="res://sprites/env/decor_cart_tie.png" id="23_d64y4"]
 [ext_resource type="Texture2D" uid="uid://b6miqkunocoif" path="res://sprites/env/cabbage_cart_wheel.png" id="23_lj23j"]
 [ext_resource type="AudioStream" uid="uid://b0jcfld5jmg2h" path="res://audio/plop.wav" id="31_dg5vw"]
+[ext_resource type="PackedScene" uid="uid://fcvd8fc5u1d1" path="res://scenes/guard_rail.tscn" id="34_gyiaw"]
 [ext_resource type="PackedScene" uid="uid://c7jba35nboo05" path="res://scenes/npcs/shady.tscn" id="37_w6bat"]
 [ext_resource type="Resource" uid="uid://baei5t2lclhu1" path="res://dialogue/nibbles.dialogue" id="38_g8mtt"]
 [ext_resource type="Texture2D" uid="uid://dj4m15jlpvi3s" path="res://sprites/chars/baker_boy.png" id="38_nf4hd"]
@@ -171,7 +173,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_yxaql"]
 resource_name = "roll_away"
-length = 10.0
+length = 6.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -179,10 +181,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(2.58817, 1),
+"times": PackedFloat32Array(0, 6.5, 10),
+"transitions": PackedFloat32Array(2.58817, 1, 1),
 "update": 0,
-"values": [Vector2(4, -30), Vector2(500, -30)]
+"values": [Vector2(4, -30), Vector2(166.656, -30), Vector2(500, -30)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -816,6 +818,7 @@ texture = ExtResource("19_44pjl")
 offset = Vector2(-14.405, 0)
 flip_h = true
 script = ExtResource("20_4qpjh")
+dialogue = ExtResource("22_3vxl6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background/SewerDoor/CabbageCart"]
 libraries = {
@@ -945,6 +948,12 @@ stream = ExtResource("8_w5137")
 volume_db = -20.0
 autoplay = true
 
+[node name="GuardRail" parent="Background" instance=ExtResource("34_gyiaw")]
+position = Vector2(-1319, 0)
+
+[node name="GuardRail2" parent="Background" instance=ExtResource("34_gyiaw")]
+position = Vector2(1233, 0)
+
 [node name="Player" parent="." instance=ExtResource("21_l3qgu")]
 z_index = 1
 position = Vector2(0, -19)
@@ -995,6 +1004,7 @@ script = ExtResource("4_u7v5f")
 [connection signal="dialogue_finished" from="Background/Buildings/Cafe/SpeakeasyDoor" to="." method="_on_speakeasy_door_dialogue_finished"]
 [connection signal="activated" from="Background/Buildings/Cafe/SpeakeasyDoor/Interactable" to="." method="_on_speakeasy_door_activated"]
 [connection signal="activated" from="Background/SewerDoor" to="." method="_on_sewer_door_activated"]
+[connection signal="animation_finished" from="Background/SewerDoor/CabbageCart/AnimationPlayer" to="Background/SewerDoor/CabbageCart" method="_on_animation_finished"]
 [connection signal="activated" from="Background/SewerDoor/CabbageCart/Tie" to="Background/SewerDoor/CabbageCart" method="_on_tie_activated"]
 [connection signal="activated" from="Background/Dumpster" to="." method="_on_dumpster_activated"]
 [connection signal="activated" from="Background/Dumpster/TrashOrigin/Trash/Interactable" to="." method="_on_busted_trash_inspected"]

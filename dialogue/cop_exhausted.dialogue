@@ -15,6 +15,8 @@ else
 ~ first_encounter
 Tricericop: *Breathing heavily*
 Tricericop: [wave]You there...[/wave]
+if not player_clothed:
+	Tricericop: Dino who, if I could see right now, I'm certain would be wearing clothes...
 Tricericop: I need your help. It's an emergency.
 Tricericop: I need you to get me...
 Tricericop: [wave]A donut.[/wave]

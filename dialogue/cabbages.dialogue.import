@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://csa2cu50exp5u"
+path="res://.godot/imported/cabbages.dialogue-2151cec23076d3a857e0156aca30abde.tres"
+
+[deps]
+
+source_file="res://dialogue/cabbages.dialogue"
+dest_files=["res://.godot/imported/cabbages.dialogue-2151cec23076d3a857e0156aca30abde.tres"]
+
+[params]
+
+defaults=true

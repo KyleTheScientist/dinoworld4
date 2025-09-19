@@ -12,6 +12,8 @@ else
 
 ~ first_encounter
 ???: Psst. You there.
+if not player_clothed
+	???: Naked guy.
 ???: Saw ya snoopin' around the entrance to the "clubhouse".
 ???: If ya wanna get in there, you're gonna need a few things. Things I might be able to help you with.
 ???: I used to be a member see, 'till I got kicked out for "cheatin' at poker every time I play."
@@ -30,6 +32,9 @@ set shady_encountered = true
 ~ second_encounter
 ???: Like I said, you need a bribe, a password, and a ring to get in.
 ???: Get me something valuable, and I might be able to part with this old jewlery o' mine.
+if not player_clothed
+	???: And maybe, just maybe, put on some clothes. 
+	???: [wave]NOBODY[/wave] wants to see all that!
 => END
 
 ~ receive_autograph

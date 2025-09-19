@@ -1,6 +1,6 @@
-[gd_scene load_steps=53 format=3 uid="uid://b52dxo57ch6ha"]
+[gd_scene load_steps=54 format=3 uid="uid://b52dxo57ch6ha"]
 
-[ext_resource type="Script" path="res://scenes/areas/area_speakeasy.gd" id="1_344m1"]
+[ext_resource type="Script" path="res://scripts/area_speakeasy.gd" id="1_344m1"]
 [ext_resource type="Texture2D" uid="uid://cnwuv6evwpukw" path="res://sprites/env/interior_speakeasy_booths.png" id="2_5l0uw"]
 [ext_resource type="Resource" uid="uid://y1sbsq00n7ke" path="res://dialogue/eavesdrop.dialogue" id="2_m4866"]
 [ext_resource type="Texture2D" uid="uid://dhu8iynmh7pjh" path="res://sprites/env/interior_speakeasy.png" id="2_xkvdf"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://c1ukiilixb24t" path="res://sprites/chars/ruby.png" id="13_5kdby"]
 [ext_resource type="Resource" uid="uid://fmfj38w281ab" path="res://dialogue/hatz.dialogue" id="16_85t1l"]
 [ext_resource type="Texture2D" uid="uid://bt8c5t1s17q23" path="res://sprites/chars/hatz.png" id="17_qdexs"]
+[ext_resource type="PackedScene" uid="uid://fcvd8fc5u1d1" path="res://scenes/guard_rail.tscn" id="19_bhscm"]
 
 [sub_resource type="Animation" id="Animation_kqpy1"]
 length = 0.001
@@ -681,6 +682,12 @@ flip_h = true
 position = Vector2(342, 152)
 dialogue = ExtResource("9_sb07m")
 face_player = true
+
+[node name="GuardRail" parent="Environment" instance=ExtResource("19_bhscm")]
+position = Vector2(-648, 130)
+
+[node name="GuardRail2" parent="Environment" instance=ExtResource("19_bhscm")]
+position = Vector2(690, 130)
 
 [node name="Player" parent="." instance=ExtResource("6_04x24")]
 z_index = 1

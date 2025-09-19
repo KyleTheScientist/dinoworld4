@@ -76,5 +76,5 @@ position = Vector2(-1, -8)
 sprite_frames = ExtResource("6_nnmo8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.75)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_03nbt")

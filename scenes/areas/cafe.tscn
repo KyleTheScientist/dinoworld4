@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://dmpno601l02mg"]
+[gd_scene load_steps=18 format=3 uid="uid://dmpno601l02mg"]
 
 [ext_resource type="Script" path="res://scripts/area_cafe.gd" id="1_4uvb1"]
 [ext_resource type="Texture2D" uid="uid://bg3isw54x06du" path="res://sprites/env/cafe.png" id="2_vubpd"]
 [ext_resource type="AudioStream" uid="uid://m2dniioy1vpk" path="res://audio/music/jazz_piano_medley_81.mp3" id="3_ibkpw"]
+[ext_resource type="PackedScene" uid="uid://fcvd8fc5u1d1" path="res://scenes/guard_rail.tscn" id="6_nxun0"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="6_rqpun"]
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="8_cqsvi"]
 [ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/effects/2d_light.png" id="8_fxpun"]
@@ -124,6 +125,12 @@ position = Vector2(-171, -206)
 scale = Vector2(0.266665, 0.266665)
 energy = 2.76
 texture = ExtResource("8_fxpun")
+
+[node name="GuardRail" parent="Background" instance=ExtResource("6_nxun0")]
+position = Vector2(-310, 136)
+
+[node name="GuardRail2" parent="Background" instance=ExtResource("6_nxun0")]
+position = Vector2(317, 136)
 
 [node name="Player" parent="." instance=ExtResource("8_cqsvi")]
 z_index = 1

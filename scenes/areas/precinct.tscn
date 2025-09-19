@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cm7w2nu8osy6p"]
+[gd_scene load_steps=33 format=3 uid="uid://cm7w2nu8osy6p"]
 
 [ext_resource type="Texture2D" uid="uid://cfqbo18uq5smd" path="res://sprites/env/interior_precinct.png" id="1_hp5xx"]
 [ext_resource type="Script" path="res://scripts/area_precinct.gd" id="1_i4eo7"]
@@ -15,7 +15,10 @@
 [ext_resource type="AudioStream" uid="uid://gs8qkauwrwjf" path="res://audio/music/hotel_2.mp3" id="10_fs2dv"]
 [ext_resource type="Texture2D" uid="uid://dpioak7hm1mmb" path="res://sprites/env/decor_desk_lamp.png" id="11_ndlcp"]
 [ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/effects/2d_light.png" id="12_ssfb8"]
+[ext_resource type="PackedScene" uid="uid://fcvd8fc5u1d1" path="res://scenes/guard_rail.tscn" id="14_io2uh"]
 [ext_resource type="Texture2D" uid="uid://ddjnog14uja0t" path="res://sprites/env/decor_fishing_rod_magnet.png" id="16_vns5j"]
+[ext_resource type="PackedScene" uid="uid://bliitmim74tfx" path="res://scenes/npcs/cop.tscn" id="17_5tg0g"]
+[ext_resource type="Resource" uid="uid://cyqrrk81osvbb" path="res://dialogue/cop_precinct.dialogue" id="18_y1xe6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8ex6"]
 atlas = ExtResource("4_i1fd3")
@@ -189,6 +192,12 @@ hover_range = 10
 modulate = Color(0.501407, 0.501406, 0.501406, 1)
 texture = ExtResource("16_vns5j")
 
+[node name="GuardRail" parent="Background" instance=ExtResource("14_io2uh")]
+position = Vector2(-434, 0)
+
+[node name="GuardRail2" parent="Background" instance=ExtResource("14_io2uh")]
+position = Vector2(430, 0)
+
 [node name="Player" parent="." instance=ExtResource("5_05d5m")]
 position = Vector2(-375, 30)
 
@@ -202,7 +211,14 @@ stream = ExtResource("10_fs2dv")
 volume_db = -20.0
 autoplay = true
 
+[node name="Cop" parent="." instance=ExtResource("17_5tg0g")]
+z_index = -1
+position = Vector2(-195, 48)
+dialogue = ExtResource("18_y1xe6")
+
 [connection signal="activated" from="Background/Prisoner1/Interactable" to="Background/Prisoner1" method="_on_npc_activated"]
 [connection signal="activated" from="Background/Prisoner2/Interactable" to="Background/Prisoner2" method="_on_npc_activated"]
 [connection signal="activated" from="Background/PrecinctDoor" to="." method="_on_precinct_door_activated"]
 [connection signal="activated" from="Background/Magnet" to="." method="_on_magnet_activated"]
+
+[editable path="Cop"]

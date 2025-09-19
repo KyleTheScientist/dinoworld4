@@ -14,6 +14,7 @@ var direction = -5
 var went_right_way: bool = false
 var _unlocked = false
 var last = 0
+var can_close = false
 
 func _ready() -> void:
 	$Dial.gui_input.connect(_on_gui_input)
@@ -93,3 +94,16 @@ func next(number, direction):
 	if result > 35:
 		return 0
 	return result
+
+func _on_vignette_gui_input(event: InputEvent) -> void:
+	if not can_close:
+		return
+	if event.is_action_pressed("interact"):
+		GameState.player.in_animation = false
+		reset()
+		root.visible = false
+
+func _on_lock_overlay_visibility_changed() -> void:
+	can_close = false
+	await get_tree().create_timer(.5).timeout
+	can_close = true

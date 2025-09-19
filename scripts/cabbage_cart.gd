@@ -1,5 +1,6 @@
 extends Sprite2D
 
+@export var dialogue: DialogueResource
 var rolling: bool = false
 
 func _ready() -> void:
@@ -19,3 +20,6 @@ func _on_tie_activated() -> void:
 	rolling = true
 	GameState.cart_moved = true
 	$AnimationPlayer.play("roll_away")
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	DialogueManager.show_dialogue_balloon(dialogue)

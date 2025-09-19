@@ -78,7 +78,10 @@ do remove_item("Wallet")
 set voice_pitch = 0.75
 Peck: Hey Terry, check it out! We got a visitor.
 set voice_pitch = 0.1
-Terry: Forget it, he's a dino. He ain't gonna be any help.
+if player_clothed
+	Terry: Forget it, he's a dino. He ain't gonna be any help.
+else
+	Terry: Peck. He's naked. In public. 
 set voice_pitch = 0.75
 Peck: Don't be like that, we haven't even talked to the guy!
 Peck: Nice to meet ya, I'm Peck, and this large pterosaur fellow you see before you is Terry.

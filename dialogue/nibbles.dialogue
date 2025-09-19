@@ -1,5 +1,10 @@
 ~ start
 set voice_pitch = 1.0
+if not player_clothed
+	Nicky Nibbles: Sorry mista! Ma says I can't sells to naked dinos anymore!
+	Nicky Nibbles: Somethin' about not knowin' where they're keeping their change.
+	=> END 
+
 if not nibbles_encountered
 	=> first_encounter
 	
@@ -13,7 +18,7 @@ if has_coin:
 	Nicky Nibbles: I betcha this thing’s seen more rats than a butcher’s alley!
 	Nicky Nibbles: Honest to gosh, you'd think a dead liopleurodon hawked this thing up!
 	Nicky Nibbles: Look, it’s still drippin’! I think it winked at me!
-	Nicky Nibbles: My ma always told me, "Don’t touch strange coins what smell like cabbage," and here I am breakin’ the rules!
+	Nicky Nibbles: My ma always tells me, "Don’t touch strange coins what smell like cabbage," and here I am breakin’ the rules!
 	Nicky Nibbles: If I press my ear to it, I swear I can hear the sewer gators singin’!
 	Nicky Nibbles: Holy moly, this coin’s so slimy I could fry it up like an egg!
 	Nicky Nibbles: I seen garbage trucks cleaner than this here coin!

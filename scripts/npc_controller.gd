@@ -7,6 +7,10 @@ signal dialogue_finished
 
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(_on_dialogue_finished)
+
+func hide_and_disable():
+	$NPCAnimator.visible = false
+	$Interactable.is_triggerable = false
 	
 func _on_npc_activated() -> void:
 	show_dialogue("start")
