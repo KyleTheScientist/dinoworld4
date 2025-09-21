@@ -998,6 +998,8 @@ flip_h = true
 [node name="Interactable" type="Node2D" parent="Nibbles"]
 script = ExtResource("4_u7v5f")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
 [connection signal="activated" from="Background/Buildings/Precinct/PrecinctDoor" to="." method="_on_precinct_door_activated"]
 [connection signal="activated" from="Background/Buildings/Museum/MuseumDoor" to="." method="_on_museum_door_activated"]
 [connection signal="activated" from="Background/Buildings/Cafe/CafeDoor" to="." method="_on_cafe_door_activated"]
