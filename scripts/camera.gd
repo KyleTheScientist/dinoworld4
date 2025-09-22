@@ -8,6 +8,7 @@ var shake_duration: float
 var shake_power: float
 
 func _ready() -> void:
+	player = GameState.player
 	global_position.x = player.global_position.x
 
 func _process(_delta: float) -> void:

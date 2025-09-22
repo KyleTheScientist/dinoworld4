@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://ca1tlv40m7nov"
+path="res://.godot/imported/mayor_cave.dialogue-0c847d656f22b7c1121e8b073796d12b.tres"
+
+[deps]
+
+source_file="res://dialogue/mayor_cave.dialogue"
+dest_files=["res://.godot/imported/mayor_cave.dialogue-0c847d656f22b7c1121e8b073796d12b.tres"]
+
+[params]
+
+defaults=true

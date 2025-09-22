@@ -1,0 +1,17 @@
+~ start
+set voice_pitch = 0.25
+#Mayor: Well, well, well...
+#Mayor: If it ain't my little garbage man.
+#Mayor: I see you've stumbled upon my dirty little secret.
+#Mayor: Yes, it was me who stole that piece of the ancient shrine.
+#Mayor: Support from my constituents has been lackluster as of late.
+#Mayor: They're "[wave]concerned[/wave]" that my policies regarding pterosaurs are "[wave]discriminatory[/wave]".
+#Mayor: The fools. My policies are [wave]far[/wave] too lenient. 
+#Mayor: Those filthy pteros are invadin' this city and turnin' it into a crime ridden mess. 
+#Mayor: I needed funds, and the dinos of this city needed their eyes opened.
+#Mayor: That's why I stole this priceless artifact, and why I had that quetzal thrown in jail.
+#Mayor: He will serve as the cornerstone of my re-election. A powerful reminder of the nature of pterosaurs.
+#Mayor: But now you've gone and thrown a wrench into my machinations...
+Mayor: It's a shame, I hate to lose a hardworkin' dino such as yourself due to a little slip up like this.
+Mayor: But I can't let you leave now that you've seen this.
+=> END

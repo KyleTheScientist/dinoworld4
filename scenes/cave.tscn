@@ -1,0 +1,675 @@
+[gd_scene load_steps=34 format=3 uid="uid://cll4p3cd77pua"]
+
+[ext_resource type="Texture2D" uid="uid://bac1vtksavujt" path="res://sprites/env/interior_cave.png" id="1_65wyn"]
+[ext_resource type="Script" path="res://scenes/area_cave.gd" id="1_chr3p"]
+[ext_resource type="Resource" uid="uid://ca1tlv40m7nov" path="res://dialogue/mayor_cave.dialogue" id="2_750yx"]
+[ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/effects/2d_light.png" id="4_wqoj5"]
+[ext_resource type="Texture2D" uid="uid://cyf6mfmqwqjmc" path="res://sprites/env/interior_cave_ceiling.png" id="6_ws57v"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="7_i4ulf"]
+[ext_resource type="Texture2D" uid="uid://fa8j67lsg0xa" path="res://sprites/env/decor_minecart.png" id="8_5as8e"]
+[ext_resource type="AudioStream" uid="uid://0visoin3bpy4" path="res://audio/bloop.wav" id="8_ifx1n"]
+[ext_resource type="AudioStream" uid="uid://dlrgg6l0nhoqe" path="res://audio/music/Jazz.wav" id="9_8dgum"]
+[ext_resource type="PackedScene" uid="uid://dc4w22copbcmu" path="res://scenes/turtle_minigame.tscn" id="10_xpxk6"]
+[ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="11_nsn4o"]
+[ext_resource type="AudioStream" uid="uid://t8w73lya3ans" path="res://audio/shoot.wav" id="13_2gk11"]
+[ext_resource type="PackedScene" uid="uid://6jr2ryma7s8e" path="res://scenes/npcs/mayor.tscn" id="13_yw2is"]
+[ext_resource type="AudioStream" uid="uid://beptsedlaurpg" path="res://audio/coin.wav" id="14_tc35a"]
+[ext_resource type="AudioStream" uid="uid://c1d7gbuqruweu" path="res://audio/power_down.wav" id="15_0onvq"]
+[ext_resource type="PackedScene" uid="uid://bliitmim74tfx" path="res://scenes/npcs/cop.tscn" id="16_3r6cs"]
+[ext_resource type="Texture2D" uid="uid://ce1hmon1vyrug" path="res://sprites/effects/gun.png" id="20_3hllc"]
+[ext_resource type="PackedScene" uid="uid://fcvd8fc5u1d1" path="res://scenes/guard_rail.tscn" id="20_sdeub"]
+[ext_resource type="Script" path="res://scenes/gun.gd" id="21_h1tgl"]
+[ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="21_mjqew"]
+[ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="22_5e10e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysm6f"]
+size = Vector2(2000, 47)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5ojy1"]
+closed = false
+polygon = PackedVector2Array(45, 9, 0, -31, -46, 8)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_o772p"]
+closed = false
+polygon = PackedVector2Array(25, 15, 0, -30, -25, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uqkg"]
+atlas = ExtResource("8_5as8e")
+region = Rect2(0, 0, 60, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn6bi"]
+atlas = ExtResource("8_5as8e")
+region = Rect2(60, 0, 60, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mplpt"]
+atlas = ExtResource("8_5as8e")
+region = Rect2(120, 0, 60, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_83puh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uqkg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn6bi")
+}],
+"loop": false,
+"name": &"reveal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mplpt")
+}],
+"loop": true,
+"name": &"reveal2",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_b51k0"]
+resource_name = "discover_drumstick"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 3.1, 3.26667),
+"transitions": PackedFloat32Array(1, 1, 1.31951, 1),
+"update": 0,
+"values": [Vector2(-185, 38), Vector2(-185, 38), Vector2(-185, 25), Vector2(-185, 38)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Player:in_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Player/DinoAnimator:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333333, 3.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Mayor:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3, 9.03333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(139, 57), Vector2(-40, 57)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Mayor/NPCAnimator")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3, 9.03333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"walk", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"default", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Minecart:animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1, 1.4, 1.8, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [&"reveal", &"reveal2", &"reveal", &"reveal2", &"reveal"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Camera2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-151, 0)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Camera2D")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.1, 1.0],
+"method": &"shake"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Cutscene/Bloop:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Cutscene/Change:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_173mo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Minecart:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(356, 38)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Player/DinoAnimator:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Camera2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-151, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Mayor:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(469, 57)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Player:in_animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Cutscene/Change:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Cop:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(500, 54)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CanvasLayer/Panel:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Cutscene/Shoot:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Cutscene/Ping:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Cutscene/PowerDown:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Mayor/Gun:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tquqn"]
+resource_name = "stick_em_up"
+length = 10.0
+step = 0.1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Mayor/NPCAnimator")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"unholster", 1.0, false],
+"method": &"play"
+}, {
+"args": [&"shock", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Player:in_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Cop:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.63333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(500, 54), Vector2(125, 54)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Mayor:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-40, 57)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Player:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-185, 38)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Mayor/Gun:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Mayor/Gun")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"throw"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CanvasLayer/Panel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.9, 3, 3.4),
+"transitions": PackedFloat32Array(1, 0.466516, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Cutscene/Shoot:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Cutscene/Ping:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Cutscene/PowerDown:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(3.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Camera2D:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(4.5, 5),
+"transitions": PackedFloat32Array(2.14355, 1),
+"update": 0,
+"values": [Vector2(-151, 0), Vector2(-39, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5frmt"]
+_data = {
+"RESET": SubResource("Animation_173mo"),
+"discover_drumstick": SubResource("Animation_b51k0"),
+"stick_em_up": SubResource("Animation_tquqn")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2jyua"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Cave" type="Node2D"]
+script = ExtResource("1_chr3p")
+mayor_dialogue = ExtResource("2_750yx")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -100
+texture = ExtResource("1_65wyn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+position = Vector2(2, 59)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_ysm6f")
+
+[node name="Music" type="AudioStreamPlayer" parent="Background"]
+stream = ExtResource("9_8dgum")
+volume_db = -12.0
+autoplay = true
+
+[node name="Lights" type="Node" parent="Background"]
+
+[node name="PointLight2D" type="PointLight2D" parent="Background/Lights"]
+texture_filter = 1
+position = Vector2(0, -133)
+energy = 5.0
+shadow_enabled = true
+texture = ExtResource("4_wqoj5")
+texture_scale = 1.4
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Background/Lights/PointLight2D"]
+position = Vector2(0, 14)
+occluder = SubResource("OccluderPolygon2D_5ojy1")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Background/Lights"]
+texture_filter = 1
+position = Vector2(-251, -115)
+energy = 4.51
+shadow_enabled = true
+texture = ExtResource("4_wqoj5")
+texture_scale = 1.2
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Background/Lights/PointLight2D2"]
+position = Vector2(0, 25)
+occluder = SubResource("OccluderPolygon2D_o772p")
+
+[node name="TurtleMinigame" parent="Background" instance=ExtResource("10_xpxk6")]
+visible = false
+position = Vector2(165, 17)
+scale = Vector2(1, 1)
+
+[node name="GuardRail" parent="Background" instance=ExtResource("20_sdeub")]
+position = Vector2(390, 0)
+
+[node name="GuardRail2" parent="Background" instance=ExtResource("20_sdeub")]
+position = Vector2(-392, 0)
+
+[node name="Ceiling" type="Sprite2D" parent="Background"]
+light_mask = 2
+texture = ExtResource("6_ws57v")
+
+[node name="Minecart" type="AnimatedSprite2D" parent="Background"]
+position = Vector2(-248, 31)
+sprite_frames = SubResource("SpriteFrames_83puh")
+autoplay = "default"
+
+[node name="Interactable" type="Node2D" parent="Background/Minecart"]
+script = ExtResource("7_i4ulf")
+
+[node name="Cutscene" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Background")
+libraries = {
+"": SubResource("AnimationLibrary_5frmt")
+}
+
+[node name="Bloop" type="AudioStreamPlayer" parent="Cutscene"]
+stream = ExtResource("8_ifx1n")
+pitch_scale = 1.5
+
+[node name="Change" type="AudioStreamPlayer" parent="Cutscene"]
+stream = ExtResource("11_nsn4o")
+volume_db = -6.545
+pitch_scale = 1.5
+
+[node name="Shoot" type="AudioStreamPlayer" parent="Cutscene"]
+stream = ExtResource("13_2gk11")
+volume_db = -6.545
+pitch_scale = 0.86
+
+[node name="Ping" type="AudioStreamPlayer" parent="Cutscene"]
+stream = ExtResource("14_tc35a")
+pitch_scale = 1.34
+
+[node name="PowerDown" type="AudioStreamPlayer" parent="Cutscene"]
+stream = ExtResource("15_0onvq")
+pitch_scale = 1.34
+
+[node name="Player" parent="." instance=ExtResource("21_mjqew")]
+z_index = 1
+position = Vector2(356, 38)
+floor_stop_on_slope = false
+
+[node name="DinoAnimator" parent="Player" index="0"]
+light_mask = 2
+
+[node name="Camera2D" parent="." instance=ExtResource("22_5e10e")]
+position = Vector2(-151, 0)
+bounds = Vector4(-150, -1000, 150, 1000)
+
+[node name="Mayor" parent="." instance=ExtResource("13_yw2is")]
+position = Vector2(469, 57)
+dialogue = null
+
+[node name="NPCAnimator" parent="Mayor" index="0"]
+frame_progress = 0.0
+flip_h = true
+
+[node name="Gun" type="Sprite2D" parent="Mayor"]
+visible = false
+z_index = -1
+position = Vector2(-36, -17)
+texture = ExtResource("20_3hllc")
+flip_h = true
+script = ExtResource("21_h1tgl")
+impulse = Vector2(-2, -6)
+
+[node name="Cop" parent="." instance=ExtResource("16_3r6cs")]
+position = Vector2(500, 54)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2jyua")
+
+[connection signal="activated" from="Background/Minecart/Interactable" to="." method="_on_minecart_activated"]
+[connection signal="animation_finished" from="Cutscene" to="." method="_on_animation_finished"]
+
+[editable path="Player"]
+[editable path="Mayor"]

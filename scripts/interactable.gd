@@ -33,6 +33,8 @@ func _player_in_range() -> bool:
 	return global_position.distance_to(GameState.player.global_position) < 100
 	
 func _player_can_trigger():
+	if not GameState.player:
+		return false
 	return \
 		not GameState.player.is_busy() and \
 		is_triggerable and \
