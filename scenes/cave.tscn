@@ -1,14 +1,15 @@
-[gd_scene load_steps=34 format=3 uid="uid://cll4p3cd77pua"]
+[gd_scene load_steps=43 format=3 uid="uid://cll4p3cd77pua"]
 
 [ext_resource type="Texture2D" uid="uid://bac1vtksavujt" path="res://sprites/env/interior_cave.png" id="1_65wyn"]
 [ext_resource type="Script" path="res://scenes/area_cave.gd" id="1_chr3p"]
 [ext_resource type="Resource" uid="uid://ca1tlv40m7nov" path="res://dialogue/mayor_cave.dialogue" id="2_750yx"]
+[ext_resource type="Resource" uid="uid://bwf886xbj5dv7" path="res://dialogue/cop_cave.dialogue" id="3_mv1bo"]
+[ext_resource type="AudioStream" uid="uid://dmewvuutkkvf0" path="res://audio/music/Dark chamber.mp3" id="4_sguvr"]
 [ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/effects/2d_light.png" id="4_wqoj5"]
 [ext_resource type="Texture2D" uid="uid://cyf6mfmqwqjmc" path="res://sprites/env/interior_cave_ceiling.png" id="6_ws57v"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="7_i4ulf"]
 [ext_resource type="Texture2D" uid="uid://fa8j67lsg0xa" path="res://sprites/env/decor_minecart.png" id="8_5as8e"]
 [ext_resource type="AudioStream" uid="uid://0visoin3bpy4" path="res://audio/bloop.wav" id="8_ifx1n"]
-[ext_resource type="AudioStream" uid="uid://dlrgg6l0nhoqe" path="res://audio/music/Jazz.wav" id="9_8dgum"]
 [ext_resource type="PackedScene" uid="uid://dc4w22copbcmu" path="res://scenes/turtle_minigame.tscn" id="10_xpxk6"]
 [ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="11_nsn4o"]
 [ext_resource type="AudioStream" uid="uid://t8w73lya3ans" path="res://audio/shoot.wav" id="13_2gk11"]
@@ -21,6 +22,7 @@
 [ext_resource type="Script" path="res://scenes/gun.gd" id="21_h1tgl"]
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="21_mjqew"]
 [ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="22_5e10e"]
+[ext_resource type="AudioStream" uid="uid://b55oxj3fnce3d" path="res://audio/click.wav" id="23_n878i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysm6f"]
 size = Vector2(2000, 47)
@@ -71,6 +73,232 @@ animations = [{
 "name": &"reveal2",
 "speed": 5.0
 }]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_toiq8"]
+atlas = ExtResource("20_3hllc")
+region = Rect2(0, 0, 26, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_744dg"]
+atlas = ExtResource("20_3hllc")
+region = Rect2(0, 25, 26, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1w8ji"]
+atlas = ExtResource("20_3hllc")
+region = Rect2(26, 25, 26, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i27dy"]
+atlas = ExtResource("20_3hllc")
+region = Rect2(52, 25, 26, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qstj"]
+atlas = ExtResource("20_3hllc")
+region = Rect2(78, 25, 26, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u41a"]
+atlas = ExtResource("20_3hllc")
+region = Rect2(0, 0, 26, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sve6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_toiq8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_744dg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1w8ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i27dy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qstj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u41a")
+}],
+"loop": false,
+"name": &"smoke",
+"speed": 3.0
+}]
+
+[sub_resource type="Animation" id="Animation_173mo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Minecart:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"default"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(356, 38)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Player/DinoAnimator:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Camera2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-151, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Mayor:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(469, 57)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Player:in_animation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Cutscene/Change:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Cop:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(500, 54)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CanvasLayer/Panel:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Cutscene/Shoot:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Cutscene/Ping:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Cutscene/PowerDown:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Mayor/Gun:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Cutscene/Click:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_b51k0"]
 resource_name = "discover_drumstick"
@@ -202,254 +430,74 @@ tracks/9/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Cutscene/Click:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-[sub_resource type="Animation" id="Animation_173mo"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_tquqn"]
+resource_name = "stick_em_up"
+length = 5.5
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Minecart:animation")
+tracks/0/path = NodePath("../Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"default"]
+"times": PackedFloat32Array(4.5, 5),
+"transitions": PackedFloat32Array(2.14355, 1),
+"update": 0,
+"values": [Vector2(-151, 0), Vector2(-39, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Player:position")
+tracks/1/path = NodePath("../Mayor:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(356, 38)]
+"values": [Vector2(-40, 57)]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Player/DinoAnimator:flip_h")
+tracks/2/path = NodePath("../Mayor/NPCAnimator")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Camera2D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-151, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Mayor:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(469, 57)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Player:in_animation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Cutscene/Change:playing")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../Cop:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(500, 54)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("../CanvasLayer/Panel:modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("../Cutscene/Shoot:playing")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../Cutscene/Ping:playing")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../Cutscene/PowerDown:playing")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("../Mayor/Gun:visible")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_tquqn"]
-resource_name = "stick_em_up"
-length = 10.0
-step = 0.1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Mayor/NPCAnimator")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 3, 5.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [&"unholster", 1.0, false],
 "method": &"play"
 }, {
 "args": [&"shock", 1.0, false],
 "method": &"play"
+}, {
+"args": [&"default", 1.0, false],
+"method": &"play"
 }]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Player:in_animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Cop:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.63333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(500, 54), Vector2(125, 54)]
-}
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Mayor:position")
+tracks/3/path = NodePath("../Mayor/Gun")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-40, 57)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../Player:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-185, 38)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Mayor/Gun:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Mayor/Gun")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(3),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -457,26 +505,66 @@ tracks/6/keys = {
 "method": &"throw"
 }]
 }
-tracks/7/type = "value"
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Mayor/Gun:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Cop:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.63333, 1.64),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(500, 54), Vector2(125, 54), Vector2(133, 54)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Cop/NPCAnimator")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"shoot", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("../CanvasLayer/Panel:modulate")
+tracks/7/path = NodePath("../Cop/Gun")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(2.9, 3, 3.4),
-"transitions": PackedFloat32Array(1, 0.466516, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"times": PackedFloat32Array(4.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"smoke", 1.0, false],
+"method": &"play"
+}]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../Cutscene/Shoot:playing")
+tracks/8/path = NodePath("../Player:in_animation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(3),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -484,38 +572,62 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("../Cutscene/Ping:playing")
+tracks/9/path = NodePath("../Player:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-185, 38)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../CanvasLayer/Panel:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(2.9, 3, 3.4),
+"transitions": PackedFloat32Array(1, 0.466516, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Cutscene/Shoot:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../Cutscene/PowerDown:playing")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(3.3),
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Cutscene/Ping:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../Camera2D:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(4.5, 5),
-"transitions": PackedFloat32Array(2.14355, 1),
-"update": 0,
-"values": [Vector2(-151, 0), Vector2(-39, 0)]
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Cutscene/PowerDown:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5frmt"]
@@ -531,6 +643,8 @@ bg_color = Color(1, 1, 1, 1)
 [node name="Cave" type="Node2D"]
 script = ExtResource("1_chr3p")
 mayor_dialogue = ExtResource("2_750yx")
+cop_dialogue = ExtResource("3_mv1bo")
+museum_scene = "res://scenes/areas/museum.tscn"
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -100
@@ -544,7 +658,7 @@ position = Vector2(0, 22)
 shape = SubResource("RectangleShape2D_ysm6f")
 
 [node name="Music" type="AudioStreamPlayer" parent="Background"]
-stream = ExtResource("9_8dgum")
+stream = ExtResource("4_sguvr")
 volume_db = -12.0
 autoplay = true
 
@@ -597,6 +711,54 @@ autoplay = "default"
 [node name="Interactable" type="Node2D" parent="Background/Minecart"]
 script = ExtResource("7_i4ulf")
 
+[node name="Player" parent="." instance=ExtResource("21_mjqew")]
+z_index = 1
+position = Vector2(356, 38)
+floor_stop_on_slope = false
+
+[node name="DinoAnimator" parent="Player" index="0"]
+light_mask = 2
+flip_h = true
+
+[node name="Camera2D" parent="." instance=ExtResource("22_5e10e")]
+position = Vector2(-151, 0)
+bounds = Vector4(-150, -1000, 150, 1000)
+
+[node name="Mayor" parent="." instance=ExtResource("13_yw2is")]
+position = Vector2(469, 57)
+dialogue = null
+
+[node name="NPCAnimator" parent="Mayor" index="0"]
+frame_progress = 0.0
+flip_h = true
+
+[node name="Gun" type="AnimatedSprite2D" parent="Mayor"]
+visible = false
+z_index = -1
+position = Vector2(-36, -24)
+sprite_frames = SubResource("SpriteFrames_sve6l")
+animation = &"smoke"
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+flip_h = true
+script = ExtResource("21_h1tgl")
+impulse = Vector2(-2, -6)
+
+[node name="Cop" parent="." instance=ExtResource("16_3r6cs")]
+position = Vector2(500, 54)
+
+[node name="Gun" type="AnimatedSprite2D" parent="Cop"]
+position = Vector2(-33, -12)
+sprite_frames = SubResource("SpriteFrames_sve6l")
+animation = &"smoke"
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+flip_h = true
+script = ExtResource("21_h1tgl")
+impulse = Vector2(-2, -6)
+
 [node name="Cutscene" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Background")
 libraries = {
@@ -625,37 +787,9 @@ pitch_scale = 1.34
 stream = ExtResource("15_0onvq")
 pitch_scale = 1.34
 
-[node name="Player" parent="." instance=ExtResource("21_mjqew")]
-z_index = 1
-position = Vector2(356, 38)
-floor_stop_on_slope = false
-
-[node name="DinoAnimator" parent="Player" index="0"]
-light_mask = 2
-
-[node name="Camera2D" parent="." instance=ExtResource("22_5e10e")]
-position = Vector2(-151, 0)
-bounds = Vector4(-150, -1000, 150, 1000)
-
-[node name="Mayor" parent="." instance=ExtResource("13_yw2is")]
-position = Vector2(469, 57)
-dialogue = null
-
-[node name="NPCAnimator" parent="Mayor" index="0"]
-frame_progress = 0.0
-flip_h = true
-
-[node name="Gun" type="Sprite2D" parent="Mayor"]
-visible = false
-z_index = -1
-position = Vector2(-36, -17)
-texture = ExtResource("20_3hllc")
-flip_h = true
-script = ExtResource("21_h1tgl")
-impulse = Vector2(-2, -6)
-
-[node name="Cop" parent="." instance=ExtResource("16_3r6cs")]
-position = Vector2(500, 54)
+[node name="Click" type="AudioStreamPlayer" parent="Cutscene"]
+stream = ExtResource("23_n878i")
+pitch_scale = 0.64
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -673,3 +807,4 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_2jyua")
 
 [editable path="Player"]
 [editable path="Mayor"]
+[editable path="Cop"]

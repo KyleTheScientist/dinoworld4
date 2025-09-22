@@ -118,7 +118,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"shock",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -187,7 +187,8 @@ dialogue = ExtResource("2_knowj")
 sprite_frames = SubResource("SpriteFrames_3kodk")
 animation = &"shock"
 autoplay = "default"
-frame_progress = 0.663942
+frame = 4
+frame_progress = 1.0
 offset = Vector2(0, -35.115)
 
 [node name="Interactable" type="Area2D" parent="."]
@@ -195,6 +196,7 @@ position = Vector2(-9, -33)
 script = ExtResource("3_fm7c8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+visible = false
 position = Vector2(9.25, -4)
 shape = SubResource("RectangleShape2D_v4byo")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cu10e03sg7kd3"]
+[gd_scene load_steps=14 format=3 uid="uid://cu10e03sg7kd3"]
 
 [ext_resource type="Script" path="res://scripts/inspect_overlay.gd" id="1_cx7ku"]
 [ext_resource type="Shader" path="res://vignette.gdshader" id="2_epq3q"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://w3gg2c4iw3xy" path="res://sprites/env/pickup_magnet.png" id="4_fv77q"]
 [ext_resource type="Texture2D" uid="uid://0m8pxcev0t1h" path="res://sprites/env/pickup_wallet.png" id="4_ol87k"]
 [ext_resource type="Texture2D" uid="uid://cmlkqo4c25mqe" path="res://sprites/env/pickup_ring.png" id="7_rvhym"]
+[ext_resource type="AudioStream" uid="uid://brfhowktef7qe" path="res://audio/MS_Realization.wav" id="12_wfcu5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nix7k"]
 shader = ExtResource("2_epq3q")
@@ -248,5 +249,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_erork")
 stretch_mode = 5
+
+[node name="Realization" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_wfcu5")
 
 [connection signal="gui_input" from="RevealContainer/HatsPoster/HatsPoster" to="." method="close"]

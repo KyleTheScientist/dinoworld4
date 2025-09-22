@@ -1,13 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://bliitmim74tfx"]
+[gd_scene load_steps=29 format=3 uid="uid://bliitmim74tfx"]
 
 [ext_resource type="Script" path="res://scripts/npc_controller.gd" id="1_x1ttt"]
 [ext_resource type="Resource" uid="uid://b2boncafgqn3u" path="res://dialogue/cop_exhausted.dialogue" id="2_w8hl5"]
 [ext_resource type="Script" path="res://scripts/interactable.gd" id="3_3fnqs"]
 [ext_resource type="Texture2D" uid="uid://dyepq7cl2gysa" path="res://sprites/chars/cop.png" id="4_3w2yc"]
 [ext_resource type="Script" path="res://scripts/npc_animator.gd" id="5_rop1s"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqrim"]
-size = Vector2(68, 37)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2dk1e"]
 atlas = ExtResource("4_3w2yc")
@@ -84,6 +81,14 @@ region = Rect2(264, 40, 66, 40)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5nkuv"]
 atlas = ExtResource("4_3w2yc")
 region = Rect2(0, 0, 66, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh6g4"]
+atlas = ExtResource("4_3w2yc")
+region = Rect2(0, 160, 66, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a2q1"]
+atlas = ExtResource("4_3w2yc")
+region = Rect2(66, 160, 66, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rifac"]
 animations = [{
@@ -163,12 +168,35 @@ animations = [{
 "loop": false,
 "name": &"shock",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh6g4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6a2q1")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 2.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqrim"]
+size = Vector2(68, 37)
 
 [node name="Cop" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_x1ttt")
 dialogue = ExtResource("2_w8hl5")
+
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -15)
+sprite_frames = SubResource("SpriteFrames_rifac")
+animation = &"shoot"
+autoplay = "default"
+frame_progress = 0.0933967
+flip_h = true
+script = ExtResource("5_rop1s")
 
 [node name="Interactable" type="Area2D" parent="."]
 texture_filter = 1
@@ -176,14 +204,8 @@ monitorable = false
 script = ExtResource("3_3fnqs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+visible = false
 position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_tqrim")
-
-[node name="NPCAnimator" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -15)
-sprite_frames = SubResource("SpriteFrames_rifac")
-autoplay = "default"
-flip_h = true
-script = ExtResource("5_rop1s")
 
 [connection signal="activated" from="Interactable" to="." method="_on_npc_activated"]

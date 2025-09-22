@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 		$RevealContainer.scale = Vector2.ONE
 
 func reveal(_name: String):
+	$Realization.play()
 	should_peek = _name != "HatsPoster"
 	$RevealContainer.scale = Vector2.ZERO
 	visible = true

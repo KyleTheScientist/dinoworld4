@@ -9,6 +9,7 @@ func _ready() -> void:
 	play("default")
 	$Turtles.visible = GameState.has_turtle
 	$Trash.visible = GameState.has_trash
+	flip(flip_h)
 
 func handle_animation(dino: Dino) -> void:
 	if abs(dino.velocity.x) > .1:
@@ -22,3 +23,6 @@ func handle_animation(dino: Dino) -> void:
 	else:
 		animation = "default"
 	
+func flip(flip: bool):
+	flip_h = flip
+	offset.x = -25 if flip_h else -38

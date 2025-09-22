@@ -1,0 +1,15 @@
+~ start
+set voice_pitch = 0.5
+Tricericop: Freeze!
+Tricericop: Hey, donut guy! Did you see that? I shot the gun right out of his hand!
+Tricericop: I didn't even mean to pull the trigger! Crazy luck am I right?
+Tricericop: Anyway, Mayor Brontoborough, you're under arrest for grand theft dino and attempted moidlin' of this here donut boy.
+Tricericop: You have the right to remain silent! Though it won't help you much, I just heard your whole plan!
+Tricericop: Sure is narratively convenient how bad guys always incriminate themselves like that, huh?
+set voice_pitch = 0.25
+Mayor: Wait, wait, I can explain, this is all a big misunderstanding!
+set voice_pitch = 0.5
+Tricericop: Ahh, save it for the judge. 
+Tricericop: Let's get you out of here donut guy!
+set shrine_repaired = true
+=> END
