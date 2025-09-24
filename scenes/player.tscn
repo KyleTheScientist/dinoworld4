@@ -51,6 +51,7 @@ size = Vector2(45, 41.5)
 [node name="Player" type="CharacterBody2D"]
 texture_filter = 1
 script = ExtResource("1_wbelc")
+speed = 70.0
 
 [node name="DinoAnimator" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_auulh")
@@ -65,16 +66,18 @@ nude_frames = ExtResource("4_o3drv")
 
 [node name="Turtles" type="AnimatedSprite2D" parent="DinoAnimator"]
 z_index = -1
-position = Vector2(0, -6)
+position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_1vgao")
 autoplay = "default"
 frame_progress = 0.804473
 
 [node name="Trash" type="AnimatedSprite2D" parent="DinoAnimator"]
+visible = false
 z_index = -1
 position = Vector2(-1, -8)
 sprite_frames = ExtResource("6_nnmo8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_03nbt")

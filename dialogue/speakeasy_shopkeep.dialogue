@@ -1,9 +1,13 @@
 ~ start
 set voice_pitch = 1
-Rosie: You're that deinonychus that saved my turtle!
-Rosie: How'd you get in here?
-Rosie: Doesn't matter. Welcome to the [wave]clubhouse[/wave]!
-Rosie: After the government banned giggle water we had to move our operation underground. 
-Rosie: Have a drink! Enjoy the entertainment! Maybe just grab a booth and take a load off.
-Rosie: Everything's on the house for my hero!
+if shrine_repaired
+	Rosie: First the turtles, then the city!
+	Rosie: You've got lifetime VIP status here my friend!
+else
+	Rosie: You're that deinonychus that saved my turtle!
+	Rosie: How'd you get in here?
+	Rosie: Doesn't matter. Welcome to the [wave]clubhouse[/wave]!
+	Rosie: After the government banned giggle water we had to move our operation underground. 
+	Rosie: Have a drink! Enjoy the entertainment! Maybe just grab a booth and take a load off.
+	Rosie: Everything's on the house for my hero!
 => END

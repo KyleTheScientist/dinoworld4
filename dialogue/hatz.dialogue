@@ -1,4 +1,16 @@
 ~ start
+if shrine_repaired
+	=> mayor_arrested
+
 set voice_pitch = 0.25
 Hatz Beakman: You like jazz?
+Toby: *Roar*
+Hatz Beakman: My man.
+=> END
+
+~ mayor_arrested
+Hatz Beakman: Jazz man! I heard you took down my political opponent.
+Hatz Beakman: Looks like I'm a shoe-in for mayor! 
+Hatz Beakman: I'm gonna be makin' some changes around here, and it's all thanks to you!
+Hatz Beakman: Pterosaurs will finally get the respect they deserve.
 => END

@@ -17,6 +17,7 @@ signal skipped_typing()
 
 ## Emitted when typing finishes.
 signal finished_typing()
+signal started_typing()
 
 
 # The action to press to skip typing.
@@ -55,8 +56,11 @@ var dialogue_line:
 ## Whether the label is currently typing itself out.
 var is_typing: bool = false:
 	set(value):
+		var is_starting: bool = is_typing != value and value == true
 		var is_finished: bool = is_typing != value and value == false
 		is_typing = value
+		if is_starting:
+			started_typing.emit()
 		if is_finished:
 			finished_typing.emit()
 	get:
@@ -69,6 +73,7 @@ var _is_awaiting_mutation: bool = false
 
 func _ready() -> void:
 	spoke.connect(GameState.on_npc_spoke)
+	started_typing.connect(GameState.on_npc_started_speaking)
 
 func _process(delta: float) -> void:
 	if self.is_typing:

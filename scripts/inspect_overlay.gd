@@ -17,9 +17,9 @@ func _process(delta: float) -> void:
 	if $RevealContainer.scale.x > .99:
 		$RevealContainer.scale = Vector2.ONE
 
-func reveal(_name: String):
+func reveal(_name: String, peek: bool = true):
 	$Realization.play()
-	should_peek = _name != "HatsPoster"
+	should_peek = peek
 	$RevealContainer.scale = Vector2.ZERO
 	visible = true
 	GameState.player.in_animation = true

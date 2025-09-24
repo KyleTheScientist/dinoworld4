@@ -30,7 +30,7 @@ func _player_in_range() -> bool:
 	if GameState.player == null:
 		print("null player")
 		return false
-	return global_position.distance_to(GameState.player.global_position) < 100
+	return global_position.distance_to(GameState.player.global_position) < 200
 	
 func _player_can_trigger():
 	if not GameState.player:

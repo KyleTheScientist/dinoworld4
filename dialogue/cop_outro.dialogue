@@ -1,0 +1,24 @@
+~ cutscene
+set voice_pitch = 0.5
+Tricericop: The city is saved! The statue is fixed and the mayor's in jail.
+Tricericop: Ain't she a beauty?
+Tricericop: I guess now you can go back home. Say, where'd you say you're from again?
+Toby: *[wave]Roar[/wave]*
+Tricericop: Haha! You're such a crack-up. 
+Tricericop: You know, legend has it this shrine has the power to bend time and space.
+Tricericop: If you knew how to activate it, you could even use it to skip your commute home!
+Tricericop: What a dream that'd be, huh?
+set seen_museum_outro = true
+=> END
+
+~ start
+set voice_pitch = 0.5
+if shrine_activated
+	Tricericop: Good heavens! What in God's name is that?
+	Tricericop: Stay back donut boy! It's not safe!
+else
+	Tricericop: I think I remember hearing something about needing three offerings...
+	Tricericop: Heh. I could use three offerings right about now if you know what I mean...
+	Tricericop: AND IF YOU DON'T KNOW WHAT I MEAN, I'M HUNGRY!
+	Tricericop: *[wave]Gratuitous laughter[/wave]*
+=> END

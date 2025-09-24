@@ -1,0 +1,107 @@
+[gd_scene load_steps=16 format=3 uid="uid://e8se4rgahxse"]
+
+[ext_resource type="Script" path="res://scripts/victory.gd" id="1_l6mho"]
+[ext_resource type="Texture2D" uid="uid://b6a1qg5pyd104" path="res://sprites/effects/you_win.png" id="1_mkvkb"]
+[ext_resource type="Texture2D" uid="uid://dr5735mru5vb3" path="res://sprites/env/dino_city_parallax3.png" id="2_rtoda"]
+[ext_resource type="Texture2D" uid="uid://cdrm6qcqa73jg" path="res://sprites/effects/rexy.png" id="2_wubea"]
+[ext_resource type="AudioStream" uid="uid://cw4dxfc5rkmpn" path="res://audio/roar.mp3" id="3_qpoh7"]
+[ext_resource type="Texture2D" uid="uid://bg6dvnd3rkqeu" path="res://sprites/env/dino_city_parallax2.png" id="3_y7o3x"]
+[ext_resource type="Texture2D" uid="uid://dmdqyvi7asb6b" path="res://sprites/env/building_museum.png" id="4_0gm1b"]
+[ext_resource type="AudioStream" uid="uid://bm43yfhumbnw5" path="res://audio/music/short_A New World Order!!.mp3" id="5_i7b4l"]
+[ext_resource type="Texture2D" uid="uid://cbibsowsskqkr" path="res://sprites/env/building_cafe.png" id="5_jlrp4"]
+[ext_resource type="Shader" path="res://vignette.gdshader" id="7_g2lx8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqeho"]
+atlas = ExtResource("1_mkvkb")
+region = Rect2(0, 0, 141, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5363r"]
+atlas = ExtResource("1_mkvkb")
+region = Rect2(141, 0, 141, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g3o6"]
+atlas = ExtResource("1_mkvkb")
+region = Rect2(282, 0, 141, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ko3p3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqeho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5363r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g3o6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2p7v"]
+shader = ExtResource("7_g2lx8")
+shader_parameter/alpha = 0.56
+shader_parameter/inner_radius = 0.3
+shader_parameter/outer_radius = 1.05
+
+[node name="Victory" type="Node2D"]
+script = ExtResource("1_l6mho")
+main_menu_scene = "res://scenes/main_menu.tscn"
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Sprite2D3" type="Sprite2D" parent="Background"]
+modulate = Color(0.485703, 0.485704, 0.485703, 1)
+position = Vector2(233, 132)
+texture = ExtResource("2_rtoda")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background"]
+modulate = Color(0.485703, 0.485704, 0.485703, 1)
+position = Vector2(220, 143)
+texture = ExtResource("3_y7o3x")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Background"]
+modulate = Color(0.374139, 0.374139, 0.374139, 1)
+position = Vector2(-113, 125)
+texture = ExtResource("4_0gm1b")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Background"]
+modulate = Color(0.374139, 0.374139, 0.374139, 1)
+position = Vector2(577, 101)
+texture = ExtResource("5_jlrp4")
+
+[node name="YouWin" type="AnimatedSprite2D" parent="."]
+position = Vector2(396, 193)
+sprite_frames = SubResource("SpriteFrames_ko3p3")
+autoplay = "default"
+frame_progress = 0.68138
+
+[node name="Rexy" type="Sprite2D" parent="."]
+position = Vector2(210, 134)
+texture = ExtResource("2_wubea")
+
+[node name="Roar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_qpoh7")
+autoplay = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_i7b4l")
+volume_db = -6.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_q2p7v")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -112.0
+offset_right = -104.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.77636, 1.77636)
+mouse_filter = 1

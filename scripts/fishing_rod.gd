@@ -7,7 +7,8 @@ var ring_hooked: bool = false
 var stuffs_hooked: int = 0
 
 func _ready() -> void:
-	$AnimationPlayer.play("reel" if GameState.fishing_rod_reeled else "cast")
+	if GameState.fishing_rod_reeled:
+		_on_interactable_activated()
 	cast = not GameState.fishing_rod_reeled
 	line_has_magnet = GameState.used_magnet
 	$Hook/Magnet.visible = GameState.used_magnet

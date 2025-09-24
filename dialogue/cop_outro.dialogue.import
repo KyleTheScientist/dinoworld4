@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://c8yy6x0wo8i30"
+path="res://.godot/imported/cop_outro.dialogue-7168a24439487bb91ed303a33e5c9b52.tres"
+
+[deps]
+
+source_file="res://dialogue/cop_outro.dialogue"
+dest_files=["res://.godot/imported/cop_outro.dialogue-7168a24439487bb91ed303a33e5c9b52.tres"]
+
+[params]
+
+defaults=true

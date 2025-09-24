@@ -1,5 +1,6 @@
 ~ start
 set voice_pitch = 1.0
+
 if not player_clothed
 	Nicky Nibbles: Sorry mista! Ma says I can't sells to naked dinos anymore!
 	Nicky Nibbles: Somethin' about not knowin' where they're keeping their change.
@@ -46,6 +47,7 @@ Nicky Nibbles: Crazy times we live in, am I right?
 Nicky Nibbles: Anyway, would you like to buy some of my world famous dino snacks? Family recipe!
 Nicky Nibbles: It'll only cost ya one penny!
 Nicky Nibbles: It used to cost half a penny, but inflation is [wave]really[/wave] drivin' up prices.
+Toby: *Roar*
 set nibbles_encountered = true
 => END
 

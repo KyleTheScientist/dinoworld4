@@ -23,6 +23,7 @@ Tricericop: [wave]A donut.[/wave]
 Tricericop: I'm so hungry I couldn't even make it to the station!
 Tricericop: My favorite cafe is right there on the other side of the museum...
 Tricericop: Please... the fate of the city depends on it...
+Toby: *[wave]Roar[/wave]*
 set cop_encountered = true
 => END
 

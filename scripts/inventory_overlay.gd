@@ -23,6 +23,8 @@ func add(_name: String):
 	if _name == "HatsPoster":
 		return
 	panel.get_node("HBoxContainer/%s" % _name).visible = true
+	if _name == "Drumstick":
+		panel.get_node("HBoxContainer/Drumstick/Label").text = 'x%s' % (GameState.drumsticks_collected + 1)
 
 func remove(_name: String):
 	panel.get_node("HBoxContainer/%s" % _name).visible = false

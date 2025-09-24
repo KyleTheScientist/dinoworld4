@@ -3,6 +3,9 @@ set voice_pitch = 0.7
 if not shady_encountered
 	=> first_encounter
 
+if has_bribe:
+	=> bribe_fail
+
 if has_autograph
 	=> receive_autograph
 else
@@ -26,6 +29,8 @@ if not player_clothed
 ???: I've still got mine, and I'd be willin' to lend it to ya in exchange for somethin' of value.
 ???: Somethin' I could pawn quick and easy. Signed baseball card, gold necklace, a kidney. You name it, I'm flexible.
 ???: Bring me somethin' like that and this ring is yours.
+Toby: *Roar*
+???: Okay buddy.
 set shady_encountered = true
 => END
 
@@ -35,6 +40,13 @@ set shady_encountered = true
 if not player_clothed
 	???: And maybe, just maybe, put on some clothes. 
 	???: [wave]NOBODY[/wave] wants to see all that!
+=> END
+
+~ bribe_fail
+???: Looks like you got an antique pocketwatch there.
+???: Sadly, the antique pocketwatch market is pretty dry right now. 
+???: That curmudgeon of a bouncer would love that though. 
+???: Try usin' it to get in the clubhouse.
 => END
 
 ~ receive_autograph

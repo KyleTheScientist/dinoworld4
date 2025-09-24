@@ -1,28 +1,28 @@
 [gd_scene load_steps=43 format=3 uid="uid://cll4p3cd77pua"]
 
-[ext_resource type="Texture2D" uid="uid://bac1vtksavujt" path="res://sprites/env/interior_cave.png" id="1_65wyn"]
-[ext_resource type="Script" path="res://scenes/area_cave.gd" id="1_chr3p"]
-[ext_resource type="Resource" uid="uid://ca1tlv40m7nov" path="res://dialogue/mayor_cave.dialogue" id="2_750yx"]
-[ext_resource type="Resource" uid="uid://bwf886xbj5dv7" path="res://dialogue/cop_cave.dialogue" id="3_mv1bo"]
-[ext_resource type="AudioStream" uid="uid://dmewvuutkkvf0" path="res://audio/music/Dark chamber.mp3" id="4_sguvr"]
-[ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/effects/2d_light.png" id="4_wqoj5"]
-[ext_resource type="Texture2D" uid="uid://cyf6mfmqwqjmc" path="res://sprites/env/interior_cave_ceiling.png" id="6_ws57v"]
-[ext_resource type="Script" path="res://scripts/interactable.gd" id="7_i4ulf"]
-[ext_resource type="Texture2D" uid="uid://fa8j67lsg0xa" path="res://sprites/env/decor_minecart.png" id="8_5as8e"]
-[ext_resource type="AudioStream" uid="uid://0visoin3bpy4" path="res://audio/bloop.wav" id="8_ifx1n"]
-[ext_resource type="PackedScene" uid="uid://dc4w22copbcmu" path="res://scenes/turtle_minigame.tscn" id="10_xpxk6"]
-[ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="11_nsn4o"]
-[ext_resource type="AudioStream" uid="uid://t8w73lya3ans" path="res://audio/shoot.wav" id="13_2gk11"]
-[ext_resource type="PackedScene" uid="uid://6jr2ryma7s8e" path="res://scenes/npcs/mayor.tscn" id="13_yw2is"]
-[ext_resource type="AudioStream" uid="uid://beptsedlaurpg" path="res://audio/coin.wav" id="14_tc35a"]
-[ext_resource type="AudioStream" uid="uid://c1d7gbuqruweu" path="res://audio/power_down.wav" id="15_0onvq"]
-[ext_resource type="PackedScene" uid="uid://bliitmim74tfx" path="res://scenes/npcs/cop.tscn" id="16_3r6cs"]
-[ext_resource type="Texture2D" uid="uid://ce1hmon1vyrug" path="res://sprites/effects/gun.png" id="20_3hllc"]
-[ext_resource type="PackedScene" uid="uid://fcvd8fc5u1d1" path="res://scenes/guard_rail.tscn" id="20_sdeub"]
-[ext_resource type="Script" path="res://scenes/gun.gd" id="21_h1tgl"]
-[ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="21_mjqew"]
-[ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="22_5e10e"]
-[ext_resource type="AudioStream" uid="uid://b55oxj3fnce3d" path="res://audio/click.wav" id="23_n878i"]
+[ext_resource type="Script" path="res://scripts/area_cave.gd" id="1_5y4gw"]
+[ext_resource type="Resource" uid="uid://ca1tlv40m7nov" path="res://dialogue/mayor_cave.dialogue" id="2_5v1gp"]
+[ext_resource type="Resource" uid="uid://bwf886xbj5dv7" path="res://dialogue/cop_cave.dialogue" id="3_tt34s"]
+[ext_resource type="Texture2D" uid="uid://bac1vtksavujt" path="res://sprites/env/interior_cave.png" id="4_0j6jq"]
+[ext_resource type="AudioStream" uid="uid://dmewvuutkkvf0" path="res://audio/music/Dark chamber.mp3" id="5_2bp7r"]
+[ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/effects/2d_light.png" id="6_5x5mw"]
+[ext_resource type="PackedScene" uid="uid://dc4w22copbcmu" path="res://scenes/turtle_minigame.tscn" id="7_biwwf"]
+[ext_resource type="PackedScene" uid="uid://fcvd8fc5u1d1" path="res://scenes/guard_rail.tscn" id="8_pitv7"]
+[ext_resource type="Texture2D" uid="uid://cyf6mfmqwqjmc" path="res://sprites/env/interior_cave_ceiling.png" id="9_h1bew"]
+[ext_resource type="Texture2D" uid="uid://fa8j67lsg0xa" path="res://sprites/env/decor_minecart.png" id="10_ewsrc"]
+[ext_resource type="Script" path="res://scripts/interactable.gd" id="11_fsu3r"]
+[ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="12_3mfvg"]
+[ext_resource type="PackedScene" uid="uid://c48sd0o8wp63u" path="res://scenes/camera.tscn" id="13_ite2o"]
+[ext_resource type="PackedScene" uid="uid://6jr2ryma7s8e" path="res://scenes/npcs/mayor.tscn" id="14_u4lh8"]
+[ext_resource type="Texture2D" uid="uid://ce1hmon1vyrug" path="res://sprites/effects/gun.png" id="15_21kk8"]
+[ext_resource type="Script" path="res://scripts/gun.gd" id="16_2xpvk"]
+[ext_resource type="PackedScene" uid="uid://bliitmim74tfx" path="res://scenes/npcs/cop.tscn" id="17_kqeb7"]
+[ext_resource type="AudioStream" uid="uid://0visoin3bpy4" path="res://audio/bloop.wav" id="18_4ec87"]
+[ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="19_ygc44"]
+[ext_resource type="AudioStream" uid="uid://t8w73lya3ans" path="res://audio/shoot.wav" id="20_jjl8o"]
+[ext_resource type="AudioStream" uid="uid://beptsedlaurpg" path="res://audio/coin.wav" id="21_jnq25"]
+[ext_resource type="AudioStream" uid="uid://c1d7gbuqruweu" path="res://audio/power_down.wav" id="22_5e7l2"]
+[ext_resource type="AudioStream" uid="uid://b55oxj3fnce3d" path="res://audio/click.wav" id="23_mn1y5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysm6f"]
 size = Vector2(2000, 47)
@@ -36,15 +36,15 @@ closed = false
 polygon = PackedVector2Array(25, 15, 0, -30, -25, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8uqkg"]
-atlas = ExtResource("8_5as8e")
+atlas = ExtResource("10_ewsrc")
 region = Rect2(0, 0, 60, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qn6bi"]
-atlas = ExtResource("8_5as8e")
+atlas = ExtResource("10_ewsrc")
 region = Rect2(60, 0, 60, 50)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mplpt"]
-atlas = ExtResource("8_5as8e")
+atlas = ExtResource("10_ewsrc")
 region = Rect2(120, 0, 60, 50)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_83puh"]
@@ -75,27 +75,27 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_toiq8"]
-atlas = ExtResource("20_3hllc")
+atlas = ExtResource("15_21kk8")
 region = Rect2(0, 0, 26, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_744dg"]
-atlas = ExtResource("20_3hllc")
+atlas = ExtResource("15_21kk8")
 region = Rect2(0, 25, 26, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1w8ji"]
-atlas = ExtResource("20_3hllc")
+atlas = ExtResource("15_21kk8")
 region = Rect2(26, 25, 26, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i27dy"]
-atlas = ExtResource("20_3hllc")
+atlas = ExtResource("15_21kk8")
 region = Rect2(52, 25, 26, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7qstj"]
-atlas = ExtResource("20_3hllc")
+atlas = ExtResource("15_21kk8")
 region = Rect2(78, 25, 26, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5u41a"]
-atlas = ExtResource("20_3hllc")
+atlas = ExtResource("15_21kk8")
 region = Rect2(0, 0, 26, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sve6l"]
@@ -294,6 +294,18 @@ tracks/13/path = NodePath("../Cutscene/Click:playing")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Music:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -629,6 +641,18 @@ tracks/13/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Music:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(4.6),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5frmt"]
 _data = {
@@ -641,14 +665,14 @@ _data = {
 bg_color = Color(1, 1, 1, 1)
 
 [node name="Cave" type="Node2D"]
-script = ExtResource("1_chr3p")
-mayor_dialogue = ExtResource("2_750yx")
-cop_dialogue = ExtResource("3_mv1bo")
+script = ExtResource("1_5y4gw")
+mayor_dialogue = ExtResource("2_5v1gp")
+cop_dialogue = ExtResource("3_tt34s")
 museum_scene = "res://scenes/areas/museum.tscn"
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -100
-texture = ExtResource("1_65wyn")
+texture = ExtResource("4_0j6jq")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Background"]
 position = Vector2(2, 59)
@@ -658,7 +682,7 @@ position = Vector2(0, 22)
 shape = SubResource("RectangleShape2D_ysm6f")
 
 [node name="Music" type="AudioStreamPlayer" parent="Background"]
-stream = ExtResource("4_sguvr")
+stream = ExtResource("5_2bp7r")
 volume_db = -12.0
 autoplay = true
 
@@ -669,7 +693,7 @@ texture_filter = 1
 position = Vector2(0, -133)
 energy = 5.0
 shadow_enabled = true
-texture = ExtResource("4_wqoj5")
+texture = ExtResource("6_5x5mw")
 texture_scale = 1.4
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Background/Lights/PointLight2D"]
@@ -681,27 +705,27 @@ texture_filter = 1
 position = Vector2(-251, -115)
 energy = 4.51
 shadow_enabled = true
-texture = ExtResource("4_wqoj5")
+texture = ExtResource("6_5x5mw")
 texture_scale = 1.2
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Background/Lights/PointLight2D2"]
 position = Vector2(0, 25)
 occluder = SubResource("OccluderPolygon2D_o772p")
 
-[node name="TurtleMinigame" parent="Background" instance=ExtResource("10_xpxk6")]
+[node name="TurtleMinigame" parent="Background" instance=ExtResource("7_biwwf")]
 visible = false
 position = Vector2(165, 17)
 scale = Vector2(1, 1)
 
-[node name="GuardRail" parent="Background" instance=ExtResource("20_sdeub")]
+[node name="GuardRail" parent="Background" instance=ExtResource("8_pitv7")]
 position = Vector2(390, 0)
 
-[node name="GuardRail2" parent="Background" instance=ExtResource("20_sdeub")]
+[node name="GuardRail2" parent="Background" instance=ExtResource("8_pitv7")]
 position = Vector2(-392, 0)
 
 [node name="Ceiling" type="Sprite2D" parent="Background"]
 light_mask = 2
-texture = ExtResource("6_ws57v")
+texture = ExtResource("9_h1bew")
 
 [node name="Minecart" type="AnimatedSprite2D" parent="Background"]
 position = Vector2(-248, 31)
@@ -709,9 +733,9 @@ sprite_frames = SubResource("SpriteFrames_83puh")
 autoplay = "default"
 
 [node name="Interactable" type="Node2D" parent="Background/Minecart"]
-script = ExtResource("7_i4ulf")
+script = ExtResource("11_fsu3r")
 
-[node name="Player" parent="." instance=ExtResource("21_mjqew")]
+[node name="Player" parent="." instance=ExtResource("12_3mfvg")]
 z_index = 1
 position = Vector2(356, 38)
 floor_stop_on_slope = false
@@ -720,11 +744,11 @@ floor_stop_on_slope = false
 light_mask = 2
 flip_h = true
 
-[node name="Camera2D" parent="." instance=ExtResource("22_5e10e")]
+[node name="Camera2D" parent="." instance=ExtResource("13_ite2o")]
 position = Vector2(-151, 0)
 bounds = Vector4(-150, -1000, 150, 1000)
 
-[node name="Mayor" parent="." instance=ExtResource("13_yw2is")]
+[node name="Mayor" parent="." instance=ExtResource("14_u4lh8")]
 position = Vector2(469, 57)
 dialogue = null
 
@@ -742,10 +766,10 @@ autoplay = "default"
 frame = 4
 frame_progress = 1.0
 flip_h = true
-script = ExtResource("21_h1tgl")
+script = ExtResource("16_2xpvk")
 impulse = Vector2(-2, -6)
 
-[node name="Cop" parent="." instance=ExtResource("16_3r6cs")]
+[node name="Cop" parent="." instance=ExtResource("17_kqeb7")]
 position = Vector2(500, 54)
 
 [node name="Gun" type="AnimatedSprite2D" parent="Cop"]
@@ -756,7 +780,7 @@ autoplay = "default"
 frame = 4
 frame_progress = 1.0
 flip_h = true
-script = ExtResource("21_h1tgl")
+script = ExtResource("16_2xpvk")
 impulse = Vector2(-2, -6)
 
 [node name="Cutscene" type="AnimationPlayer" parent="."]
@@ -766,29 +790,29 @@ libraries = {
 }
 
 [node name="Bloop" type="AudioStreamPlayer" parent="Cutscene"]
-stream = ExtResource("8_ifx1n")
+stream = ExtResource("18_4ec87")
 pitch_scale = 1.5
 
 [node name="Change" type="AudioStreamPlayer" parent="Cutscene"]
-stream = ExtResource("11_nsn4o")
+stream = ExtResource("19_ygc44")
 volume_db = -6.545
 pitch_scale = 1.5
 
 [node name="Shoot" type="AudioStreamPlayer" parent="Cutscene"]
-stream = ExtResource("13_2gk11")
+stream = ExtResource("20_jjl8o")
 volume_db = -6.545
 pitch_scale = 0.86
 
 [node name="Ping" type="AudioStreamPlayer" parent="Cutscene"]
-stream = ExtResource("14_tc35a")
+stream = ExtResource("21_jnq25")
 pitch_scale = 1.34
 
 [node name="PowerDown" type="AudioStreamPlayer" parent="Cutscene"]
-stream = ExtResource("15_0onvq")
+stream = ExtResource("22_5e7l2")
 pitch_scale = 1.34
 
 [node name="Click" type="AudioStreamPlayer" parent="Cutscene"]
-stream = ExtResource("23_n878i")
+stream = ExtResource("23_mn1y5")
 pitch_scale = 0.64
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

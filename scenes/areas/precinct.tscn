@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cm7w2nu8osy6p"]
+[gd_scene load_steps=43 format=3 uid="uid://cm7w2nu8osy6p"]
 
 [ext_resource type="Texture2D" uid="uid://cfqbo18uq5smd" path="res://sprites/env/interior_precinct.png" id="1_hp5xx"]
 [ext_resource type="Script" path="res://scripts/area_precinct.gd" id="1_i4eo7"]
@@ -12,12 +12,17 @@
 [ext_resource type="PackedScene" uid="uid://d2g662874xmte" path="res://scenes/player.tscn" id="5_05d5m"]
 [ext_resource type="Texture2D" uid="uid://cm17vayrhao0s" path="res://sprites/chars/prisoner_2.png" id="6_bbl3w"]
 [ext_resource type="Texture2D" uid="uid://crr8npucyux84" path="res://sprites/env/decor_precinct_door.png" id="7_rlb4k"]
+[ext_resource type="Resource" uid="uid://detr06483gg2y" path="res://dialogue/mayor.dialogue" id="8_h3xpi"]
+[ext_resource type="Texture2D" uid="uid://duelsqraqpgba" path="res://sprites/chars/mayor.png" id="8_p0s1a"]
 [ext_resource type="AudioStream" uid="uid://gs8qkauwrwjf" path="res://audio/music/hotel_2.mp3" id="10_fs2dv"]
 [ext_resource type="Texture2D" uid="uid://dpioak7hm1mmb" path="res://sprites/env/decor_desk_lamp.png" id="11_ndlcp"]
 [ext_resource type="Texture2D" uid="uid://da52ygyknkynu" path="res://sprites/effects/2d_light.png" id="12_ssfb8"]
 [ext_resource type="PackedScene" uid="uid://fcvd8fc5u1d1" path="res://scenes/guard_rail.tscn" id="14_io2uh"]
+[ext_resource type="Script" path="res://scripts/cabinet.gd" id="15_jg70v"]
+[ext_resource type="Texture2D" uid="uid://c78emm2jfotfv" path="res://sprites/env/decor_cabinet_drawer.png" id="16_sffb4"]
 [ext_resource type="Texture2D" uid="uid://ddjnog14uja0t" path="res://sprites/env/decor_fishing_rod_magnet.png" id="16_vns5j"]
 [ext_resource type="PackedScene" uid="uid://bliitmim74tfx" path="res://scenes/npcs/cop.tscn" id="17_5tg0g"]
+[ext_resource type="AudioStream" uid="uid://b55oxj3fnce3d" path="res://audio/click.wav" id="17_k5820"]
 [ext_resource type="Resource" uid="uid://cyqrrk81osvbb" path="res://dialogue/cop_precinct.dialogue" id="18_y1xe6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s8ex6"]
@@ -92,6 +97,42 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v226s"]
+atlas = ExtResource("8_p0s1a")
+region = Rect2(0, 296, 92, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdj50"]
+atlas = ExtResource("8_p0s1a")
+region = Rect2(92, 296, 92, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2kyx"]
+atlas = ExtResource("8_p0s1a")
+region = Rect2(184, 296, 92, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n05hu"]
+atlas = ExtResource("8_p0s1a")
+region = Rect2(276, 296, 92, 74)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tgqc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v226s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdj50")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2kyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n05hu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttbrg"]
 size = Vector2(2000, 47)
 
@@ -110,33 +151,47 @@ street_scene = "res://scenes/areas/street.tscn"
 z_index = -100
 texture = ExtResource("1_hp5xx")
 
-[node name="Prisoner1" type="Node2D" parent="Background"]
+[node name="Peck" type="Node2D" parent="Background"]
 position = Vector2(94, 31)
 script = ExtResource("3_fjh8y")
 dialogue = ExtResource("4_k3ewa")
 face_player = true
 
-[node name="NPCAnimator" type="AnimatedSprite2D" parent="Background/Prisoner1"]
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="Background/Peck"]
 sprite_frames = SubResource("SpriteFrames_bgdht")
 autoplay = "default"
 
-[node name="Interactable" type="Node2D" parent="Background/Prisoner1"]
+[node name="Interactable" type="Node2D" parent="Background/Peck"]
 script = ExtResource("3_cpvdm")
 
-[node name="Prisoner2" type="Node2D" parent="Background"]
+[node name="Terry" type="Node2D" parent="Background"]
 position = Vector2(176, 34)
 script = ExtResource("3_fjh8y")
 dialogue = ExtResource("4_k3ewa")
 face_player = true
 
-[node name="NPCAnimator" type="AnimatedSprite2D" parent="Background/Prisoner2"]
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="Background/Terry"]
 position = Vector2(-4, -27)
 sprite_frames = SubResource("SpriteFrames_rnk3a")
 autoplay = "default"
 frame_progress = 0.424547
 flip_h = true
 
-[node name="Interactable" type="Node2D" parent="Background/Prisoner2"]
+[node name="Interactable" type="Node2D" parent="Background/Terry"]
+script = ExtResource("3_cpvdm")
+
+[node name="Mayor" type="Node2D" parent="Background"]
+position = Vector2(303, 34)
+script = ExtResource("3_fjh8y")
+dialogue = ExtResource("8_h3xpi")
+
+[node name="NPCAnimator" type="AnimatedSprite2D" parent="Background/Mayor"]
+position = Vector2(6, -18)
+sprite_frames = SubResource("SpriteFrames_tgqc5")
+autoplay = "default"
+frame_progress = 0.790088
+
+[node name="Interactable" type="Node2D" parent="Background/Mayor"]
 script = ExtResource("3_cpvdm")
 
 [node name="Foreground" type="Sprite2D" parent="Background"]
@@ -198,6 +253,301 @@ position = Vector2(-434, 0)
 [node name="GuardRail2" parent="Background" instance=ExtResource("14_io2uh")]
 position = Vector2(430, 0)
 
+[node name="Cabinet" type="Node2D" parent="Background"]
+position = Vector2(-307, -1)
+script = ExtResource("15_jg70v")
+
+[node name="Click" type="AudioStreamPlayer" parent="Background/Cabinet"]
+stream = ExtResource("17_k5820")
+
+[node name="Drawer1" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(-5, -5)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer1"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer2" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(12, -5)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer2"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer3" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(29, -5)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer3"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer4" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(46, -5)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer4"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer5" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(-5, 9)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer5"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer6" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(12, 9)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer6"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer7" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(29, 9)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer7"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer8" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(46, 9)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer8"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer9" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(-5, 23)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer9"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer10" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(12, 23)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer10"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer11" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(29, 23)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer11"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer12" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(46, 23)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer12"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer13" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(-5, 37)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer13"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer14" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(12, 37)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer14"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer15" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(29, 37)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer15"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer16" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(46, 37)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer16"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer17" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(149, -5)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer17"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer18" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(166, -5)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer18"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer19" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(183, -5)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer19"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer20" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(200, -5)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer20"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer21" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(149, 9)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer21"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer22" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(166, 9)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer22"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer23" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(183, 9)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer23"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer24" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(200, 9)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer24"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer25" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(149, 23)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer25"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer26" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(166, 23)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer26"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer27" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(183, 23)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer27"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer28" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(200, 23)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer28"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer29" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(149, 37)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer29"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer30" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(166, 37)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer30"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer31" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(183, 37)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer31"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
+[node name="Drawer32" type="Node2D" parent="Background/Cabinet"]
+position = Vector2(200, 37)
+script = ExtResource("3_cpvdm")
+hover_range = 5
+
+[node name="Sprite" type="Sprite2D" parent="Background/Cabinet/Drawer32"]
+position = Vector2(5, 5)
+texture = ExtResource("16_sffb4")
+
 [node name="Player" parent="." instance=ExtResource("5_05d5m")]
 position = Vector2(-375, 30)
 
@@ -216,8 +566,9 @@ z_index = -1
 position = Vector2(-195, 48)
 dialogue = ExtResource("18_y1xe6")
 
-[connection signal="activated" from="Background/Prisoner1/Interactable" to="Background/Prisoner1" method="_on_npc_activated"]
-[connection signal="activated" from="Background/Prisoner2/Interactable" to="Background/Prisoner2" method="_on_npc_activated"]
+[connection signal="activated" from="Background/Peck/Interactable" to="Background/Peck" method="_on_npc_activated"]
+[connection signal="activated" from="Background/Terry/Interactable" to="Background/Terry" method="_on_npc_activated"]
+[connection signal="activated" from="Background/Mayor/Interactable" to="Background/Mayor" method="_on_npc_activated"]
 [connection signal="activated" from="Background/PrecinctDoor" to="." method="_on_precinct_door_activated"]
 [connection signal="activated" from="Background/Magnet" to="." method="_on_magnet_activated"]
 

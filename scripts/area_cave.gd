@@ -6,6 +6,7 @@ extends Node2D
 
 func _ready():
 	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
+	GameState.show_scene()
 
 func _on_minecart_activated() -> void:
 	$Cutscene.play("discover_drumstick")

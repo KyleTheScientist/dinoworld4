@@ -4,7 +4,9 @@ extends Node2D
 func _ready() -> void:
 	GameState.last_area = "precinct"
 	$Background/Magnet.visible = not (GameState.has_magnet or GameState.used_magnet)
-	if not GameState.cop_fed:
+	if not GameState.shrine_repaired:
+		$Background/Mayor.hide_and_disable()
+	if not GameState.cop_fed or GameState.shrine_repaired:
 		$Cop.hide_and_disable()
 	GameState.show_scene()
 

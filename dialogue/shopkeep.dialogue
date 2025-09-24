@@ -39,6 +39,8 @@ set shopkeep_quest_given = true
 Rosie: My turtle! You found him! 
 Rosie: Oh my, and he's made a friend! This is fantastic news!
 Rosie: Here, take a dozen donuts as thanks, on the house!
+Toby: *Roar*
+Rosie: Yes, it's very exciting!
 set turtle_returned = true
 set has_donuts = true
 set has_turtle = false

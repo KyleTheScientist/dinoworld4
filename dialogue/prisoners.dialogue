@@ -1,5 +1,8 @@
 ~ start
 
+if shrine_repaired
+	=> mayor_arrested
+
 if not prisoners_encountered
 	=> first_encounter
 	
@@ -110,7 +113,7 @@ Terry: We're not asking for much. I just need you to get my wallet from the muse
 Terry: I work there as a janitor and I dropped it early this morning when I got spooked by a loud noise in the foyer.
 Terry: Sounded like something was crawling in the walls!
 Terry: I winged it out of there and got busted on my way back home. 
-Terry: I don't even care about the money. The wallet has a picture of my daughter inside...
+Terry: There's not even any money in it. The wallet has a picture of my daughter inside...
 Terry: I just want to be able to see her while I'm in here.
 set voice_pitch = 0.75
 Peck: And I just want a snack!
@@ -128,5 +131,39 @@ set voice_pitch = 0.1
 Terry: *Sighs* Yeah. I'll tell you if you help me out.
 set voice_pitch = 0.75
 Peck: Whaddya say, kid?
+set voice_pitch = 0.5
+Toby: ...
+Toby: *Roar*
+set voice_pitch = 0.1
+Terry: We're doomed.
 set prisoners_encountered = true
 => END
+
+~ mayor_arrested
+set voice_pitch = 0.1
+Terry: Hey! It's you! You won't believe it!
+Terry: They're investigating my arrest and I might get outta here!
+Terry: I heard you had something to do with it. Thanks so much!
+Terry: Maybe not all dinos are bad after all.
+
+set voice_pitch = 0.75
+Peck: Yeah! And I'm gettin' outta here too!
+
+set voice_pitch = 0.1
+Terry: No, you're not. 
+
+set voice_pitch = 0.75
+Peck: Don't say that! I'm manifestin'!
+Peck: Well, I'm sad to see Terry go, but I got a new cellmate to yap with!
+Peck: [wave]AIN'T THAT RIGHT MAYOR?[/wave]
+Mayor: ...
+Peck: Haha! Sore loser that one.
+
+set voice_pitch = 0.1
+Terry: Anyway, thanks again. See you on the outside soon!
+
+set voice_pitch = 0.75
+Peck: Hmm... I wonder what brontosaurus tastes like...
+
+set voice_pitch = 0.1
+Terry: Stop.

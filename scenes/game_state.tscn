@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://krkaeg3vayw4"]
+[gd_scene load_steps=25 format=3 uid="uid://krkaeg3vayw4"]
 
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="1_icojt"]
 [ext_resource type="AudioStream" uid="uid://xhepoyewqyn8" path="res://audio/speak.wav" id="2_d0w7c"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://cmlnc6cffe610" path="res://sprites/env/signed_photo.png" id="9_ybmr3"]
 [ext_resource type="Texture2D" uid="uid://0m8pxcev0t1h" path="res://sprites/env/pickup_wallet.png" id="10_d3bt5"]
 [ext_resource type="Texture2D" uid="uid://coqt12e8wxuuk" path="res://sprites/env/pocket_watch.png" id="11_03ea4"]
+[ext_resource type="Texture2D" uid="uid://bioo1wh3ntvh6" path="res://sprites/env/pickup_drumstick.png" id="13_6ry4g"]
 [ext_resource type="Shader" path="res://sprites/effects/scene_transition.gdshader" id="13_8ncg5"]
+[ext_resource type="FontFile" uid="uid://bjj8cgx5rm6qc" path="res://DigitalDisco-Thin.ttf" id="14_qv37m"]
 [ext_resource type="AudioStream" uid="uid://di810y18e7w2y" path="res://audio/change.wav" id="14_yegis"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gvnm8"]
@@ -23,6 +25,9 @@ stream_0/stream = ExtResource("2_d0w7c")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wu4s"]
 bg_color = Color(0, 0, 0, 0.196078)
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_k4l30"]
+Label/fonts/font = ExtResource("14_qv37m")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_soa07"]
 shader = ExtResource("13_8ncg5")
@@ -193,6 +198,7 @@ _data = {
 
 [node name="GameState" type="Node2D"]
 script = ExtResource("1_icojt")
+gave_password = true
 
 [node name="Speak" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_gvnm8")
@@ -331,6 +337,25 @@ texture = ExtResource("11_03ea4")
 expand_mode = 3
 stretch_mode = 4
 
+[node name="Drumstick" type="TextureRect" parent="InventoryOverlay/VBoxContainer/HoverZone/InventoryPanel/HBoxContainer"]
+visible = false
+modulate = Color(1, 1, 1, 0.517647)
+layout_mode = 2
+size_flags_horizontal = 6
+mouse_filter = 2
+texture = ExtResource("13_6ry4g")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="InventoryOverlay/VBoxContainer/HoverZone/InventoryPanel/HBoxContainer/Drumstick"]
+layout_mode = 0
+offset_left = 30.5
+offset_top = -1.5
+offset_right = 70.5
+offset_bottom = 21.5
+theme = SubResource("Theme_k4l30")
+text = "x3"
+
 [node name="SceneTransition" type="CanvasLayer" parent="."]
 
 [node name="DissolveRect" type="ColorRect" parent="SceneTransition"]
@@ -349,7 +374,6 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_btj5c")
 }
-autoplay = "dissolve"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SceneTransition"]
 stream = ExtResource("14_yegis")

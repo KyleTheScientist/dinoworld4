@@ -54,7 +54,7 @@ func _load_state():
 		$Shady.hide_and_disable()
 	if GameState.mayor_quest_complete:
 		$Mayor.hide_and_disable()
-	if GameState.cop_fed:
+	if GameState.cop_fed or GameState.shrine_repaired:
 		$Cop.hide_and_disable()
 	else:
 		$Cop/NPCAnimator.play("exhausted")
@@ -93,7 +93,7 @@ func _on_dumpster_activated() -> void:
 		dumpster.get_node("AnimationPlayer").play("pterosaur_escape")
 
 func _on_busted_trash_inspected() -> void:
-	GameState.reveal_item("HatsPoster")
+	GameState.reveal_item("HatsPoster", false)
 
 func _on_shady_dialogue_finished() -> void:
 	if GameState.ring_thrown:

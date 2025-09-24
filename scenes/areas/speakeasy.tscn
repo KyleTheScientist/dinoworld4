@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://b52dxo57ch6ha"]
+[gd_scene load_steps=59 format=3 uid="uid://b52dxo57ch6ha"]
 
 [ext_resource type="Script" path="res://scripts/area_speakeasy.gd" id="1_344m1"]
 [ext_resource type="Texture2D" uid="uid://cnwuv6evwpukw" path="res://sprites/env/interior_speakeasy_booths.png" id="2_5l0uw"]
@@ -17,6 +17,7 @@
 [ext_resource type="Resource" uid="uid://h4w70sxe5agh" path="res://dialogue/speakeasy_shopkeep.dialogue" id="9_sb07m"]
 [ext_resource type="Script" path="res://scripts/npc_controller.gd" id="11_bumbl"]
 [ext_resource type="Resource" uid="uid://dkubvrm7o87ro" path="res://dialogue/ruby.dialogue" id="12_8oxih"]
+[ext_resource type="Script" path="res://scripts/sax.gd" id="12_fum2i"]
 [ext_resource type="Texture2D" uid="uid://c1ukiilixb24t" path="res://sprites/chars/ruby.png" id="13_5kdby"]
 [ext_resource type="Resource" uid="uid://fmfj38w281ab" path="res://dialogue/hatz.dialogue" id="16_85t1l"]
 [ext_resource type="Texture2D" uid="uid://bt8c5t1s17q23" path="res://sprites/chars/hatz.png" id="17_qdexs"]
@@ -107,6 +108,18 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-38, -18)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../Camera2D:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-451, 83)]
 }
 
 [sub_resource type="Animation" id="Animation_n63oi"]
@@ -223,6 +236,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-38, -18)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../../Camera2D:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-451, 83)]
 }
 
 [sub_resource type="Animation" id="Animation_wi5pl"]
@@ -353,6 +378,22 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsq5w"]
+atlas = ExtResource("8_mg7ct")
+region = Rect2(0, 64, 81, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6ian"]
+atlas = ExtResource("8_mg7ct")
+region = Rect2(81, 64, 81, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ermbm"]
+atlas = ExtResource("8_mg7ct")
+region = Rect2(162, 64, 81, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm60m"]
+atlas = ExtResource("8_mg7ct")
+region = Rect2(243, 64, 81, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_l434o"]
 atlas = ExtResource("8_mg7ct")
 region = Rect2(0, 0, 81, 64)
@@ -373,6 +414,23 @@ region = Rect2(243, 0, 81, 64)
 animations = [{
 "frames": [{
 "duration": 2.0,
+"texture": SubResource("AtlasTexture_vsq5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6ian")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ermbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm60m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_l434o")
 }, {
 "duration": 1.0,
@@ -385,7 +443,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_h70pn")
 }],
 "loop": true,
-"name": &"default",
+"name": &"used",
 "speed": 8.0
 }]
 
@@ -625,8 +683,6 @@ energy = 3.86
 range_item_cull_mask = 2
 texture = ExtResource("5_aq0mc")
 
-[node name="Band" type="Node2D" parent="Environment/Background"]
-
 [node name="Bass" type="AnimatedSprite2D" parent="Environment/Background"]
 modulate = Color(0.537011, 0.537011, 0.537011, 1)
 position = Vector2(-130, 82)
@@ -645,8 +701,13 @@ frame_progress = 0.729905
 modulate = Color(0.537011, 0.537011, 0.537011, 1)
 position = Vector2(9, 89)
 sprite_frames = SubResource("SpriteFrames_syhwv")
-autoplay = "default"
-frame_progress = 0.316696
+animation = &"used"
+script = ExtResource("12_fum2i")
+
+[node name="Interactable" type="Node2D" parent="Environment/Background/Sax"]
+position = Vector2(-5, 4)
+script = ExtResource("4_6bl8t")
+hover_range = 10
 
 [node name="Ruby" type="Node2D" parent="Environment/Background"]
 position = Vector2(-197, 135)
@@ -696,16 +757,14 @@ position = Vector2(627, 134)
 [node name="Turtles" parent="Player/DinoAnimator" index="0"]
 visible = false
 
-[node name="Trash" parent="Player/DinoAnimator" index="1"]
-visible = false
-
 [node name="Camera2D" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_rn2u3")]
-position = Vector2(-41, 83)
+position = Vector2(-451, 83)
 player = NodePath("../Player")
 bounds = Vector4(-500, -1000, 500, 1000)
 
 [connection signal="activated" from="Environment/Booths/Interactable" to="." method="_on_booth_activated"]
 [connection signal="activated" from="Environment/Background/SpeakeasyDoor" to="." method="_on_speakeasy_door_activated"]
+[connection signal="activated" from="Environment/Background/Sax/Interactable" to="Environment/Background/Sax" method="_on_interactable_activated"]
 [connection signal="activated" from="Environment/Background/Ruby/Interactable" to="Environment/Background/Ruby" method="_on_npc_activated"]
 [connection signal="activated" from="Environment/Background/Hatz/Interactable" to="Environment/Background/Hatz" method="_on_npc_activated"]
 

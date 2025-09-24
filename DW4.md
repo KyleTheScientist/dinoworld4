@@ -4,7 +4,10 @@
 
 - Goal: Retrieve shrine fragment and reactivate portal
   - [ ] Obtain three chicken legs to activate the portal (maybe all of these should be hidden collectibles?)
-  - [ ] Obtain the passcode for the padlock of the cave entrance in the sewer 
+	- [x] One in cafe. Coffee machine steams up, pops open bin, drumstick falls out
+	- [x] One in jail, in cabinets?
+	- [ ] One in speakeasy, pops out of sax?
+  - [x] Obtain the passcode for the padlock of the cave entrance in the sewer 
 	- [x] Overhear the passcode in the speakeasy. (Need to hide the mayor NPC on street after completing his quest)
 	  - [x] Enter speakeasy by obtaining the membership requirements: Membership password (roar), Membership ring, bribe
 
@@ -33,26 +36,35 @@
 
 
 ## Complex
-- [ ] Start menu
+- [ ] Game over dialogue / mayor in jail / terry freed
+- [ ] Make drumstick locations more eyecatching?
+- [x] Start menu
 - [ ] Options menu
 - [x] Inventory system
 - [x] Dialogue voice bleeps
 - [x] Add some more to the prison?
-- [ ] Scene transition animation
-- [ ] Add bricks / more decor to museum
+- [x] Scene transition animation
+- [x] Add bricks / more decor to museum
 - [ ] Rework turtle game
-- [ ] Add "roar" as dialogue response option
+- [x] Add "roar" to more dialogues
 - [ ] Add leopluridon to sewers with ring
 
 ## Medium 
 
-- [ ] Add some pointless interactables to the cafe
 - [x] Add cabbage cart guy yelling
 - [x] Hovering inspect overlay changes cursor
 - [x] Fix combo lock not escapable
+- [ ] Add some secondary dialogue to characters without it
 
 ## Easy
 
+- [ ] Better font
+- [x] Victory sound on turtles
+- [x] Remove sparkle from magnet
+- [x] Make the plate collider bigger
+- [x] Sax guy doesn't unmeat
+- [x] Make shrine untriggerable unless it can be used
+- [ ] Music during cop section of finale
 - [x] Move tricericop to the precinct after you give him the donuts
 - [ ] More lighting
 - [x] Nude dialogue for everyone

@@ -11,7 +11,6 @@ func _ready() -> void:
 func _on_speakeasy_door_activated() -> void:
 	GameState.change_scene(street_scene)
 
-	
 func _on_booth_activated() -> void:
 	$Environment/Booths/AnimationPlayer.play("eavesdrop")
 

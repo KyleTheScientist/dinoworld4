@@ -22,12 +22,15 @@ var voice_pitch: float:
 		var sig = 1 / (1 + 20 ** (-value + 1))
 		voice_pitch = remap(sig, 0, 1, .4, 1.5)
 
-@export_category("Museum Interior")
+@export_category("Museum")
 @export var seen_museum_intro: bool = false
+@export var seen_museum_outro: bool = false
 @export var seen_cop_anim: bool = false
 @export var player_clothed: bool = false
 @export var poster_torn: bool = false
 @export var shrine_repaired: bool = false
+@export var drumsticks_collected: int = 0
+@export var shrine_activated: bool = false
 
 @export_category("Street")
 @export var last_area = "museum"
@@ -70,6 +73,7 @@ var voice_pitch: float:
 @export var shopkeep_encountered: bool = false
 @export var shopkeep_angry: bool = false
 @export var shopkeep_quest_given: bool = false
+@export var has_cafe_drumstick: bool = false
 
 @export_category("Sewer")
 @export var has_turtle: bool = false
@@ -89,6 +93,10 @@ var combination_string: String
 @export var has_wallet: bool = false
 @export var has_candy: bool = false
 @export var knows_password: bool = false
+@export var has_precinct_drumstick: bool = false
+
+@export_category("Speakeasy")
+@export var has_speakeasy_drumstick: bool = false
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
@@ -107,9 +115,10 @@ func set_cursor(state: int):
 		Input.set_custom_mouse_cursor(cursor_hover)
 		cursor = cursor_hover_small
 
-func reveal_item(item: String):
-	inspect_overlay.reveal(item)
-	inventory_overlay.add(item)
+func reveal_item(item: String, store: bool = true):
+	inspect_overlay.reveal(item, store)
+	if store:
+		inventory_overlay.add(item)
 	
 func remove_item(item: String):
 	inventory_overlay.remove(item)
@@ -118,6 +127,10 @@ func on_npc_spoke(_letter: String, _letter_index, _speed: float):
 	if _letter in [" ", ".", "*", '"']:
 		$Speak.pitch_scale = voice_pitch
 		$Speak.play()	
+
+func on_npc_started_speaking():
+	$Speak.pitch_scale = voice_pitch
+	$Speak.play()	
 
 func change_scene(scene: String):
 	$SceneTransition/AnimationPlayer.play("resolve")

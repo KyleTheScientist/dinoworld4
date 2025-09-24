@@ -58,14 +58,15 @@ func _on_turtle_activated() -> void:
 	if flipping: 
 		return
 	
-	if attempts == 15:
+	if attempts == 10:
 		$SPEED.visible = true
 		$SpeedUp.play()
 		speed *= 1.5
 	
-	if attempts < 30:
+	if attempts < 20:
 		flip()
 		return
 	
 	$Music.stop()
+	$Victory.play()
 	finished.emit()
