@@ -11,6 +11,8 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	$Music.play()
 	can_click_away = true
+	
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact") and can_click_away:

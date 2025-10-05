@@ -970,8 +970,9 @@ bounds = Vector4(-1200, -1000, 1000, 1000)
 z_index = -1
 position = Vector2(-211, -2)
 
-[node name="NPCAnimator" parent="Cop" index="1"]
+[node name="NPCAnimator" parent="Cop" index="0"]
 animation = &"exhausted"
+frame_progress = 0.0
 
 [node name="Mayor" parent="." instance=ExtResource("12_c8rfy")]
 z_index = -1

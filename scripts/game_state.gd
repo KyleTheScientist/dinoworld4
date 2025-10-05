@@ -62,8 +62,6 @@ var voice_pitch: float:
 
 @export_subgroup("Cart")
 @export var cart_moved: bool = false
-@export var wedge_l_removed: bool = false
-@export var wedge_r_removed: bool = false
 
 @export_subgroup("Nibbles")
 @export var nibbles_encountered: bool = false
@@ -100,12 +98,67 @@ var combination_string: String
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	generate_lock_code()
+
+func generate_lock_code():
 	if len(combination_lock_code) == 0:
 		combination_lock_code = [0, 5, 10, 15, 20, 25, 30, 35]
 		combination_lock_code.shuffle()
 		while len(combination_lock_code) > 3:
 			combination_lock_code.remove_at(randi() % len(combination_lock_code))
 		combination_string = str(combination_lock_code).replace("[", "").replace("]", "")
+
+func reset() -> void:
+	seen_museum_intro = false
+	seen_museum_outro = false
+	seen_cop_anim = false
+	player_clothed = false
+	poster_torn = false
+	shrine_repaired = false
+	drumsticks_collected = 0
+	shrine_activated = false
+	last_area = "museum"
+	cop_fed = false
+	cop_encountered = false
+	has_donuts = false
+	has_bribe = false
+	mayor_encountered = false
+	trash_disposed_of = false
+	has_trash = false
+	trash_removed = 0
+	has_autograph = false
+	mayor_quest_complete = false
+	shady_encountered = false
+	shady_quest_complete = false
+	ring_thrown = false
+	bouncer_encountered = false
+	has_ring = false
+	gave_bribe = false
+	gave_password = false
+	cart_moved = false
+	nibbles_encountered = false
+	has_coin = false
+	shopkeep_encountered = false
+	shopkeep_angry = false
+	shopkeep_quest_given = false
+	has_cafe_drumstick = false
+	has_turtle = false
+	turtle_returned = false
+	fishing_rod_reeled = false
+	has_magnet = false
+	coin_in_water = false
+	ring_in_water = false
+	used_magnet = false
+	knows_combination = false
+	cave_unlocked = false
+	prisoners_encountered = false
+	has_wallet = false
+	has_candy = false
+	knows_password = false
+	has_precinct_drumstick = false
+	has_speakeasy_drumstick = false
+	combination_lock_code = []
+	generate_lock_code()
 
 func set_cursor(state: int):
 	if state == 0:

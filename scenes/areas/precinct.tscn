@@ -189,7 +189,7 @@ dialogue = ExtResource("8_h3xpi")
 position = Vector2(6, -18)
 sprite_frames = SubResource("SpriteFrames_tgqc5")
 autoplay = "default"
-frame_progress = 0.790088
+frame_progress = 0.866913
 
 [node name="Interactable" type="Node2D" parent="Background/Mayor"]
 script = ExtResource("3_cpvdm")

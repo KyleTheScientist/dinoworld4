@@ -29,7 +29,7 @@ if not player_clothed
 ???: I've still got mine, and I'd be willin' to lend it to ya in exchange for somethin' of value.
 ???: Somethin' I could pawn quick and easy. Signed baseball card, gold necklace, a kidney. You name it, I'm flexible.
 ???: Bring me somethin' like that and this ring is yours.
-Toby: *Roar*
+Toby: *[wave]Roar[/wave]*
 ???: Okay buddy.
 set shady_encountered = true
 => END

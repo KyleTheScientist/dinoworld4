@@ -60,6 +60,13 @@ func _load_state():
 		$Cop/NPCAnimator.play("exhausted")
 	
 	dumpster.is_triggerable = GameState.has_trash
+	trash_pile.is_triggerable = GameState.mayor_encountered and not GameState.trash_disposed_of
+	if GameState.trash_disposed_of:
+		var trash = dumpster.get_node("TrashOrigin/Trash") 
+		trash.play("toss")
+		trash.get_node("Interactable").is_triggerable = true
+		trash.position = Vector2(-45, -1)
+		trash.visible = true
 	trash_pile.get_node("Sprite").frame = GameState.trash_removed
 	sewer_door.is_triggerable = GameState.cart_moved
 
